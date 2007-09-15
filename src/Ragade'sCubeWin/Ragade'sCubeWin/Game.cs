@@ -93,6 +93,8 @@ namespace RagadesCubeWin
             // Assign the root node to the class's
             root = rootNode;
 
+            Components.Add(new FPS(this));
+
             base.Initialize();
         }
 
