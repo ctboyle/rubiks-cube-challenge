@@ -1,6 +1,6 @@
 using System;
 
-namespace Ragade_sCubeWin
+namespace RagadesCubeWin
 {
     static class Program
     {

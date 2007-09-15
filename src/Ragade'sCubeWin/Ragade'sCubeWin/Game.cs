@@ -7,9 +7,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
+
+using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.SceneObjects;
+using RagadesCubeWin.Rendering;
+using RagadesCubeWin.Cameras;
 #endregion
 
-namespace Ragade_sCubeWin
+namespace RagadesCubeWin
 {
     /// <summary>
     /// This is the main type for your game
@@ -19,11 +24,19 @@ namespace Ragade_sCubeWin
         GraphicsDeviceManager graphics;
         ContentManager content;
 
+        float xRot, yRot;
+
+        RCSceneObject root;
+        RCCamera mainCamera;
+        RCCublet cubelet;
 
         public RagadesCube()
         {
             graphics = new GraphicsDeviceManager(this);
             content = new ContentManager(Services);
+
+            xRot = 0;
+            yRot = 0;
         }
 
 
@@ -35,7 +48,50 @@ namespace Ragade_sCubeWin
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            // Initialize the rendermanager
+            RenderManager.Initialize(graphics.GraphicsDevice);
+
+
+            // Construct a scene with a camera, a light, and a cubelet.
+            mainCamera = new RCCamera(graphics.GraphicsDevice.Viewport);
+
+            // The local position of the camera is the inverse of the view matrix.
+            mainCamera.localTrans = Matrix.Invert(Matrix.CreateLookAt(
+                new Vector3(4, 4, 4), 
+                new Vector3(0, 0, 0), 
+                new Vector3(0, 1, 0)
+                ));
+
+            RCCameraManager.AddCamera(mainCamera, "Main Camera");
+            RCCameraManager.SetActiveCamera("Main Camera");
+
+            RCNode rootNode = new RCNode();
+
+            // Set up light node
+            RCDirectionalLight lightNode = new RCDirectionalLight(RenderManager.DirectionalLightIndex.Light0);
+
+            lightNode.Diffuse = new Vector3(1.0f, 1.0f, 1.0f);
+            lightNode.Specular = new Vector3(1.0f, 1.0f, 1.0f); 
+
+            Vector3 lightDirection = new Vector3(-1.0f,-1.0f,-1.0f);
+            lightDirection.Normalize();
+
+            lightNode.Direction = lightDirection;
+
+            rootNode.AddChild(lightNode);
+
+
+            // Add cublet and camera
+
+            cubelet = new RCCublet();
+
+            lightNode.AddChild(cubelet);
+            
+            rootNode.AddChild(mainCamera);
+
+
+            // Assign the root node to the class's
+            root = rootNode;
 
             base.Initialize();
         }
@@ -51,7 +107,7 @@ namespace Ragade_sCubeWin
         {
             if (loadAllContent)
             {
-                // TODO: Load any ResourceManagementMode.Automatic content
+                root.LoadGraphicsContent(graphics.GraphicsDevice, content);
             }
 
             // TODO: Load any ResourceManagementMode.Manual content
@@ -88,7 +144,31 @@ namespace Ragade_sCubeWin
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            // Simple input watching so we can move our cubelet.
+            KeyboardState state = Keyboard.GetState();
+            if (state[Keys.S] == KeyState.Down)
+            {
+                xRot -= 0.05f;
+            }
+            if (state[Keys.W] == KeyState.Down)
+            {
+                xRot += 0.05f;
+            }
+            if (state[Keys.A] == KeyState.Down)
+            {
+                yRot -= 0.05f;
+            }
+            if (state[Keys.D] == KeyState.Down)
+            {
+                yRot += 0.05f;
+            }
+
+            // Rotate cubelet
+            cubelet.localTrans =   Matrix.CreateRotationX(xRot) * Matrix.CreateRotationY(yRot);
+
+            root.UpdateGS(gameTime, true);
+
+            RenderManager.DrawScene(root);
 
             base.Update(gameTime);
         }
@@ -100,9 +180,9 @@ namespace Ragade_sCubeWin
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);          
 
-            // TODO: Add your drawing code here
+            root.Draw(graphics.GraphicsDevice);
 
             base.Draw(gameTime);
         }
