@@ -207,12 +207,7 @@ namespace RagadesCubeWin.Rendering
                 _sceneEffect.GraphicsDevice.RenderState.DepthBufferWriteEnable = true;
                 _sceneEffect.GraphicsDevice.RenderState.DepthBufferEnable = true;
 
-
-
                 fCameraSuccess = UpdateSceneCameraParameters();
-
-                // Clear screen using current clear color.
-                ClearScreen();
 
                 if (_sceneEffect != null && fCameraSuccess)
                 {
@@ -221,7 +216,7 @@ namespace RagadesCubeWin.Rendering
             }
         }
 
-        protected static void ClearScreen()
+        public static void ClearScreen()
         {
             if (_sceneEffect != null)
             {

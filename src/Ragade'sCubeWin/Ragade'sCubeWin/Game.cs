@@ -47,7 +47,7 @@ namespace RagadesCubeWin
             RCRenderManager.Initialize(graphics.GraphicsDevice);
 
             // Add frame per second counter.
-            // Components.Add(new FPS(this));
+            Components.Add(new FPS(this));
 
             // Begin by putting our first state on the stack.
             stateManager.PushState(new RCTestState(this));
@@ -55,5 +55,10 @@ namespace RagadesCubeWin
             base.Initialize();
         }
 
+        protected override void Draw(GameTime gameTime)
+        {
+            RCRenderManager.ClearScreen();
+            base.Draw(gameTime);
+        }
     }
 }
