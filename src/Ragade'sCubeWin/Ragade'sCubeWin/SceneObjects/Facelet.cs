@@ -24,8 +24,8 @@ namespace RagadesCubeWin.SceneObjects
 
         private Vector3 AmbientLightColor = new Vector3(0.3f, 0.3f, 0.3f);
         private Vector3 DiffuseColor;
-        private Vector3 SpecularColor = new Vector3(1.0f, 1.0f, 1.0f);
-        private float SpecularPower = 5.0f;
+        private Vector3 SpecularColor = new Vector3(0.5f, 0.5f, 0.5f);
+        private float SpecularPower = 100.0f;
         private Vector3 EmissiveColor = new Vector3(0.0f, 0.0f, 0.0f);
         private float Alpha = 1.0f;
 

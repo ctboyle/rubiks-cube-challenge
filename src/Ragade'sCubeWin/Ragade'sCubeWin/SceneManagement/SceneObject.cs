@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+
+using RagadesCubeWin.Animation;
 using RagadesCubeWin.Cameras;
+
 #endregion
 
 namespace RagadesCubeWin.SceneManagement
@@ -24,6 +27,7 @@ namespace RagadesCubeWin.SceneManagement
         protected Matrix _worldTrans;
         protected Matrix _localTrans;
 
+        protected List<Controller> _animateControllers;
 
 
         public RCNode parentNode
@@ -82,8 +86,11 @@ namespace RagadesCubeWin.SceneManagement
             localTrans = Matrix.Identity;
             worldTrans = Matrix.Identity;
             parentNode = null;
+            
             _worldBound.Center = Vector3.Zero;
             _worldBound.Radius = 0.0f;
+            _animateControllers = new List<Controller>();
+
         }
 
         /// <summary>
@@ -97,7 +104,7 @@ namespace RagadesCubeWin.SceneManagement
         /// <summary>
         /// Called to update the SceneObject
         /// 
-        /// GS stans for Graphic State
+        /// GS stands for Graphic State
         /// </summary>
         public virtual void UpdateGS(GameTime gameTime, Boolean fInitiator)
         {
@@ -117,11 +124,33 @@ namespace RagadesCubeWin.SceneManagement
 
 #region SceneObject operations
 
+        public void AttachController(Controller controller)
+        {
+            if (controller != null)
+            {
+                // May need to use functions instead of property to set parent.
+                controller.Parent = this;
+
+                _animateControllers.Add(controller);
+            }
+        }
+
+        protected void UpdateControllers(GameTime gameTime)
+        {
+            foreach (Controller controller in _animateControllers)
+            {
+                controller.Update(gameTime);
+            }
+        }
+
         /// <summary>
         /// Override to update all object world oriented data.
         /// </summary>
         protected virtual void UpdateWorldData(GameTime gameTime)
         {
+            // Update animations
+            UpdateControllers(gameTime);
+
             if (parentNode != null)
             {
                 // Compute world transform from parent's and local transforms.
