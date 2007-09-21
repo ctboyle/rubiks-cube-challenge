@@ -125,7 +125,7 @@ namespace RagadesCubeWin.SceneManagement
             if (parentNode != null)
             {
                 // Compute world transform from parent's and local transforms.
-                worldTrans = parentNode.worldTrans * localTrans;
+                worldTrans = localTrans * parentNode.worldTrans;
             }
             else
             {

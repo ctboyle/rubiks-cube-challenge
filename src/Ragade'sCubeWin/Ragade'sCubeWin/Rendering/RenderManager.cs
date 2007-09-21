@@ -13,7 +13,7 @@ namespace RagadesCubeWin.Rendering
     /// <summary>
     /// Central functionality for Rendering the Scene.
     /// </summary>
-    class RenderManager
+    class RCRenderManager
     {
         /// <summary>
         /// Delegate for rendering objects.
@@ -30,11 +30,15 @@ namespace RagadesCubeWin.Rendering
 
         private static BasicEffect _sceneEffect;
         private static int _countEnabledLights = 0;
+        private static Color _clearColor = Color.CornflowerBlue;
 
 
         public static void Initialize(GraphicsDevice device)
         {
             _sceneEffect = new BasicEffect(device, null);
+            device.RenderState.DepthBufferEnable = true;
+            device.RenderState.StencilEnable = true;
+            
         }
 
         /// <summary>
@@ -49,13 +53,13 @@ namespace RagadesCubeWin.Rendering
 
                 switch (lightNode.LightIndex)
                 {
-                    case RenderManager.DirectionalLightIndex.Light0:
+                    case RCRenderManager.DirectionalLightIndex.Light0:
                         effectLight = _sceneEffect.DirectionalLight0;
                         break;
-                    case RenderManager.DirectionalLightIndex.Light1:
+                    case RCRenderManager.DirectionalLightIndex.Light1:
                         effectLight = _sceneEffect.DirectionalLight1;
                         break;
-                    case RenderManager.DirectionalLightIndex.Light2:
+                    case RCRenderManager.DirectionalLightIndex.Light2:
                         effectLight = _sceneEffect.DirectionalLight2;
                         break;
                     default:
@@ -101,13 +105,13 @@ namespace RagadesCubeWin.Rendering
 
                 switch (lightNode.LightIndex)
                 {
-                    case RenderManager.DirectionalLightIndex.Light0:
+                    case RCRenderManager.DirectionalLightIndex.Light0:
                         effectLight = _sceneEffect.DirectionalLight0;
                         break;
-                    case RenderManager.DirectionalLightIndex.Light1:
+                    case RCRenderManager.DirectionalLightIndex.Light1:
                         effectLight = _sceneEffect.DirectionalLight1;
                         break;
-                    case RenderManager.DirectionalLightIndex.Light2:
+                    case RCRenderManager.DirectionalLightIndex.Light2:
                         effectLight = _sceneEffect.DirectionalLight2;
                         break;
                     default:
@@ -147,6 +151,8 @@ namespace RagadesCubeWin.Rendering
                 _sceneEffect.EmissiveColor = emissive;
                 _sceneEffect.Alpha = alpha;
                 _sceneEffect.SpecularPower = specularPower;
+
+                _sceneEffect.CommitChanges();
             }
         }
 
@@ -171,7 +177,7 @@ namespace RagadesCubeWin.Rendering
         {   
             if (_sceneEffect != null)
             {
-                _sceneEffect.Begin();
+                _sceneEffect.Begin(SaveStateMode.SaveState);
 
                 foreach (EffectPass pass in _sceneEffect.CurrentTechnique.Passes)
                 {
@@ -196,22 +202,61 @@ namespace RagadesCubeWin.Rendering
         {
             if (_sceneEffect != null)
             {
-                UpdateSceneCameraParameters();
-                sceneRoot.Draw(_sceneEffect.GraphicsDevice);
+                bool fCameraSuccess = false;
+
+                _sceneEffect.GraphicsDevice.RenderState.DepthBufferWriteEnable = true;
+                _sceneEffect.GraphicsDevice.RenderState.DepthBufferEnable = true;
+
+
+
+                fCameraSuccess = UpdateSceneCameraParameters();
+
+                // Clear screen using current clear color.
+                ClearScreen();
+
+                if (_sceneEffect != null && fCameraSuccess)
+                {
+                    sceneRoot.Draw(_sceneEffect.GraphicsDevice);
+                }
+            }
+        }
+
+        protected static void ClearScreen()
+        {
+            if (_sceneEffect != null)
+            {
+                
+                _sceneEffect.GraphicsDevice.Clear(
+                        ClearOptions.DepthBuffer | ClearOptions.Target,
+                        _clearColor,
+                        1.0f,
+                        0
+                        );
+                
             }
         }
 
         
-        protected static void UpdateSceneCameraParameters()
+        protected static bool UpdateSceneCameraParameters()
         {
+            bool fUpdatedCameraParameters = false;
+
             if (_sceneEffect != null)
             {
-                // Ensure that the correct viewport is drawn to.
-                _sceneEffect.GraphicsDevice.Viewport = RCCameraManager.ActiveCamera.Viewport;
+                if (RCCameraManager.ActiveCamera != null)
+                {
+                    // Ensure that the correct viewport is drawn to.
+                    _sceneEffect.GraphicsDevice.Viewport = RCCameraManager.ActiveCamera.Viewport;
+                    _sceneEffect.View = RCCameraManager.ActiveCamera.View;
+                    _sceneEffect.Projection = RCCameraManager.ActiveCamera.Projection;
 
-                _sceneEffect.View = RCCameraManager.ActiveCamera.View;
-                _sceneEffect.Projection = RCCameraManager.ActiveCamera.Projection;
+                    _clearColor = RCCameraManager.ActiveCamera.ClearColor;
+
+                    fUpdatedCameraParameters = true;
+                }
             }
+
+            return fUpdatedCameraParameters;
         }
     }
 }

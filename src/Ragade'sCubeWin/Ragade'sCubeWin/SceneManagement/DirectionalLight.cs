@@ -16,12 +16,12 @@ namespace RagadesCubeWin.SceneManagement
     /// </summary>
     class RCDirectionalLight : RCNode
     {
-        protected RenderManager.DirectionalLightIndex _index;
+        protected RCRenderManager.DirectionalLightIndex _index;
         protected Vector3 _direction;
         protected Vector3 _diffuse;
         protected Vector3 _specular;
 
-        public RenderManager.DirectionalLightIndex LightIndex
+        public RCRenderManager.DirectionalLightIndex LightIndex
         {
             get
             {
@@ -65,7 +65,7 @@ namespace RagadesCubeWin.SceneManagement
             }
         }      
         
-        public RCDirectionalLight(RenderManager.DirectionalLightIndex index)
+        public RCDirectionalLight(RCRenderManager.DirectionalLightIndex index)
         {
             _index = index;
         }
@@ -74,13 +74,13 @@ namespace RagadesCubeWin.SceneManagement
         {
             
             // Enable light before rendering children
-            RenderManager.EnableDirectionalLight(this);
+            RCRenderManager.EnableDirectionalLight(this);
             
             // Draw children.
             base.Draw(graphicsDevice);
 
             // disable light before continuing drawing in the scene graph.
-            RenderManager.DisableDirectionalLight(this);
+            RCRenderManager.DisableDirectionalLight(this);
         }
 
     }

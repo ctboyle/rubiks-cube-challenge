@@ -90,9 +90,37 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>SceneObject</Name>
     </Compile>
+    <Compile Include="SceneObjects\Cube.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Cube</Name>
+    </Compile>
+    <Compile Include="SceneObjects\CubeletBox.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeletBox</Name>
+    </Compile>
     <Compile Include="SceneObjects\Cublet.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Cublet</Name>
+    </Compile>
+    <Compile Include="SceneObjects\Face.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Face</Name>
+    </Compile>
+    <Compile Include="SceneObjects\Facelet.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Facelet</Name>
+    </Compile>
+    <Compile Include="StateManagement\GameState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameState</Name>
+    </Compile>
+    <Compile Include="StateManagement\StateManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>StateManager</Name>
+    </Compile>
+    <Compile Include="States\TestState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TestState</Name>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +165,14 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Name>Courier New</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Models\Facelet.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>Facelet</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

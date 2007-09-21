@@ -16,97 +16,110 @@ namespace RagadesCubeWin.SceneObjects
     /// <summary>
     /// This represents the smaller unit cubes on the Rubics Cube.
     /// </summary>
-    public class RCCublet : RCSceneObject
+    public class RCCublet : RCNode
     {
-        protected Model _cubeletModel;
+        public enum FaceletPosition
+        {
+            Top,
+            Left,
+            Back,
+            Right,
+            Front,
+            Bottom,
+            Count
+        }
 
-        private ModelMesh _currentMesh = null;
+        private RCFacelet[] _facelets;
+        
 
-        private static string cubeletBoxAsset = "Content\\Models\\CubeletBox";
+        private const float CubeletSize = 2.0f;
 
-        public RCCublet()
+        // Space between cubelet and facelet
+        private const float FaceletSpacing = 0.01f;
+
+        
+        public RCFacelet[] Facelets
+        {
+            get
+            {
+                return _facelets;
+            }
+        }
+
+        public RCCublet(int xCubePos, int yCubePos, int zCubePos)
             : base()
         {
+            _facelets = new RCFacelet[(int)FaceletPosition.Count];
+
+            BuildLocalTransform(xCubePos, yCubePos, zCubePos);
+            AddChild(new RCCubeletBox());
         }
 
-        public override void LoadGraphicsContent(
-            GraphicsDevice graphics,
-            ContentManager content
-            )
+        private void BuildLocalTransform(int xCubePos, int yCubePos, int zCubePos)
         {
-            _cubeletModel = content.Load<Model>(cubeletBoxAsset);
+            localTrans = Matrix.CreateTranslation(
+                xCubePos * CubeletSize,
+                yCubePos * CubeletSize,
+                zCubePos * CubeletSize
+            );
         }
-
-
-        /// <summary>
-        /// Is called by the render manager. Specifies the exact drawing code.
-        /// 
-        /// See RenderManager.Render()
-        /// </summary>
-        public void OnRender(GraphicsDevice graphicsDevice)
+        
+        public void AttachFacelet(FaceletPosition position, RCFacelet facelet)
         {
-            // Each mesh is made of parts (grouped by texture, etc.)
-            foreach (ModelMeshPart part in _currentMesh.MeshParts)
+            if (facelet != null)
             {
-                BasicEffect currentEffect = (BasicEffect)part.Effect;
-
-                RenderManager.SetEffectMaterial(
-                    currentEffect.AmbientLightColor,
-                    currentEffect.DiffuseColor,
-                    currentEffect.SpecularColor,
-                    currentEffect.SpecularPower,
-                    currentEffect.EmissiveColor,
-                    currentEffect.Alpha
-                    );
-                
-                
-                // Change the device settings for each part to be rendered
-                graphicsDevice.VertexDeclaration = part.VertexDeclaration;
-                graphicsDevice.Vertices[0].SetSource(
-                    _currentMesh.VertexBuffer,
-                    part.StreamOffset,
-                    part.VertexStride
-                );
-
-                // Make sure we use the texture for the current part also
-                graphicsDevice.Textures[0] = currentEffect.Texture;
-
-                // Finally draw the actual triangles on the screen
-                graphicsDevice.DrawIndexedPrimitives(
-                    PrimitiveType.TriangleList,
-                    part.BaseVertex, 0,
-                    part.NumVertices,
-                    part.StartIndex,
-                    part.PrimitiveCount
-                );
+                _facelets[(int)position] = facelet;
+                BuildFaceletTransform(position, facelet);
+                AddChild(facelet);
+            }
+            else
+            {
+                throw new ArgumentNullException("facelet", "Passed in null facelet.") ;
             }
         }
 
-        /// <summary>
-        /// Draws the cubelet mesh
-        /// </summary>
-        public override void  Draw(GraphicsDevice graphicsDevice)
+        private void BuildFaceletTransform(FaceletPosition position, RCFacelet facelet)
         {
+            // The facelet starts out in the center facing towards positive Z.
+            Matrix localTransform = Matrix.Identity;
+            
+            // We move the facelet forward
+            Vector3 translate = new Vector3(0, 0, CubeletSize/2.0f + FaceletSpacing);
 
-            RenderManager.SetWorld(worldTrans);
-            // Now, we will loop through each mesh in the model (in case there
-            // are more than one present.
-            foreach (ModelMesh mesh in _cubeletModel.Meshes)
+
+            // Now we rotate into the desired facelet position
+            float xRot = 0.0f;
+            float yRot = 0.0f;
+            
+            switch (position)
             {
-                _currentMesh = mesh;
-                
-                // Set the index buffer on the device once per mesh
-                graphicsDevice.Indices = mesh.IndexBuffer;
-
-                // Pass in rendering function
-                RenderManager.Render(
-                    graphicsDevice,
-                    OnRender
-                );
-
-                
+                case FaceletPosition.Top:
+                    xRot = -MathHelper.PiOver2;
+                    break;
+                case FaceletPosition.Bottom:
+                    xRot = MathHelper.PiOver2;
+                    break;
+                case FaceletPosition.Left:
+                    yRot = -MathHelper.PiOver2;
+                    break;
+                case FaceletPosition.Right:
+                    yRot = MathHelper.PiOver2;
+                    break;
+                case FaceletPosition.Front:
+                    // Do nothing already there
+                    break;
+                case FaceletPosition.Back:
+                    // Rotate 180 degrees
+                    yRot = MathHelper.Pi;
+                    break;
             }
 
+            // Form transform
+            localTransform = Matrix.CreateTranslation(translate) *
+                Matrix.CreateRotationX(xRot) * 
+                Matrix.CreateRotationY(yRot);
+
+            facelet.localTrans = localTransform;
         }
 
         // Constant sized bounding voulume
