@@ -20,7 +20,7 @@ namespace RagadesCubeWin.StateManagement
     public abstract partial class RCGameState : DrawableGameComponent
     {
         protected IGameStateManager GameManager;
-        //protected IInputHandler Input;
+        protected Input.InputManager input;
         protected Rectangle TitleSafeArea;
         protected ContentManager content;
         protected IGraphicsDeviceService graphics;

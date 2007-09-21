@@ -35,6 +35,16 @@ namespace RagadesCubeWin.States
         {
             xRot = 0;
             yRot = 0;
+
+
+            input = new RagadesCubeWin.Input.InputManager(game);
+            input.Initialize();
+
+            input.AddEvent(Keys.W, Input.Types.EventTypes.Pressed, this.YRotUp);
+            input.AddEvent(Keys.S, Input.Types.EventTypes.Pressed, this.YRotDown);
+            input.AddEvent(Keys.A, Input.Types.EventTypes.Pressed, this.XRotDown);
+            input.AddEvent(Keys.D, Input.Types.EventTypes.Pressed, this.XRotUp);
+            
         }
 
 
@@ -112,23 +122,25 @@ namespace RagadesCubeWin.States
             yRot += padState.ThumbSticks.Left.X * 0.05f;
             xRot += padState.ThumbSticks.Left.Y * -0.05f;
 
-            KeyboardState state = Keyboard.GetState();
-            if (state[Keys.S] == KeyState.Down)
-            {
-                xRot += 0.05f;
-            }
-            if (state[Keys.W] == KeyState.Down)
-            {
-                xRot -= 0.05f;
-            }
-            if (state[Keys.A] == KeyState.Down)
-            {
-                yRot -= 0.05f;
-            }
-            if (state[Keys.D] == KeyState.Down)
-            {
-                yRot += 0.05f;
-            }
+            input.Update(gameTime);
+
+            //KeyboardState state = Keyboard.GetState();
+            //if (state[Keys.S] == KeyState.Down)
+            //{
+            //    xRot += 0.05f;
+            //}
+            //if (state[Keys.W] == KeyState.Down)
+            //{
+            //    xRot -= 0.05f;
+            //}
+            //if (state[Keys.A] == KeyState.Down)
+            //{
+            //    yRot -= 0.05f;
+            //}
+            //if (state[Keys.D] == KeyState.Down)
+            //{
+            //    yRot += 0.05f;
+            //}
 
             // Rotate cubelet
             theCube.localTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(-RCCameraManager.ActiveCamera.worldTrans.Left, xRot);
@@ -143,6 +155,26 @@ namespace RagadesCubeWin.States
             RCRenderManager.DrawScene(root);
 
             base.Draw(gameTime);
+        }
+
+        public void XRotUp()
+        {
+            xRot += 0.05f;
+        }
+
+        public void XRotDown()
+        {
+            xRot -= 0.05f;
+        }
+
+        public void YRotUp()
+        {
+            yRot -= 0.05f;
+        }
+
+        public void YRotDown()
+        {
+            yRot += 0.05f;
         }
     }
 }

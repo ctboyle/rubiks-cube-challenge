@@ -59,8 +59,38 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPS</Name>
     </Compile>
+    <Compile Include="Input\Events\Event.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Event</Name>
+    </Compile>
+    <Compile Include="Input\Events\KeyboardEvent.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>KeyboardEvent</Name>
+    </Compile>
+    <Compile Include="Input\InputManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>InputManager</Name>
+    </Compile>
+    <Compile Include="Input\InputStateManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>InputStateManager</Name>
+    </Compile>
+    <Compile Include="Input\RealKeyboardState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RealKeyboardState</Name>
+    </Compile>
+    <Compile Include="Input\Types\EventTypes.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>EventTypes</Name>
+    </Compile>
+    <Compile Include="Input\Types\InputType.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>InputType</Name>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Program</Name>
     </Compile>
     <Compile Include="Game.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
