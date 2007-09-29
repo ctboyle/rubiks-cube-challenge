@@ -13,9 +13,9 @@ namespace RagadesCubeWin.Input.Events
 
         }
 
-        public virtual void execute(Keys key, Types.EventTypes eventtype)
-        {
-            // do not do a damn thing
-        }
+        //public virtual void execute(Keys key, Types.EventTypes eventtype)
+        //{
+        //    // do not do a damn thing
+        //}
     }
 }

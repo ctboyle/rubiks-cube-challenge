@@ -21,10 +21,9 @@ namespace RagadesCubeWin.Input.Events
             m_kbevent = kbevent;
         }
 
-        public override void execute(Keys key, Types.EventTypes eventtype)
+        public void execute()
         {
-            if(key == m_key && eventtype == m_eventtype)
-                m_kbevent();
+            m_kbevent();
         }
 
         public Keys getKey()

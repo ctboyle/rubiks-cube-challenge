@@ -17,38 +17,14 @@ namespace RagadesCubeWin.Input
 
         static ButtonState[] r_ButtonState = new ButtonState[256];
 
-        public static bool IsPressed(Keys key)
+        public bool IsPressed(Keys key)
         {
             return r_ButtonState[(int)key].Pressed;
         }
 
-        public static bool IsTapped(Keys key)
+        public bool IsTapped(Keys key)
         {
             return r_ButtonState[(int)key].Tapped;
-        }
-
-        public List<Input.Events.KeyboardEvent> eventList()
-        {
-            List<Input.Events.KeyboardEvent> el = new List<RagadesCubeWin.Input.Events.KeyboardEvent>();
-
-            for (int i = 0; i < 256; i++)
-            {
-                if (IsPressed((Keys)i))
-                {
-                    el.Add(new Input.Events.KeyboardEvent((Keys)i, Input.Types.EventTypes.Pressed,null));
-                }
-                else  // RELEASED
-                {
-                    el.Add(new Input.Events.KeyboardEvent((Keys)i, Input.Types.EventTypes.Tapped,null));
-                }
-
-                if (IsTapped((Keys)i))
-                {
-                    el.Add(new Input.Events.KeyboardEvent((Keys)i, Input.Types.EventTypes.Tapped,null));
-                }
-            }
-
-            return el;
         }
 
         public void KeyboardState(KeyboardState ks)

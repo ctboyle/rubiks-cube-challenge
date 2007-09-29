@@ -15,15 +15,15 @@ namespace RagadesCubeWin.Input
     /// </summary>
     public class InputManager : Microsoft.Xna.Framework.GameComponent
     {
-        InputStateManager ism;
-        List<Input.Events.Event> lstEvents;
+
+        List<IWatcher> watchers;
         RealKeyboardState realkeyboardstate;
+
 
         public InputManager(Game game)
             : base(game)
         {
             // TODO: Construct any child components here
-            ism = new InputStateManager(game);
         }
 
 
@@ -34,9 +34,9 @@ namespace RagadesCubeWin.Input
         public override void Initialize()
         {
             // TODO: Add your initialization code here
-            ism.Initialize();
+         
             base.Initialize();
-            lstEvents = new List<RagadesCubeWin.Input.Events.Event>();
+            watchers = new List<IWatcher>();
         }
 
 
@@ -46,31 +46,38 @@ namespace RagadesCubeWin.Input
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            ism.Update(gameTime);
 
             // NEED TO IMPLEMENT
-            List<Input.Events.KeyboardEvent> lstkeyboard =  ism.getRealKeyboardStateEvents();
-
-
-            foreach (Input.Events.KeyboardEvent ek in lstkeyboard)
+            foreach (IWatcher w in watchers)
             {
-                foreach (Input.Events.Event e in lstEvents)
-                {
-                    // this will be changed in due time in order to flex for all kinds of events
-                    e.execute(ek.getKey(),ek.getEvent());
-                }
+                w.RunEvents();
             }
+
+            //foreach (Input.Events.KeyboardEvent ek in lstkeyboard)
+            //{
+            //    foreach (Input.Events.Event e in lstEvents)
+            //    {
+            //        // this will be changed in due time in order to flex for all kinds of events
+            //        e.execute(ek.getKey(),ek.getEvent());
+            //    }
+            //}
 
             base.Update(gameTime);
         }
 
-
-
-        public void AddEvent(Keys key, Input.Types.EventTypes eventtype, Input.Events.keyboardevent kbevent)
+        public void AddWatcher(IWatcher watcher)
         {
-            Input.Events.KeyboardEvent kbe = new Input.Events.KeyboardEvent(key, eventtype, kbevent);
+            watchers.Add(watcher);
+        }
 
-            lstEvents.Add(kbe);
+        public IWatcher getKeyboardWatcher()
+        {
+            return new Input.Watchers.Keyboard();
+        }
+
+        public IWatcher getMouseWatcher()
+        {
+            return new Input.Watchers.Mouse();
         }
     }
 }

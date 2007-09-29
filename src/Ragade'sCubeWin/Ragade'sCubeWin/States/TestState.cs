@@ -37,14 +37,53 @@ namespace RagadesCubeWin.States
             yRot = 0;
 
 
+            //input = new RagadesCubeWin.Input.InputManager(game);
+            //input.Initialize();
+
+            //input.AddEvent(Keys.W, Input.Types.EventTypes.Pressed, this.YRotUp);
+            //input.AddEvent(Keys.S, Input.Types.EventTypes.Pressed, this.YRotDown);
+            //input.AddEvent(Keys.A, Input.Types.EventTypes.Pressed, this.XRotDown);
+            //input.AddEvent(Keys.D, Input.Types.EventTypes.Pressed, this.XRotUp);
+
             input = new RagadesCubeWin.Input.InputManager(game);
             input.Initialize();
 
-            input.AddEvent(Keys.W, Input.Types.EventTypes.Pressed, this.YRotUp);
-            input.AddEvent(Keys.S, Input.Types.EventTypes.Pressed, this.YRotDown);
-            input.AddEvent(Keys.A, Input.Types.EventTypes.Pressed, this.XRotDown);
-            input.AddEvent(Keys.D, Input.Types.EventTypes.Pressed, this.XRotUp);
-            
+            #region Keyboardwatcher
+
+            Input.IWatcher watchkeyboard = input.getKeyboardWatcher();
+
+            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.A, 
+                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
+                                    this.YRotUp));
+
+            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.D,
+                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
+                                    this.YRotDown));
+
+            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.W,
+                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
+                                    this.XRotUp));
+
+            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.S,
+                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
+                                    this.XRotDown));
+
+
+            input.AddWatcher(watchkeyboard);
+
+            #endregion
+
+            #region MouseWatcher
+
+            Input.IWatcher watchmouse = input.getMouseWatcher();
+
+            watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseButtonTypes.Hover,
+                                       Input.Types.EventTypes.Leaned, this.MouseMove));
+
+            input.AddWatcher(watchmouse);
+
+            #endregion
+
         }
 
 
@@ -143,8 +182,8 @@ namespace RagadesCubeWin.States
             //}
 
             // Rotate cubelet
-            theCube.localTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(-RCCameraManager.ActiveCamera.worldTrans.Left, xRot);
-
+            //theCube.localTrans = Matrix.CreateRotationZ(yRot) * Matrix.CreateFromAxisAngle(-RCCamasweraManager.ActiveCamera.worldTrans.Left, xRot);
+            theCube.localTrans = Matrix.CreateRotationZ(yRot) * Matrix.CreateRotationY(xRot);
             root.UpdateGS(gameTime, true);
 
             base.Update(gameTime);
@@ -175,6 +214,12 @@ namespace RagadesCubeWin.States
         public void YRotDown()
         {
             yRot += 0.05f;
+        }
+
+        public void MouseMove(Vector2 pos, Vector2 mov)
+        {
+            xRot += mov.X/500.0f;
+            yRot += mov.Y/500.0f;
         }
     }
 }

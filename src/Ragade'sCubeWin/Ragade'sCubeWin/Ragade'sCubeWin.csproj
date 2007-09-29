@@ -71,17 +71,25 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>KeyboardEvent</Name>
     </Compile>
+    <Compile Include="Input\Events\MouseEvent.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MouseEvent</Name>
+    </Compile>
     <Compile Include="Input\InputManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>InputManager</Name>
     </Compile>
-    <Compile Include="Input\InputStateManager.cs">
+    <Compile Include="Input\IWatcher.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>InputStateManager</Name>
+      <Name>IWatcher</Name>
     </Compile>
     <Compile Include="Input\RealKeyboardState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RealKeyboardState</Name>
+    </Compile>
+    <Compile Include="Input\RealMouseState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RealMouseState</Name>
     </Compile>
     <Compile Include="Input\Types\EventTypes.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -90,6 +98,18 @@
     <Compile Include="Input\Types\InputType.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>InputType</Name>
+    </Compile>
+    <Compile Include="Input\Types\MouseButtonTypes.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MouseButtonTypes</Name>
+    </Compile>
+    <Compile Include="Input\Watchers\Keyboard.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Keyboard</Name>
+    </Compile>
+    <Compile Include="Input\Watchers\Mouse.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Mouse</Name>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs">
