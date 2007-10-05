@@ -24,8 +24,7 @@ namespace RagadesCubeWin.Input
         Vector2 prevPosition;
         Vector2 curPosition;
         Vector2 hovered;
-        Vector2 ldragged;
-        Vector2 rdragged;
+
         #endregion
 
         public RealMouseState()
@@ -40,14 +39,14 @@ namespace RagadesCubeWin.Input
             
         }
 
-        public bool IsPressed(Input.Types.MouseButtonTypes mbt)
+        public bool IsPressed(Input.Types.MouseInput mbt)
         {
             switch (mbt)
             {
-                case Input.Types.MouseButtonTypes.LeftButton:
+                case Input.Types.MouseInput.LeftButton:
                 return leftbutton.Pressed;
                 
-                case Input.Types.MouseButtonTypes.RightButton:
+                case Input.Types.MouseInput.RightButton:
                 return rightbutton.Pressed;
                 
                 default:
@@ -56,14 +55,14 @@ namespace RagadesCubeWin.Input
             
         }
 
-        public bool IsTapped(Input.Types.MouseButtonTypes mbt)
+        public bool IsTapped(Input.Types.MouseInput mbt)
         {
             switch (mbt)
             {
-                case Input.Types.MouseButtonTypes.LeftButton:
+                case Input.Types.MouseInput.LeftButton:
                     return leftbutton.Tapped;
 
-                case Input.Types.MouseButtonTypes.RightButton:
+                case Input.Types.MouseInput.RightButton:
                     return rightbutton.Tapped;
 
                 default:
@@ -74,16 +73,6 @@ namespace RagadesCubeWin.Input
         public Vector2 GetHover()
         {
             return hovered;
-        }
-
-        public Vector2 GetLeftDrag()
-        {
-            return ldragged;
-        }
-
-        public Vector2 GetRightDrag()
-        {
-            return rdragged;
         }
 
         public Vector2 GetPosition()
@@ -149,34 +138,11 @@ namespace RagadesCubeWin.Input
             #region Hovered,Dragged
 
             prevPosition = curPosition;
-            curPosition = new Vector2((float)ms.X, (float)ms.Y);
-
-            if (leftbutton.WasPressed)
-            {
-                hovered = new Vector2(0, 0);
-                rdragged = new Vector2(0, 0);
-
-                ldragged = new Vector2(prevPosition.X - curPosition.X,
-                                        prevPosition.Y - curPosition.Y);
-
-            }
-            else if (rightbutton.WasPressed)
-            {
-                hovered = new Vector2(0, 0);
-                ldragged = new Vector2(0, 0);
-
-                rdragged = new Vector2(prevPosition.X - curPosition.X,
-                                        prevPosition.Y - curPosition.Y);
-              
-            }
-            else
-            {
-                hovered = new Vector2(prevPosition.X - curPosition.X,
-                                        prevPosition.Y - curPosition.Y);
-                ldragged = new Vector2(0, 0);
-                rdragged = new Vector2(0,0);
-              
-            }
+            curPosition = new Vector2((float)ms.X, (float)ms.Y); 
+            hovered = new Vector2(prevPosition.X - curPosition.X,
+                                    prevPosition.Y - curPosition.Y);
+               
+       
             #endregion
         }
     }

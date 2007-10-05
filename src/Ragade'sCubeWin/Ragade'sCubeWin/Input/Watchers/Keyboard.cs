@@ -55,29 +55,29 @@ namespace RagadesCubeWin.Input.Watchers
 
             foreach (Input.Events.KeyboardEvent e in lstKeyboardEvents)
             {
-                if (e.getEvent() == Input.Types.EventTypes.Pressed)
+                Input.Events.KeyboardEvent ee = e;
+                do
                 {
-                    if(realstate.IsPressed(e.getKey()))
-                        e.execute();
 
-                    continue;
-                }
-                
-                if(e.getEvent() == Input.Types.EventTypes.Released)
-                {
-                    if (!realstate.IsPressed(e.getKey()))
-                        e.execute();
-
-                    continue;
-                }
-
-                if (e.getEvent() == Input.Types.EventTypes.Tapped)
-                {
-                    if (realstate.IsTapped(e.getKey()))
-                        e.execute();
-
-                    continue;
-                }
+                    if (ee.getEventType() == Input.Types.EventTypes.Pressed)
+                    {
+                        if (realstate.IsPressed(ee.getKey()))
+                            ee = ee.execute();
+                        else ee = null;
+                    }
+                    else if (ee.getEventType() == Input.Types.EventTypes.Released)
+                    {
+                        if (!realstate.IsPressed(ee.getKey()))
+                            ee = ee.execute();
+                        else ee = null;
+                    }
+                    else if (ee.getEventType() == Input.Types.EventTypes.Tapped)
+                    {
+                        if (realstate.IsTapped(ee.getKey()))
+                            ee = ee.execute();
+                        else ee = null;
+                    }
+                } while (ee != null);
             }
         }
     }

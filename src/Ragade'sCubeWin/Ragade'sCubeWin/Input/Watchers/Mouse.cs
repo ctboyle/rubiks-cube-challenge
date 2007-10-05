@@ -55,46 +55,42 @@ namespace RagadesCubeWin.Input.Watchers
 
             foreach (Input.Events.MouseEvent e in lstMouseEvents)
             {
-                if (e.getEvent() == Input.Types.EventTypes.Pressed)
+                Input.Events.MouseEvent ee = e;
+
+                do
                 {
-                    if (realstate.IsPressed(RagadesCubeWin.Input.Types.MouseButtonTypes.LeftButton))
-                        e.execute(realstate.GetPosition(), realstate.GetLeftDrag());
-                    else if (realstate.IsPressed(RagadesCubeWin.Input.Types.MouseButtonTypes.RightButton))
-                        e.execute(realstate.GetPosition(), realstate.GetRightDrag());
-
-                    continue;
-                }
-                
-                if(e.getEvent() == Input.Types.EventTypes.Released)
-                {
-                    if (!realstate.IsPressed(RagadesCubeWin.Input.Types.MouseButtonTypes.LeftButton))
-                        e.execute(realstate.GetPosition(), realstate.GetHover());
-                    else if (!realstate.IsPressed(RagadesCubeWin.Input.Types.MouseButtonTypes.RightButton))
-                        e.execute(realstate.GetPosition(), realstate.GetHover());
-                    continue;
-                }
-
-                if (e.getEvent() == Input.Types.EventTypes.Tapped)
-                {
-                    if (realstate.IsTapped(RagadesCubeWin.Input.Types.MouseButtonTypes.LeftButton))
-                        e.execute(realstate.GetPosition(), new Vector2(0,0));
-                    else if (realstate.IsTapped(RagadesCubeWin.Input.Types.MouseButtonTypes.RightButton))
-                        e.execute(realstate.GetPosition(), new Vector2(0,0));
-
-
-                    continue;
-                }
-
-                // will not look for a click, just movement
-                if (e.getEvent() == Input.Types.EventTypes.Leaned)
-                {
-
-                    if (!realstate.IsPressed(RagadesCubeWin.Input.Types.MouseButtonTypes.LeftButton) &&
-                        !realstate.IsPressed(RagadesCubeWin.Input.Types.MouseButtonTypes.RightButton))
+                    if (ee.getEvent() == Input.Types.EventTypes.Pressed)
                     {
-                        e.execute(realstate.GetPosition(), realstate.GetHover());
+                        if (realstate.IsPressed(ee.getType()))
+                            ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                        else
+                            ee = null;
                     }
-                }
+                    else
+                        if (ee.getEvent() == Input.Types.EventTypes.Released)
+                        {
+                            if(!realstate.IsPressed(ee.getType()))
+                                ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                            else
+                                ee = null;
+
+                        }
+                        else
+                            if (ee.getEvent() == Input.Types.EventTypes.Tapped)
+                            {
+                                if(!realstate.IsTapped(ee.getType()))
+                                    ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                                else
+                                    ee = null;
+
+                            }
+                            else
+                                if (ee.getEvent() == Input.Types.EventTypes.Leaned)
+                                {
+                                    // buttons do not matter for a lean
+                                    ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                                }
+                } while (ee != null);
             }
         }
     }

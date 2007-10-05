@@ -159,9 +159,9 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>InputType</Name>
     </Compile>
-    <Compile Include="Input\Types\MouseButtonTypes.cs">
+    <Compile Include="Input\Types\MouseInput.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MouseButtonTypes</Name>
+      <Name>MouseInput</Name>
     </Compile>
     <Compile Include="Input\Watchers\Keyboard.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

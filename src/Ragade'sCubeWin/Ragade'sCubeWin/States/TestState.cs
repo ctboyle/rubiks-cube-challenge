@@ -55,13 +55,21 @@ namespace RagadesCubeWin.States
 
             Input.IWatcher watchkeyboard = input.getKeyboardWatcher();
 
+            Input.Events.KeyboardEvent pressLShift = new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.LeftShift,
+                                                           Input.Types.EventTypes.Pressed,
+                                                           this.YRotUp);
+
+            Input.Events.KeyboardEvent pressRShift = new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.LeftShift,
+                                                           Input.Types.EventTypes.Released,
+                                                           this.YRotDown);
+
             watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.A, 
                                     RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    this.YRotUp));
+                                    pressLShift));
 
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.D,
+            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.A,
                                     RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    this.YRotDown));
+                                    pressRShift));
 
             watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.W,
                                     RagadesCubeWin.Input.Types.EventTypes.Pressed,
@@ -120,9 +128,20 @@ namespace RagadesCubeWin.States
 
             Input.IWatcher watchmouse = input.getMouseWatcher();
 
-            //watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseButtonTypes.Hover,
-            //                     Input.Types.EventTypes.Leaned, this.MouseMove));
+            //watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.Hover,
+            //                           Input.Types.EventTypes.Leaned, this.MouseMove));
 
+            //watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.LeftDrag,
+            //                            Input.Types.EventTypes.Pressed, this.MouseMove));
+
+            Input.Events.MouseEvent rc = new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.RightButton,
+                                                            Input.Types.EventTypes.Pressed, this.MouseMove);
+
+            watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.LeftButton,
+                                    Input.Types.EventTypes.Pressed, rc));
+            
+
+            
             input.AddWatcher(watchmouse);
 
             #endregion
@@ -328,8 +347,8 @@ namespace RagadesCubeWin.States
 
         public void MouseMove(Vector2 pos, Vector2 mov)
         {
-            xRot += mov.X/500.0f;
-            yRot += mov.Y/500.0f;
+            xRot += mov.X/200.0f;
+            yRot += mov.Y/200.0f;
         }
     }
 }
