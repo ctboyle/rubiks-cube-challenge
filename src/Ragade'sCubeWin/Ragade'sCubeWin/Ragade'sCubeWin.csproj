@@ -67,6 +67,62 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPS</Name>
     </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCButton</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCCheckBox.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCCheckBox</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCImage.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCImage</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCLabel.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCLabel</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCRadioButton.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCRadioButton</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCTextBox.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCTextBox</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\RCControl.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCControl</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\RCControlGroup.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCControlGroup</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\RCControlManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCControlManager</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\RCControl_Enumerations.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCControl_Enumerations</Name>
+    </Compile>
+    <Compile Include="GUI\Controls\RCRadioChannel.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCRadioChannel</Name>
+    </Compile>
+    <Compile Include="GUI\Panes\RCPane.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCPane</Name>
+    </Compile>
+    <Compile Include="GUI\RCUIManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCUIManager</Name>
+    </Compile>
+    <Compile Include="GUI\TemporaryAttributes.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TemporaryAttributes</Name>
+    </Compile>
     <Compile Include="Input\Events\Event.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Event</Name>
