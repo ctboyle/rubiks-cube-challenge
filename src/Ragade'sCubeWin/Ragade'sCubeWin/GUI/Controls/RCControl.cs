@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using RagadesCubeWin.GraphicsManagement;
 
 
 namespace Ragades_Cube_2D.Classes.Controls
 {
     
 
-    abstract class RCControl
+    abstract class RCControl : RCSpatial
     {
-
+        //ANCHORS ARE A STRETCH GOAL!
         private String codeName = null;
         private Single xCoord = 0;
         private Single yCoord = 0;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
+#region STRETCH GOAL
 namespace Ragades_Cube_2D.Classes.Controls
 {
     [needsXML]
@@ -98,3 +99,4 @@ namespace Ragades_Cube_2D.Classes.Controls
         #endregion private helper functions
     }
 }
+#endregion STRETCH GOAL

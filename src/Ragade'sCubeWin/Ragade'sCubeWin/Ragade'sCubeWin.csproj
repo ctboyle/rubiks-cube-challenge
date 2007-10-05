@@ -67,6 +67,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPS</Name>
     </Compile>
+    <Compile Include="GraphicsManagement\Spatial.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Spatial</Name>
+    </Compile>
     <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCButton</Name>
@@ -91,38 +95,38 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCTextBox</Name>
     </Compile>
-    <Compile Include="GUI\Controls\RCControl.cs">
+    <None Include="GUI\Controls\RCControl.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControl</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\RCControlGroup.cs">
+    </None>
+    <None Include="GUI\Controls\RCControlGroup.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControlGroup</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\RCControlManager.cs">
+    </None>
+    <None Include="GUI\Controls\RCControlManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControlManager</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\RCControl_Enumerations.cs">
+    </None>
+    <None Include="GUI\Controls\RCControl_Enumerations.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControl_Enumerations</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\RCRadioChannel.cs">
+    </None>
+    <None Include="GUI\Controls\RCRadioChannel.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCRadioChannel</Name>
-    </Compile>
-    <Compile Include="GUI\Panes\RCPane.cs">
+    </None>
+    <None Include="GUI\Panes\RCPane.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCPane</Name>
-    </Compile>
-    <Compile Include="GUI\RCUIManager.cs">
+    </None>
+    <None Include="GUI\RCIGUIObject.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCUIManager</Name>
-    </Compile>
-    <Compile Include="GUI\TemporaryAttributes.cs">
+      <Name>RCIGUIObject</Name>
+    </None>
+    <None Include="GUI\TemporaryAttributes.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>TemporaryAttributes</Name>
-    </Compile>
+    </None>
     <Compile Include="Input\Events\Event.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Event</Name>
@@ -199,10 +203,6 @@
     <Compile Include="GraphicsManagement\Node.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Node</Name>
-    </Compile>
-    <Compile Include="GraphicsManagement\SceneObject.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>SceneObject</Name>
     </Compile>
     <Compile Include="SceneObjects\Cube.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -288,6 +288,9 @@
       <Processor>ModelProcessor</Processor>
       <Name>Facelet</Name>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GUI\Primitives\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.ContentPipeline.targets" />
