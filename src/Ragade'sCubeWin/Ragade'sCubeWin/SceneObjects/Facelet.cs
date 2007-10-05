@@ -6,12 +6,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.SceneObjects
 {
-    public class RCFacelet : RCSceneObject
+    public class RCFacelet : RCSpatial
     {
         protected Face _parentFace;
 

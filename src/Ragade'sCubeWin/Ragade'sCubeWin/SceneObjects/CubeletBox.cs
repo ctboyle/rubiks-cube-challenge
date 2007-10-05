@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
 
 namespace RagadesCubeWin.SceneObjects
 {
-    public class RCCubeletBox : RCSceneObject
+    public class RCCubeletBox : RCSpatial
     {
 
         private static Model _cubeletModel = null;

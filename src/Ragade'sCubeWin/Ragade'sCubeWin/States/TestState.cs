@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Storage;
 
 using RagadesCubeWin.Animation.Controllers;
 using RagadesCubeWin.StateManagement;
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.SceneObjects;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
@@ -26,7 +26,7 @@ namespace RagadesCubeWin.States
     {
         float xRot, yRot;
 
-        RCSceneObject root;
+        RCSpatial root;
         RCCamera mainCamera;
         RCCube theCube;
         RCCubeController cubeController;

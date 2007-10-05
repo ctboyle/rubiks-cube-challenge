@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Storage;
 
 using RagadesCubeWin.StateManagement;
 using RagadesCubeWin.States;
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.SceneObjects;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using RagadesCubeWin.Cameras;
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 
 namespace RagadesCubeWin.Rendering
 {
@@ -198,7 +198,7 @@ namespace RagadesCubeWin.Rendering
         /// 
         /// Will ensure that the Correct camera and viewport are used!
         /// </summary>
-        public static void DrawScene(RCSceneObject sceneRoot)
+        public static void DrawScene(RCSpatial sceneRoot)
         {
             if (_sceneEffect != null)
             {

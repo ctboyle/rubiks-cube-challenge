@@ -4,22 +4,22 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 
 
 namespace RagadesCubeWin.Animation
 {
     public abstract class Controller
     {
-        protected RCSceneObject _parentSceneObject;
+        protected RCSpatial _parentSceneObject;
         
-        public RCSceneObject Parent
+        public RCSpatial Parent
         {
             get { return _parentSceneObject; }
             set { _parentSceneObject = value; }
         }
 
-        public bool AttachParent(RCSceneObject parent)
+        public bool AttachParent(RCSpatial parent)
         {
             bool fSuccess = VerifyParentType(parent);
 
@@ -31,7 +31,7 @@ namespace RagadesCubeWin.Animation
             return fSuccess;
         }
 
-        protected virtual bool VerifyParentType(RCSceneObject parent)
+        protected virtual bool VerifyParentType(RCSpatial parent)
         {
             return parent != null;
         }

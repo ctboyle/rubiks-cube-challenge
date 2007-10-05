@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 using RagadesCubeWin.Animation;
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.SceneObjects;
 
 
@@ -31,7 +31,7 @@ namespace RagadesCubeWin.Animation.Controllers
             _radsPerSecond = MathHelper.PiOver2 / 1.0f;
             _rotMatrix = Matrix.Identity;
         }
-        protected override bool VerifyParentType(RCSceneObject parent)
+        protected override bool VerifyParentType(RCSpatial parent)
         {
             bool isValid = false;
 

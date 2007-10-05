@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.Rendering;
 
 
@@ -217,7 +217,7 @@ namespace RagadesCubeWin.SceneObjects
             
 
             List<RCCublet> listCubelets = new List<RCCublet>();
-            foreach (RCSceneObject sceneObject in listChildren)
+            foreach (RCSpatial sceneObject in listChildren)
             {
                 if (sceneObject.GetType() == typeof(RCCublet))
                 {

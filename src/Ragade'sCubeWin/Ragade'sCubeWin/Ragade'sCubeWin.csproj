@@ -188,7 +188,7 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CameraManager</Name>
     </Compile>
-    <Compile Include="SceneManagement\DirectionalLight.cs">
+    <Compile Include="Rendering\DirectionalLight.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>DirectionalLight</Name>
     </Compile>
@@ -196,11 +196,11 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RenderManager</Name>
     </Compile>
-    <Compile Include="SceneManagement\Node.cs">
+    <Compile Include="GraphicsManagement\Node.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Node</Name>
     </Compile>
-    <Compile Include="SceneManagement\SceneObject.cs">
+    <Compile Include="GraphicsManagement\SceneObject.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>SceneObject</Name>
     </Compile>
