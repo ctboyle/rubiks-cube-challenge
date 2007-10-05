@@ -71,30 +71,30 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Spatial</Name>
     </Compile>
-    <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
+    <None Include="GUI\Controls\Control Subclasses\RCButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCButton</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\Control Subclasses\RCCheckBox.cs">
+    </None>
+    <None Include="GUI\Controls\Control Subclasses\RCCheckBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCCheckBox</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\Control Subclasses\RCImage.cs">
+    </None>
+    <None Include="GUI\Controls\Control Subclasses\RCImage.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCImage</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\Control Subclasses\RCLabel.cs">
+    </None>
+    <None Include="GUI\Controls\Control Subclasses\RCLabel.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCLabel</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\Control Subclasses\RCRadioButton.cs">
+    </None>
+    <None Include="GUI\Controls\Control Subclasses\RCRadioButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCRadioButton</Name>
-    </Compile>
-    <Compile Include="GUI\Controls\Control Subclasses\RCTextBox.cs">
+    </None>
+    <None Include="GUI\Controls\Control Subclasses\RCTextBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCTextBox</Name>
-    </Compile>
+    </None>
     <None Include="GUI\Controls\RCControl.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControl</Name>
