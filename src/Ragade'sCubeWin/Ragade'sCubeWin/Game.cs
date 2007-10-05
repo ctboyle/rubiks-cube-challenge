@@ -46,8 +46,13 @@ namespace RagadesCubeWin
             // Initialize the rendermanager
             RCRenderManager.Initialize(graphics.GraphicsDevice);
 
+            IsMouseVisible = true;
+            IsFixedTimeStep = false;
+
             // Add frame per second counter.
-            // Components.Add(new FPS(this));
+            FPS fps = new FPS(this);
+            fps.DrawOrder = 1500;
+            Components.Add(fps);
 
             // Begin by putting our first state on the stack.
             stateManager.PushState(new RCTestState(this));

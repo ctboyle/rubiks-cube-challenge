@@ -124,14 +124,28 @@ namespace RagadesCubeWin.SceneManagement
 
 #region SceneObject operations
 
-        public void AttachController(Controller controller)
+        public bool AttachController(Controller controller)
+        {
+            bool fAttachSucceeded = false;
+
+            if (controller != null)
+            {
+                fAttachSucceeded = controller.AttachParent(this);
+
+                if (fAttachSucceeded)
+                {
+                    _animateControllers.Add(controller);
+                }
+            }
+
+            return fAttachSucceeded;
+        }
+
+        public void DetachController(Controller controller)
         {
             if (controller != null)
             {
-                // May need to use functions instead of property to set parent.
-                controller.Parent = this;
-
-                _animateControllers.Add(controller);
+                _animateControllers.Remove(controller);
             }
         }
 

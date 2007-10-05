@@ -32,7 +32,7 @@ namespace RagadesCubeWin.SceneObjects
         private RCFacelet[] _facelets;
         
 
-        private const float CubeletSize = 2.0f;
+        public const float CubeletSize = 2.0f;
 
         // Space between cubelet and facelet
         private const float FaceletSpacing = 0.01f;
@@ -45,6 +45,8 @@ namespace RagadesCubeWin.SceneObjects
                 return _facelets;
             }
         }
+
+
 
         public RCCublet(int xCubePos, int yCubePos, int zCubePos)
             : base()

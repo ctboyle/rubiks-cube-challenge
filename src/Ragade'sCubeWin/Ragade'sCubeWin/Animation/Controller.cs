@@ -19,7 +19,24 @@ namespace RagadesCubeWin.Animation
             set { _parentSceneObject = value; }
         }
 
-        Controller()
+        public bool AttachParent(RCSceneObject parent)
+        {
+            bool fSuccess = VerifyParentType(parent);
+
+            if (fSuccess)
+            {
+                _parentSceneObject = parent;
+            }
+
+            return fSuccess;
+        }
+
+        protected virtual bool VerifyParentType(RCSceneObject parent)
+        {
+            return parent != null;
+        }
+
+        public Controller()
         {
             _parentSceneObject = null;
         }

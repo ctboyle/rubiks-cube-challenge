@@ -59,6 +59,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Controller</Name>
     </Compile>
+    <Compile Include="Animation\Controllers\CubeController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeController</Name>
+    </Compile>
     <Compile Include="FPS.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPS</Name>
