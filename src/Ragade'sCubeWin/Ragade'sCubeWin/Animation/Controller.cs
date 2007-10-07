@@ -41,6 +41,7 @@ namespace RagadesCubeWin.Animation
             _parentSceneObject = null;
         }
 
+        public abstract bool IsAnimating { get; }
         public abstract void Update(GameTime gameTime);
     }
 }

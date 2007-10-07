@@ -31,6 +31,12 @@ namespace RagadesCubeWin.Animation.Controllers
             _radsPerSecond = MathHelper.PiOver2 / 1.0f;
             _rotMatrix = Matrix.Identity;
         }
+
+        public override bool IsAnimating
+        {
+            get { return _isAnimating; }
+        }
+
         protected override bool VerifyParentType(RCSpatial parent)
         {
             bool isValid = false;

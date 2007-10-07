@@ -43,6 +43,21 @@ namespace RagadesCubeWin.SceneObjects
             get { return _faces; }
         }
 
+        public int Length
+        {
+            get { return length; }
+        }
+
+        public int Width
+        {
+            get { return width; }
+        }
+
+        public int Height
+        {
+            get { return height; }
+        }
+
         public RCCube(int length, int width, int height)
             :base()
         {

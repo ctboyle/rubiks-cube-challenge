@@ -208,6 +208,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Cube</Name>
     </Compile>
+    <Compile Include="SceneObjects\CubeCursor.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeCursor</Name>
+    </Compile>
     <Compile Include="SceneObjects\CubeletBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CubeletBox</Name>

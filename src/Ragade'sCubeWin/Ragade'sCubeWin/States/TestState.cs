@@ -15,6 +15,9 @@ using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.SceneObjects;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
+using RagadesCubeWin.Input;
+using RagadesCubeWin.Input.Events;
+using RagadesCubeWin.Input.Types;
 #endregion
 
 namespace RagadesCubeWin.States
@@ -30,8 +33,7 @@ namespace RagadesCubeWin.States
         RCCamera mainCamera;
         RCCube theCube;
         RCCubeController cubeController;
-
-        RCCube.RotationDirection curDirection;
+        RCCubeCursor cubeCursor;
 
         public RCTestState(Game game)
             : base(game)
@@ -39,113 +41,30 @@ namespace RagadesCubeWin.States
             xRot = 0;
             yRot = 0;
 
-
-            //input = new RagadesCubeWin.Input.InputManager(game);
-            //input.Initialize();
-
-            //input.AddEvent(Keys.W, Input.Types.EventTypes.Pressed, this.YRotUp);
-            //input.AddEvent(Keys.S, Input.Types.EventTypes.Pressed, this.YRotDown);
-            //input.AddEvent(Keys.A, Input.Types.EventTypes.Pressed, this.XRotDown);
-            //input.AddEvent(Keys.D, Input.Types.EventTypes.Pressed, this.XRotUp);
-
-            input = new RagadesCubeWin.Input.InputManager(game);
-            input.Initialize();
+            input = new InputManager(game);
+            input.Initialize();            
 
             #region Keyboardwatcher
 
-            Input.IWatcher watchkeyboard = input.getKeyboardWatcher();
+            IWatcher watchkeyboard = input.getKeyboardWatcher();
 
-            Input.Events.KeyboardEvent pressLShift = new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.LeftShift,
-                                                           Input.Types.EventTypes.Pressed,
-                                                           this.YRotUp);
+            KeyboardEvent pressLShift = new KeyboardEvent(Keys.LeftShift, EventTypes.Pressed, YRotUp);
+            KeyboardEvent pressRShift = new KeyboardEvent(Keys.LeftShift, EventTypes.Released, YRotDown);
 
-            Input.Events.KeyboardEvent pressRShift = new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.LeftShift,
-                                                           Input.Types.EventTypes.Released,
-                                                           this.YRotDown);
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.A, 
-                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    pressLShift));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.A,
-                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    pressRShift));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.W,
-                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    this.XRotUp));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(Keys.S,
-                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    this.XRotDown));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.Left,
-                                    RagadesCubeWin.Input.Types.EventTypes.Tapped,
-                                    this.RotateLeftSide));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.Right,
-                                    RagadesCubeWin.Input.Types.EventTypes.Tapped,
-                                    this.RotateRightSide));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.PageUp,
-                                    RagadesCubeWin.Input.Types.EventTypes.Tapped,
-                                    this.RotateFrontSide));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.PageDown,
-                                    RagadesCubeWin.Input.Types.EventTypes.Tapped,
-                                    this.RotateBackSide));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.Down,
-                                    RagadesCubeWin.Input.Types.EventTypes.Tapped,
-                                    this.RotateBottomSide));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.Up,
-                                    RagadesCubeWin.Input.Types.EventTypes.Tapped,
-                                    this.RotateTopSide));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.LeftShift,
-                                    RagadesCubeWin.Input.Types.EventTypes.Pressed,
-                                    this.OnShiftPressed));
-
-            watchkeyboard.WatchEvent(new RagadesCubeWin.Input.Events.KeyboardEvent(
-                                    Keys.LeftShift,
-                                    RagadesCubeWin.Input.Types.EventTypes.Released,
-                                    this.OnShiftReleased));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.A, EventTypes.Pressed, pressLShift));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.A, EventTypes.Pressed, pressRShift));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.W, EventTypes.Pressed, XRotUp));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.S, EventTypes.Pressed, XRotDown));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.PageUp, EventTypes.Pressed, OnRotateUp));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.PageDown, EventTypes.Pressed, OnRotateDown));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Up, EventTypes.Tapped, OnSelHorizontalFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Down, EventTypes.Tapped, OnSelVerticalFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Left, EventTypes.Tapped, OnSelOppFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Right, EventTypes.Tapped, OnSelOppFace));
 
             input.AddWatcher(watchkeyboard);
 
-
             #endregion
-
-            #region MouseWatcher
-
-            Input.IWatcher watchmouse = input.getMouseWatcher();
-
-            //watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.Hover,
-            //                           Input.Types.EventTypes.Leaned, this.MouseMove));
-
-            //watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.LeftDrag,
-            //                            Input.Types.EventTypes.Pressed, this.MouseMove));
-
-            Input.Events.MouseEvent rc = new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.RightButton,
-                                                            Input.Types.EventTypes.Pressed, this.MouseMove);
-
-            watchmouse.WatchEvent(new RagadesCubeWin.Input.Events.MouseEvent(Input.Types.MouseInput.LeftButton,
-                                    Input.Types.EventTypes.Pressed, rc));
-            
-
-            
-            input.AddWatcher(watchmouse);
-
-            #endregion
-
         }
 
 
@@ -192,9 +111,12 @@ namespace RagadesCubeWin.States
             // Add animation controller
             theCube.AttachController(cubeController);
 
+            cubeCursor = new RCCubeCursor(theCube, Color.DarkRed);
+            theCube.AddChild(cubeCursor);
+
 
             lightNode.AddChild(theCube);
-            
+
 
             rootNode.AddChild(mainCamera);
 
@@ -224,31 +146,14 @@ namespace RagadesCubeWin.States
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            // Simple input watching so we can move our cubelet.
+            cubeCursor.IsVisible = !cubeController.IsAnimating;
 
+            // Simple input watching so we can move our cubelet.
             GamePadState padState = GamePad.GetState(PlayerIndex.One);
             yRot += padState.ThumbSticks.Left.X * 0.05f;
             xRot += padState.ThumbSticks.Left.Y * -0.05f;
 
             input.Update(gameTime);
-
-            //KeyboardState state = Keyboard.GetState();
-            //if (state[Keys.S] == KeyState.Down)
-            //{
-            //    xRot += 0.05f;
-            //}
-            //if (state[Keys.W] == KeyState.Down)
-            //{
-            //    xRot -= 0.05f;
-            //}
-            //if (state[Keys.A] == KeyState.Down)
-            //{
-            //    yRot -= 0.05f;
-            //}
-            //if (state[Keys.D] == KeyState.Down)
-            //{
-            //    yRot += 0.05f;
-            //}
 
             // Rotate cubelet
             theCube.localTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(-RCCameraManager.ActiveCamera.worldTrans.Left, -xRot);
@@ -284,71 +189,105 @@ namespace RagadesCubeWin.States
         {
             yRot += 0.05f;
         }
-        
-        public void RotateRightSide()
+
+        private void OnRotateUp()
         {
-            cubeController.RotateFace(
-                RCCube.FaceSide.Right,
-                curDirection
-                );
+            cubeController.RotateFace(cubeCursor.SelectedFace, RCCube.RotationDirection.CounterClockwise);
         }
 
-        public void RotateLeftSide()
+        private void OnRotateDown()
         {
-            cubeController.RotateFace(
-                RCCube.FaceSide.Left,
-                curDirection
-                );
+            cubeController.RotateFace(cubeCursor.SelectedFace, RCCube.RotationDirection.Clockwise);
         }
 
-        public void RotateTopSide()
+        private void OnSelHorizontalFace()
         {
-            cubeController.RotateFace(
-                RCCube.FaceSide.Top,
-                curDirection
-                );
+            switch (cubeCursor.SelectedFace)
+            {
+                case RCCube.FaceSide.Top:
+                case RCCube.FaceSide.Bottom:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Front;
+                    break;
+                case RCCube.FaceSide.Front:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Left;
+                    break;
+                case RCCube.FaceSide.Back:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Right;
+                    break;
+                case RCCube.FaceSide.Left:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Back;
+                    break;
+                case RCCube.FaceSide.Right:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Front;
+                    break;
+            }
         }
 
-        public void RotateBottomSide()
+        private void OnSelVerticalFace()
         {
-            cubeController.RotateFace(
-                RCCube.FaceSide.Bottom,
-                curDirection
-                );
+            switch (cubeCursor.SelectedFace)
+            {
+                case RCCube.FaceSide.Top:
+                case RCCube.FaceSide.Bottom:
+                    CursorSectionSwitch();
+                    break;
+                case RCCube.FaceSide.Front:
+                case RCCube.FaceSide.Back:
+                case RCCube.FaceSide.Left:
+                case RCCube.FaceSide.Right:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Top;
+                    break;
+            }
         }
 
-        public void RotateFrontSide()
+        private void OnSelOppFace()
         {
-            cubeController.RotateFace(
-                RCCube.FaceSide.Front,
-                curDirection
-                );
+            switch (cubeCursor.SelectedFace)
+            {
+                case RCCube.FaceSide.Top:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Bottom;
+                    break;
+                case RCCube.FaceSide.Front:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Back;
+                    break;
+                case RCCube.FaceSide.Bottom:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Top;
+                    break;
+                case RCCube.FaceSide.Back:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Front;
+                    break;
+                case RCCube.FaceSide.Left:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Right;
+                    break;
+                case RCCube.FaceSide.Right:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Left;
+                    break;
+            }
         }
 
-        public void RotateBackSide()
+        private void CursorSectionSwitch()
         {
-            cubeController.RotateFace(
-                RCCube.FaceSide.Back,
-                curDirection
-                );
-        }
-
-
-
-        public void OnShiftPressed()
-        {
-            curDirection = RCCube.RotationDirection.CounterClockwise;
-        }
-
-        public void OnShiftReleased()
-        {
-            curDirection = RCCube.RotationDirection.Clockwise;
-        }
-
-        public void MouseMove(Vector2 pos, Vector2 mov)
-        {
-            xRot += mov.X/200.0f;
-            yRot += mov.Y/200.0f;
+            switch (cubeCursor.SelectedFace)
+            {
+                case RCCube.FaceSide.Top:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Bottom;
+                    break;
+                case RCCube.FaceSide.Front:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Back;
+                    break;
+                case RCCube.FaceSide.Bottom:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Top;
+                    break;
+                case RCCube.FaceSide.Back:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Front;
+                    break;
+                case RCCube.FaceSide.Left:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Right;
+                    break;
+                case RCCube.FaceSide.Right:
+                    cubeCursor.SelectedFace = RCCube.FaceSide.Left;
+                    break;
+            }
         }
     }
 }
