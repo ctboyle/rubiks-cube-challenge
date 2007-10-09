@@ -6,17 +6,31 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RagadesCubeWin.Input.Watchers
 {
+    /// <summary>
+    /// Keyboard watcher
+    /// Will watch given events, and execute when necessary
+    /// </summary>
     public class Keyboard:IWatcher
     {
+        #region Vars
         List<Input.Events.KeyboardEvent> lstKeyboardEvents;
         RealKeyboardState realstate;
+        #endregion
 
+        /// <summary>
+        /// Create new instance of keyboard watcher
+        /// </summary>
         public Keyboard()
         {
             lstKeyboardEvents = new List<RagadesCubeWin.Input.Events.KeyboardEvent>();
             realstate = new RealKeyboardState();
         }
 
+        /// <summary>
+        /// Add event to watch for
+        /// </summary>
+        /// <param name="e">KeyboardEvent Type</param>
+        /// <returns>True if successfully adds into list</returns>
         public bool WatchEvent(Input.Events.Event e)
         {
             try
@@ -30,6 +44,11 @@ namespace RagadesCubeWin.Input.Watchers
             }
         }
 
+        /// <summary>
+        /// Add event to watch for
+        /// </summary>
+        /// <param name="e">KeyboardEvent Type</param>
+        /// <returns>True if successfully adds into list</returns>
         public bool WatchEvent(Input.Events.KeyboardEvent e)
         {
             try
@@ -43,12 +62,19 @@ namespace RagadesCubeWin.Input.Watchers
             }
         }
 
+        /// <summary>
+        /// Detects input
+        /// </summary>
+        /// <returns>False if device is not detected</returns>
         public bool DetectMyInput()
         {
             // will assume it exists automatically...
-            return false;
+            return true;
         }
 
+        /// <summary>
+        /// Runs events that matches what is given by the watcher
+        /// </summary>
         public void RunEvents()
         {
             realstate.KeyboardState(Microsoft.Xna.Framework.Input.Keyboard.GetState());

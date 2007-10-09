@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RagadesCubeWin.Input.Events
 {
+    /// <summary>
+    /// Base Event class
+    /// </summary>
     public class Event
     {
         public Event()

@@ -11,7 +11,7 @@ namespace RagadesCubeWin.Input
     {
 
 
-
+        // Keeps state of button
         struct ButtonState
         {
             public bool Tapped, Pressed, WasPressed;
@@ -19,16 +19,20 @@ namespace RagadesCubeWin.Input
 
         #region Vars
 
-        ButtonState leftbutton;
-        ButtonState rightbutton;
-        Vector2 prevPosition;
-        Vector2 curPosition;
-        Vector2 hovered;
+        ButtonState leftbutton;                 // left button of the mouse
+        ButtonState rightbutton;                // right button of the mouse
+        Vector2 prevPosition;                   // keeps previous position
+        Vector2 curPosition;                    // gets new posisiton
+        Vector2 hovered;                        // holds distance traveled
 
         #endregion
 
+        /// <summary>
+        /// Assumes all button states are released
+        /// </summary>
         public RealMouseState()
         {
+            // just assume everything is unpressed
             leftbutton.Pressed = false;
             leftbutton.Tapped = false;
             leftbutton.WasPressed = false;
@@ -39,51 +43,74 @@ namespace RagadesCubeWin.Input
             
         }
 
+        /// <summary>
+        /// Tests to see if a particular mouse button is pressed
+        /// </summary>
+        /// <param name="mbt">Which common mouse button</param>
+        /// <returns>True if the button is pressed</returns>
         public bool IsPressed(Input.Types.MouseInput mbt)
         {
             switch (mbt)
             {
+                    // left button
                 case Input.Types.MouseInput.LeftButton:
                 return leftbutton.Pressed;
-                
+                    // right button
                 case Input.Types.MouseInput.RightButton:
                 return rightbutton.Pressed;
-                
+                    // unknown button
                 default:
                 return false;
             };
             
         }
 
+        /// <summary>
+        /// Tests to see if a particular mouse button has been clicked
+        /// </summary>
+        /// <param name="mbt"></param>
+        /// <returns></returns>
         public bool IsTapped(Input.Types.MouseInput mbt)
         {
             switch (mbt)
             {
+                    // left button
                 case Input.Types.MouseInput.LeftButton:
                     return leftbutton.Tapped;
-
+                    // right button
                 case Input.Types.MouseInput.RightButton:
                     return rightbutton.Tapped;
-
+                    // unknown button
                 default:
                     return false;
             };
         }
 
+        /// <summary>
+        /// Returns the hovered distance
+        /// </summary>
+        /// <returns>Distance traveled</returns>
         public Vector2 GetHover()
         {
             return hovered;
         }
 
+        /// <summary>
+        /// Returns the current position
+        /// </summary>
+        /// <returns>Current Position</returns>
         public Vector2 GetPosition()
         {
             return curPosition;
         }
 
-        // add functions (HOvered, dragged, what not)
-
+        /// <summary>
+        /// Take the current mousestate to update the realstate
+        /// </summary>
+        /// <param name="ms">Current mouse state</param>
         public void MouseState(MouseState ms)
         {
+            // update the buttons and hover distance
             #region LeftButton
             // left button
             if (ms.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)

@@ -6,6 +6,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace RagadesCubeWin.Input
 {
+    /// <summary>
+    /// Watcher Interface
+    ///     - just has the necessary functions guranteed that all
+    ///     - watchers will have. 
+    /// </summary>
     public interface IWatcher
     {
         bool DetectMyInput();

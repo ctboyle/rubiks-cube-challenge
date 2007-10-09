@@ -6,10 +6,12 @@ using Microsoft.Xna.Framework;
 
 namespace RagadesCubeWin.Input.Watchers
 {
-    class Mouse:IWatcher 
+    class Mouse:IWatcher
     {
+        #region vars
         List<Input.Events.MouseEvent> lstMouseEvents;
         RealMouseState realstate;
+        #endregion
 
         public Mouse()
         {
@@ -17,6 +19,11 @@ namespace RagadesCubeWin.Input.Watchers
             realstate = new RealMouseState();
         }
 
+        /// <summary>
+        /// Add Event to watcher
+        /// </summary>
+        /// <param name="e">MouseEvent Type</param>
+        /// <returns>True if it adds successfully</returns>
         public bool WatchEvent(Input.Events.Event e)
         {
             try
@@ -30,6 +37,11 @@ namespace RagadesCubeWin.Input.Watchers
             }
         }
 
+        /// <summary>
+        /// Add Event to watcher
+        /// </summary>
+        /// <param name="e">Mouse Event</param>
+        /// <returns>True if it adds successfully</returns>
         public bool WatchEvent(Input.Events.MouseEvent e)
         {
             try
@@ -43,12 +55,19 @@ namespace RagadesCubeWin.Input.Watchers
             }
         }
 
+        /// <summary>
+        /// Detect Mouse
+        /// </summary>
+        /// <returns>True if it exists</returns>
         public bool DetectMyInput()
         {
             // will assume it exists automatically...
-            return false;
+            return true;
         }
 
+        /// <summary>
+        /// Run the added events, execute them if true
+        /// </summary>
         public void RunEvents()
         {
             realstate.MouseState(Microsoft.Xna.Framework.Input.Mouse.GetState());

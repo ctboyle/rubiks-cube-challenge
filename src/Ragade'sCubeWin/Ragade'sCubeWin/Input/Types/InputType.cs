@@ -4,6 +4,9 @@ using System.Text;
 
 namespace RagadesCubeWin.Input.Types
 {
+    /// <summary>
+    /// Input type
+    /// </summary>
     public enum InputType
     {
         Keyboard,
@@ -11,6 +14,7 @@ namespace RagadesCubeWin.Input.Types
         Gamepad1,
         Gamepad2,
         Gamepad3,
-        Gamepad4
+        Gamepad4,
+        MiscControl
     }
 }

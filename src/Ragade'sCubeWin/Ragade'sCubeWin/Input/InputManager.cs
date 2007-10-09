@@ -11,13 +11,14 @@ using RagadesCubeWin.Input.Types;
 namespace RagadesCubeWin.Input
 {
     /// <summary>
-    /// This is a game component that implements IUpdateable.
+    /// Input manager that will handle delegates and events
     /// </summary>
     public class InputManager : Microsoft.Xna.Framework.GameComponent
     {
 
-        List<IWatcher> watchers;
-        RealKeyboardState realkeyboardstate;
+
+        List<IWatcher> watchers;                    // List of watchers
+        RealKeyboardState realkeyboardstate;        // I do not know why this is here, will remove it
 
 
         public InputManager(Game game)
@@ -47,34 +48,38 @@ namespace RagadesCubeWin.Input
         public override void Update(GameTime gameTime)
         {
 
-            // NEED TO IMPLEMENT
+            // run through each watcher and allow them to 
+            //  check their events
             foreach (IWatcher w in watchers)
             {
                 w.RunEvents();
             }
 
-            //foreach (Input.Events.KeyboardEvent ek in lstkeyboard)
-            //{
-            //    foreach (Input.Events.Event e in lstEvents)
-            //    {
-            //        // this will be changed in due time in order to flex for all kinds of events
-            //        e.execute(ek.getKey(),ek.getEvent());
-            //    }
-            //}
-
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Add a watcher to the manager
+        /// </summary>
+        /// <param name="watcher">Watcher to add</param>
         public void AddWatcher(IWatcher watcher)
         {
             watchers.Add(watcher);
         }
 
+        /// <summary>
+        /// Return the keyboard watcher
+        /// </summary>
+        /// <returns>Keyboardwatcher</returns>
         public IWatcher getKeyboardWatcher()
         {
             return new Input.Watchers.Keyboard();
         }
 
+        /// <summary>
+        /// Return the mouse watcher
+        /// </summary>
+        /// <returns>MouseWatcher</returns>
         public IWatcher getMouseWatcher()
         {
             return new Input.Watchers.Mouse();
