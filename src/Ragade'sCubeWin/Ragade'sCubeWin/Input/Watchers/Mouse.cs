@@ -56,6 +56,43 @@ namespace RagadesCubeWin.Input.Watchers
         }
 
         /// <summary>
+        /// Remove an event from a watcher to watch for
+        /// </summary>
+        /// <param name="e">Needs to be KeybaordEvent</param>
+        /// <returns>True if successfully removes watched event</returns>
+        public bool RemoveEvent(Input.Events.Event e)
+        {
+
+            int count = 0;
+
+            try
+            {
+                Input.Events.MouseEvent me = (Input.Events.MouseEvent)e;
+
+                foreach (Input.Events.MouseEvent ee in lstMouseEvents)
+                {
+                    if (me.getType()  == ee.getType() && me.getEvent() == ee.getEvent())
+                        break;
+                    count++;
+                }
+
+                if (count == lstMouseEvents.Count)
+                {
+                    return false;
+                }
+                else
+                {
+                    lstMouseEvents.RemoveAt(count);
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Detect Mouse
         /// </summary>
         /// <returns>True if it exists</returns>

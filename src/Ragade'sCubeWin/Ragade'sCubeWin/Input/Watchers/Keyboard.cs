@@ -45,22 +45,59 @@ namespace RagadesCubeWin.Input.Watchers
         }
 
         /// <summary>
-        /// Add event to watch for
+        /// Remove an event from a watcher to watch for
         /// </summary>
-        /// <param name="e">KeyboardEvent Type</param>
-        /// <returns>True if successfully adds into list</returns>
-        public bool WatchEvent(Input.Events.KeyboardEvent e)
+        /// <param name="e">Needs to be KeybaordEvent</param>
+        /// <returns>True if successfully removes watched event</returns>
+        public bool RemoveEvent(Input.Events.Event e)
         {
+            
+            int count = 0;
+
             try
             {
-                lstKeyboardEvents.Add(e);
-                return true;
+               Input.Events.KeyboardEvent ke = (Input.Events.KeyboardEvent)e;
+
+               foreach(Input.Events.KeyboardEvent ee in lstKeyboardEvents)
+               {
+                   if (ke.getKey() == ee.getKey() && ke.getEvent() == ee.getEvent())
+                       break;
+                   count++;
+               }
+
+               if (count == lstKeyboardEvents.Count)
+               {
+                   return false;
+               }
+               else
+               {
+                   lstKeyboardEvents.RemoveAt(count);
+                   return true;
+               }
             }
             catch
             {
                 return false;
             }
         }
+
+        ///// <summary>
+        ///// Add event to watch for
+        ///// </summary>
+        ///// <param name="e">KeyboardEvent Type</param>
+        ///// <returns>True if successfully adds into list</returns>
+        //public bool WatchEvent(Input.Events.KeyboardEvent e)
+        //{
+        //    try
+        //    {
+        //        lstKeyboardEvents.Add(e);
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
 
         /// <summary>
         /// Detects input

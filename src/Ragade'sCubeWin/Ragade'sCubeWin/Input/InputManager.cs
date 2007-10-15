@@ -68,21 +68,12 @@ namespace RagadesCubeWin.Input
         }
 
         /// <summary>
-        /// Return the keyboard watcher
+        /// Remove a watcher from prefix
         /// </summary>
-        /// <returns>Keyboardwatcher</returns>
-        public IWatcher getKeyboardWatcher()
+        /// <param name="index">Which player</param>
+        public void RemoveWatcher(int index)
         {
-            return new Input.Watchers.Keyboard();
-        }
-
-        /// <summary>
-        /// Return the mouse watcher
-        /// </summary>
-        /// <returns>MouseWatcher</returns>
-        public IWatcher getMouseWatcher()
-        {
-            return new Input.Watchers.Mouse();
+            watchers.RemoveAt(index);
         }
     }
 }

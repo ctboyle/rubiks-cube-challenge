@@ -155,6 +155,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RealMouseState</Name>
     </Compile>
+    <Compile Include="Input\Scheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Scheme</Name>
+    </Compile>
     <Compile Include="Input\Types\EventTypes.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>EventTypes</Name>

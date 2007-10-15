@@ -46,7 +46,7 @@ namespace RagadesCubeWin.States
 
             #region Keyboardwatcher
 
-            IWatcher watchkeyboard = input.getKeyboardWatcher();
+            IWatcher watchkeyboard = new Input.Watchers.Keyboard();
 
             KeyboardEvent pressLShift = new KeyboardEvent(Keys.LeftShift, EventTypes.Pressed, YRotUp);
             KeyboardEvent pressRShift = new KeyboardEvent(Keys.LeftShift, EventTypes.Released, YRotDown);
