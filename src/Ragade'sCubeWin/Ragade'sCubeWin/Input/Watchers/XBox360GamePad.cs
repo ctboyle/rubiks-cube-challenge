@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace RagadesCubeWin.Input.Watchers
 {
-    class Mouse:IWatcher
+    class XBox360GamePad:IWatcher
     {
-        #region vars
-        List<Input.Events.MouseEvent> lstMouseEvents;
-        RealMouseState realstate;
+         #region vars
+        List<Input.Events.XBox360GamePadEvent> lstPadEvents;
+        RealXBoxGamePad realstate;
+        PlayerIndex player;
         #endregion
 
-        public Mouse()
+        public XBox360GamePad(PlayerIndex pi)
         {
-            lstMouseEvents = new List<RagadesCubeWin.Input.Events.MouseEvent>();
-            realstate = new RealMouseState();
+            player = pi;
+            lstPadEvents = new List<RagadesCubeWin.Input.Events.XBox360GamePadEvent>();
+            realstate = new RealXBoxGamePad();
         }
 
         /// <summary>
-        /// Add Event to watcher
+        
         /// </summary>
-        /// <param name="e">MouseEvent Type</param>
+        /// <param name="e"></param>
         /// <returns>True if it adds successfully</returns>
         public bool WatchEvent(Input.Events.Event e)
         {
             try
             {
-                lstMouseEvents.Add((Input.Events.MouseEvent)e);
+                lstPadEvents.Add((Input.Events.XBox360GamePadEvent)e);
                 return true;
             }
             catch
@@ -42,11 +46,11 @@ namespace RagadesCubeWin.Input.Watchers
         /// </summary>
         /// <param name="e">Mouse Event</param>
         /// <returns>True if it adds successfully</returns>
-        public bool WatchEvent(Input.Events.MouseEvent e)
+        public bool WatchEvent(Input.Events.XBox360GamePadEvent e)
         {
             try
             {
-                lstMouseEvents.Add(e);
+                lstPadEvents.Add(e);
                 return true;
             }
             catch
@@ -67,22 +71,22 @@ namespace RagadesCubeWin.Input.Watchers
 
             try
             {
-                Input.Events.MouseEvent me = (Input.Events.MouseEvent)e;
+                Input.Events.XBox360GamePadEvent me = (Input.Events.XBox360GamePadEvent)e;
 
-                foreach (Input.Events.MouseEvent ee in lstMouseEvents)
+                foreach (Input.Events.XBox360GamePadEvent ee in lstPadEvents)
                 {
                     if (me.getType()  == ee.getType() && me.getEvent() == ee.getEvent())
                         break;
                     count++;
                 }
 
-                if (count == lstMouseEvents.Count)
+                if (count == lstPadEvents.Count)
                 {
                     return false;
                 }
                 else
                 {
-                    lstMouseEvents.RemoveAt(count);
+                    lstPadEvents.RemoveAt(count);
                     return true;
                 }
             }
@@ -107,18 +111,18 @@ namespace RagadesCubeWin.Input.Watchers
         /// </summary>
         public void RunEvents()
         {
-            realstate.MouseState(Microsoft.Xna.Framework.Input.Mouse.GetState());
+            realstate.GamePadState(Microsoft.Xna.Framework.Input.GamePad.GetState(player));
 
-            foreach (Input.Events.MouseEvent e in lstMouseEvents)
+            foreach (Input.Events.XBox360GamePadEvent e in lstPadEvents)
             {
-                Input.Events.MouseEvent ee = e;
+                Input.Events.XBox360GamePadEvent ee = e;
 
                 do
                 {
                     if (ee.getEvent() == Input.Types.EventTypes.Pressed)
                     {
                         if (realstate.IsPressed(ee.getType()))
-                            ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                            ee = ee.execute();
                         else
                             ee = null;
                     }
@@ -126,7 +130,7 @@ namespace RagadesCubeWin.Input.Watchers
                     if (ee.getEvent() == Input.Types.EventTypes.Released)
                     {
                         if(!realstate.IsPressed(ee.getType()))
-                            ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                            ee = ee.execute();
                         else
                             ee = null;
 
@@ -135,7 +139,7 @@ namespace RagadesCubeWin.Input.Watchers
                     if (ee.getEvent() == Input.Types.EventTypes.Tapped)
                     {
                         if(realstate.IsTapped(ee.getType()))
-                            ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                            ee = ee.execute();
                         else
                             ee = null;
 
@@ -144,7 +148,7 @@ namespace RagadesCubeWin.Input.Watchers
                     if (ee.getEvent() == Input.Types.EventTypes.Leaned)
                     {
                         // buttons do not matter for a lean
-                        ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                        ee = ee.execute(realstate.GetPosition(ee.getType()), realstate.GetHover(ee.getType()));
                     }
                 } while (ee != null);
             }

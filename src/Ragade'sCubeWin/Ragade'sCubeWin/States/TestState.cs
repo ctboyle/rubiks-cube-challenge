@@ -42,7 +42,21 @@ namespace RagadesCubeWin.States
             yRot = 0;
 
             input = new InputManager(game);
-            input.Initialize();            
+            input.Initialize();
+
+            #region GamePadWatcher
+            IWatcher watchplayer1 = new Input.Watchers.XBox360GamePad(PlayerIndex.One);
+
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.X, EventTypes.Tapped, OnSelHorizontalFace));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.A, EventTypes.Tapped, OnSelVerticalFace));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.B, EventTypes.Tapped, OnSelOppFace));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DUP, EventTypes.Tapped, OnRotateUp));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DDOWN, EventTypes.Tapped, OnRotateDown));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.LEFTANALOG, EventTypes.Leaned, CubeMove));
+           
+            input.AddWatcher(watchplayer1);
+
+            #endregion
 
             #region Keyboardwatcher
 
@@ -173,6 +187,12 @@ namespace RagadesCubeWin.States
         public void XRotUp()
         {
             xRot += 0.05f;
+        }
+
+        public void CubeMove(Vector2 pos, Vector2 hov)
+        {
+            xRot += pos.X/200;
+            yRot += pos.Y/200;
         }
 
         public void XRotDown()
