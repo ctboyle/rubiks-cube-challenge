@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+
+using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 #endregion
 
 namespace RagadesCubeWin.GraphicsManagement
@@ -100,7 +102,7 @@ namespace RagadesCubeWin.GraphicsManagement
                 else
                 {
                     // Merge the remaining children's BVs.
-                    worldBound = BoundingSphere.CreateMerged(
+                    worldBound = RCBoundingSphere.CreateMerged(
                         worldBound,
                         child.worldBound
                     ); 

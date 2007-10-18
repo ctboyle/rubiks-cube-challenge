@@ -156,6 +156,32 @@ namespace RagadesCubeWin.Rendering
             }
         }
 
+        public static void SetTexture(Texture2D texture)
+        {
+            if (_sceneEffect != null)
+            {
+                if (texture != null)
+                {
+                    _sceneEffect.Texture = texture;
+                }
+                else
+                {
+                    TextureMappingEnabled(false);
+                }
+            }
+            
+        }
+
+        public static void TextureMappingEnabled(bool fEnabled)
+        {
+            if (_sceneEffect != null)
+            {
+                _sceneEffect.TextureEnabled = fEnabled;
+            }
+        }
+
+
+
         /// <summary>
         /// Sets the effects world transform property
         /// </summary>
@@ -177,7 +203,7 @@ namespace RagadesCubeWin.Rendering
         {   
             if (_sceneEffect != null)
             {
-                _sceneEffect.Begin(SaveStateMode.SaveState);
+                _sceneEffect.Begin();
 
                 foreach (EffectPass pass in _sceneEffect.CurrentTechnique.Passes)
                 {
@@ -211,11 +237,17 @@ namespace RagadesCubeWin.Rendering
 
                 fCameraSuccess = UpdateSceneCameraParameters();
 
-                // Clear screen using current clear color.
-                ClearScreen();
+
+                
 
                 if (_sceneEffect != null && fCameraSuccess)
                 {
+                    // Clear screen using current clear color.
+                    if (RCCameraManager.ActiveCamera.ClearScreen)
+                    {
+                        ClearScreen();
+                    }
+
                     sceneRoot.Draw(_sceneEffect.GraphicsDevice);
                 }
             }
@@ -227,7 +259,7 @@ namespace RagadesCubeWin.Rendering
             {
                 
                 _sceneEffect.GraphicsDevice.Clear(
-                        ClearOptions.DepthBuffer | ClearOptions.Target,
+                        RCCameraManager.ActiveCamera.ClearOptions,
                         _clearColor,
                         1.0f,
                         0

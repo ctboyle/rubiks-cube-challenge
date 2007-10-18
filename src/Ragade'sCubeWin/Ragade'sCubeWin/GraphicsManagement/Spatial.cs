@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Content;
 
 using RagadesCubeWin.Animation;
 using RagadesCubeWin.Cameras;
+using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 
 #endregion
 
@@ -22,7 +23,8 @@ namespace RagadesCubeWin.GraphicsManagement
     /// </summary>
     public abstract class RCSpatial
     {
-        protected BoundingSphere _worldBound;
+        protected IRCBoundingVolume _worldBound;
+
         protected RCNode _parentNode;
         protected Matrix _worldTrans;
         protected Matrix _localTrans;
@@ -43,7 +45,7 @@ namespace RagadesCubeWin.GraphicsManagement
             }
         }
         
-        public BoundingSphere worldBound
+        public IRCBoundingVolume worldBound
         {
             get
             {
@@ -74,21 +76,19 @@ namespace RagadesCubeWin.GraphicsManagement
             {
                 return _worldTrans;
             }
-
-            set
-            {
-                _worldTrans = value;
-            }
         }
 
         public RCSpatial()
         {
-            localTrans = Matrix.Identity;
-            worldTrans = Matrix.Identity;
+            _localTrans = Matrix.Identity;
+            _worldTrans = Matrix.Identity;
             parentNode = null;
-            
-            _worldBound.Center = Vector3.Zero;
-            _worldBound.Radius = 0.0f;
+
+            _worldBound = new RCBoundingSphere(
+                Vector3.Zero,
+                0.0f
+                );
+                    
             _animateControllers = new List<Controller>();
 
         }
@@ -168,12 +168,12 @@ namespace RagadesCubeWin.GraphicsManagement
             if (parentNode != null)
             {
                 // Compute world transform from parent's and local transforms.
-                worldTrans = localTrans * parentNode.worldTrans;
+                _worldTrans = _localTrans * parentNode.worldTrans;
             }
             else
             {
                 // This is root, local and world trans are identical.
-                worldTrans = localTrans;
+                _worldTrans = _localTrans;
             }
         }
         /// <summary>

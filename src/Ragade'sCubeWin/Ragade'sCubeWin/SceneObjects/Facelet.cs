@@ -7,12 +7,15 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using RagadesCubeWin.GraphicsManagement;
+using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.SceneObjects
 {
     public class RCFacelet : RCSpatial
     {
+        protected RCBoundingRect _localBound;
+
         protected Face _parentFace;
 
         private static string faceletBoxAsset = "Content\\Models\\Facelet";
@@ -45,6 +48,20 @@ namespace RagadesCubeWin.SceneObjects
             :base()
         {
             _parentFace = parentFace;
+
+            BuildLocalBound();
+
+        }
+
+        private void BuildLocalBound()
+        {
+            float halfSize = (RCCublet.CubeletSize * 0.90f) / 2.0f;
+
+            _localBound = new RCBoundingRect(
+                new Vector3(-halfSize, halfSize, 0.0f),
+                new Vector3(halfSize, halfSize, 0.0f),
+                new Vector3(halfSize, -halfSize, 0.0f)
+                );
         }
 
         public override void LoadGraphicsContent(
@@ -129,7 +146,7 @@ namespace RagadesCubeWin.SceneObjects
 
         protected override void UpdateWorldBound()
         {
-
+            _worldBound = _localBound.Transform(_worldTrans);
         }
         
     }

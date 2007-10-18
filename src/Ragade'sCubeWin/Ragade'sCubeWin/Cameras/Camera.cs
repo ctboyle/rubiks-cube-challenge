@@ -10,16 +10,32 @@ using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.Cameras
 {
-    class RCCamera : RCNode
+    public abstract class RCCamera : RCNode
     {
         protected Matrix _view;
         protected Matrix _projection;
         protected Viewport _viewport;
         protected Color _clearColor;
-        protected float _FOV;
+
+        protected ClearOptions _clearOptions;
+
         protected float _near;
         protected float _far;
+        
+        bool _clearScreen;
 
+        public ClearOptions ClearOptions
+        {
+            get { return _clearOptions; }
+            set { _clearOptions = value; }
+        }
+
+        public bool ClearScreen
+        {
+            get { return _clearScreen; }
+            set { _clearScreen = value; }
+        }
+         
         public Matrix View
         {
             get
@@ -49,20 +65,7 @@ namespace RagadesCubeWin.Cameras
             }
         }
 
-        // Field of View property
-        public float FOV
-        {
-            get
-            {
-                return _FOV;
-            }
-            set
-            {
-                _FOV = value;
-                UpdateWorldData(null);
-            }
-        }
-
+        
         public float Near
         {
             get
@@ -86,6 +89,7 @@ namespace RagadesCubeWin.Cameras
                 _far = value;
             }
         }
+        
 
         public Color ClearColor
         {
@@ -97,9 +101,15 @@ namespace RagadesCubeWin.Cameras
             :base()
         {
             SetViewport(newViewport);
-            _FOV = MathHelper.PiOver4;
+
+            _clearScreen = true;
+            _clearOptions = 
+                ClearOptions.DepthBuffer |
+                ClearOptions.Target;
+
             _near = 1.0f;
             _far = 1000.0f;
+            
 
             ClearColor = Color.CornflowerBlue;
         }
@@ -117,17 +127,23 @@ namespace RagadesCubeWin.Cameras
         {
             base.UpdateWorldData(gameTime);
 
-            // Create view matrix from world tranform.
-            _view = Matrix.Invert(worldTrans);
+            _view = UpdateView();
 
-            // Create perpective projection Matrix based on viewport
-            _projection = Matrix.CreatePerspectiveFieldOfView(
-                _FOV,
-                (float)_viewport.Width / (float)_viewport.Height,
-                _near,
-                _far
-                );
+            _projection = UpdateProjection();
 
         }
+
+        private Matrix UpdateView()
+        {
+            // Create view matrix from world tranform.
+            return Matrix.Invert(worldTrans);
+        }
+
+        /// <summary>
+        /// Determins the projection matrix for the camera.
+        /// </summary>
+        /// <returns></returns>
+        protected abstract Matrix UpdateProjection();
+
     }
 }

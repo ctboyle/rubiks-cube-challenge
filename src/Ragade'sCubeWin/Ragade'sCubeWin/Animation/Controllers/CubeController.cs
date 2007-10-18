@@ -28,7 +28,7 @@ namespace RagadesCubeWin.Animation.Controllers
             _isAnimating = false;
             
             // Default speed of rotations are one 1/4 turn per second;
-            _radsPerSecond = MathHelper.PiOver2 / 1.0f;
+            _radsPerSecond = MathHelper.PiOver2 / 0.25f;
             _rotMatrix = Matrix.Identity;
         }
 

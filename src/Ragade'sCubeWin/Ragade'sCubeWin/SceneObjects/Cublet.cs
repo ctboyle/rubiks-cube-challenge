@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using RagadesCubeWin.GraphicsManagement;
+using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
 #endregion
@@ -37,6 +38,8 @@ namespace RagadesCubeWin.SceneObjects
         // Space between cubelet and facelet
         private const float FaceletSpacing = 0.01f;
 
+        private RCBoundingSphere _localBound;
+
         
         public RCFacelet[] Facelets
         {
@@ -53,11 +56,30 @@ namespace RagadesCubeWin.SceneObjects
         {
             _facelets = new RCFacelet[(int)FaceletPosition.Count];
 
+            BuildLocalBound();
+
             BuildLocalTransform(xCubePos, yCubePos, zCubePos);
             AddChild(new RCCubeletBox());
         }
 
-        private void BuildLocalTransform(int xCubePos, int yCubePos, int zCubePos)
+        private void BuildLocalBound()
+        {
+            // Create bounding volume the size of the cubelets
+
+            float halfSize = CubeletSize / 2.0f;
+            float radius = halfSize * (float)(Math.Sqrt(2.0)/2.0);
+
+            _localBound = new RCBoundingSphere(
+                Vector3.Zero,
+                radius
+                );
+        }
+
+        private void BuildLocalTransform(
+            int xCubePos,
+            int yCubePos,
+            int zCubePos
+            )
         {
             localTrans = Matrix.CreateTranslation(
                 xCubePos * CubeletSize,
@@ -127,11 +149,7 @@ namespace RagadesCubeWin.SceneObjects
         // Constant sized bounding voulume
         protected override void UpdateWorldBound()
         {
-            _worldBound.Center = worldTrans.Translation;
-
-            // Box is 2 x 2 x 2
-            // Therefore the smallest bounding sphere has the radius Sqrt(2) = 1.414
-            _worldBound.Radius = 1.414f * worldTrans.Forward.Length();
+            worldBound = _localBound.Transform(_worldTrans);
         }
     }
 }
