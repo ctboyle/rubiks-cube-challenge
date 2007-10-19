@@ -115,7 +115,7 @@ namespace RagadesCubeWin.SceneObjects
 
             Vector3 color = _color.ToVector3();
 
-            Rendering.RCRenderManager.SetWorld(worldTrans);
+            Rendering.RCRenderManager.SetWorld(WorldTrans);
             Rendering.RCRenderManager.SetEffectMaterial(color, color, color, 1.0f, color, 0.4f);
             Rendering.RCRenderManager.Render(graphicsDevice, OnRender);
         }
@@ -132,7 +132,7 @@ namespace RagadesCubeWin.SceneObjects
         {
             // scale the cursor cube to cover an entire face
             Vector3 scale = new Vector3((float)_theCube.Width - 0.01f, (float)_theCube.Height, 1.0f);
-            localTrans = Matrix.CreateScale(scale);
+            LocalTrans = Matrix.CreateScale(scale);
 
             Vector3 faceNormal = _theCube.GetFaceNormal(_selectedFace);
 
@@ -141,17 +141,17 @@ namespace RagadesCubeWin.SceneObjects
             {
                 case RCCube.FaceSide.Top:
                 case RCCube.FaceSide.Bottom:
-                    localTrans *= Matrix.CreateRotationX(MathHelper.PiOver2);
-                    localTrans *= Matrix.CreateTranslation(faceNormal * (_theCube.Height - 1));
+                    LocalTrans *= Matrix.CreateRotationX(MathHelper.PiOver2);
+                    LocalTrans *= Matrix.CreateTranslation(faceNormal * (_theCube.Height - 1));
                     break;
                 case RCCube.FaceSide.Left:
                 case RCCube.FaceSide.Right:
-                    localTrans *= Matrix.CreateRotationY(MathHelper.PiOver2);
-                    localTrans *= Matrix.CreateTranslation(faceNormal * (_theCube.Width - 1));
+                    LocalTrans *= Matrix.CreateRotationY(MathHelper.PiOver2);
+                    LocalTrans *= Matrix.CreateTranslation(faceNormal * (_theCube.Width - 1));
                     break;
                 case RCCube.FaceSide.Front:
                 case RCCube.FaceSide.Back:
-                    localTrans *= Matrix.CreateTranslation(faceNormal * (_theCube.Length - 1));
+                    LocalTrans *= Matrix.CreateTranslation(faceNormal * (_theCube.Length - 1));
                     break;
             }
         }

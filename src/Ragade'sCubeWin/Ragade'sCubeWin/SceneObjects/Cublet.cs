@@ -17,7 +17,7 @@ namespace RagadesCubeWin.SceneObjects
     /// <summary>
     /// This represents the smaller unit cubes on the Rubics Cube.
     /// </summary>
-    public class RCCublet : RCNode
+    public class RCCublet : RCSceneNode
     {
         public enum FaceletPosition
         {
@@ -81,7 +81,7 @@ namespace RagadesCubeWin.SceneObjects
             int zCubePos
             )
         {
-            localTrans = Matrix.CreateTranslation(
+            LocalTrans = Matrix.CreateTranslation(
                 xCubePos * CubeletSize,
                 yCubePos * CubeletSize,
                 zCubePos * CubeletSize
@@ -143,7 +143,7 @@ namespace RagadesCubeWin.SceneObjects
                 Matrix.CreateRotationX(xRot) * 
                 Matrix.CreateRotationY(yRot);
 
-            facelet.localTrans = localTransform;
+            facelet.LocalTrans = localTransform;
         }
 
         // Constant sized bounding voulume

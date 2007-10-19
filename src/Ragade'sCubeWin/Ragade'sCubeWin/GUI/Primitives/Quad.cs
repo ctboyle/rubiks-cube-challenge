@@ -11,35 +11,13 @@ using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.GUI.Primitives
 {
-    class RCQuad : RCSpatial
+    class RCQuad : RCFlatSpatial
     {
-        private float _width;
-        private float _height;
-
         private Texture2D _image;
 
         private VertexPositionNormalTexture[] _vertices;
         private VertexDeclaration _vertexDeclaration;
 
-        public float Width
-        {
-            get { return _width; }
-            set 
-            { 
-                _width = value;
-                UpdateVertices();
-            }
-        }
-
-        public float Height
-        {
-            get { return _height; }
-            set 
-            { 
-                _height = value;
-                UpdateVertices();
-            }
-        }
 
         public Texture2D Image
         {
@@ -48,8 +26,18 @@ namespace RagadesCubeWin.GUI.Primitives
         }
 
 
-        public RCQuad()
-            : base()
+        public RCQuad(
+            float width,
+            float height,
+            int scrWidth,
+            int scrHeight
+            )
+            : base(
+                width,
+                height,
+                scrWidth,
+                scrHeight
+                )
         {
             BuildGemetricData();
         }
@@ -62,12 +50,12 @@ namespace RagadesCubeWin.GUI.Primitives
              UpdateVertices();
         }
 
-        private void UpdateVertices()
+        public void UpdateVertices()
         {
-            Vector3 bottomLeft = new Vector3(0.0f, -_height, 0.0f);
+            Vector3 bottomLeft = new Vector3(0.0f, -WorldHeight, 0.0f);
             Vector3 topLeft = new Vector3(0.0f, 0.0f, 0.0f);
-            Vector3 topRight = new Vector3(_width, 0.0f, 0.0f);
-            Vector3 bottomRight = new Vector3(_width, -_height, 0.0f);
+            Vector3 topRight = new Vector3(WorldWidth, 0.0f, 0.0f);
+            Vector3 bottomRight = new Vector3(WorldWidth, -WorldHeight, 0.0f);
 
             // Fill in texture coordinates to display full texture
             // on quad
@@ -100,11 +88,16 @@ namespace RagadesCubeWin.GUI.Primitives
             
         }
 
- 
+        protected override void UpdateWorldData(GameTime gameTime)
+        {
+            base.UpdateWorldData(gameTime);
+            UpdateVertices();
+        }
 
         public override void Draw(GraphicsDevice graphicsDevice)
         {
             graphicsDevice.VertexDeclaration = _vertexDeclaration;
+            graphicsDevice.RenderState.CullMode = CullMode.None;
 
             RCRenderManager.SetWorld(_worldTrans);
 
@@ -146,20 +139,12 @@ namespace RagadesCubeWin.GUI.Primitives
         public void OnRender(GraphicsDevice graphicsDevice)
         {
             
-            // Draw two primitives
+            // Draw two triangles
             graphicsDevice.DrawUserPrimitives<VertexPositionNormalTexture>(
                 PrimitiveType.TriangleList,
                 _vertices,
                 0, 2);
 
         }
-
-        protected override void UpdateWorldBound()
-        {
-            
-        }
-
-        
-
     }
 }

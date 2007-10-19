@@ -113,7 +113,7 @@ namespace RagadesCubeWin.Animation.Controllers
 
                 foreach (RCCublet cubelet in _cubletFace)
                 {
-                    cubelet.localTrans *= _rotMatrix;
+                    cubelet.LocalTrans *= _rotMatrix;
                 }
 
                 if (_curRotation >= MathHelper.PiOver2)

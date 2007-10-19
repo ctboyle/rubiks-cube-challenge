@@ -91,6 +91,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>BoundingVolume</Name>
     </Compile>
+    <Compile Include="GraphicsManagement\SceneInterfaces.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SceneInterfaces</Name>
+    </Compile>
     <Compile Include="GraphicsManagement\Spatial.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Spatial</Name>
@@ -139,6 +143,18 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCRadioChannel</Name>
     </None>
+    <Compile Include="GUI\FlatSpatial.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>FlatSpatial</Name>
+    </Compile>
+    <Compile Include="GUI\GUIEvent.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GUIEvent</Name>
+    </Compile>
+    <Compile Include="GUI\IGUIElement.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>IGUIElement</Name>
+    </Compile>
     <Compile Include="GUI\Panes\RCPane.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCPane</Name>

@@ -15,11 +15,11 @@ namespace RagadesCubeWin.GraphicsManagement
     /// 
     /// The RCNode's bounding volume is computed by merging all of its children.
     /// </summary>
-    public class RCNode : RCSpatial
+    public class RCSceneNode : RCSpatial, INode
     {
         protected List<RCSpatial> listChildren;
         
-        public RCNode()
+        public RCSceneNode()
         {
             listChildren = new List<RCSpatial>();
         }
@@ -75,7 +75,7 @@ namespace RagadesCubeWin.GraphicsManagement
 
             foreach (RCSpatial child in listChildren)
             {
-                child.UpdateGS(gameTime, true);
+                child.UpdateGS(gameTime, false);
             }
         }
 
@@ -109,6 +109,22 @@ namespace RagadesCubeWin.GraphicsManagement
                 }
             }
         }
+
+        #region INode Members
+
+        public List<ISpatial> GetChildren()
+        {
+            List<ISpatial> childList = new List<ISpatial>(listChildren.Count);
+
+            foreach (RCSpatial child in listChildren)
+            {
+                childList.Add(child);
+            }
+
+            return childList;
+        }
+
+        #endregion
     }
 }
 

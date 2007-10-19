@@ -89,7 +89,7 @@ namespace RagadesCubeWin.SceneObjects
         public override void Draw(GraphicsDevice graphicsDevice)
         {
 
-            RCRenderManager.SetWorld(worldTrans);
+            RCRenderManager.SetWorld(WorldTrans);
             // Now, we will loop through each mesh in the model (in case there
             // are more than one present.
             foreach (ModelMesh mesh in _cubeletModel.Meshes)

@@ -33,7 +33,7 @@ namespace RagadesCubeWin.States
         float xRot, yRot;
 
         RCSpatial root;
-        RCNode guiRoot;
+        RCSceneNode guiRoot;
         RCCamera mainCamera;
         RCOrthographicCamera guiCamera;
         RCCube theCube;
@@ -97,7 +97,7 @@ namespace RagadesCubeWin.States
 
 
             // The local position of the camera is the inverse of the view matrix.
-            mainCamera.localTrans = Matrix.Invert(Matrix.CreateLookAt(
+            mainCamera.LocalTrans = Matrix.Invert(Matrix.CreateLookAt(
                 new Vector3(10, 10, 10),
                 new Vector3(0, 0, 0),
                 new Vector3(0, 1, 0)
@@ -111,7 +111,7 @@ namespace RagadesCubeWin.States
             guiCamera.Width = (float)graphics.GraphicsDevice.Viewport.Width;
             guiCamera.Height = (float)graphics.GraphicsDevice.Viewport.Height;
 
-            guiCamera.localTrans = Matrix.Invert(Matrix.CreateLookAt(
+            guiCamera.LocalTrans = Matrix.Invert(Matrix.CreateLookAt(
                 new Vector3(0, 0, 10),
                 new Vector3(0, 0, 0),
                 new Vector3(0, 1, 0)
@@ -121,7 +121,7 @@ namespace RagadesCubeWin.States
 
             RCCameraManager.AddCamera(guiCamera, "GUI Camera");
 
-            RCNode rootNode = new RCNode();
+            RCSceneNode rootNode = new RCSceneNode();
 
             // Set up light node
             RCDirectionalLight lightNode = new RCDirectionalLight(RCRenderManager.DirectionalLightIndex.Light0);
@@ -167,14 +167,11 @@ namespace RagadesCubeWin.States
                 graphics.GraphicsDevice.Viewport.Height
                 );
 
-            testQuad = new RCQuad();
-
-            testQuad.Width = 100;
-            testQuad.Height = 40;
+            testQuad = new RCQuad(100,40,100,40);
 
             
 
-            screenPane.localTrans = Matrix.CreateTranslation(
+            screenPane.LocalTrans = Matrix.CreateTranslation(
                 new Vector3(
                     -guiCamera.Width/2.0f,
                     guiCamera.Height/2.0f,
@@ -184,7 +181,7 @@ namespace RagadesCubeWin.States
             screenPane.AddChild(testQuad, 400, 300, 0.0f);
 
 
-            guiRoot = new RCNode();
+            guiRoot = new RCSceneNode();
             guiRoot.AddChild(guiCamera);
             guiRoot.AddChild(screenPane);
 
@@ -228,7 +225,7 @@ namespace RagadesCubeWin.States
 
            
             // Rotate cubelet
-            theCube.localTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(mainCamera.worldTrans.Right, xRot);
+            theCube.LocalTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(mainCamera.WorldTrans.Right, xRot);
             
             root.UpdateGS(gameTime, true);
             guiRoot.UpdateGS(gameTime, true);

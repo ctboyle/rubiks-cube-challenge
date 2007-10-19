@@ -12,7 +12,7 @@ using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.SceneObjects
 {
-    public class RCCube : RCNode
+    public class RCCube : RCSceneNode
     {
         public enum FaceSide
         {
@@ -213,7 +213,7 @@ namespace RagadesCubeWin.SceneObjects
             Vector3 worldScale;
 
 
-            worldTrans.Decompose(
+            WorldTrans.Decompose(
                 out worldScale, 
                 out worldRot, 
                 out worldTranslate

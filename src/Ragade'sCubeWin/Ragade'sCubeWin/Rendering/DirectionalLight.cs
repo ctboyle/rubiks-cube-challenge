@@ -14,7 +14,7 @@ namespace RagadesCubeWin.Rendering
     /// 
     /// Children of this node will we rendered with this light enabled.
     /// </summary>
-    class RCDirectionalLight : RCNode
+    class RCDirectionalLight : RCSceneNode
     {
         protected RCRenderManager.DirectionalLightIndex _index;
         protected Vector3 _direction;

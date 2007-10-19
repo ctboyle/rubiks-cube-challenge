@@ -10,7 +10,7 @@ using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.Cameras
 {
-    public abstract class RCCamera : RCNode
+    public abstract class RCCamera : RCSceneNode
     {
         protected Matrix _view;
         protected Matrix _projection;
@@ -136,7 +136,7 @@ namespace RagadesCubeWin.Cameras
         private Matrix UpdateView()
         {
             // Create view matrix from world tranform.
-            return Matrix.Invert(worldTrans);
+            return Matrix.Invert(WorldTrans);
         }
 
         /// <summary>

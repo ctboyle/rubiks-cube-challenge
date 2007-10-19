@@ -21,18 +21,18 @@ namespace RagadesCubeWin.GraphicsManagement
     ///  3. A parent
     ///  4. A position relative to its parent
     /// </summary>
-    public abstract class RCSpatial
+    public abstract class RCSpatial: ISpatial
     {
         protected IRCBoundingVolume _worldBound;
 
-        protected RCNode _parentNode;
+        protected RCSpatial _parentNode;
         protected Matrix _worldTrans;
         protected Matrix _localTrans;
 
         protected List<Controller> _animateControllers;
 
 
-        public RCNode parentNode
+        public RCSpatial parentNode
         {
             get
             {
@@ -57,7 +57,7 @@ namespace RagadesCubeWin.GraphicsManagement
             }
         }
 
-        public Matrix localTrans
+        public Matrix LocalTrans
         {
             get
             {
@@ -70,7 +70,7 @@ namespace RagadesCubeWin.GraphicsManagement
 
         }
 
-        public Matrix worldTrans
+        public Matrix WorldTrans
         {
             get
             {
@@ -168,7 +168,7 @@ namespace RagadesCubeWin.GraphicsManagement
             if (parentNode != null)
             {
                 // Compute world transform from parent's and local transforms.
-                _worldTrans = _localTrans * parentNode.worldTrans;
+                _worldTrans = _localTrans * parentNode.WorldTrans;
             }
             else
             {
