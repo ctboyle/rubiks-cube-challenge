@@ -118,29 +118,74 @@ namespace RagadesCubeWin.Input.Watchers
 
             foreach (Input.Events.KeyboardEvent e in lstKeyboardEvents)
             {
-                Input.Events.KeyboardEvent ee = e;
-                do
+                if (!e.ALL)
                 {
+                    Input.Events.KeyboardEvent ee = e;
+                    do
+                    {
 
-                    if (ee.getEventType() == Input.Types.EventTypes.Pressed)
+                        if (ee.getEventType() == Input.Types.EventTypes.Pressed)
+                        {
+                            if (realstate.IsPressed(ee.getKey()))
+                                ee = ee.execute();
+                            else ee = null;
+                        }
+                        else if (ee.getEventType() == Input.Types.EventTypes.Released)
+                        {
+                            if (!realstate.IsPressed(ee.getKey()))
+                                ee = ee.execute();
+                            else ee = null;
+                        }
+                        else if (ee.getEventType() == Input.Types.EventTypes.OnDown)
+                        {
+                            if (realstate.IsOnDown(ee.getKey()))
+                                ee = ee.execute();
+                            else ee = null;
+                        }
+                        else if (ee.getEventType() == Input.Types.EventTypes.OnUp)
+                        {
+                            if (realstate.IsOnUp(ee.getKey()))
+                                ee = ee.execute();
+                            else ee = null;
+                        }
+                    } while (ee != null);
+                }
+                else // must be a general event
+                {
+                    if (e.getEventType() == Input.Types.EventTypes.Pressed)
                     {
-                        if (realstate.IsPressed(ee.getKey()))
-                            ee = ee.execute();
-                        else ee = null;
+                        for (int i = 0; i < 256; i++)
+                        {
+                            if (realstate.IsPressed((Keys)i))
+                                e.execute((Keys)i);
+                        }
+                        
                     }
-                    else if (ee.getEventType() == Input.Types.EventTypes.Released)
+                    else if (e.getEventType() == Input.Types.EventTypes.Released)
                     {
-                        if (!realstate.IsPressed(ee.getKey()))
-                            ee = ee.execute();
-                        else ee = null;
+                        for (int i = 0; i < 256; i++)
+                        {
+                            if (!realstate.IsPressed((Keys)i))
+                                e.execute((Keys)i);
+                        }
                     }
-                    else if (ee.getEventType() == Input.Types.EventTypes.Tapped)
+                    else if (e.getEventType() == Input.Types.EventTypes.OnDown)
                     {
-                        if (realstate.IsTapped(ee.getKey()))
-                            ee = ee.execute();
-                        else ee = null;
+                        for (int i = 0; i < 256; i++)
+                        {
+                            if (realstate.IsOnDown((Keys)i))
+                                e.execute((Keys)i);
+                        }
                     }
-                } while (ee != null);
+                    else if (e.getEventType() == Input.Types.EventTypes.OnUp)
+                    {
+                        for (int i = 0; i < 256; i++)
+                        {
+                            if (realstate.IsOnUp((Keys)i))
+                                e.execute((Keys)i);
+                        }
+                    }
+                }
             }
         }
     }

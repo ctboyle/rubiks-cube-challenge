@@ -12,7 +12,7 @@ namespace RagadesCubeWin.Input
         // Keeps state of button
         struct ButtonState
         {
-            public bool Tapped, Pressed, WasPressed;
+            public bool OnDown, Pressed, WasPressed;
         };
 
         ButtonState Y;
@@ -50,51 +50,51 @@ namespace RagadesCubeWin.Input
             #region INITIALIZE THE VALUES
 
             Y.Pressed = false;
-            Y.Tapped = false;
+            Y.OnDown = false;
             Y.WasPressed = false;
 
             X.Pressed = false;
-            X.Tapped = false;
+            X.OnDown = false;
             X.WasPressed = false;
 
             B.Pressed = false;
-            B.Tapped = false;
+            B.OnDown = false;
             B.WasPressed = false;
 
             A.Pressed = false;
-            A.Tapped = false;
+            A.OnDown = false;
             A.WasPressed = false;
 
             START.Pressed = false;
-            START.Tapped = false;
+            START.OnDown = false;
             START.WasPressed = false;
 
             BACK.Pressed = false;
-            BACK.Tapped = false;
+            BACK.OnDown = false;
             BACK.WasPressed = false;
             
             DUP.Pressed = false;
-            DUP.Tapped = false;
+            DUP.OnDown = false;
             DUP.WasPressed = false;
 
             DDOWN.Pressed = false;
-            DDOWN.Tapped = false;
+            DDOWN.OnDown = false;
             DDOWN.WasPressed = false;
             
             DLEFT.Pressed = false;
-            DLEFT.Tapped = false;
+            DLEFT.OnDown = false;
             DLEFT.WasPressed = false;
             
             DRIGHT.Pressed = false;
-            DRIGHT.Tapped = false;
+            DRIGHT.OnDown = false;
             DRIGHT.WasPressed = false;
 
             SHOULDERLEFT.Pressed = false;
-            SHOULDERLEFT.Tapped = false;
+            SHOULDERLEFT.OnDown = false;
             SHOULDERLEFT.WasPressed = false;
 
             SHOULDERRIGHT.Pressed = false;
-            SHOULDERRIGHT.Tapped = false;
+            SHOULDERRIGHT.OnDown = false;
             SHOULDERRIGHT.WasPressed = false;
             
             LeftAnalogCurrentPosition = new Vector2(0,0);
@@ -172,51 +172,55 @@ namespace RagadesCubeWin.Input
         /// </summary>
         /// <param name="mbt"></param>
         /// <returns></returns>
-        public bool IsTapped(Input.Types.XBox360GamePadTypes gbt)
+        public bool IsOnDown(Input.Types.XBox360GamePadTypes gbt)
         {
             switch (gbt)
             {
                 // A
                 case Input.Types.XBox360GamePadTypes.A:
-                    return A.Tapped;
+                    return A.OnDown;
                 // B
                 case Input.Types.XBox360GamePadTypes.B:
-                    return B.Tapped;
+                    return B.OnDown;
                 // X
                 case Input.Types.XBox360GamePadTypes.X:
-                    return X.Tapped;
+                    return X.OnDown;
                 // Y
                 case Input.Types.XBox360GamePadTypes.Y:
-                    return Y.Tapped;
+                    return Y.OnDown;
                 // START
                 case Input.Types.XBox360GamePadTypes.START:
-                    return START.Tapped;
+                    return START.OnDown;
                 // BACK
                 case Input.Types.XBox360GamePadTypes.BACK:
-                    return BACK.Tapped;
+                    return BACK.OnDown;
                 // DUP
                 case Input.Types.XBox360GamePadTypes.DUP:
-                    return DUP.Tapped;
+                    return DUP.OnDown;
                 // DDOWN
                 case Input.Types.XBox360GamePadTypes.DDOWN:
-                    return DDOWN.Tapped;
+                    return DDOWN.OnDown;
                 // DRIGHT
                 case Input.Types.XBox360GamePadTypes.DRIGHT:
-                    return DRIGHT.Tapped;
+                    return DRIGHT.OnDown;
                 // DLEFT
                 case Input.Types.XBox360GamePadTypes.DLEFT:
-                    return DLEFT.Tapped;
+                    return DLEFT.OnDown;
                 // RIGHTSHOULDER
                 case Input.Types.XBox360GamePadTypes.RIGHTSHOULDER:
-                    return SHOULDERRIGHT.Tapped;
+                    return SHOULDERRIGHT.OnDown;
                 // LEFTSHOULDER
                 case Input.Types.XBox360GamePadTypes.LEFTSHOULDER:
-                    return SHOULDERLEFT.Tapped;
+                    return SHOULDERLEFT.OnDown;
                 // unknown button
                 default:
                     return false;
             };
         }
+
+        ///////////////////////////////////////
+        // TODO: Implement OnUp
+        //////////////////////////////////////
 
         /// <summary>
         /// Returns the hovered distance
@@ -272,19 +276,19 @@ namespace RagadesCubeWin.Input
                 if (A.WasPressed)
                 {
                     A.WasPressed = true;
-                    A.Tapped = false;
+                    A.OnDown = false;
 
                 }
                 else
                 {
                     A.WasPressed = true;
-                    A.Tapped = true;
+                    A.OnDown = true;
                 }
             }
             else
             {
                 A.Pressed = false;
-                A.Tapped = false;
+                A.OnDown = false;
                 A.WasPressed = false;
             }
             #endregion
@@ -297,19 +301,19 @@ namespace RagadesCubeWin.Input
                 if (B.WasPressed)
                 {
                     B.WasPressed = true;
-                    B.Tapped = false;
+                    B.OnDown = false;
 
                 }
                 else
                 {
                     B.WasPressed = true;
-                    B.Tapped = true;
+                    B.OnDown = true;
                 }
             }
             else
             {
                 B.Pressed = false;
-                B.Tapped = false;
+                B.OnDown = false;
                 B.WasPressed = false;
             }
             #endregion
@@ -322,19 +326,19 @@ namespace RagadesCubeWin.Input
                 if (X.WasPressed)
                 {
                     X.WasPressed = true;
-                    X.Tapped = false;
+                    X.OnDown = false;
 
                 }
                 else
                 {
                     X.WasPressed = true;
-                    X.Tapped = true;
+                    X.OnDown = true;
                 }
             }
             else
             {
                 X.Pressed = false;
-                X.Tapped = false;
+                X.OnDown = false;
                 X.WasPressed = false;
             }
             #endregion
@@ -347,19 +351,19 @@ namespace RagadesCubeWin.Input
                 if (Y.WasPressed)
                 {
                     Y.WasPressed = true;
-                    Y.Tapped = false;
+                    Y.OnDown = false;
 
                 }
                 else
                 {
                     Y.WasPressed = true;
-                    Y.Tapped = true;
+                    Y.OnDown = true;
                 }
             }
             else
             {
                 Y.Pressed = false;
-                Y.Tapped = false;
+                Y.OnDown = false;
                 Y.WasPressed = false;
             }
             #endregion
@@ -372,19 +376,19 @@ namespace RagadesCubeWin.Input
                 if (START.WasPressed)
                 {
                     START.WasPressed = true;
-                    START.Tapped = false;
+                    START.OnDown = false;
 
                 }
                 else
                 {
                     START.WasPressed = true;
-                    START.Tapped = true;
+                    START.OnDown = true;
                 }
             }
             else
             {
                 START.Pressed = false;
-                START.Tapped = false;
+                START.OnDown = false;
                 START.WasPressed = false;
             }
             #endregion
@@ -397,19 +401,19 @@ namespace RagadesCubeWin.Input
                 if (BACK.WasPressed)
                 {
                     BACK.WasPressed = true;
-                    BACK.Tapped = false;
+                    BACK.OnDown = false;
 
                 }
                 else
                 {
                     BACK.WasPressed = true;
-                    BACK.Tapped = true;
+                    BACK.OnDown = true;
                 }
             }
             else
             {
                 BACK.Pressed = false;
-                BACK.Tapped = false;
+                BACK.OnDown = false;
                 BACK.WasPressed = false;
             }
             #endregion
@@ -422,19 +426,19 @@ namespace RagadesCubeWin.Input
                 if (DUP.WasPressed)
                 {
                     DUP.WasPressed = true;
-                    DUP.Tapped = false;
+                    DUP.OnDown = false;
 
                 }
                 else
                 {
                     DUP.WasPressed = true;
-                    DUP.Tapped = true;
+                    DUP.OnDown = true;
                 }
             }
             else
             {
                 DUP.Pressed = false;
-                DUP.Tapped = false;
+                DUP.OnDown = false;
                 DUP.WasPressed = false;
             }
             #endregion
@@ -447,19 +451,19 @@ namespace RagadesCubeWin.Input
                 if (DDOWN.WasPressed)
                 {
                     DDOWN.WasPressed = true;
-                    DDOWN.Tapped = false;
+                    DDOWN.OnDown = false;
 
                 }
                 else
                 {
                     DDOWN.WasPressed = true;
-                    DDOWN.Tapped = true;
+                    DDOWN.OnDown = true;
                 }
             }
             else
             {
                 DDOWN.Pressed = false;
-                DDOWN.Tapped = false;
+                DDOWN.OnDown = false;
                 DDOWN.WasPressed = false;
             }
             #endregion
@@ -472,19 +476,19 @@ namespace RagadesCubeWin.Input
                 if (DLEFT.WasPressed)
                 {
                     DLEFT.WasPressed = true;
-                    DLEFT.Tapped = false;
+                    DLEFT.OnDown = false;
 
                 }
                 else
                 {
                     DLEFT.WasPressed = true;
-                    DLEFT.Tapped = true;
+                    DLEFT.OnDown = true;
                 }
             }
             else
             {
                 DLEFT.Pressed = false;
-                DLEFT.Tapped = false;
+                DLEFT.OnDown = false;
                 DLEFT.WasPressed = false;
             }
             #endregion
@@ -497,19 +501,19 @@ namespace RagadesCubeWin.Input
                 if (DRIGHT.WasPressed)
                 {
                     DRIGHT.WasPressed = true;
-                    DRIGHT.Tapped = false;
+                    DRIGHT.OnDown = false;
 
                 }
                 else
                 {
                     DRIGHT.WasPressed = true;
-                    DRIGHT.Tapped = true;
+                    DRIGHT.OnDown = true;
                 }
             }
             else
             {
                 DRIGHT.Pressed = false;
-                DRIGHT.Tapped = false;
+                DRIGHT.OnDown = false;
                 DRIGHT.WasPressed = false;
             }
             #endregion
@@ -522,19 +526,19 @@ namespace RagadesCubeWin.Input
                 if (SHOULDERLEFT.WasPressed)
                 {
                     SHOULDERLEFT.WasPressed = true;
-                    SHOULDERLEFT.Tapped = false;
+                    SHOULDERLEFT.OnDown = false;
 
                 }
                 else
                 {
                     SHOULDERLEFT.WasPressed = true;
-                    SHOULDERLEFT.Tapped = true;
+                    SHOULDERLEFT.OnDown = true;
                 }
             }
             else
             {
                 SHOULDERLEFT.Pressed = false;
-                SHOULDERLEFT.Tapped = false;
+                SHOULDERLEFT.OnDown = false;
                 SHOULDERLEFT.WasPressed = false;
             }
             #endregion
@@ -547,19 +551,19 @@ namespace RagadesCubeWin.Input
                 if (SHOULDERRIGHT.WasPressed)
                 {
                     SHOULDERRIGHT.WasPressed = true;
-                    SHOULDERRIGHT.Tapped = false;
+                    SHOULDERRIGHT.OnDown = false;
 
                 }
                 else
                 {
                     SHOULDERRIGHT.WasPressed = true;
-                    SHOULDERRIGHT.Tapped = true;
+                    SHOULDERRIGHT.OnDown = true;
                 }
             }
             else
             {
                 SHOULDERRIGHT.Pressed = false;
-                SHOULDERRIGHT.Tapped = false;
+                SHOULDERRIGHT.OnDown = false;
                 SHOULDERRIGHT.WasPressed = false;
             }
             #endregion

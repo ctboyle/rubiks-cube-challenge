@@ -14,7 +14,7 @@ namespace RagadesCubeWin.Input
         // Keeps state of button
         struct ButtonState
         {
-            public bool Tapped, Pressed, WasPressed;
+            public bool OnDown, Pressed, WasPressed;
         };
 
         #region Vars
@@ -34,11 +34,11 @@ namespace RagadesCubeWin.Input
         {
             // just assume everything is unpressed
             leftbutton.Pressed = false;
-            leftbutton.Tapped = false;
+            leftbutton.OnDown = false;
             leftbutton.WasPressed = false;
 
             rightbutton.Pressed = false;
-            rightbutton.Tapped = false;
+            rightbutton.OnDown = false;
             rightbutton.WasPressed = false;
             
         }
@@ -70,21 +70,25 @@ namespace RagadesCubeWin.Input
         /// </summary>
         /// <param name="mbt"></param>
         /// <returns></returns>
-        public bool IsTapped(Input.Types.MouseInput mbt)
+        public bool IsOnDown(Input.Types.MouseInput mbt)
         {
             switch (mbt)
             {
                     // left button
                 case Input.Types.MouseInput.LeftButton:
-                    return leftbutton.Tapped;
+                    return leftbutton.OnDown;
                     // right button
                 case Input.Types.MouseInput.RightButton:
-                    return rightbutton.Tapped;
+                    return rightbutton.OnDown;
                     // unknown button
                 default:
                     return false;
             };
         }
+
+        ////////////////////////////////////////////
+        // TODO: implement key up!!
+        ////////////////////////////////////////////
 
         /// <summary>
         /// Returns the hovered distance
@@ -120,19 +124,19 @@ namespace RagadesCubeWin.Input
                 if (leftbutton.WasPressed)
                 {
                     leftbutton.WasPressed = true;
-                    leftbutton.Tapped = false;
+                    leftbutton.OnDown = false;
 
                 }
                 else
                 {
                     leftbutton.WasPressed = true;
-                    leftbutton.Tapped = true;
+                    leftbutton.OnDown = true;
                 }
             }
             else
             {
                 leftbutton.Pressed = false;
-                leftbutton.Tapped = false;
+                leftbutton.OnDown = false;
                 leftbutton.WasPressed = false;
             }
             #endregion
@@ -146,18 +150,18 @@ namespace RagadesCubeWin.Input
                 if (rightbutton.WasPressed)
                 {
                     rightbutton.WasPressed = true;
-                    rightbutton.Tapped = false;
+                    rightbutton.OnDown = false;
                 }
                 else
                 {
                     rightbutton.WasPressed = true;
-                    rightbutton.Tapped = true;
+                    rightbutton.OnDown = true;
                 }
             }
             else
             {
                 rightbutton.Pressed = false;
-                rightbutton.Tapped = false;
+                rightbutton.OnDown = false;
                 rightbutton.WasPressed = false;
             }
             #endregion

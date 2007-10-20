@@ -132,9 +132,9 @@ namespace RagadesCubeWin.Input.Watchers
 
                     }
                     else
-                    if (ee.getEvent() == Input.Types.EventTypes.Tapped)
+                    if (ee.getEvent() == Input.Types.EventTypes.OnDown)
                     {
-                        if(realstate.IsTapped(ee.getType()))
+                        if(realstate.IsOnDown(ee.getType()))
                             ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
                         else
                             ee = null;

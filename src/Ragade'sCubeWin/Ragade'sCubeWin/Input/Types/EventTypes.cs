@@ -10,7 +10,8 @@ namespace RagadesCubeWin.Input.Types
     public enum EventTypes
     {
         Pressed,
-        Tapped,
+        OnDown,
+        OnUp,
         Released,
         Leaned
     }

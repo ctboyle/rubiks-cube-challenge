@@ -18,7 +18,7 @@ namespace RagadesCubeWin.Input
         /// </summary>
         struct ButtonState
         {
-            public bool Tapped, Pressed, WasPressed;
+            public bool OnDown, Pressed, WasPressed;
         };
 
         /// <summary>
@@ -42,9 +42,21 @@ namespace RagadesCubeWin.Input
         /// </summary>
         /// <param name="key">What key to look at</param>
         /// <returns>True is the key has been tapped</returns>
-        public bool IsTapped(Keys key)
+        public bool IsOnDown(Keys key)
         {
-            return r_ButtonState[(int)key].Tapped;
+            return r_ButtonState[(int)key].OnDown;
+        }
+
+        /// <summary>
+        /// Checks to see if the key was released
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>True if the key was pressed, but no longer pressed</returns>
+        public bool IsOnUp(Keys key)
+        {
+            if(r_ButtonState[(int)key].WasPressed && !r_ButtonState[(int)key].Pressed)
+                return true;
+            return false;
         }
 
         /// <summary>
@@ -53,6 +65,12 @@ namespace RagadesCubeWin.Input
         /// <param name="ks">The latest state of the keyboard</param>
         public void KeyboardState(KeyboardState ks)
         {
+            for (int i = 0; i < 256; i++)
+            {
+                if (r_ButtonState[i].WasPressed && !r_ButtonState[i].Pressed)
+                    r_ButtonState[i].WasPressed = false;
+            }
+
             for (int i = 0; i < 256; i++)
                 r_ButtonState[i].Pressed = false;
 
@@ -65,18 +83,19 @@ namespace RagadesCubeWin.Input
                 if (r_ButtonState[i].Pressed)
                 {
                     if (r_ButtonState[i].WasPressed)
-                        r_ButtonState[i].Tapped = false;
+                        r_ButtonState[i].OnDown = false;
                     else
                     {
                         r_ButtonState[i].WasPressed = true;
-                        r_ButtonState[i].Tapped = true;
+                        r_ButtonState[i].OnDown = true;
                     }
 
                 }
                 else
                 {
-                    r_ButtonState[i].WasPressed = false;
-                    r_ButtonState[i].Tapped = false;
+                    // for keyup, we need to know it was pressed
+                    //r_ButtonState[i].WasPressed = false;
+                    r_ButtonState[i].OnDown = false;
                 }
             }
         }

@@ -54,11 +54,11 @@ namespace RagadesCubeWin.States
             #region GamePadWatcher
             IWatcher watchplayer1 = new Input.Watchers.XBox360GamePad(PlayerIndex.One);
 
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.X, EventTypes.Tapped, OnSelHorizontalFace));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.A, EventTypes.Tapped, OnSelVerticalFace));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.B, EventTypes.Tapped, OnSelOppFace));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DUP, EventTypes.Tapped, OnRotateUp));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DDOWN, EventTypes.Tapped, OnRotateDown));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.X, EventTypes.OnDown, OnSelHorizontalFace));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.A, EventTypes.OnDown, OnSelVerticalFace));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.B, EventTypes.OnDown, OnSelOppFace));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DUP, EventTypes.OnDown, OnRotateUp));
+            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DDOWN, EventTypes.OnDown, OnRotateDown));
             watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.LEFTANALOG, EventTypes.Leaned, CubeMove));
            
             input.AddWatcher(watchplayer1);
@@ -75,10 +75,12 @@ namespace RagadesCubeWin.States
             watchkeyboard.WatchEvent(new KeyboardEvent(Keys.S, EventTypes.Pressed, XRotDown));
             watchkeyboard.WatchEvent(new KeyboardEvent(Keys.PageUp, EventTypes.Pressed, OnRotateUp));
             watchkeyboard.WatchEvent(new KeyboardEvent(Keys.PageDown, EventTypes.Pressed, OnRotateDown));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Up, EventTypes.Tapped, OnSelHorizontalFace));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Down, EventTypes.Tapped, OnSelVerticalFace));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Left, EventTypes.Tapped, OnSelOppFace));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Right, EventTypes.Tapped, OnSelOppFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Up, EventTypes.OnUp, OnSelHorizontalFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Down, EventTypes.OnUp, OnSelVerticalFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Left, EventTypes.OnUp, OnSelOppFace));
+            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Right, EventTypes.OnUp, OnSelOppFace));
+
+            watchkeyboard.WatchEvent(new KeyboardEvent(EventTypes.Pressed , XXX));
 
             input.AddWatcher(watchkeyboard);
 
@@ -271,6 +273,12 @@ namespace RagadesCubeWin.States
         public void YRotDown()
         {
             yRot += 0.05f;
+        }
+
+        public void XXX(Keys key)
+        {
+                YRotUp();
+           
         }
 
         private void OnRotateUp()
