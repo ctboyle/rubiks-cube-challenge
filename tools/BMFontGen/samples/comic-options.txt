@@ -1,0 +1,4 @@
+﻿-name "Comic Sans MS"
+-size 14
+-output comic
+-custom 0071 abxy.png 0 0 20 20 16 21 0

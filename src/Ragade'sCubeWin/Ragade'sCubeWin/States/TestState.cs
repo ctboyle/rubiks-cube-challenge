@@ -21,6 +21,7 @@ using RagadesCubeWin.Input.Types;
 
 using RagadesCubeWin.GUI.Panes;
 using RagadesCubeWin.GUI.Primitives;
+using RagadesCubeWin.GUI.Fonts;
 #endregion
 
 namespace RagadesCubeWin.States
@@ -119,7 +120,7 @@ namespace RagadesCubeWin.States
                 new Vector3(0, 1, 0)
                 ));
 
-            guiCamera.ClearScreen = false;
+           guiCamera.ClearScreen = false;
 
             RCCameraManager.AddCamera(guiCamera, "GUI Camera");
 
@@ -169,19 +170,61 @@ namespace RagadesCubeWin.States
                 graphics.GraphicsDevice.Viewport.Height
                 );
 
-            testQuad = new RCQuad(100,40,100,40);
-
             
 
             screenPane.LocalTrans = Matrix.CreateTranslation(
                 new Vector3(
-                    -guiCamera.Width/2.0f,
-                    guiCamera.Height/2.0f,
+                    -(guiCamera.Width/2.0f +0.5f),
+                    guiCamera.Height/2.0f +0.5f,
                     0
                     ));
             
-            screenPane.AddChild(testQuad, 400, 300, 0.0f);
+            
 
+            IFontManager  fontManager = (IFontManager)Game.Services.GetService(typeof(IFontManager));
+
+            BitmapFont LucidaFont = fontManager.GetFont("Lucida Console");
+            BitmapFont RockwellFont = fontManager.GetFont("Rockwell Extra Bold");
+
+            RCText text = new RCText(
+                LucidaFont,
+                0, 0,
+                200, 200
+                );
+
+            text.Text = "Hello World I'm Alive!";
+            text.Color = Color.Yellow;
+
+             screenPane.AddChild(text, 100, 100, 0.0f);
+
+            
+            
+            RCText cubeText = new RCText(
+                RockwellFont,
+                6.0f, 6.0f,
+                6, 6
+                );
+            
+            cubeText.Text = "Hello World, I'm on the Cube!";
+            cubeText.Color = Color.White;
+
+            float size = RockwellFont.MeasureString(cubeText.Text);
+            cubeText.ScaleText(size/6.0f);
+
+            cubeText.LocalTrans *= Matrix.CreateTranslation(
+                new Vector3(-3.0f,3.0f,3.5f)
+                );
+            
+            theCube.AddChild(cubeText);
+            
+           
+            testQuad = new RCQuad(0, 0, 100, 40);
+            screenPane.AddChild(
+                testQuad,
+                600, 300,
+                0.0f
+                );
+            
 
             guiRoot = new RCSceneNode();
             guiRoot.AddChild(guiCamera);
@@ -243,7 +286,6 @@ namespace RagadesCubeWin.States
             RCCameraManager.SetActiveCamera("GUI Camera");
             RCRenderManager.DrawScene(guiRoot);
 
-            
             
 
             base.Draw(gameTime);

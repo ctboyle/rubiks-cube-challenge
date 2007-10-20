@@ -247,7 +247,7 @@ namespace RagadesCubeWin.Rendering
                     {
                         ClearScreen();
                     }
-
+                    
                     sceneRoot.Draw(_sceneEffect.GraphicsDevice);
                 }
             }

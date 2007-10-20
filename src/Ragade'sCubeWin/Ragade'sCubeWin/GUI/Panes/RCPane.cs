@@ -11,7 +11,7 @@ using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 
 namespace RagadesCubeWin.GUI.Panes
 {
-    class RCPane : RCFlatSpatial
+    public class RCPane : RCFlatSpatial
     {
         private List<RCFlatSpatial> _listChildren;
 

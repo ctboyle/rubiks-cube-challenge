@@ -1,0 +1,6 @@
+-name "Lucida Sans Unicode"
+-size 14
+-output russian
+-range 0020-007e
+-range 0400-04ff
+-nowarn-missingglyph

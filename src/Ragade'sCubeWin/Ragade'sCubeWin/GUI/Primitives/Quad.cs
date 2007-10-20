@@ -18,6 +18,13 @@ namespace RagadesCubeWin.GUI.Primitives
         private VertexPositionNormalTexture[] _vertices;
         private VertexDeclaration _vertexDeclaration;
 
+        private Color _color;
+
+        public Color Color
+        {
+            get { return _color; }
+            set { _color = value; }
+        }
 
         public Texture2D Image
         {
@@ -39,12 +46,12 @@ namespace RagadesCubeWin.GUI.Primitives
                 scrHeight
                 )
         {
+            _color = Color.White;
             BuildGemetricData();
         }
 
         private void BuildGemetricData()
         {
-
             _vertices = new VertexPositionNormalTexture[6];
             
              UpdateVertices();
@@ -96,8 +103,6 @@ namespace RagadesCubeWin.GUI.Primitives
 
         public override void Draw(GraphicsDevice graphicsDevice)
         {
-            graphicsDevice.VertexDeclaration = _vertexDeclaration;
-            graphicsDevice.RenderState.CullMode = CullMode.None;
 
             RCRenderManager.SetWorld(_worldTrans);
 
@@ -108,12 +113,12 @@ namespace RagadesCubeWin.GUI.Primitives
             }
 
             RCRenderManager.SetEffectMaterial(
-                Vector3.One,
-                Vector3.One,
+                _color.ToVector3(),
+                _color.ToVector3(),
                 Vector3.Zero,
                 0.0f,
                 Vector3.Zero,
-                1.0f
+                _color.A
                 );
 
             RCRenderManager.Render(
@@ -138,7 +143,16 @@ namespace RagadesCubeWin.GUI.Primitives
         
         public void OnRender(GraphicsDevice graphicsDevice)
         {
-            
+            if (_vertexDeclaration == null)
+            {
+                _vertexDeclaration = new VertexDeclaration(
+                graphicsDevice,
+                VertexPositionNormalTexture.VertexElements
+                );
+            }
+
+            graphicsDevice.VertexDeclaration = _vertexDeclaration;
+
             // Draw two triangles
             graphicsDevice.DrawUserPrimitives<VertexPositionNormalTexture>(
                 PrimitiveType.TriangleList,

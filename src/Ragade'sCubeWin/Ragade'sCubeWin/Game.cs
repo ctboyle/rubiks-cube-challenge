@@ -14,6 +14,9 @@ using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.SceneObjects;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
+
+using RagadesCubeWin.GUI.Fonts;
+
 #endregion
 
 namespace RagadesCubeWin
@@ -26,12 +29,15 @@ namespace RagadesCubeWin
         GraphicsDeviceManager graphics;
         ContentManager content;
         RCGameStateManager stateManager;
+        FontManager fontManager;
 
         public RagadesCube()
         {
             graphics = new GraphicsDeviceManager(this);
             content = new ContentManager(Services);
             stateManager = new RCGameStateManager(this);
+            fontManager = new FontManager(this);
+
         }
 
 
@@ -54,10 +60,35 @@ namespace RagadesCubeWin
             fps.DrawOrder = 1500;
             Components.Add(fps);
 
+            // Add a font to the font manager
+            fontManager.AddFontFromAsset(
+                "Lucida Console",
+                "Content\\Fonts\\Lucida Console\\font.xml"
+                );
+
+            fontManager.AddFontFromAsset(
+                "Rockwell Extra Bold",
+                "Content\\Fonts\\Rockwell Extra Bold -48pt\\font.xml"
+                );
+
+
             // Begin by putting our first state on the stack.
             stateManager.PushState(new RCTestState(this));
 
             base.Initialize();
+        }
+
+        protected override void LoadGraphicsContent(bool loadAllContent)
+        {
+            if (loadAllContent)
+            {
+                fontManager.LoadFonts(
+                    graphics.GraphicsDevice,
+                    content
+                    );
+            }
+
+            base.LoadGraphicsContent(loadAllContent);
         }
 
     }
