@@ -45,15 +45,11 @@ namespace RagadesCubeWin.GraphicsManagement
             }
         }
         
-        public IRCBoundingVolume worldBound
+        public IRCBoundingVolume WorldBound
         {
             get
             {
                 return _worldBound;
-            }
-            set
-            {
-                _worldBound = value;
             }
         }
 

@@ -109,15 +109,15 @@ namespace RagadesCubeWin.GraphicsManagement
                 if (fFirstChild)
                 {
                     // TODO: See if I need to use 'clone()'
-                    worldBound = child.worldBound;
+                    _worldBound = child.WorldBound;
                     fFirstChild = false;
                 }
                 else
                 {
                     // Merge the remaining children's BVs.
-                    worldBound = RCBoundingSphere.CreateMerged(
-                        worldBound,
-                        child.worldBound
+                    _worldBound = RCBoundingSphere.CreateMerged(
+                        WorldBound,
+                        child.WorldBound
                     ); 
                 }
             }

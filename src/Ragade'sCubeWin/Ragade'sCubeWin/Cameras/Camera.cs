@@ -122,6 +122,56 @@ namespace RagadesCubeWin.Cameras
 			_viewport.MaxDepth = 1.0f;
         }
 
+        public Ray? UnprojectWorldRay(Point screenCoords)
+        {
+            Ray ray;
+            
+            Vector3 near = Viewport.Unproject(
+                new Vector3(
+                    screenCoords.X,
+                    screenCoords.Y,
+                    0.0f
+                ),
+                _projection,
+                _view,
+                Matrix.Identity
+                );
+
+            Vector3 far = Viewport.Unproject(
+                new Vector3(
+                    screenCoords.X,
+                    screenCoords.Y,
+                    0.0f
+                ),
+                _projection,
+                _view,
+                Matrix.Identity
+                );
+
+            Vector3 direction = far - near;
+            direction.Normalize();
+
+            ray = new Ray(
+                _worldTrans.Translation, 
+                direction
+                );
+            
+
+            return ray;
+            
+        }
+
+        public bool ContainsPoint(Point screenCoords)
+        {
+            bool contains = false;
+            
+            contains =  (screenCoords.X >= Viewport.X) &&
+                        (screenCoords.Y >= Viewport.Y) &&
+                        (screenCoords.X < Viewport.X + Viewport.Width) &&
+                        (screenCoords.Y < Viewport.Y + Viewport.Height);
+            
+            return contains;
+        }
 
         protected override void UpdateWorldData(GameTime gameTime)
         {

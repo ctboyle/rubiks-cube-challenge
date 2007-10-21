@@ -236,7 +236,7 @@ namespace RagadesCubeWin.SceneObjects
             {
                 if (sceneObject.GetType() == typeof(RCCublet))
                 {
-                    PlaneIntersectionType result = sceneObject.worldBound.Intersects(facePlane);
+                    PlaneIntersectionType result = sceneObject.WorldBound.Intersects(facePlane);
                     if (result == PlaneIntersectionType.Intersecting)
                     {
                         listCubelets.Add((RCCublet)sceneObject);

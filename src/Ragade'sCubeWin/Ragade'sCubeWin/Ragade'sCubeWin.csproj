@@ -251,6 +251,14 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>XBox360GamePad</Name>
     </Compile>
+    <Compile Include="Picking\PickRecord.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>PickRecord</Name>
+    </Compile>
+    <Compile Include="Picking\ScenePicker.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ScenePicker</Name>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

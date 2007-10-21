@@ -149,7 +149,7 @@ namespace RagadesCubeWin.SceneObjects
         // Constant sized bounding voulume
         protected override void UpdateWorldBound()
         {
-            worldBound = _localBound.Transform(_worldTrans);
+            _worldBound = _localBound.Transform(_worldTrans);
         }
     }
 }

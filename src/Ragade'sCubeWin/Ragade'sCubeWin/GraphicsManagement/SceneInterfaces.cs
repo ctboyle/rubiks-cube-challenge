@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 
 namespace RagadesCubeWin.GraphicsManagement
 {
@@ -20,6 +21,11 @@ namespace RagadesCubeWin.GraphicsManagement
         }
 
         Matrix WorldTrans
+        {
+            get;
+        }
+
+        IRCBoundingVolume WorldBound
         {
             get;
         }
