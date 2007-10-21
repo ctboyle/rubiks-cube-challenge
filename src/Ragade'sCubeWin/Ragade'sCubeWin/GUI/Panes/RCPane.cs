@@ -103,7 +103,7 @@ namespace RagadesCubeWin.GUI.Panes
 
         [needsXML]
         [placeHolder]
-        public bool RemoveChild(RCSpatial removeChild)
+        public bool RemoveChild(RCFlatSpatial removeChild)
         {
             bool removed = false;
             if (removeChild != null)
