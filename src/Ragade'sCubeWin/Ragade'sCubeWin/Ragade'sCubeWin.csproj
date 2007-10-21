@@ -99,50 +99,50 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Spatial</Name>
     </Compile>
-    <None Include="GUI\Controls\Control Subclasses\RCButton.cs">
+    <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCButton</Name>
-    </None>
-    <None Include="GUI\Controls\Control Subclasses\RCCheckBox.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCCheckBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCCheckBox</Name>
-    </None>
-    <None Include="GUI\Controls\Control Subclasses\RCImage.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCImage.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCImage</Name>
-    </None>
-    <None Include="GUI\Controls\Control Subclasses\RCLabel.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCLabel.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCLabel</Name>
-    </None>
-    <None Include="GUI\Controls\Control Subclasses\RCRadioButton.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCRadioButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCRadioButton</Name>
-    </None>
-    <None Include="GUI\Controls\Control Subclasses\RCTextBox.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCTextBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCTextBox</Name>
-    </None>
-    <None Include="GUI\Controls\RCControl.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\RCControl.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControl</Name>
-    </None>
-    <None Include="GUI\Controls\RCControlGroup.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\RCControlGroup.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControlGroup</Name>
-    </None>
-    <None Include="GUI\Controls\RCControlManager.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\RCControlManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControlManager</Name>
-    </None>
-    <None Include="GUI\Controls\RCControl_Enumerations.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\RCControl_Enumerations.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControl_Enumerations</Name>
-    </None>
-    <None Include="GUI\Controls\RCRadioChannel.cs">
+    </Compile>
+    <Compile Include="GUI\Controls\RCRadioChannel.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCRadioChannel</Name>
-    </None>
+    </Compile>
     <Compile Include="GUI\FlatSpatial.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FlatSpatial</Name>
@@ -439,6 +439,24 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>GuiTest</Name>
+    </Content>
+    <Content Include="Content\Textures\roughButtonImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>roughButtonImage</Name>
+    </Content>
+    <Content Include="Content\Textures\roughPressedButtonImageDepressed.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>roughPressedButtonImageDepressed</Name>
+    </Content>
+    <Content Include="Content\Textures\roughSelectedButtonImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>roughSelectedButtonImage</Name>
     </Content>
     <Content Include="Content\Textures\UpgradeChrisBackground.bmp">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>

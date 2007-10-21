@@ -2,15 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ragades_Cube_2D.Classes.Controls.Control_Subclasses
+namespace RagadesCubeWin.GUI
 {
+    [placeHolder]
+    [needsXML]
     class RCRadioButton : RCControl
     {
         private RCRadioChannel channel;
 
-        public RCRadioButton(RCRadioChannel startingChannel)
+        [placeHolder]
+        [needsXML]
+        internal RCRadioButton(
+            float width, 
+            float height,
+            int screenWidth, 
+            int screenHeight,
+            RCRadioChannel channel
+
+        ) : base(
+            width,
+            height,
+            screenWidth,
+            screenHeight
+        )
         {
-            channel = startingChannel;
         }
 
         #region Public read-only properties.

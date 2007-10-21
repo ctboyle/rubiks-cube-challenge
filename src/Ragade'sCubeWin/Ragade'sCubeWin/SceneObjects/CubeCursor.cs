@@ -109,6 +109,7 @@ namespace RagadesCubeWin.SceneObjects
         /// <param name="graphicsDevice">The graphics device.</param>
         public override void Draw(GraphicsDevice graphicsDevice)
         {
+
             if (!_isVisible) return;
 
             UpdateLocalTrans();

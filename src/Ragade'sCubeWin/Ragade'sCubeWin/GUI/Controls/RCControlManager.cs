@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Ragades_Cube_2D.Classes;
-using Ragades_Cube_2D.Classes.Panes;
+using RagadesCubeWin.GUI.Panes;
 
 
-namespace Ragades_Cube_2D.Classes.Controls
+namespace RagadesCubeWin.GUI
 {
     
     class RCControlManager

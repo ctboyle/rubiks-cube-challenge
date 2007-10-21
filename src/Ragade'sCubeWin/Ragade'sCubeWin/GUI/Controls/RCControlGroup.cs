@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections;
 
 #region STRETCH GOAL
-namespace Ragades_Cube_2D.Classes.Controls
+namespace RagadesCubeWin.GUI
 {
     [needsXML]
     class RCControlGroup

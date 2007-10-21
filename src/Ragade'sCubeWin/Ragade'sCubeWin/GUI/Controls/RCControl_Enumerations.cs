@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ragades_Cube_2D.Classes.Controls
+namespace RagadesCubeWin.GUI
 {
     /// <summary>
     /// Specifies if the coordinate should be interpreted as a

@@ -1,10 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace Ragades_Cube_2D.Classes.Controls.Control_Subclasses
-{
-    class RCImage : RCControl
-    {
-    }
-}
+//namespace RagadesCubeWin.GUI
+//{
+//    [placeHolder]
+//    [needsXML]
+//    class RCImage : RCControl
+//    {
+//        [placeHolder]
+//        [needsXML]
+//        internal RCImage(
+//            float width,
+//            float height,
+//            int screenWidth,
+//            int screenHeight)
+//            : base(
+//            width,
+//            height,
+//            screenWidth,
+//            screenHeight
+//            )
+//        {
+//        }
+//    }
+//}

@@ -2,9 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ragades_Cube_2D.Classes.Controls.Control_Subclasses
+namespace RagadesCubeWin.GUI
 {
-    class RCTextBox : RCControl
+    internal class RCTextBox : RCControl
     {
+        [placeHolder]
+        [needsXML]
+        internal RCTextBox(
+            float width,
+            float height,
+            int screenWidth,
+            int screenHeight)
+            : base(
+            width,
+            height,
+            screenWidth,
+            screenHeight
+            )
+        {
+        }
     }
 }

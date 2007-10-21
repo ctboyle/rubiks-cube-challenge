@@ -22,6 +22,7 @@ using RagadesCubeWin.Input.Types;
 using RagadesCubeWin.GUI.Panes;
 using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.GUI.Fonts;
+using RagadesCubeWin.GUI;
 #endregion
 
 namespace RagadesCubeWin.States
@@ -42,6 +43,9 @@ namespace RagadesCubeWin.States
         RCCubeCursor cubeCursor;
 
         RCQuad testQuad;
+
+        RCButton testButton;
+        int timer = 0;
 
         public RCTestState(Game game)
             : base(game)
@@ -224,15 +228,27 @@ namespace RagadesCubeWin.States
                 600, 300,
                 0.0f
                 );
+
+
+
+
+
+
+
+
+            testButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
+            testButton.buttonText.Color = Color.Red;
+            testButton.buttonText.Font = LucidaFont;
+
             
+
+            screenPane.AddChild(testButton, 100, 50, 0f);
+
+
 
             guiRoot = new RCSceneNode();
             guiRoot.AddChild(guiCamera);
             guiRoot.AddChild(screenPane);
-
-
-
-
 
             base.Initialize();
         }
@@ -247,6 +263,7 @@ namespace RagadesCubeWin.States
                 testQuad.Image = content.Load<Texture2D>(
                     "Content\\Textures\\GuiTest"
                     );
+
             }
 
             base.LoadGraphicsContent(loadAllContent);
@@ -268,7 +285,38 @@ namespace RagadesCubeWin.States
 
             input.Update(gameTime);
 
-           
+
+            timer = 0;//Uncomment this to see the refreshing issue.
+            timer++;
+            if(timer>100 && timer<=200)
+            {
+                testButton.buttonText.Text = "Preparing to select...";
+                testButton.Deselect();
+            }
+            else if(timer>200 && timer<=300)
+            {
+                testButton.buttonText.Text = "Selected.";
+                testButton.Select();
+            }
+            else if (timer > 300 && timer <= 400)
+            {
+                testButton.buttonText.Text = "Preparing to activate...";
+                testButton.Select();
+            }
+            else if (timer > 400 && timer <= 500)
+            {
+                testButton.buttonText.Text = "Activated.";
+                testButton.Pressing();
+            }
+            else if (timer > 500 && timer <= 600)
+            {
+                testButton.buttonText.Text = "Preparing to start over...";
+                testButton.Pressing();
+            }
+            else if (timer > 600 )
+            {
+                timer = 0;
+            }
             // Rotate cubelet
             theCube.LocalTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(mainCamera.WorldTrans.Right, xRot);
             
