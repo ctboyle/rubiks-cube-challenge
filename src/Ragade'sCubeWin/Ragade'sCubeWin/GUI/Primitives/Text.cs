@@ -54,16 +54,29 @@ namespace RagadesCubeWin.GUI.Primitives
             _color = Color.White;
         }
 
+        public override void LoadGraphicsContent(GraphicsDevice graphics, Microsoft.Xna.Framework.Content.ContentManager content)
+        {
+            // Force regeneration on next update.
+            _textOld = true;
+            base.LoadGraphicsContent(graphics, content);
+        }
+
+        public override void UnloadGraphicsContent()
+        {
+            
+            base.UnloadGraphicsContent();
+        }
+
         protected override void UpdateWorldData(GameTime gameTime)
         {
-            base.UpdateWorldData(gameTime);
-
             // Update text if it has been changed before this frame.
             if (_textOld)
             {
                 GenerateCharacterQuads();
                 _textOld = false;
             }
+            
+            base.UpdateWorldData(gameTime);
         }
 
         public void ScaleText(float PixelToWorldRatio)
@@ -72,11 +85,13 @@ namespace RagadesCubeWin.GUI.Primitives
             {
                 float WorldToPixelRatio = 1.0f / PixelToWorldRatio;
 
-                LocalTrans *= Matrix.CreateScale(new Vector3(
-                    WorldToPixelRatio,
-                    WorldToPixelRatio,
-                    0.0f
-                    ));
+                LocalTrans *= Matrix.CreateScale(
+                    new Vector3(
+                        WorldToPixelRatio,
+                        WorldToPixelRatio,
+                        0.0f
+                        )
+                    );
             }
         }
 
@@ -84,6 +99,9 @@ namespace RagadesCubeWin.GUI.Primitives
         {
             if (_font != null)
             {
+                // Get rid of the old text.
+                _listChildren.Clear();
+
                 GlyphTextureString textureString = Font.GenerateGlyphTexturesString(
                     Vector2.Zero, 
                     _text
