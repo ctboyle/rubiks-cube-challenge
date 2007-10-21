@@ -13,7 +13,7 @@ namespace RagadesCubeWin.GUI.Panes
 {
     public class RCPane : RCFlatSpatial
     {
-        private List<RCFlatSpatial> _listChildren;
+        protected List<RCFlatSpatial> _listChildren;
 
         [needsXML]
         [placeHolder]
@@ -50,6 +50,14 @@ namespace RagadesCubeWin.GUI.Panes
                     graphics,
                     content
                     );
+            }
+        }
+
+        public override void UnloadGraphicsContent()
+        {
+            foreach (RCFlatSpatial child in _listChildren)
+            {
+                child.UnloadGraphicsContent();
             }
         }
 
@@ -91,6 +99,18 @@ namespace RagadesCubeWin.GUI.Panes
             newChild.parentNode = this;
             _listChildren.Add(newChild);
 
+        }
+
+        [needsXML]
+        [placeHolder]
+        public bool RemoveChild(RCSpatial removeChild)
+        {
+            bool removed = false;
+            if (removeChild != null)
+            {
+                removed = _listChildren.Remove(removeChild);
+            }
+            return removed;
         }
     }
 }
