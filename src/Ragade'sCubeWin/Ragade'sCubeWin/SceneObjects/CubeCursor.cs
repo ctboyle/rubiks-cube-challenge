@@ -103,6 +103,12 @@ namespace RagadesCubeWin.SceneObjects
             _indexBuffer.SetData<short>(_vertexIndices);
         }
 
+        public override void UnloadGraphicsContent()
+        {
+            _vertexBuffer = null;
+            _indexBuffer = null;
+        }
+
         /// <summary>
         /// Starts the drawing.
         /// </summary>

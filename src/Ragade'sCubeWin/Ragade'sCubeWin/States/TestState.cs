@@ -1,6 +1,8 @@
 #region Using Statements
 using System;
 using System.Collections.Generic;
+
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -18,11 +20,12 @@ using RagadesCubeWin.Cameras;
 using RagadesCubeWin.Input;
 using RagadesCubeWin.Input.Events;
 using RagadesCubeWin.Input.Types;
-
 using RagadesCubeWin.GUI.Panes;
 using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.GUI;
+using RagadesCubeWin.SceneManagement;
+
 #endregion
 
 namespace RagadesCubeWin.States
@@ -41,8 +44,6 @@ namespace RagadesCubeWin.States
         RCCube theCube;
         RCCubeController cubeController;
         RCCubeCursor cubeCursor;
-
-        RCQuad testQuad;
 
         RCButton testButton;
         int timer = 0;
@@ -85,7 +86,7 @@ namespace RagadesCubeWin.States
             watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Left, EventTypes.OnUp, OnSelOppFace));
             watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Right, EventTypes.OnUp, OnSelOppFace));
 
-            watchkeyboard.WatchEvent(new KeyboardEvent(EventTypes.Pressed , XXX));
+            //watchkeyboard.WatchEvent(new KeyboardEvent(EventTypes.Pressed , XXX));
 
             input.AddWatcher(watchkeyboard);
 
@@ -99,21 +100,15 @@ namespace RagadesCubeWin.States
         /// </summary>
         public override void Initialize()
         {
-
-            mainCamera = new RCPerspectiveCamera(graphics.GraphicsDevice.Viewport);
-
-
-            // The local position of the camera is the inverse of the view matrix.
-            mainCamera.LocalTrans = Matrix.Invert(Matrix.CreateLookAt(
-                new Vector3(10, 10, 10),
-                new Vector3(0, 0, 0),
-                new Vector3(0, 1, 0)
-                ));
-
-            RCCameraManager.AddCamera(mainCamera, "Main Camera");
-            RCCameraManager.SetActiveCamera("Main Camera");
+            CreateCubeScene();
+            CreateGuiScene();
 
 
+            base.Initialize();
+        }
+
+        private void CreateGuiScene()
+        {
             guiCamera = new RCOrthographicCamera(graphics.GraphicsDevice.Viewport);
             guiCamera.Width = (float)graphics.GraphicsDevice.Viewport.Width;
             guiCamera.Height = (float)graphics.GraphicsDevice.Viewport.Height;
@@ -124,48 +119,9 @@ namespace RagadesCubeWin.States
                 new Vector3(0, 1, 0)
                 ));
 
-           guiCamera.ClearScreen = false;
+            guiCamera.ClearScreen = false;
 
             RCCameraManager.AddCamera(guiCamera, "GUI Camera");
-
-            RCSceneNode rootNode = new RCSceneNode();
-
-            // Set up light node
-            RCDirectionalLight lightNode = new RCDirectionalLight(RCRenderManager.DirectionalLightIndex.Light0);
-
-            lightNode.Diffuse = new Vector3(1.0f, 1.0f, 1.0f);
-            lightNode.Specular = new Vector3(1.0f, 1.0f, 1.0f);
-
-            Vector3 lightDirection = new Vector3(-1.0f, -1.0f, -1.0f);
-            lightDirection.Normalize();
-
-            lightNode.Direction = lightDirection;
-
-            rootNode.AddChild(lightNode);
-
-            // Add cuble and camera
-
-            theCube = new RCCube(3, 3, 3);
-
-            cubeController = new RCCubeController();
-
-            // Add animation controller
-            theCube.AttachController(cubeController);
-
-            cubeCursor = new RCCubeCursor(theCube, Color.DarkRed);
-            theCube.AddChild(cubeCursor);
-
-
-            lightNode.AddChild(theCube);
-
-
-            rootNode.AddChild(mainCamera);
-
-
-            // Assign the root node to the class's
-            root = rootNode;
-
-
 
             RCPane screenPane = new RCPane(
                 guiCamera.Width,
@@ -174,100 +130,124 @@ namespace RagadesCubeWin.States
                 graphics.GraphicsDevice.Viewport.Height
                 );
 
-            
-
             screenPane.LocalTrans = Matrix.CreateTranslation(
                 new Vector3(
-                    -(guiCamera.Width/2.0f +0.5f),
-                    guiCamera.Height/2.0f +0.5f,
+                    -(guiCamera.Width / 2.0f + 0.5f),
+                    guiCamera.Height / 2.0f + 0.5f,
                     0
                     ));
-            
-            
 
-            IFontManager  fontManager = (IFontManager)Game.Services.GetService(typeof(IFontManager));
+
+            IFontManager fontManager = (IFontManager)Game.Services.GetService(typeof(IFontManager));
 
             BitmapFont LucidaFont = fontManager.GetFont("Lucida Console");
             BitmapFont RockwellFont = fontManager.GetFont("Rockwell Extra Bold");
 
-            RCText text = new RCText(
-                LucidaFont,
-                0, 0,
-                200, 200
-                );
-
-            text.Text = "Hello World I'm Alive!";
-            text.Color = Color.Yellow;
-
-             screenPane.AddChild(text, 100, 100, 0.0f);
-
-            
-            
             RCText cubeText = new RCText(
                 RockwellFont,
                 6.0f, 6.0f,
                 6, 6
                 );
-            
-            cubeText.Text = "Hello World, I'm on the Cube!";
+
+            cubeText.Text = "Ragade's Cube";
             cubeText.Color = Color.White;
 
             float size = RockwellFont.MeasureString(cubeText.Text);
-            cubeText.ScaleText(size/6.0f);
+            cubeText.ScaleText(size / 6.0f);
 
             cubeText.LocalTrans *= Matrix.CreateTranslation(
-                new Vector3(-3.0f,3.0f,3.5f)
+                new Vector3(-3.0f, 1.0f, 3.05f)
                 );
-            
+
             theCube.AddChild(cubeText);
-            
-           
-            testQuad = new RCQuad(0, 0, 100, 40);
-            screenPane.AddChild(
-                testQuad,
-                600, 300,
-                0.0f
-                );
-
-
-
-
-
-
 
 
             testButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
             testButton.buttonText.Color = Color.Red;
             testButton.buttonText.Font = LucidaFont;
 
-            
-
             screenPane.AddChild(testButton, 100, 50, 0f);
-
-
 
             guiRoot = new RCSceneNode();
             guiRoot.AddChild(guiCamera);
             guiRoot.AddChild(screenPane);
 
-            base.Initialize();
+
+            _sceneManager.AddScene(
+                new RCScene(
+                    guiRoot,
+                    "GUI Camera"
+                    )
+                );
+
+        }
+
+        private void CreateCubeScene()
+        {
+            // Create camera
+
+            mainCamera = new RCPerspectiveCamera(graphics.GraphicsDevice.Viewport);
+
+            // The local position of the camera is the inverse of the view matrix.
+            mainCamera.LocalTrans = Matrix.Invert(Matrix.CreateLookAt(
+                new Vector3(10, 10, 10),
+                new Vector3(0, 0, 0),
+                new Vector3(0, 1, 0)
+                ));
+
+            RCCameraManager.AddCamera(mainCamera, "Main Camera");
+
+
+            // Create objects
+            RCSceneNode rootNode = new RCSceneNode();
+            
+
+            // Set up light node
+            RCDirectionalLight lightNode = new RCDirectionalLight(
+                RCRenderManager.DirectionalLightIndex.Light0
+                );
+            lightNode.Diffuse = new Vector3(1.0f, 1.0f, 1.0f);
+            lightNode.Specular = new Vector3(1.0f, 1.0f, 1.0f);
+            Vector3 lightDirection = new Vector3(-1.0f, -1.0f, -1.0f);
+            lightDirection.Normalize();
+            lightNode.Direction = lightDirection;
+
+            
+            // Add cube and camera
+            theCube = new RCCube(3, 3, 3);
+            
+            cubeCursor = new RCCubeCursor(theCube, Color.DarkRed);
+            
+            // Add animation controller
+            cubeController = new RCCubeController();           
+            
+
+            theCube.AttachController(cubeController);
+            theCube.AddChild(cubeCursor);
+            lightNode.AddChild(theCube);
+            rootNode.AddChild(lightNode);
+            rootNode.AddChild(mainCamera);
+
+
+            _sceneManager.AddScene(
+                new RCScene(
+                    rootNode,
+                    "Main Camera"
+                    )
+                );
+
         }
 
         protected override void LoadGraphicsContent(bool loadAllContent)
         {
-            if (loadAllContent)
-            {
-                // Load graphics content throughout the scene graph
-                root.LoadGraphicsContent(graphics.GraphicsDevice, content);
-                guiRoot.LoadGraphicsContent(graphics.GraphicsDevice, content);
-                testQuad.Image = content.Load<Texture2D>(
-                    "Content\\Textures\\GuiTest"
-                    );
-
-            }
 
             base.LoadGraphicsContent(loadAllContent);
         }
+
+        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        {
+            base.UnloadGraphicsContent(unloadAllContent);
+        } 
 
 
         /// <summary>
@@ -286,7 +266,8 @@ namespace RagadesCubeWin.States
             input.Update(gameTime);
 
 
-            timer = 0;//Uncomment this to see the refreshing issue.
+            //timer = 0;//Uncomment this to see the refreshing issue.
+
             timer++;
             if(timer>100 && timer<=200)
             {
@@ -319,25 +300,10 @@ namespace RagadesCubeWin.States
             }
             // Rotate cubelet
             theCube.LocalTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(mainCamera.WorldTrans.Right, xRot);
-            
-            root.UpdateGS(gameTime, true);
-            guiRoot.UpdateGS(gameTime, true);
 
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
-        {
-            RCCameraManager.SetActiveCamera("Main Camera");
-            RCRenderManager.DrawScene(root);
-
-            RCCameraManager.SetActiveCamera("GUI Camera");
-            RCRenderManager.DrawScene(guiRoot);
-
-            
-
-            base.Draw(gameTime);
-        }
 
         public void XRotUp()
         {
@@ -367,8 +333,7 @@ namespace RagadesCubeWin.States
 
         public void XXX(Keys key)
         {
-                YRotUp();
-           
+            Debug.Write("Any key was pressed!", "TestState");
         }
 
         private void OnRotateUp()

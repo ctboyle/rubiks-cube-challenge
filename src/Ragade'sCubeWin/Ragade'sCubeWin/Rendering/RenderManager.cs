@@ -33,12 +33,18 @@ namespace RagadesCubeWin.Rendering
         private static Color _clearColor = Color.CornflowerBlue;
 
 
-        public static void Initialize(GraphicsDevice device)
+        public static void Load(GraphicsDevice device)
         {
             _sceneEffect = new BasicEffect(device, null);
             device.RenderState.DepthBufferEnable = true;
             device.RenderState.StencilEnable = true;
             
+        }
+
+        public static void Unload()
+        {
+            _sceneEffect = null;
+
         }
 
         /// <summary>

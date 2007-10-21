@@ -53,6 +53,19 @@ namespace RagadesCubeWin.GraphicsManagement
         }
 
         /// <summary>
+        /// Invokes all children's UnloadGraphicsContent.
+        /// </summary>
+        public override void UnloadGraphicsContent()
+        {
+            foreach (RCSpatial child in listChildren)
+            {
+                child.UnloadGraphicsContent();
+
+            }
+        }
+
+
+        /// <summary>
         /// Draws all children 
         /// </summary>
         public override void Draw(GraphicsDevice graphicsDevice)

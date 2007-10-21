@@ -73,8 +73,14 @@ namespace RagadesCubeWin.SceneObjects
             {
                 _faceletModel = content.Load<Model>(faceletBoxAsset);
             }
+        }
 
-            // TODO: override unload and set refrence to null.
+        public override void UnloadGraphicsContent()
+        {
+            if (_faceletModel != null)
+            {
+                _faceletModel = null;
+            }
         }
 
 

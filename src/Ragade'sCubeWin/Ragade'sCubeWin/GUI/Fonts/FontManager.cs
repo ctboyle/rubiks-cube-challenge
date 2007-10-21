@@ -37,6 +37,9 @@ namespace RagadesCubeWin.GUI.Fonts
             ContentManager content
             );
 
+        void UnloadFonts();
+
+
     }
 
     public class FontManager: IFontManager
@@ -64,6 +67,12 @@ namespace RagadesCubeWin.GUI.Fonts
                     content
                     );
             }
+        }
+
+        public void UnloadFonts()
+        {
+            // no need, when load is called again,
+            // Reset will take care of making new content.
         }
 
         public bool AddFontFromAsset(

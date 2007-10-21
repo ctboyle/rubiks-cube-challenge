@@ -25,5 +25,16 @@ namespace RagadesCubeWin.Cameras
                 activeCamera = cameras[cameraLabel] as RCCamera;
             }
         }
+
+        public static RCCamera GetCamera(string cameraLabel)
+        {
+            RCCamera getCamera = null;
+            if (cameras.ContainsKey(cameraLabel))
+            {
+                getCamera = cameras[cameraLabel] as RCCamera;
+            }
+
+            return getCamera;
+        }
     }
 }

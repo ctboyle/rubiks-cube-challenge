@@ -139,7 +139,12 @@ namespace RagadesCubeWin.GUI.Primitives
                 graphics,
                 VertexPositionNormalTexture.VertexElements
                 );
-        }       
+        }
+
+        public override void UnloadGraphicsContent()
+        {
+            _vertexDeclaration = null;
+        }
         
         public void OnRender(GraphicsDevice graphicsDevice)
         {

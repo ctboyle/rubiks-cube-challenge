@@ -102,6 +102,11 @@ namespace RagadesCubeWin.GraphicsManagement
             );
 
         /// <summary>
+        /// Abstract method for un-loading graphic content.
+        /// </summary>
+        public abstract void UnloadGraphicsContent();
+
+        /// <summary>
         /// Called to update the SceneObject
         /// 
         /// GS stands for Graphic State

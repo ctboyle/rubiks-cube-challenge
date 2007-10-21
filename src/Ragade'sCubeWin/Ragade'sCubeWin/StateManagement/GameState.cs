@@ -14,6 +14,7 @@ using RagadesCubeWin.GraphicsManagement;
 using RagadesCubeWin.SceneObjects;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
+using RagadesCubeWin.SceneManagement;
 
 namespace RagadesCubeWin.StateManagement
 {
@@ -24,6 +25,7 @@ namespace RagadesCubeWin.StateManagement
         protected Rectangle TitleSafeArea;
         protected ContentManager content;
         protected IGraphicsDeviceService graphics;
+        protected RCSceneManager _sceneManager;
 
 
         public RCGameState(Game game)
@@ -32,16 +34,35 @@ namespace RagadesCubeWin.StateManagement
             content = new ContentManager(Game.Services);
             GameManager = (IGameStateManager)game.Services.GetService(typeof(IGameStateManager));
             graphics = (IGraphicsDeviceService)this.Game.Services.GetService(typeof(IGraphicsDeviceService));
+            _sceneManager = new RCSceneManager(graphics, content);
         }
 
         protected override void LoadGraphicsContent(bool loadAllContent)
         {
-            if (loadAllContent)
-            {
-                //TitleSafeArea = Utility.GetTitleSafeArea(GraphicsDevice, 0.85f);
-            }
+
+            _sceneManager.Load(
+                    content
+                    );
 
             base.LoadGraphicsContent(loadAllContent);
+        }
+
+        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        {
+            _sceneManager.Unload();
+            base.UnloadGraphicsContent(unloadAllContent);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            _sceneManager.Draw();
+            base.Draw(gameTime);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            _sceneManager.Update(gameTime);
+            base.Update(gameTime);
         }
 
         internal protected virtual void StateChanged(object sender, EventArgs e)

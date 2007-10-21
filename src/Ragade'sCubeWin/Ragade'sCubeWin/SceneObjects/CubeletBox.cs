@@ -34,8 +34,14 @@ namespace RagadesCubeWin.SceneObjects
             {
                 _cubeletModel = content.Load<Model>(cubeletBoxAsset);
             }
+        }
 
-            // TODO: override unload and set refrence to null.
+        public override void UnloadGraphicsContent()
+        {
+            if (_cubeletModel != null)
+            {
+                _cubeletModel = null;
+            }
         }
 
 

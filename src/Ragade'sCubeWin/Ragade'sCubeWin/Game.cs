@@ -49,9 +49,7 @@ namespace RagadesCubeWin
         /// </summary>
         protected override void Initialize()
         {
-            // Initialize the rendermanager
-            RCRenderManager.Initialize(graphics.GraphicsDevice);
-
+            
             IsMouseVisible = true;
             IsFixedTimeStep = false;
 
@@ -78,17 +76,30 @@ namespace RagadesCubeWin
             base.Initialize();
         }
 
+        // Loading and unloading for games services and singletons.
         protected override void LoadGraphicsContent(bool loadAllContent)
         {
-            if (loadAllContent)
-            {
-                fontManager.LoadFonts(
-                    graphics.GraphicsDevice,
-                    content
-                    );
-            }
+
+            // Initialize the rendermanager
+            RCRenderManager.Load(graphics.GraphicsDevice);
+            
+            fontManager.LoadFonts(
+                graphics.GraphicsDevice,
+                content
+                );
 
             base.LoadGraphicsContent(loadAllContent);
+        }
+
+        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        {
+            RCRenderManager.Unload();
+
+            fontManager.UnloadFonts();
+
+            content.Unload();
+            base.UnloadGraphicsContent(unloadAllContent);
+           
         }
 
     }
