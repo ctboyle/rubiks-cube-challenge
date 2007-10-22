@@ -21,7 +21,7 @@ namespace RagadesCubeWin.GUI
         /// Property count returns the number of controls that 
         /// the RCControlManager is presently managing.
         /// </summary>
-        [shouldBeDone]
+        [doneForNow]
         public long count
         {
             get { return controlCount; }

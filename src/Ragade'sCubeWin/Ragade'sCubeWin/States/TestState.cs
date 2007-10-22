@@ -274,38 +274,40 @@ namespace RagadesCubeWin.States
             input.Update(gameTime);
 
 
-            //timer = 0;//Uncomment this to see the refreshing issue.
+////            timer = 0;//Comment this to make the button change
+//            timer++;
+//            if(timer>100 && timer<=200)
+//            {
+//                testButton.buttonText.Text = "Preparing to select...[" + (200-timer) + "]";
+//                testButton.Unfocus();
+//            }
+//            else if(timer>200 && timer<=300)
+//            {
+//                testButton.buttonText.Text = "Selected.[" + (300-timer) + "]";
+//                testButton.Focus();
+//            }
+//            else if (timer > 300 && timer <= 400)
+//            {
+//                testButton.buttonText.Text = "Preparing to activate...[" + (400-timer) + "]";
+//                testButton.Focus();
+//            }
+//            else if (timer > 400 && timer <= 500)
+//            {
+//                testButton.buttonText.Text = "Activated.[" + (500-timer) + "]";
+//                testButton.Pressing();
+//            }
+//            else if (timer > 500 && timer <= 600)
+//            {
+//                testButton.buttonText.Text = "Preparing to start over...[" + (600-timer) + "]";
+//                testButton.Pressing();
+//            }
+//            else if (timer > 600 )
+//            {
+//                timer = 0;
+//                testButton.buttonText.Text = "Nameless Button";
+//                testButton.Unfocus();
+//            }
 
-            timer++;
-            if(timer>100 && timer<=200)
-            {
-                testButton.buttonText.Text = "Preparing to select...";
-                testButton.Deselect();
-            }
-            else if(timer>200 && timer<=300)
-            {
-                testButton.buttonText.Text = "Selected.";
-                testButton.Select();
-            }
-            else if (timer > 300 && timer <= 400)
-            {
-                testButton.buttonText.Text = "Preparing to activate...";
-                testButton.Select();
-            }
-            else if (timer > 400 && timer <= 500)
-            {
-                testButton.buttonText.Text = "Activated.";
-                testButton.Pressing();
-            }
-            else if (timer > 500 && timer <= 600)
-            {
-                testButton.buttonText.Text = "Preparing to start over...";
-                testButton.Pressing();
-            }
-            else if (timer > 600 )
-            {
-                timer = 0;
-            }
             // Rotate cubelet
             theCube.LocalTrans = Matrix.CreateRotationY(yRot) * Matrix.CreateFromAxisAngle(mainCamera.WorldTrans.Right, xRot);
 

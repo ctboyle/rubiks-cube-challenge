@@ -23,5 +23,12 @@
 //            )
 //        {
 //        }
+
+        //[needsXML]
+        //[placeHolder]
+        //protected override void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
+        //{
+        //    throw new Exception("The method or operation is not implemented.");
+        //}
 //    }
 //}

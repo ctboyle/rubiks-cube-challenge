@@ -4,22 +4,22 @@ using System.Text;
 
 namespace RagadesCubeWin.GUI
 {
-    #region Attribute shouldBeDone
+    #region Attribute doneForNow
     /// <summary>
     /// The code bearing this attribute should not require further rework
     /// unless fundamental implementation changes are enacted.
     /// </summary>
-    public class shouldBeDone : Attribute{ }
-    #endregion Attribute shouldBeDone
+    public class doneForNow : Attribute{ }
+    #endregion Attribute doneForNow
 
-    #region Attribute mayNeedExpansion(string)
+    #region Attribute incomplete(string)
     /// <summary>
     /// The code bearing this attribute works but may not
     /// have all of the funtionality intended for the final
     /// version.
     /// </summary>
-    public class mayNeedExpansion : Attribute { public mayNeedExpansion(string reason) {} }
-    #endregion Attribute mayNeedExpansion(string)
+    public class incomplete : Attribute { public incomplete(string reason) {} }
+    #endregion Attribute incomplete(string)
 
     #region Attribute notFullyImplemented(string)
     /// <summary>
@@ -38,6 +38,14 @@ namespace RagadesCubeWin.GUI
     /// </summary>
     public class placeHolder : Attribute { }
     #endregion Attribute placeHolder
+
+    #region Attribute scaffolding
+    /// <summary>
+    /// The code with this attribute is scaffolding and should not
+    /// be present in the final version of the code.
+    /// </summary>
+    public class scaffolding : Attribute { }
+    #endregion Attribute scaffolding
 
     #region Attribute needsXML
     /// <summary>

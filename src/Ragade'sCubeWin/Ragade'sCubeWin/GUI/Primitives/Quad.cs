@@ -29,7 +29,10 @@ namespace RagadesCubeWin.GUI.Primitives
         public Texture2D Image
         {
             get { return _image; }
-            set { _image = value; }
+            set 
+            {
+                _image = value; 
+            }
         }
 
 

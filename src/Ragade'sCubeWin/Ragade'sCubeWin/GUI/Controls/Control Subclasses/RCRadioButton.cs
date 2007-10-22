@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace RagadesCubeWin.GUI
 {
@@ -45,8 +46,16 @@ namespace RagadesCubeWin.GUI
 
         #endregion Public read-only properties.
 
-
+        [needsXML]
+        [placeHolder]
         internal void moveToGroup(RCRadioChannel rCRadioChannel)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        [needsXML]
+        [placeHolder]
+        protected override void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
         {
             throw new Exception("The method or operation is not implemented.");
         }

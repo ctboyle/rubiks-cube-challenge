@@ -22,7 +22,7 @@ namespace RagadesCubeWin.GUI
         /// This read-only property returns the members of 
         /// the RCControlGroup as an array of RCControls.
         /// </summary>
-        [shouldBeDone]
+        [doneForNow]
         public RCControl[] members
         {
             get{ return _groupMembers; }
@@ -31,7 +31,7 @@ namespace RagadesCubeWin.GUI
         /// <summary>
         /// Read-only property that returns the number of members in the RCControlGroup.
         /// </summary>
-        [shouldBeDone]
+        [doneForNow]
         public long count
         {
             get { return groupMemberCount; }

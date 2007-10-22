@@ -31,7 +31,7 @@ namespace RagadesCubeWin.GUI
         /// <summary>
         /// Returns the number of RCRadioButtons that are in the RCRadioChannel.
         /// </summary>
-        [shouldBeDone]
+        [doneForNow]
         public long count
         { 
             get { return numberOfMembers; }
@@ -45,7 +45,7 @@ namespace RagadesCubeWin.GUI
         /// Returns the active RCRadioButton amongst this RCRadioChannel
         /// </summary>
         /// <returns>The RCRadioButton that is marked.</returns>
-        [mayNeedExpansion("If the method of storing the active button changes.")]
+        [incomplete("If the method of storing the active button changes.")]
         public RCRadioButton getActiveButton()
         {
             if (activeMemberIndex == -1)

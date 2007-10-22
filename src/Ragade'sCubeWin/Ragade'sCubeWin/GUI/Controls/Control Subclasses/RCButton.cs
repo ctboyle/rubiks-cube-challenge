@@ -18,13 +18,6 @@ namespace RagadesCubeWin.GUI
         /// </summary>
         private RCText textObject = null;
 
-        /// <summary>
-        /// The private RCQuad object that is being displayed at the current time.
-        /// </summary>
-        private RCQuad currentImageObject = null;
-
-        [needsXML]
-        private RCQuad baseImageObject = null;
 
         [needsXML]
         private RCQuad selectedImageObject = null;
@@ -48,6 +41,32 @@ namespace RagadesCubeWin.GUI
 
         #endregion ------------------------------Public properties to access objects contained within
 
+
+        #region    ------------------------------Enumerations for RCButton
+        [needsXML]
+        enum RCButtonState
+        {
+            [needsXML]
+            normal = 0,
+            [needsXML]
+            invisible = 1,
+            [needsXML]
+            disabled = 2,
+            [needsXML]
+            focused = 4,
+            [needsXML]
+            pressed = 8,
+            [needsXML]
+            pressing = 16
+        }
+        #endregion ------------------------------Enumerations for RCButton
+
+
+        
+        
+
+
+
         [placeHolder]
         [needsXML]
         internal RCButton(
@@ -68,7 +87,7 @@ namespace RagadesCubeWin.GUI
             AddChild(textObject, 15, 15, 0.1f);
             
 
-            baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
+            
             //            AddChild(selectedImageObject, 0, 0, 0f);
             
             selectedImageObject = new RCQuad(width, height, screenWidth, screenHeight);
@@ -77,26 +96,14 @@ namespace RagadesCubeWin.GUI
             activatingImageObject = new RCQuad(width, height, screenWidth, screenHeight);
 //            AddChild(activatingImageObject, 0, 0, 0f);
 
-
-            currentImageObject = baseImageObject;
+            currentImageObject.Image = baseImageObject.Image;
             AddChild(currentImageObject, 0, 0, 0f);
 
         }
 
         #region    ------------------------------Overridden functions
 
-        [placeHolder]
-        [needsXML]
-        public override void Draw(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice)
-        {
-            base.Draw(graphicsDevice);
-        }
 
-        [needsXML]
-        protected override void UpdateWorldData(Microsoft.Xna.Framework.GameTime gameTime)
-        {
-            base.UpdateWorldData(gameTime);
-        }
 
         [needsXML]
         public override void LoadGraphicsContent(GraphicsDevice graphics, Microsoft.Xna.Framework.Content.ContentManager content)
@@ -105,7 +112,8 @@ namespace RagadesCubeWin.GUI
             baseImageObject.Image = content.Load<Texture2D>("Content\\Textures\\roughButtonImage");
             selectedImageObject.Image = content.Load<Texture2D>("Content\\Textures\\roughSelectedButtonImage");
             activatingImageObject.Image = content.Load<Texture2D>("Content\\Textures\\roughPressedButtonImageDepressed");
-            
+            if (currentImageObject.Image == null)
+            { currentImageObject.Image = baseImageObject.Image; }
         }
         
         
@@ -115,26 +123,74 @@ namespace RagadesCubeWin.GUI
         #endregion ------------------------------Overridden functions
 
         [needsXML]
-        public void Select()
+        public void Focus()
         {
-            currentImageObject = selectedImageObject;
+            currentImageObject.Image = selectedImageObject.Image;
         }
 
         [needsXML]
-        public void Deselect()
+        public void UnFocus()
         {
-            currentImageObject = baseImageObject;
+            currentImageObject.Image = baseImageObject.Image;
         }
 
         [needsXML]
         public void Pressing()
         {
-            currentImageObject = activatingImageObject;
+            currentImageObject.Image = activatingImageObject.Image;
         }
 
+        [needsXML]
+        public void UnPressing()
+        {
+            currentImageObject.Image = baseImageObject.Image;
+        }
 
+        [needsXML]
+        protected override void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
+        {
+            baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
+            currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
+        }
 
+        public override bool OnEvent(GUIEvent guiEvent)
+        {
+            bool handled = false;
+            if (guiEvent is GUIMouseEvent)
+            {
+                GUIMouseEvent mouseEvent = (GUIMouseEvent)guiEvent;
 
+                switch (mouseEvent.MouseEventType)
+                {
+                    case GUIMouseEvent.GUIMouseEventType.MouseDown:
+                        Pressing();
+                        break;
+
+                    case GUIMouseEvent.GUIMouseEventType.MouseUp:
+                        Focus();
+                        break;
+                }
+
+                handled = true;
+            }
+            else if (guiEvent is GUIFocusEvent)
+            {
+                GUIFocusEvent focusEvent = (GUIFocusEvent)guiEvent;
+
+                switch (focusEvent.FocusEvent)
+                {
+                    case GUIFocusEvent.GUIFocusType.Focused:
+                        Focus();
+                        break;
+                    case GUIFocusEvent.GUIFocusType.Unfocused:
+                        UnFocus();
+                        break;
+                }
+
+                handled = true;
+            }
+            return handled;
+        }
 
 
     }

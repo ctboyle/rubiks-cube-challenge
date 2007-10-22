@@ -473,6 +473,12 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Name>GuiTest</Name>
     </Content>
+    <Content Include="Content\Textures\nothing.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>nothing</Name>
+    </Content>
     <Content Include="Content\Textures\roughButtonImage.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
