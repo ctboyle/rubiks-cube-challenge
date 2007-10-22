@@ -239,6 +239,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>XBox360GamePadTypes</Name>
     </Compile>
+    <Compile Include="Input\Watcher.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Watcher</Name>
+    </Compile>
     <Compile Include="Input\Watchers\Keyboard.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Keyboard</Name>
@@ -328,7 +332,12 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>StateManager</Name>
     </Compile>
+    <Compile Include="States\TestInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TestInputScheme</Name>
+    </Compile>
     <Compile Include="States\TestState.cs">
+      <SubType>Code</SubType>
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>TestState</Name>
     </Compile>

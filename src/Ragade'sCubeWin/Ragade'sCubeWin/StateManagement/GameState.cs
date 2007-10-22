@@ -15,13 +15,14 @@ using RagadesCubeWin.SceneObjects;
 using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
 using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.Input;
 
 namespace RagadesCubeWin.StateManagement
 {
     public abstract partial class RCGameState : DrawableGameComponent
     {
         protected IGameStateManager GameManager;
-        protected Input.InputManager input;
+        protected InputManager input;
         protected Rectangle TitleSafeArea;
         protected ContentManager content;
         protected IGraphicsDeviceService graphics;
@@ -35,6 +36,8 @@ namespace RagadesCubeWin.StateManagement
             GameManager = (IGameStateManager)game.Services.GetService(typeof(IGameStateManager));
             graphics = (IGraphicsDeviceService)this.Game.Services.GetService(typeof(IGraphicsDeviceService));
             _sceneManager = new RCSceneManager(graphics, content);
+            input = new InputManager(game);
+            input.Initialize();
         }
 
         protected override void LoadGraphicsContent(bool loadAllContent)

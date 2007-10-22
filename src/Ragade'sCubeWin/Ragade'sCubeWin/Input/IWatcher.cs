@@ -14,8 +14,6 @@ namespace RagadesCubeWin.Input
     public interface IWatcher
     {
         bool DetectMyInput();
-        bool WatchEvent(Input.Events.Event e);
-        bool RemoveEvent(Input.Events.Event e);
         void RunEvents();
     }
 }

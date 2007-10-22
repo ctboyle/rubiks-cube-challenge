@@ -3,113 +3,43 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using RagadesCubeWin.Input.Events;
 
 namespace RagadesCubeWin.Input.Watchers
 {
-    class Mouse:IWatcher
+    class MouseWatcher : RCWatcher<MouseEvent>
     {
         #region vars
-        List<Input.Events.MouseEvent> lstMouseEvents;
         RealMouseState realstate;
         #endregion
 
-        public Mouse()
+        public MouseWatcher()
         {
-            lstMouseEvents = new List<RagadesCubeWin.Input.Events.MouseEvent>();
             realstate = new RealMouseState();
-        }
-
-        /// <summary>
-        /// Add Event to watcher
-        /// </summary>
-        /// <param name="e">MouseEvent Type</param>
-        /// <returns>True if it adds successfully</returns>
-        public bool WatchEvent(Input.Events.Event e)
-        {
-            try
-            {
-                lstMouseEvents.Add((Input.Events.MouseEvent)e);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Add Event to watcher
-        /// </summary>
-        /// <param name="e">Mouse Event</param>
-        /// <returns>True if it adds successfully</returns>
-        public bool WatchEvent(Input.Events.MouseEvent e)
-        {
-            try
-            {
-                lstMouseEvents.Add(e);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Remove an event from a watcher to watch for
-        /// </summary>
-        /// <param name="e">Needs to be KeybaordEvent</param>
-        /// <returns>True if successfully removes watched event</returns>
-        public bool RemoveEvent(Input.Events.Event e)
-        {
-
-            int count = 0;
-
-            try
-            {
-                Input.Events.MouseEvent me = (Input.Events.MouseEvent)e;
-
-                foreach (Input.Events.MouseEvent ee in lstMouseEvents)
-                {
-                    if (me.getType()  == ee.getType() && me.getEvent() == ee.getEvent())
-                        break;
-                    count++;
-                }
-
-                if (count == lstMouseEvents.Count)
-                {
-                    return false;
-                }
-                else
-                {
-                    lstMouseEvents.RemoveAt(count);
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         /// <summary>
         /// Detect Mouse
         /// </summary>
         /// <returns>True if it exists</returns>
-        public bool DetectMyInput()
+        public override bool DetectMyInput()
         {
+#if XBOX
+            return false;
+#else
             // will assume it exists automatically...
             return true;
+#endif
         }
 
         /// <summary>
         /// Run the added events, execute them if true
         /// </summary>
-        public void RunEvents()
+        public override void RunEvents()
         {
             realstate.MouseState(Microsoft.Xna.Framework.Input.Mouse.GetState());
 
-            foreach (Input.Events.MouseEvent e in lstMouseEvents)
+            foreach (Input.Events.MouseEvent e in this)
             {
                 Input.Events.MouseEvent ee = e;
 

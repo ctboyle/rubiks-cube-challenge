@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework.Input;
+using RagadesCubeWin.Input.Events;
 
 namespace RagadesCubeWin.Input.Watchers
 {
@@ -10,113 +11,42 @@ namespace RagadesCubeWin.Input.Watchers
     /// Keyboard watcher
     /// Will watch given events, and execute when necessary
     /// </summary>
-    public class Keyboard:IWatcher
+    public class KeyboardWatcher : RCWatcher<KeyboardEvent>
     {
         #region Vars
-        List<Input.Events.KeyboardEvent> lstKeyboardEvents;
         RealKeyboardState realstate;
         #endregion
 
         /// <summary>
         /// Create new instance of keyboard watcher
         /// </summary>
-        public Keyboard()
+        public KeyboardWatcher()
         {
-            lstKeyboardEvents = new List<RagadesCubeWin.Input.Events.KeyboardEvent>();
             realstate = new RealKeyboardState();
         }
-
-        /// <summary>
-        /// Add event to watch for
-        /// </summary>
-        /// <param name="e">KeyboardEvent Type</param>
-        /// <returns>True if successfully adds into list</returns>
-        public bool WatchEvent(Input.Events.Event e)
-        {
-            try
-            {
-                lstKeyboardEvents.Add((Input.Events.KeyboardEvent)e);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Remove an event from a watcher to watch for
-        /// </summary>
-        /// <param name="e">Needs to be KeybaordEvent</param>
-        /// <returns>True if successfully removes watched event</returns>
-        public bool RemoveEvent(Input.Events.Event e)
-        {
-            
-            int count = 0;
-
-            try
-            {
-               Input.Events.KeyboardEvent ke = (Input.Events.KeyboardEvent)e;
-
-               foreach(Input.Events.KeyboardEvent ee in lstKeyboardEvents)
-               {
-                   if (ke.getKey() == ee.getKey() && ke.getEvent() == ee.getEvent())
-                       break;
-                   count++;
-               }
-
-               if (count == lstKeyboardEvents.Count)
-               {
-                   return false;
-               }
-               else
-               {
-                   lstKeyboardEvents.RemoveAt(count);
-                   return true;
-               }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        ///// <summary>
-        ///// Add event to watch for
-        ///// </summary>
-        ///// <param name="e">KeyboardEvent Type</param>
-        ///// <returns>True if successfully adds into list</returns>
-        //public bool WatchEvent(Input.Events.KeyboardEvent e)
-        //{
-        //    try
-        //    {
-        //        lstKeyboardEvents.Add(e);
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
 
         /// <summary>
         /// Detects input
         /// </summary>
         /// <returns>False if device is not detected</returns>
-        public bool DetectMyInput()
+        public override bool DetectMyInput()
         {
+#if XBOX
+            return false;
+#else
             // will assume it exists automatically...
             return true;
+#endif
         }
 
         /// <summary>
         /// Runs events that matches what is given by the watcher
         /// </summary>
-        public void RunEvents()
+        public override void RunEvents()
         {
             realstate.KeyboardState(Microsoft.Xna.Framework.Input.Keyboard.GetState());
 
-            foreach (Input.Events.KeyboardEvent e in lstKeyboardEvents)
+            foreach (Input.Events.KeyboardEvent e in this)
             {
                 if (!e.ALL)
                 {

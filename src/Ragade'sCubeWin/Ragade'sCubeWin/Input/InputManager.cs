@@ -71,9 +71,9 @@ namespace RagadesCubeWin.Input
         /// Remove a watcher from prefix
         /// </summary>
         /// <param name="index">Which player</param>
-        public void RemoveWatcher(int index)
+        public void RemoveWatcher(IWatcher watcher)
         {
-            watchers.RemoveAt(index);
+            watchers.Remove(watcher);
         }
     }
 }

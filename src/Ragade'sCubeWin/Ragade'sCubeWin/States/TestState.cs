@@ -25,6 +25,7 @@ using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.GUI;
 using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.Input.Watchers;
 
 #endregion
 
@@ -37,6 +38,7 @@ namespace RagadesCubeWin.States
     {
         float xRot, yRot;
 
+        RCTestInputScheme inputScheme;
         RCSpatial root;
         RCSceneNode guiRoot;
         RCCamera mainCamera;
@@ -54,45 +56,14 @@ namespace RagadesCubeWin.States
             xRot = 0;
             yRot = 0;
 
-            input = new InputManager(game);
-            input.Initialize();
-
-            #region GamePadWatcher
-            IWatcher watchplayer1 = new Input.Watchers.XBox360GamePad(PlayerIndex.One);
-
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.X, EventTypes.OnDown, OnSelHorizontalFace));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.A, EventTypes.OnDown, OnSelVerticalFace));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.B, EventTypes.OnDown, OnSelOppFace));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DUP, EventTypes.OnDown, OnRotateUp));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.DDOWN, EventTypes.OnDown, OnRotateDown));
-            watchplayer1.WatchEvent(new XBox360GamePadEvent(XBox360GamePadTypes.LEFTANALOG, EventTypes.Leaned, CubeMove));
-           
-            input.AddWatcher(watchplayer1);
-
-            #endregion
-
-            #region Keyboardwatcher
-
-            IWatcher watchkeyboard = new Input.Watchers.Keyboard();
-
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.A, EventTypes.Pressed, YRotUp));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.D, EventTypes.Pressed, YRotDown));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.W, EventTypes.Pressed, XRotUp));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.S, EventTypes.Pressed, XRotDown));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.PageUp, EventTypes.Pressed, OnRotateUp));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.PageDown, EventTypes.Pressed, OnRotateDown));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Up, EventTypes.OnUp, OnSelHorizontalFace));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Down, EventTypes.OnUp, OnSelVerticalFace));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Left, EventTypes.OnUp, OnSelOppFace));
-            watchkeyboard.WatchEvent(new KeyboardEvent(Keys.Right, EventTypes.OnUp, OnSelOppFace));
-
-            //watchkeyboard.WatchEvent(new KeyboardEvent(EventTypes.Pressed , XXX));
-
-            input.AddWatcher(watchkeyboard);
-
-            #endregion
+            inputScheme = new RCTestInputScheme(input);
+            inputScheme.Apply(this);
         }
 
+        ~RCTestState()
+        {
+            inputScheme.Unapply();
+        }
 
         /// <summary>
         /// Allows the game component to perform any initialization it needs to before starting
@@ -336,17 +307,17 @@ namespace RagadesCubeWin.States
             Debug.Write("Any key was pressed!", "TestState");
         }
 
-        private void OnRotateUp()
+        public void OnRotateUp()
         {
             cubeController.RotateFace(cubeCursor.SelectedFace, RCCube.RotationDirection.CounterClockwise);
         }
 
-        private void OnRotateDown()
+        public void OnRotateDown()
         {
             cubeController.RotateFace(cubeCursor.SelectedFace, RCCube.RotationDirection.Clockwise);
         }
 
-        private void OnSelHorizontalFace()
+        public void OnSelHorizontalFace()
         {
             switch (cubeCursor.SelectedFace)
             {
@@ -369,7 +340,7 @@ namespace RagadesCubeWin.States
             }
         }
 
-        private void OnSelVerticalFace()
+        public void OnSelVerticalFace()
         {
             switch (cubeCursor.SelectedFace)
             {
@@ -386,7 +357,7 @@ namespace RagadesCubeWin.States
             }
         }
 
-        private void OnSelOppFace()
+        public void OnSelOppFace()
         {
             switch (cubeCursor.SelectedFace)
             {
@@ -410,7 +381,7 @@ namespace RagadesCubeWin.States
                     break;
             }
         }
-
+        
         private void CursorSectionSwitch()
         {
             switch (cubeCursor.SelectedFace)
