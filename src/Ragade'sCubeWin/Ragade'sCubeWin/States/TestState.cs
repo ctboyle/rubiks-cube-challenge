@@ -26,6 +26,7 @@ using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.GUI;
 using RagadesCubeWin.SceneManagement;
 using RagadesCubeWin.Input.Watchers;
+using RagadesCubeWin.GUI.Controls.Control_Subclasses;
 
 #endregion
 
@@ -38,14 +39,20 @@ namespace RagadesCubeWin.States
     {
         float xRot, yRot;
 
+        RCScene cubeScene;
+
         RCTestInputScheme inputScheme;
-        RCSpatial root;
         RCSceneNode guiRoot;
         RCCamera mainCamera;
         RCOrthographicCamera guiCamera;
         RCCube theCube;
         RCCubeController cubeController;
         RCCubeCursor cubeCursor;
+
+        RCGUIManager cubeGuiManager;
+        RCGUIManager guiManager;
+        GuiInputScheme guiInput;
+        GuiInputScheme cubeGuiInput;
 
         RCButton testButton;
         int timer = 0;
@@ -58,6 +65,10 @@ namespace RagadesCubeWin.States
 
             inputScheme = new RCTestInputScheme(input);
             inputScheme.Apply(this);
+
+            guiInput = new GuiInputScheme(input);
+            cubeGuiInput = new GuiInputScheme(input);
+            
         }
 
         ~RCTestState()
@@ -122,6 +133,8 @@ namespace RagadesCubeWin.States
 
             cubeText.Text = "Ragade's Cube";
             cubeText.Color = Color.White;
+            
+                      
 
             float size = RockwellFont.MeasureString(cubeText.Text);
             cubeText.ScaleText(size / 6.0f);
@@ -129,26 +142,42 @@ namespace RagadesCubeWin.States
             cubeText.LocalTrans *= Matrix.CreateTranslation(
                 new Vector3(-3.0f, 1.0f, 3.05f)
                 );
-
             theCube.AddChild(cubeText);
 
+            
+            TestControl testControl = new TestControl(6f, 2f, 510, 150, RockwellFont);
+            testControl.LocalTrans *= Matrix.CreateTranslation(
+                new Vector3(-3.0f, 3.0f, 3.05f)
+                );
+
+            theCube.AddChild(testControl);
+            
 
             testButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
             testButton.buttonText.Color = Color.Red;
             testButton.buttonText.Font = LucidaFont;
 
+            
+            
+
             screenPane.AddChild(testButton, 100, 50, 0f);
+
 
             guiRoot = new RCSceneNode();
             guiRoot.AddChild(guiCamera);
             guiRoot.AddChild(screenPane);
 
-
-            _sceneManager.AddScene(
-                new RCScene(
+            RCScene guiScene = new RCScene(
                     guiRoot,
                     "GUI Camera"
-                    )
+                    );
+
+
+            guiManager = new RCGUIManager(guiScene);
+            guiInput.Apply(guiManager);
+
+            _sceneManager.AddScene(
+                guiScene
                 );
 
         }
@@ -199,13 +228,21 @@ namespace RagadesCubeWin.States
             rootNode.AddChild(lightNode);
             rootNode.AddChild(mainCamera);
 
+            
 
-            _sceneManager.AddScene(
-                new RCScene(
+            cubeScene = new RCScene(
                     rootNode,
                     "Main Camera"
-                    )
+                    );
+            
+            cubeGuiManager = new RCGUIManager(cubeScene);
+            cubeGuiInput.Apply(cubeGuiManager);
+
+            _sceneManager.AddScene(
+                cubeScene
                 );
+           
+
 
         }
 

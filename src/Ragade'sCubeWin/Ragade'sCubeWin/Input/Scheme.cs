@@ -16,10 +16,11 @@ namespace RagadesCubeWin.Input
     /// <typeparam name="CntrlType">
     /// The class that provides the methods that are to be mapped to.
     /// </typeparam>
-    public abstract class RCInputScheme<CntrlType>
+    public abstract class RCInputScheme<CntrlType> where CntrlType: class
     {
         private InputManager _inputMgr;
         private List<IWatcher> _watchList;
+        protected CntrlType _cntrlItem;
 
         /// <summary>
         /// Creates a new instance of the <see cref="RCInputScheme"/> class.
@@ -52,6 +53,8 @@ namespace RagadesCubeWin.Input
         /// <exception cref="Exception">If the scheme has already been applied.</exception>
         public void Apply(CntrlType cntrlItem)
         {
+            _cntrlItem = cntrlItem;
+
             if (_watchList.Count != 0)
                 throw new Exception("Unable to apply because this instance is already in use.");
 
@@ -71,6 +74,8 @@ namespace RagadesCubeWin.Input
         /// </summary>
         public void Unapply()
         {
+            _cntrlItem = null;
+
             foreach (IWatcher watcher in _watchList)
                 _inputMgr.RemoveWatcher(watcher);
 

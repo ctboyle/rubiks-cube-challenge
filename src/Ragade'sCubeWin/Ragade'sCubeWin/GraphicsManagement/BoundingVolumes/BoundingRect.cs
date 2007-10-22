@@ -20,8 +20,8 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
 
         public Vector3 P2
         {
-            get { return _p3; }
-            set { _p3 = value; }
+            get { return _p2; }
+            set { _p2 = value; }
         }
 
         public Vector3 P3
@@ -69,21 +69,27 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
             if (dist != null)
             {
                 // First, find the point of intersection.
-                Vector3 pIntersect = (Vector3)(ray.Position + ray.Direction * dist);
+                Vector3 pIntersect = (ray.Position + ray.Direction * dist.Value);
 
                 // Test intersection.
-                Vector3 v1 = _p2 - _p1;
-                Vector3 v3 = -v1;
-                Vector3 v4 = pIntersect - _p1;
-                Vector3 v5 = pIntersect - _p3;
+                Vector3 right = _p2 - _p1;
+                Vector3 up = _p2 - _p3;
 
+                Vector3 v1 = pIntersect - _p1;
+
+                Vector3 v3 = pIntersect - _p3;
+
+
+                up.Normalize();
+                right.Normalize();
                 v1.Normalize();
                 v3.Normalize();
-                v4.Normalize();
-                v5.Normalize();
+                
 
-                if (Vector3.Dot(v1, v4) < 0 &&
-                    Vector3.Dot(v3, v5) < 0)
+                if (!(Vector3.Dot(-up, v1)    > 0     && 
+                      Vector3.Dot(right, v1)  > 0     &&
+                      Vector3.Dot(-right, v3) > 0     &&
+                      Vector3.Dot(up,v3)      > 0 ))
                 {
                     // No colision, ensure dist is null.
                     dist = null;
@@ -118,7 +124,7 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
             Vector3 center;
             float radius;
 
-            Vector3 p1ToCenter = (_p2 - _p3) / 2.0f;
+            Vector3 p1ToCenter = (_p3 - _p1) / 2.0f;
 
             center = _p1 + p1ToCenter;
             radius = p1ToCenter.Length();

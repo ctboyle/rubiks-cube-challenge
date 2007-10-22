@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework;
 
 namespace RagadesCubeWin.GUI
 {
@@ -96,8 +97,8 @@ namespace RagadesCubeWin.GUI
     {
         public enum GUISelectType
         {
-            Selected,
-            Unselected
+            Ok,
+            Cancel
         }
         private GUISelectType _selectEvent;
 
@@ -176,6 +177,11 @@ namespace RagadesCubeWin.GUI
         public GUIMouseEventType MouseEventType
         {
             get { return _mouseEvent; }
+        }
+
+        public Point Point
+        {
+            get { return new Point(_xPos, _yPos); }
         }
 
         public GUIMouseEvent(

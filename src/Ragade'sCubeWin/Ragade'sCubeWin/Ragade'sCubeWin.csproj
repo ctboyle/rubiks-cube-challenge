@@ -123,6 +123,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCTextBox</Name>
     </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\TestControl.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TestControl</Name>
+    </Compile>
     <Compile Include="GUI\Controls\RCControl.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCControl</Name>
@@ -158,6 +162,10 @@
     <Compile Include="GUI\GUIEvent.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>GUIEvent</Name>
+    </Compile>
+    <Compile Include="GUI\GuiInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GuiInputScheme</Name>
     </Compile>
     <Compile Include="GUI\IGUIElement.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

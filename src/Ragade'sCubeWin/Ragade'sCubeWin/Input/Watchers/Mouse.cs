@@ -71,6 +71,15 @@ namespace RagadesCubeWin.Input.Watchers
 
                     }
                     else
+                    if (ee.getEvent() == Input.Types.EventTypes.OnUp)
+                    {
+                        if (realstate.IsOnUp(ee.getType()))
+                            ee = ee.execute(realstate.GetPosition(), realstate.GetHover());
+                        else
+                            ee = null;
+
+                    }
+                    else
                     if (ee.getEvent() == Input.Types.EventTypes.Leaned)
                     {
                         // buttons do not matter for a lean

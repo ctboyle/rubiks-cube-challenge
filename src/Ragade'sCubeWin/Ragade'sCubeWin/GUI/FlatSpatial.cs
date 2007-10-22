@@ -13,11 +13,43 @@ namespace RagadesCubeWin.GUI
     {
         private int pixelWidth = -1;
         private int pixelHeight = -1;
+        private int pixelPosX;
+        private int pixelPosY;
+
+        private float zOrder;
 
         private float boundingRectWidth;
         private float boundingRectHeight;
         
         private RCBoundingRect localBound;
+
+        
+
+        bool _acceptsFocus;
+
+        public bool AcceptsFocus
+        {
+            get { return _acceptsFocus; }
+            set { _acceptsFocus = value; }
+        }
+
+        public int XScreenPos
+        {
+            get { return pixelPosX; }
+            set { pixelPosX = value; }
+        }
+
+        public int YScreenPos
+        {
+            get { return pixelPosY; }
+            set { pixelPosY = value; }
+        }
+
+        public float ZOrder
+        {
+            get { return zOrder; }
+            set { zOrder = value; }
+        }
 
         public float WorldWidth
         {
@@ -79,6 +111,8 @@ namespace RagadesCubeWin.GUI
             )
             : base()
         {
+            _acceptsFocus = false;
+
             // Create a trival local bound.
             localBound = new RCBoundingRect(
                 Vector3.Zero,
@@ -126,12 +160,13 @@ namespace RagadesCubeWin.GUI
 
         #region IGUIElement Members
 
-        public bool OnEvent(GUIEvent guiEvent)
+        public virtual bool OnEvent(GUIEvent guiEvent)
         {
-            // Don't handle any events by default
+            
             return false;
         }
 
         #endregion
     }
 }
+

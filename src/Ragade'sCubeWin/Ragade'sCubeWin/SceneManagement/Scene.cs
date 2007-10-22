@@ -14,9 +14,9 @@ namespace RagadesCubeWin.SceneManagement
 {
     public class RCScene
     {
-        private string _cameraLabel;
-        private RCSpatial _sceneRoot;
-        private bool _isLoaded;
+        protected string _cameraLabel;
+        protected RCSpatial _sceneRoot;
+        protected bool _isLoaded;
 
         public string SceneCameraLabel
         {

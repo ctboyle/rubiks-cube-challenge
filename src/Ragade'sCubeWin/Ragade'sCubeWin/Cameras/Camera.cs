@@ -141,7 +141,7 @@ namespace RagadesCubeWin.Cameras
                 new Vector3(
                     screenCoords.X,
                     screenCoords.Y,
-                    0.0f
+                    1.0f
                 ),
                 _projection,
                 _view,
@@ -152,7 +152,7 @@ namespace RagadesCubeWin.Cameras
             direction.Normalize();
 
             ray = new Ray(
-                _worldTrans.Translation, 
+                near, 
                 direction
                 );
             

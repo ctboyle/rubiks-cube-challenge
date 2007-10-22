@@ -11,7 +11,7 @@ using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
 
 namespace RagadesCubeWin.GUI.Panes
 {
-    public class RCPane : RCFlatSpatial
+    public class RCPane : RCFlatSpatial, INode
     {
         protected List<RCFlatSpatial> _listChildren;
 
@@ -67,6 +67,7 @@ namespace RagadesCubeWin.GUI.Panes
 
             foreach (RCFlatSpatial child in _listChildren)
             {
+                ResizeChild(child);
                 child.UpdateGS(gameTime, false);
             }
         }
@@ -75,30 +76,40 @@ namespace RagadesCubeWin.GUI.Panes
         [placeHolder]
         public void AddChild(
             RCFlatSpatial newChild,
-            long screenCoordX,
-            long screenCoordY,
+            int screenCoordX,
+            int screenCoordY,
             float zOrder
             )
         {
+            newChild.XScreenPos = screenCoordX;
+            newChild.YScreenPos = screenCoordY;
+            newChild.ZOrder = zOrder;
+
+            ResizeChild(newChild);
+
+            newChild.parentNode = this;
+            _listChildren.Add(newChild);
+
+        }
+
+        private void ResizeChild(RCFlatSpatial newChild)
+        {
+
             // Get percentage accross the pane window the screen coords are.
-            float xScrPercent = (float)screenCoordX / (float)ScreenWidth;
-            float yScrPercent = (float)screenCoordY / (float)ScreenHeight;
+            float xScrPercent = (float)newChild.XScreenPos / (float)ScreenWidth;
+            float yScrPercent = (float)newChild.YScreenPos / (float)ScreenHeight;
 
             float xLocalDist = xScrPercent * WorldWidth;
             float yLocalDist = -yScrPercent * WorldHeight;
 
             newChild.LocalTrans = Matrix.CreateTranslation(
-                new Vector3(xLocalDist, yLocalDist, zOrder)
+                new Vector3(xLocalDist, yLocalDist, newChild.ZOrder)
                 );
 
             newChild.ResizeWorldSizeToPixelSize(
                 WorldUnitsPerPixelWidth,
                 WorldUnitsPerPixelHeight
                 );
-
-            newChild.parentNode = this;
-            _listChildren.Add(newChild);
-
         }
 
         [needsXML]
@@ -112,5 +123,23 @@ namespace RagadesCubeWin.GUI.Panes
             }
             return removed;
         }
+
+        #region INode Members
+
+        public List<ISpatial> GetChildren()
+        {
+            List<ISpatial> listSpatials = new List<ISpatial>(
+                _listChildren.Count
+                );
+
+            foreach (RCFlatSpatial child in _listChildren)
+            {
+                listSpatials.Add(child);
+            }
+
+            return listSpatials;
+        }
+
+        #endregion
     }
 }

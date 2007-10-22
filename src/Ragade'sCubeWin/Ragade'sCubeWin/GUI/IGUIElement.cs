@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework.Input;
-
+using RagadesCubeWin.GraphicsManagement;
 
 namespace RagadesCubeWin.GUI
 {
-    interface IGUIElement
+    interface IGUIElement: ISpatial
     {
         bool OnEvent(GUIEvent guiEvent);
-
+        bool AcceptsFocus { get; set;}
     }
 }

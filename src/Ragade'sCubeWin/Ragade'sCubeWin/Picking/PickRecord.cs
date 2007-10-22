@@ -184,22 +184,27 @@ namespace RagadesCubeWin.Picking
                 
                 for (int iObj = 0; iObj < _filteredItems.Count; iObj++)
                 {
-                    // If object is compatible with filter type,
                     // apply filter.
-                    if (kv.Key.IsInstanceOfType(_filteredItems[iObj]))
+                     switch (kv.Value)
                     {
-                        switch (kv.Value)
-                        {
-                            case FilterMode.KeepCompatible:
-                                // Let the item remain in the list
-                                break;
-                            case FilterMode.RemoveCompatiable:
+                        case FilterMode.KeepCompatible:
+                             // Remove if not compatible
+                            if (!kv.Key.IsInstanceOfType(_filteredItems[iObj]))
+                            {
                                 // Remove item and keep index the same.
                                 _filteredItems.RemoveAt(iObj--);
-                                break;
-                        }
+                            }
+                            // Let the item remain in the list
+                            break;
+                        case FilterMode.RemoveCompatiable:
+                             // remove if compatible
+                            if (kv.Key.IsInstanceOfType(_filteredItems[iObj]))
+                            {
+                                // Remove item and keep index the same.
+                                _filteredItems.RemoveAt(iObj--);
+                            }                            
+                            break;
                     }
-                    // If not compatible, filter does not apply.
                 }
             }
 

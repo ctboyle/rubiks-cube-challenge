@@ -14,7 +14,7 @@ namespace RagadesCubeWin.Input
         // Keeps state of button
         struct ButtonState
         {
-            public bool OnDown, Pressed, WasPressed;
+            public bool OnUp, OnDown, Pressed, WasPressed;
         };
 
         #region Vars
@@ -86,9 +86,26 @@ namespace RagadesCubeWin.Input
             };
         }
 
-        ////////////////////////////////////////////
-        // TODO: implement key up!!
-        ////////////////////////////////////////////
+        /// <summary>
+        /// Tests to see if a particular mouse button has been clicked
+        /// </summary>
+        /// <param name="mbt"></param>
+        /// <returns></returns>
+        public bool IsOnUp(Input.Types.MouseInput mbt)
+        {
+            switch (mbt)
+            {
+                // left button
+                case Input.Types.MouseInput.LeftButton:
+                    return leftbutton.OnUp;
+                // right button
+                case Input.Types.MouseInput.RightButton:
+                    return rightbutton.OnUp;
+                // unknown button
+                default:
+                    return false;
+            };
+        }
 
         /// <summary>
         /// Returns the hovered distance
@@ -133,12 +150,21 @@ namespace RagadesCubeWin.Input
                     leftbutton.OnDown = true;
                 }
             }
-            else
+            else if (ms.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Released)
             {
+                if (leftbutton.WasPressed)
+                {
+                    leftbutton.OnUp = true;
+                }
+                else
+                {
+                    leftbutton.OnUp = false;
+                }
                 leftbutton.Pressed = false;
                 leftbutton.OnDown = false;
                 leftbutton.WasPressed = false;
             }
+           
             #endregion
 
             #region RightButton
