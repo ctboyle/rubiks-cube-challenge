@@ -103,7 +103,7 @@ namespace RagadesCubeWin.States
             guiScene.ScreenPane.AddChild(testStateControl, 100, 450, 0f);
 
 
-            testStateControl.Clicked+= PushTestState;
+            testStateControl.Accepted+= PushTestState;
             
 
 
