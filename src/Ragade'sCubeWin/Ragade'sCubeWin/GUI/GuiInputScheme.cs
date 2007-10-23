@@ -50,41 +50,41 @@ namespace RagadesCubeWin.GUI
 
             if (fMoveKey)
             {
-                _cntrlItem.GuiInputEvent(new GUIMoveEvent(
+                ControlItem.GuiInputEvent(new GUIMoveEvent(
                 dir,
-                _cntrlItem
+                ControlItem
                 ));
             }
             else
             {
-                _cntrlItem.GuiInputEvent(new GUIKeyEvent(
+                ControlItem.GuiInputEvent(new GUIKeyEvent(
                     key,
-                    _cntrlItem
+                    ControlItem
                     ));
             }
         }
 
         private void OnMouseDown(Vector2 position, Vector2 move)
         {
-            _cntrlItem.GuiInputEvent(new GUIMouseEvent(
+            ControlItem.GuiInputEvent(new GUIMouseEvent(
                 GUIMouseEvent.GUIMouseEventType.MouseDown,
                 (int)position.X,
                 (int)position.Y,
-                _cntrlItem
+                ControlItem
                 ));
         }
 
         private void OnMouseUp(Vector2 position, Vector2 move)
         {
-            _cntrlItem.GuiInputEvent(new GUIMouseEvent(
+            ControlItem.GuiInputEvent(new GUIMouseEvent(
                 GUIMouseEvent.GUIMouseEventType.MouseUp,
                 (int)position.X,
                 (int)position.Y,
-                _cntrlItem
+                ControlItem
                 ));
         }
 
-        protected override IWatcher[] MapWatcherEvents(RCGUIManager cntrlItem)
+        protected override IWatcher[] MapWatcherEvents()
         {
             KeyboardWatcher keyWatcher = new KeyboardWatcher();
             MouseWatcher mouseWatcher = new MouseWatcher();

@@ -16,11 +16,11 @@ namespace RagadesCubeWin.Input
     /// <typeparam name="CntrlType">
     /// The class that provides the methods that are to be mapped to.
     /// </typeparam>
-    public abstract class RCInputScheme<CntrlType> where CntrlType: class
+    public abstract class RCInputScheme<CntrlType> where CntrlType : class
     {
         private InputManager _inputMgr;
         private List<IWatcher> _watchList;
-        protected CntrlType _cntrlItem;
+        private CntrlType _cntrlItem;
 
         /// <summary>
         /// Creates a new instance of the <see cref="RCInputScheme"/> class.
@@ -33,6 +33,7 @@ namespace RagadesCubeWin.Input
                 throw new NullReferenceException("The input manager cannot be null.");
 
             _inputMgr = im;
+            _cntrlItem = null;
             _watchList = new List<IWatcher>();
         }
 
@@ -51,14 +52,18 @@ namespace RagadesCubeWin.Input
         /// The instance of <see cref="CntrlType"/> that provides the mapping functions.
         /// </param>
         /// <exception cref="Exception">If the scheme has already been applied.</exception>
+        /// <exception cref="NullReferenceException">The <see cref="cntrlItem"/> variable cannot be null.</exception>
         public void Apply(CntrlType cntrlItem)
         {
-            _cntrlItem = cntrlItem;
-
-            if (_watchList.Count != 0)
+            if (_cntrlItem != null)
                 throw new Exception("Unable to apply because this instance is already in use.");
 
-            IWatcher[] mappedWatchers = MapWatcherEvents(cntrlItem);
+            if (cntrlItem == null)
+                throw new NullReferenceException("The mapping provider cannot be null.");
+
+            _cntrlItem = cntrlItem;
+
+            IWatcher[] mappedWatchers = MapWatcherEvents();
 
             if (mappedWatchers == null || mappedWatchers.Length == 0)
                 return;
@@ -83,13 +88,18 @@ namespace RagadesCubeWin.Input
         }
 
         /// <summary>
+        /// The instance of <see cref="CntrlType"/> that provides the mapping functions.
+        /// </summary>
+        protected CntrlType ControlItem
+        {
+            get { return _cntrlItem; }
+        }
+
+        /// <summary>
         /// Maps the inputs to the watchers and provides the watchers
         /// for local storage (so they can be unapplied).
         /// </summary>
-        /// <param name="cntrlItem">
-        /// The instance of <see cref="CntrlType"/> that provides the mapping functions.
-        /// </param>
         /// <returns>The mapped input watchers.</returns>
-        protected abstract IWatcher[] MapWatcherEvents(CntrlType cntrlItem);
+        protected abstract IWatcher[] MapWatcherEvents();
     }
 }
