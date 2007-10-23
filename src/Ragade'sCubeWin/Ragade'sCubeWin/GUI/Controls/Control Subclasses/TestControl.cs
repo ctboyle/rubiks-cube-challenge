@@ -10,6 +10,8 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
 {
     class TestControl : RCPane
     {
+        public delegate void ClickHandler();
+        public event ClickHandler Clicked;
 
         /// <summary>
         /// The private RCText object that comprises the button's text.
@@ -63,6 +65,7 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
             screenHeight
         )
         {
+
             AcceptsFocus = true;
 
             textObject = new RCText(Font, width, height, screenWidth, screenHeight);
@@ -110,21 +113,19 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
         public void Focus()
         {
             imageQuad.Image = _focusedImage;
-            Text = "Click Me! ;-)";
         }
 
         [needsXML]
         public void Unfocus()
         {
             imageQuad.Image = _baseImage;
-            Text = "Click Me! :-)";
+
         }
 
         [needsXML]
         public void Pressing()
         {
             imageQuad.Image = _pressedImage;
-            Text = "Clicks Work!                                             TO INFINITY AND BEYOND...........";
         }
 
 
@@ -143,6 +144,10 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
 
                     case GUIMouseEvent.GUIMouseEventType.MouseUp:
                         Focus();
+                        if (Clicked != null)
+                        {
+                            Clicked();
+                        }
                         break;
                 }
 
@@ -164,6 +169,17 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
 
                 handled = true;
             }
+            else if (guiEvent is GUISelectEvent)
+            {
+                GUISelectEvent selEvent = (GUISelectEvent)guiEvent;
+
+                if (selEvent.SelectEvent == GUISelectEvent.GUISelectType.Ok)
+                {
+                    Clicked();
+                }
+            }
+
+                
 
 
 

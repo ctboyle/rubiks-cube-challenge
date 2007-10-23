@@ -34,14 +34,7 @@ namespace RagadesCubeWin.GUI
 
             BuildGuiObjectListRecursive(_scene.SceneRoot);
 
-            foreach (IGUIElement element in _guiObjects)
-            {
-                if (element.AcceptsFocus)
-                {
-                    FocusElement(element);
-                    break;
-                }
-            }
+            FindFirstFocus();
         }
 
         private void BuildGuiObjectListRecursive(ISpatial root)
@@ -131,24 +124,42 @@ namespace RagadesCubeWin.GUI
             }
         }
 
+        /// <summary>
+        /// Uses algorithm to find the next control in the direction
+        /// relative to the focused control.
+        /// </summary>
+        /// <param name="direction"></param>
         private void MoveFocus(
             GUIMoveEvent.GUIMoveDirection direction
             )
         {
+            if (_focusedObject == null)
+            {
+                if (!FindFirstFocus())
+                {
+                    return;
+                }
+            }
+
+            
+            Debug.Assert(_focusedObject != null);
+               
+
+
             Vector3 moveDirection = Vector3.Zero;
             switch (direction)
             {
                 case GUIMoveEvent.GUIMoveDirection.Up:
-                    moveDirection = Vector3.Up;
+                    moveDirection = _focusedObject.WorldTrans.Up;
                     break;
                 case GUIMoveEvent.GUIMoveDirection.Down:
-                    moveDirection = Vector3.Down;
+                    moveDirection = _focusedObject.WorldTrans.Down;
                     break;
                 case GUIMoveEvent.GUIMoveDirection.Left:
-                    moveDirection = Vector3.Left;
+                    moveDirection = _focusedObject.WorldTrans.Left;
                     break;
                 case GUIMoveEvent.GUIMoveDirection.Right:
-                    moveDirection = Vector3.Right;
+                    moveDirection = _focusedObject.WorldTrans.Right;
                     break;
                 default:
                     Debug.Assert(false);
@@ -156,34 +167,70 @@ namespace RagadesCubeWin.GUI
             }
 
             IGUIElement nextCandidate = null;
-            float nextCandidateDotProd = 0;
+            float nextCandidateCloseness = float.MaxValue;
             foreach (IGUIElement element in _guiObjects)
             {
                 if (element.AcceptsFocus)
                 {
-                    if (_focusedObject != null)
+                    if (element != _focusedObject)
                     {
+                        Vector3 orthoDirection = Vector3.Cross(
+                            moveDirection, 
+                            _focusedObject.WorldTrans.Forward
+                            );
+
+
                         Vector3 dirToNext = element.WorldTrans.Translation -
                             _focusedObject.WorldTrans.Translation;
-                        dirToNext.Normalize();
 
-                        // Find the control who's location is most in the
-                        // specified direction from the focued control.
-                        float dotProd = Vector3.Dot(dirToNext, moveDirection);
-                        if (dotProd > nextCandidateDotProd)
+                        float compInMoveDir = Vector3.Dot(
+                            moveDirection,
+                            dirToNext
+                            );
+
+                        if (compInMoveDir > 0)
                         {
-                            nextCandidate = element;
-                            nextCandidateDotProd = dotProd;
+
+                            float compInOrthoDir = Vector3.Dot(
+                                orthoDirection,
+                                dirToNext
+                                );
+
+                            float candidateCloseness =
+                                1 * compInMoveDir * compInMoveDir +
+                                100 * compInOrthoDir * compInOrthoDir;
+
+                            if (candidateCloseness < nextCandidateCloseness)
+                            {
+                                nextCandidate = element;
+                                nextCandidateCloseness = candidateCloseness;
+                            }
                         }
                     }
-                    else
-                    {
-                        FocusElement(element);
-                        break;
-                    }
-                }
+                }    
+            }
+
+            if (nextCandidate != null)
+            {
+                FocusElement(nextCandidate);
             }
             
+        }
+
+        private bool FindFirstFocus()
+        {
+            bool found = false;
+            foreach (IGUIElement element in _guiObjects)
+            {
+                if (element.AcceptsFocus)
+                {
+                    FocusElement(element);
+                    found = true;
+                    break;
+                }
+            }
+
+            return found;
         }
 
         private void FocusElement(IGUIElement element)

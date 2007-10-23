@@ -57,6 +57,10 @@ namespace RagadesCubeWin.SceneManagement
             if (scene != null)
             {
                 removeSucceeded = _sceneList.Remove(scene);
+                if (removeSucceeded)
+                {
+                    scene.Unload();
+                }
             }
 
             return removeSucceeded;

@@ -106,5 +106,7 @@ namespace RagadesCubeWin.StateManagement
         {
             get { return (states.Peek()); }
         }
+
+
     }
 }

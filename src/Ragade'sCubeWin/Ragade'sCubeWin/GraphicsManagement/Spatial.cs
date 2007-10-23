@@ -27,7 +27,7 @@ namespace RagadesCubeWin.GraphicsManagement
 
         protected RCSpatial _parentNode;
         protected Matrix _worldTrans;
-        protected Matrix _localTrans;
+        private Matrix _localTrans;
 
         protected List<Controller> _animateControllers;
 
@@ -123,7 +123,6 @@ namespace RagadesCubeWin.GraphicsManagement
         public abstract void Draw(GraphicsDevice graphicsDevice);
     
 
-#region SceneObject operations
 
         public bool AttachController(Controller controller)
         {
@@ -166,6 +165,7 @@ namespace RagadesCubeWin.GraphicsManagement
             // Update animations
             UpdateControllers(gameTime);
 
+
             if (parentNode != null)
             {
                 // Compute world transform from parent's and local transforms.
@@ -194,8 +194,6 @@ namespace RagadesCubeWin.GraphicsManagement
                 parentNode.PropigateBVToRoot();
             }
         }
-
-#endregion
     }
 
 

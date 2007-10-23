@@ -49,7 +49,6 @@ namespace RagadesCubeWin.States
         RCCubeController cubeController;
         RCCubeCursor cubeCursor;
 
-        RCGUIManager cubeGuiManager;
         RCGUIManager guiManager;
         GuiInputScheme guiInput;
         GuiInputScheme cubeGuiInput;
@@ -91,86 +90,21 @@ namespace RagadesCubeWin.States
 
         private void CreateGuiScene()
         {
-            guiCamera = new RCOrthographicCamera(graphics.GraphicsDevice.Viewport);
-            guiCamera.Width = (float)graphics.GraphicsDevice.Viewport.Width;
-            guiCamera.Height = (float)graphics.GraphicsDevice.Viewport.Height;
-
-            guiCamera.LocalTrans = Matrix.Invert(Matrix.CreateLookAt(
-                new Vector3(0, 0, 10),
-                new Vector3(0, 0, 0),
-                new Vector3(0, 1, 0)
-                ));
-
-            guiCamera.ClearScreen = false;
-
-            RCCameraManager.AddCamera(guiCamera, "GUI Camera");
-
-            RCPane screenPane = new RCPane(
-                guiCamera.Width,
-                guiCamera.Height,
-                graphics.GraphicsDevice.Viewport.Width,
-                graphics.GraphicsDevice.Viewport.Height
-                );
-
-            screenPane.LocalTrans = Matrix.CreateTranslation(
-                new Vector3(
-                    -(guiCamera.Width / 2.0f + 0.5f),
-                    guiCamera.Height / 2.0f + 0.5f,
-                    0
-                    ));
-
-
+            // Get fonts.
             IFontManager fontManager = (IFontManager)Game.Services.GetService(typeof(IFontManager));
 
             BitmapFont LucidaFont = fontManager.GetFont("Lucida Console");
             BitmapFont RockwellFont = fontManager.GetFont("Rockwell Extra Bold");
 
-            RCText cubeText = new RCText(
-                RockwellFont,
-                6.0f, 6.0f,
-                6, 6
+            RCScreenScene guiScene = new RCScreenScene(
+                graphics.GraphicsDevice.Viewport
                 );
-
-            cubeText.Text = "Ragade's Cube";
-            cubeText.Color = Color.White;
-            
-                      
-
-            float size = RockwellFont.MeasureString(cubeText.Text);
-            cubeText.ScaleText(size / 6.0f);
-
-            cubeText.LocalTrans *= Matrix.CreateTranslation(
-                new Vector3(-3.0f, 1.0f, 3.05f)
-                );
-            theCube.AddChild(cubeText);
-
-            
-            TestControl testControl = new TestControl(6f, 2f, 510, 150, RockwellFont);
-            testControl.LocalTrans *= Matrix.CreateTranslation(
-                new Vector3(-3.0f, 3.0f, 3.05f)
-                );
-
-            theCube.AddChild(testControl);
-            
+           
 
             testButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
             testButton.buttonText.Color = Color.Red;
             testButton.buttonText.Font = LucidaFont;
-
-            
-            
-
-            screenPane.AddChild(testButton, 100, 50, 0f);
-
-
-            guiRoot = new RCSceneNode();
-            guiRoot.AddChild(guiCamera);
-            guiRoot.AddChild(screenPane);
-
-            RCScene guiScene = new RCScene(
-                    guiRoot,
-                    "GUI Camera"
-                    );
+            guiScene.ScreenPane.AddChild(testButton, 100, 50, 0f);
 
 
             guiManager = new RCGUIManager(guiScene);
@@ -235,8 +169,6 @@ namespace RagadesCubeWin.States
                     "Main Camera"
                     );
             
-            cubeGuiManager = new RCGUIManager(cubeScene);
-            cubeGuiInput.Apply(cubeGuiManager);
 
             _sceneManager.AddScene(
                 cubeScene
@@ -267,12 +199,6 @@ namespace RagadesCubeWin.States
             cubeCursor.IsVisible = !cubeController.IsAnimating;
 
             // Simple input watching so we can move our cubelet.
-            GamePadState padState = GamePad.GetState(PlayerIndex.One);
-            yRot += padState.ThumbSticks.Left.X * 0.05f;
-            xRot += padState.ThumbSticks.Left.Y * 0.05f;
-
-            input.Update(gameTime);
-
 
 ////            timer = 0;//Comment this to make the button change
 //            timer++;
@@ -322,8 +248,8 @@ namespace RagadesCubeWin.States
 
         public void CubeMove(Vector2 pos, Vector2 hov)
         {
-            xRot += pos.X/200;
-            yRot += pos.Y/200;
+            xRot -= pos.Y/20f;
+            yRot += pos.X/20f;
         }
 
         public void XRotDown()

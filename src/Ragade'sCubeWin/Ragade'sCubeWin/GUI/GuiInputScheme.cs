@@ -16,16 +16,27 @@ namespace RagadesCubeWin.GUI
 {
     class GuiInputScheme : RCInputScheme<RCGUIManager>
     {
+        enum AnalogstickState
+        {
+            AboveThreshold,
+            UnderThreshold
+        }
+
+        private AnalogstickState _lastLeftAnalogState;
+
         public GuiInputScheme(InputManager im)
             : base(im)
         {
+            _lastLeftAnalogState = AnalogstickState.UnderThreshold;
         }
 
 
         private void OnKeyDown(Keys key)
         {
             GUIMoveEvent.GUIMoveDirection dir = GUIMoveEvent.GUIMoveDirection.Down;
+            GUISelectEvent.GUISelectType select = GUISelectEvent.GUISelectType.Ok;
             bool fMoveKey = false;
+            bool fSelectKey = false;
             switch (key)
             {
                 case Keys.Down:
@@ -44,6 +55,14 @@ namespace RagadesCubeWin.GUI
                     dir = GUIMoveEvent.GUIMoveDirection.Right;
                     fMoveKey = true;
                     break;
+                case Keys.Enter:
+                    select = GUISelectEvent.GUISelectType.Ok;
+                    fSelectKey = true;
+                    break;
+                case Keys.Escape:
+                    select = GUISelectEvent.GUISelectType.Cancel;
+                    fSelectKey = true;
+                    break;
                 default:
                     break;
             }
@@ -51,9 +70,16 @@ namespace RagadesCubeWin.GUI
             if (fMoveKey)
             {
                 ControlItem.GuiInputEvent(new GUIMoveEvent(
-                dir,
-                ControlItem
-                ));
+                    dir,
+                    ControlItem
+                    ));
+            }
+            if (fSelectKey)
+            {
+                ControlItem.GuiInputEvent(new GUISelectEvent(
+                    select,
+                    ControlItem
+                    ));
             }
             else
             {
@@ -84,14 +110,60 @@ namespace RagadesCubeWin.GUI
                 ));
         }
 
+        private void LeftAnalog(Vector2 position, Vector2 move)
+        {
+            const float stickThreshold = 0.90f;
+
+            AnalogstickState stickState = AnalogstickState.UnderThreshold;
+
+            // TODO: have NONE direction.
+            GUIMoveEvent.GUIMoveDirection stickDir = GUIMoveEvent.GUIMoveDirection.Up;
+
+            if (Vector2.Dot(position, Vector2.UnitY) >= 0.90f)
+            {
+                stickDir = GUIMoveEvent.GUIMoveDirection.Up;
+                stickState = AnalogstickState.AboveThreshold;
+            }
+            else if (Vector2.Dot(position, -Vector2.UnitY) >= 0.90f)
+            {
+                stickDir = GUIMoveEvent.GUIMoveDirection.Down;
+                stickState = AnalogstickState.AboveThreshold;
+            }
+            else if (Vector2.Dot(position, Vector2.UnitX) >= 0.90f)
+            {
+                stickDir = GUIMoveEvent.GUIMoveDirection.Right;
+                stickState = AnalogstickState.AboveThreshold;
+            }
+            else if (Vector2.Dot(position, -Vector2.UnitX) >= 0.90f)
+            {
+                stickDir = GUIMoveEvent.GUIMoveDirection.Left;
+                stickState = AnalogstickState.AboveThreshold;
+            }
+
+            // Prevent repeat events
+            if (stickState == AnalogstickState.AboveThreshold &&
+                _lastLeftAnalogState == AnalogstickState.UnderThreshold)
+            {
+                ControlItem.GuiInputEvent(new GUIMoveEvent(
+                    stickDir,
+                    ControlItem
+                    ));
+            }
+
+            _lastLeftAnalogState = stickState;
+        }
+
         protected override IWatcher[] MapWatcherEvents()
         {
             KeyboardWatcher keyWatcher = new KeyboardWatcher();
             MouseWatcher mouseWatcher = new MouseWatcher();
+            XBox360GamePad gamePadWatcher = new XBox360GamePad(PlayerIndex.One);
+
             IWatcher[] mappedWatchers = new IWatcher[]
             {
                 keyWatcher,
-                mouseWatcher
+                mouseWatcher,
+                gamePadWatcher
             };
 
             mouseWatcher.WatchEvent(new MouseEvent(
@@ -110,7 +182,12 @@ namespace RagadesCubeWin.GUI
                 EventTypes.OnDown,
                 OnKeyDown
                 ));
-                
+
+            gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+               XBox360GamePadTypes.LEFTANALOG,
+               EventTypes.Leaned,
+               LeftAnalog
+               ));
 
             return mappedWatchers;
 

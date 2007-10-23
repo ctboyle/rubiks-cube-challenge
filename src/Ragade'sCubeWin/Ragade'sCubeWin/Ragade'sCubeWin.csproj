@@ -99,6 +99,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Spatial</Name>
     </Compile>
+    <Compile Include="GUI\2dGuiScene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>2dGuiScene</Name>
+    </Compile>
     <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>RCButton</Name>
@@ -339,6 +343,10 @@
     <Compile Include="StateManagement\StateManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>StateManager</Name>
+    </Compile>
+    <Compile Include="States\GuiTestState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GuiTestState</Name>
     </Compile>
     <Compile Include="States\TestInputScheme.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

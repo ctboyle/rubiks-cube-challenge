@@ -21,19 +21,18 @@ namespace RagadesCubeWin.StateManagement
 {
     public abstract partial class RCGameState : DrawableGameComponent
     {
-        protected IGameStateManager GameManager;
+        protected IGameStateManager gameManager;
         protected InputManager input;
         protected Rectangle TitleSafeArea;
         protected ContentManager content;
         protected IGraphicsDeviceService graphics;
         protected RCSceneManager _sceneManager;
 
-
         public RCGameState(Game game)
             : base(game)
         {
             content = new ContentManager(Game.Services);
-            GameManager = (IGameStateManager)game.Services.GetService(typeof(IGameStateManager));
+            gameManager = (IGameStateManager)game.Services.GetService(typeof(IGameStateManager));
             graphics = (IGraphicsDeviceService)this.Game.Services.GetService(typeof(IGraphicsDeviceService));
             _sceneManager = new RCSceneManager(graphics, content);
             input = new InputManager(game);
@@ -64,13 +63,14 @@ namespace RagadesCubeWin.StateManagement
 
         public override void Update(GameTime gameTime)
         {
+            input.Update(gameTime);
             _sceneManager.Update(gameTime);
             base.Update(gameTime);
         }
 
         internal protected virtual void StateChanged(object sender, EventArgs e)
         {
-            if (GameManager.State == this.Value)
+            if (gameManager.State == this.Value)
             {
                 Visible = Enabled = true;
             }
