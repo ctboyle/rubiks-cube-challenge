@@ -99,9 +99,9 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Spatial</Name>
     </Compile>
-    <Compile Include="GUI\2dGuiScene.cs">
+    <Compile Include="GUI\ScreenScene.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>2dGuiScene</Name>
+      <Name>ScreenScene</Name>
     </Compile>
     <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
