@@ -33,55 +33,33 @@ namespace RagadesCubeWin.GUI
 
         private void OnKeyDown(Keys key)
         {
-            GUIMoveEvent.GUIMoveDirection dir = GUIMoveEvent.GUIMoveDirection.Down;
-            GUISelectEvent.GUISelectType select = GUISelectEvent.GUISelectType.Ok;
-            bool fMoveKey = false;
-            bool fSelectKey = false;
+            bool fKeyEvent = true;
             switch (key)
             {
                 case Keys.Down:
-                    dir = GUIMoveEvent.GUIMoveDirection.Down;
-                    fMoveKey = true;
+                    ControlItem.MoveDown();
                     break;
                 case Keys.Up:
-                    dir = GUIMoveEvent.GUIMoveDirection.Up;
-                    fMoveKey = true;
+                    ControlItem.MoveUp();
                     break;
                 case Keys.Left:
-                    dir = GUIMoveEvent.GUIMoveDirection.Left;
-                    fMoveKey = true;
+                    ControlItem.MoveLeft();
                     break;
                 case Keys.Right:
-                    dir = GUIMoveEvent.GUIMoveDirection.Right;
-                    fMoveKey = true;
+                    ControlItem.MoveRight();
                     break;
                 case Keys.Enter:
-                    select = GUISelectEvent.GUISelectType.Ok;
-                    fSelectKey = true;
+                    ControlItem.AcceptFocused();
                     break;
                 case Keys.Escape:
-                    select = GUISelectEvent.GUISelectType.Cancel;
-                    fSelectKey = true;
+                    ControlItem.DeclineFocused();
                     break;
                 default:
+                    fKeyEvent = true;
                     break;
             }
 
-            if (fMoveKey)
-            {
-                ControlItem.GuiInputEvent(new GUIMoveEvent(
-                    dir,
-                    ControlItem
-                    ));
-            }
-            if (fSelectKey)
-            {
-                ControlItem.GuiInputEvent(new GUISelectEvent(
-                    select,
-                    ControlItem
-                    ));
-            }
-            else
+            if (fKeyEvent)
             {
                 ControlItem.GuiInputEvent(new GUIKeyEvent(
                     key,
@@ -119,22 +97,22 @@ namespace RagadesCubeWin.GUI
             // TODO: have NONE direction.
             GUIMoveEvent.GUIMoveDirection stickDir = GUIMoveEvent.GUIMoveDirection.Up;
 
-            if (Vector2.Dot(position, Vector2.UnitY) >= 0.90f)
+            if (Vector2.Dot(position, Vector2.UnitY) >= stickThreshold)
             {
                 stickDir = GUIMoveEvent.GUIMoveDirection.Up;
                 stickState = AnalogstickState.AboveThreshold;
             }
-            else if (Vector2.Dot(position, -Vector2.UnitY) >= 0.90f)
+            else if (Vector2.Dot(position, -Vector2.UnitY) >= stickThreshold)
             {
                 stickDir = GUIMoveEvent.GUIMoveDirection.Down;
                 stickState = AnalogstickState.AboveThreshold;
             }
-            else if (Vector2.Dot(position, Vector2.UnitX) >= 0.90f)
+            else if (Vector2.Dot(position, Vector2.UnitX) >= stickThreshold)
             {
                 stickDir = GUIMoveEvent.GUIMoveDirection.Right;
                 stickState = AnalogstickState.AboveThreshold;
             }
-            else if (Vector2.Dot(position, -Vector2.UnitX) >= 0.90f)
+            else if (Vector2.Dot(position, -Vector2.UnitX) >= stickThreshold)
             {
                 stickDir = GUIMoveEvent.GUIMoveDirection.Left;
                 stickState = AnalogstickState.AboveThreshold;
@@ -144,14 +122,14 @@ namespace RagadesCubeWin.GUI
             if (stickState == AnalogstickState.AboveThreshold &&
                 _lastLeftAnalogState == AnalogstickState.UnderThreshold)
             {
-                ControlItem.GuiInputEvent(new GUIMoveEvent(
-                    stickDir,
-                    ControlItem
-                    ));
+                ControlItem.MoveEvent(stickDir);
             }
 
             _lastLeftAnalogState = stickState;
         }
+
+
+
 
         protected override IWatcher[] MapWatcherEvents()
         {
@@ -159,37 +137,84 @@ namespace RagadesCubeWin.GUI
             MouseWatcher mouseWatcher = new MouseWatcher();
             XBox360GamePad gamePadWatcher = new XBox360GamePad(PlayerIndex.One);
 
-            IWatcher[] mappedWatchers = new IWatcher[]
+            List<IWatcher> mappedWatchers = new List<IWatcher>();
+
+            if (mouseWatcher.DetectMyInput())
             {
-                keyWatcher,
-                mouseWatcher,
-                gamePadWatcher
-            };
+                mouseWatcher.WatchEvent(new MouseEvent(
+                    MouseInput.LeftButton,
+                    EventTypes.OnDown,
+                    OnMouseDown
+                    ));
 
-            mouseWatcher.WatchEvent(new MouseEvent(
-                MouseInput.LeftButton,
-                EventTypes.OnDown,
-                OnMouseDown
-                ));
+                mouseWatcher.WatchEvent(new MouseEvent(
+                    MouseInput.LeftButton,
+                    EventTypes.OnUp,
+                    OnMouseUp
+                    ));
+                
+                mappedWatchers.Add(mouseWatcher);
+            }
 
-            mouseWatcher.WatchEvent(new MouseEvent(
-                MouseInput.LeftButton,
-                EventTypes.OnUp,
-                OnMouseUp
-                ));
+            if (keyWatcher.DetectMyInput())
+            {
 
-            keyWatcher.WatchEvent(new KeyboardEvent(
-                EventTypes.OnDown,
-                OnKeyDown
-                ));
+                keyWatcher.WatchEvent(new KeyboardEvent(
+                    EventTypes.OnDown,
+                    OnKeyDown
+                    ));
 
-            gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
-               XBox360GamePadTypes.LEFTANALOG,
-               EventTypes.Leaned,
-               LeftAnalog
-               ));
+                mappedWatchers.Add(keyWatcher);
+            }
 
-            return mappedWatchers;
+            if (gamePadWatcher.DetectMyInput())
+            {
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.LEFTANALOG,
+                   EventTypes.Leaned,
+                   LeftAnalog
+                   ));
+
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.A,
+                   EventTypes.OnDown,
+                   ControlItem.AcceptFocused
+                   ));
+
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.B,
+                   EventTypes.OnDown,
+                   ControlItem.DeclineFocused
+                   ));
+
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.DDOWN,
+                   EventTypes.OnDown,
+                   ControlItem.MoveDown
+                   ));
+
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.DUP,
+                   EventTypes.OnDown,
+                   ControlItem.MoveUp
+                   ));
+
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.DLEFT,
+                   EventTypes.OnDown,
+                   ControlItem.MoveLeft
+                   ));
+
+                gamePadWatcher.WatchEvent(new XBox360GamePadEvent(
+                   XBox360GamePadTypes.DRIGHT,
+                   EventTypes.OnDown,
+                   ControlItem.MoveRight
+                   ));
+
+                mappedWatchers.Add(gamePadWatcher);
+            }
+
+            return mappedWatchers.ToArray();
 
         }
     }

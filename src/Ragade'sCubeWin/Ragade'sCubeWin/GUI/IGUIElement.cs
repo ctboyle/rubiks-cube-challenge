@@ -7,7 +7,7 @@ using RagadesCubeWin.GraphicsManagement;
 
 namespace RagadesCubeWin.GUI
 {
-    interface IGUIElement: ISpatial
+    public interface IGUIElement: ISpatial
     {
         bool OnEvent(GUIEvent guiEvent);
         bool AcceptsFocus { get; set;}

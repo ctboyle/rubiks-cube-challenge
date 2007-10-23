@@ -97,8 +97,8 @@ namespace RagadesCubeWin.GUI
     {
         public enum GUISelectType
         {
-            Ok,
-            Cancel
+            Accept,
+            Decline
         }
         private GUISelectType _selectEvent;
 

@@ -11,7 +11,7 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
     class TestControl : RCPane
     {
         public delegate void ClickHandler();
-        public event ClickHandler Clicked;
+        public event ClickHandler Accepted;
 
         /// <summary>
         /// The private RCText object that comprises the button's text.
@@ -144,10 +144,6 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
 
                     case GUIMouseEvent.GUIMouseEventType.MouseUp:
                         Focus();
-                        if (Clicked != null)
-                        {
-                            Clicked();
-                        }
                         break;
                 }
 
@@ -173,15 +169,26 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
             {
                 GUISelectEvent selEvent = (GUISelectEvent)guiEvent;
 
-                if (selEvent.SelectEvent == GUISelectEvent.GUISelectType.Ok)
+                if (selEvent.SelectEvent == GUISelectEvent.GUISelectType.Accept)
                 {
-                    Clicked();
+                    if (Accepted != null)
+                    {
+                        Accepted();
+                    }
+                }
+                else
+                {
+                    if (guiEvent.GUIManager.IsFocused(this))
+                    {
+                        Focus();
+                    }
+                    else
+                    {
+                        Unfocus();
+                    }
+
                 }
             }
-
-                
-
-
 
             return handled;
         }

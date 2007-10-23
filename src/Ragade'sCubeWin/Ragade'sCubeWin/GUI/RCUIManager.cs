@@ -18,12 +18,17 @@ namespace RagadesCubeWin.GUI
         private RCScenePicker _picker;
 
         private IGUIElement _focusedObject;
+        private IGUIElement _lastClicked;
+        
+        private bool _focusLock;
 
         public RCGUIManager(RCScene scene)
         {
             _scene = scene;
             _guiObjects = new List<IGUIElement>();
             _picker = new RCScenePicker();
+
+            _focusLock = false;
 
             RebuildGuiObjectList();
         }
@@ -60,39 +65,72 @@ namespace RagadesCubeWin.GUI
             }
         }
 
+        #region Move Functions
+        public void MoveDown()
+        {
+            MoveEvent(GUIMoveEvent.GUIMoveDirection.Down);
+        }
+        public void MoveUp()
+        {
+            MoveEvent(GUIMoveEvent.GUIMoveDirection.Up);
+        }
+        public void MoveLeft()
+        {
+            MoveEvent(GUIMoveEvent.GUIMoveDirection.Left);
+        }
+        public void MoveRight()
+        {
+            MoveEvent(GUIMoveEvent.GUIMoveDirection.Right);
+        }
+
+        public void MoveEvent(GUIMoveEvent.GUIMoveDirection direction)
+        {
+            GuiInputEvent(new GUIMoveEvent(
+                    direction,
+                    this
+                    ));
+        }
+
+        #endregion 
+
+        #region Selection Functions
+        public void AcceptFocused()
+        {
+            SelectFocused(GUISelectEvent.GUISelectType.Accept);
+        }
+        public void DeclineFocused()
+        {
+            SelectFocused(GUISelectEvent.GUISelectType.Decline);
+        }
+
+        private void SelectElement(
+            IGUIElement element,
+            GUISelectEvent.GUISelectType type
+            )
+        {
+            if (element != null)
+            {
+                element.OnEvent(new GUISelectEvent(
+                     type,
+                     this
+                     ));
+            }
+        }
+
+        private void SelectFocused(GUISelectEvent.GUISelectType type)
+        {
+            SelectElement(_focusedObject, type);
+        }
+
+        #endregion 
+
+
         // Forward input events on to GUIElements
         public void GuiInputEvent(GUIEvent inputEvent)
         {
             if (inputEvent is GUIMouseEvent)
             {
-                GUIMouseEvent mouseEvent =(GUIMouseEvent)inputEvent;
-
-                if (mouseEvent.MouseEventType == GUIMouseEvent.GUIMouseEventType.MouseDown)
-                {
-                    List<ISpatial> listElements = RetriveElements(mouseEvent.Point);
-
-                    foreach (ISpatial element in listElements)
-                    {
-                        Debug.Assert(element is IGUIElement);
-
-                        IGUIElement e = (IGUIElement)element;
-
-                        if (e.AcceptsFocus)
-                        {
-                            FocusElement(e);
-                        }
-
-                        // Send event on to control
-                        e.OnEvent(inputEvent);
-                    }
-                }
-                else if (mouseEvent.MouseEventType == GUIMouseEvent.GUIMouseEventType.MouseUp)
-                {
-                    if (_focusedObject != null)
-                    {
-                        _focusedObject.OnEvent(mouseEvent);
-                    }
-                }
+                OnMouseEvent(inputEvent);
             }
             else if (inputEvent is GUIMoveEvent)
             {
@@ -115,12 +153,71 @@ namespace RagadesCubeWin.GUI
                     _focusedObject.OnEvent(inputEvent);
                 }
             }
-            else if (inputEvent is GUISelectEvent)
+        }
+
+        private void OnMouseEvent(GUIEvent inputEvent)
+        {
+            GUIMouseEvent mouseEvent = (GUIMouseEvent)inputEvent;
+
+            if (mouseEvent.MouseEventType == GUIMouseEvent.GUIMouseEventType.MouseDown)
             {
-                if (_focusedObject != null)
+                List<ISpatial> listElements = RetriveElements(mouseEvent.Point);
+
+                foreach (ISpatial element in listElements)
                 {
-                    _focusedObject.OnEvent(inputEvent);
+                    Debug.Assert(element is IGUIElement);
+
+                    IGUIElement e = (IGUIElement)element;
+
+                    if (e.AcceptsFocus)
+                    {
+                        FocusElement(e);
+                        _lastClicked = e;
+                    }
+
+                    // Send event on to control
+                    e.OnEvent(inputEvent);
                 }
+            }
+            else if (mouseEvent.MouseEventType == GUIMouseEvent.GUIMouseEventType.MouseUp)
+            {
+                if (_lastClicked != null)
+                {
+                    List<ISpatial> listElements = RetriveElements(mouseEvent.Point);
+
+                    // Find elements under the cursor.
+                    foreach (ISpatial element in listElements)
+                    {
+                        Debug.Assert(element is IGUIElement);
+
+                        IGUIElement e = (IGUIElement)element;
+
+                        // If the mouse button comes up on the control that
+                        // it came down on, Send an accept event to it.
+
+                        // Also uncache the last clicked item.
+                        if (e == _lastClicked)
+                        {
+                            // Send accept the item.
+                            SelectElement(e, GUISelectEvent.GUISelectType.Accept);
+                            _lastClicked = null;
+                        }
+                        
+                        // Send mouse up event to all affected controls.
+                        e.OnEvent(mouseEvent);
+                    }
+
+                    // If previously clicked button did not have a mouse
+                    // buttom come up while the cursor is on it. Assume the
+                    // user wanted to decline the button.
+                    if (_lastClicked != null)
+                    {
+                        SelectElement(_lastClicked, GUISelectEvent.GUISelectType.Decline);
+                        _lastClicked = null;
+                    }       
+                }
+
+                
             }
         }
 
@@ -235,6 +332,11 @@ namespace RagadesCubeWin.GUI
 
         private void FocusElement(IGUIElement element)
         {
+            if (element == null)
+            {
+                return;
+            }
+            
             if (_focusedObject != null)
             {
                 
@@ -257,7 +359,35 @@ namespace RagadesCubeWin.GUI
                         )
                     );
             }
+            
 
+        }
+
+        public void CaptureFocus(IGUIElement element)
+        {
+            if (element == null)
+            {
+                return;
+            }
+
+            FocusElement(element);
+            _focusLock = true;
+        }
+
+        public void ReleaseFocus()
+        {
+            _focusLock = false;
+        }
+
+
+        public bool IsFocused(IGUIElement element)
+        {
+            if (element == null)
+            {
+                return false;
+            }
+
+            return _focusedObject != null && _focusedObject == element;
         }
 
         private List<ISpatial> RetriveElements(Point scrCoords)
