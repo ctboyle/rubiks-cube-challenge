@@ -15,11 +15,11 @@ namespace RagadesCubeWin.GUI
     {
         #region    ------------------------------Protected data members
         
-        [scaffolding]
-        /// <summary>
-        /// The protected RCQuad object that is being displayed at the current time.
-        /// </summary>
-        protected RCQuad currentImageObject = null;
+        //[scaffolding]
+        ///// <summary>
+        ///// The protected RCQuad object that is being displayed at the current time.
+        ///// </summary>
+        //protected RCQuad currentImageObject = null;
 
         /// <summary>
         /// The protected RCQuad object that represents the object in question with absolutely no modification.
@@ -34,7 +34,7 @@ namespace RagadesCubeWin.GUI
         [needsXML]
         virtual protected void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
         {
-            currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
+            //currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
             baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
         }
         #endregion ------------------------------Protected virtual functions
@@ -54,7 +54,7 @@ namespace RagadesCubeWin.GUI
             screenHeight
         )
         {
-            currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
+            //currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
             baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
         }
 
@@ -67,7 +67,7 @@ namespace RagadesCubeWin.GUI
         [needsXML]
         public override void UnloadGraphicsContent()
         {
-            currentImageObject = null;
+            //currentImageObject = null;
             baseImageObject = null;
             base.UnloadGraphicsContent();
         }

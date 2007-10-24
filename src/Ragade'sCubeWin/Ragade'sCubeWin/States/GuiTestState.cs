@@ -45,6 +45,7 @@ namespace RagadesCubeWin.States
 
 
         RCButton testButton;
+        RCButton toggleButton;
         int timer = 0;
 
         public RCGuiTestState(Game game)
@@ -111,7 +112,14 @@ namespace RagadesCubeWin.States
             testButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
             testButton.buttonText.Color = Color.Red;
             testButton.buttonText.Font = LucidaFont;
-            //guiScene.ScreenPane.AddChild(testButton, 100, 50, 0f);
+            //testButton.AfterPressedAndReleased += PushTestState;
+            testButton.AfterPressedAndReleased += flipToggleButton;
+            guiScene.ScreenPane.AddChild(testButton, 500, 450, 0f);
+
+            toggleButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
+            toggleButton.buttonText.Color = Color.Blue;
+            toggleButton.buttonText.Text = "Active / INACTIVE";
+            guiScene.ScreenPane.AddChild(toggleButton, 500, 400, 0f);
 
 
             guiManager = new RCGUIManager(guiScene);
@@ -125,6 +133,15 @@ namespace RagadesCubeWin.States
                 );
 
         }
+
+        void flipToggleButton()
+        {
+            if (toggleButton.isBeingPushed)
+            { toggleButton.UnPressingInternalLogic(); }
+            else
+            { toggleButton.PressingInternalLogic(); }
+        }
+        
 
         void PushTestState()
         {

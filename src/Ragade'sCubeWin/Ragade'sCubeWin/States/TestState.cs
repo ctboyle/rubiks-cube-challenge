@@ -53,7 +53,11 @@ namespace RagadesCubeWin.States
         GuiInputScheme guiInput;
         GuiInputScheme cubeGuiInput;
 
-        RCButton testButton;
+       
+        RCButton timeButton;
+
+        DateTime timeBegan;
+        DateTime currentTime;
         int timer = 0;
 
         public RCTestState(Game game)
@@ -67,7 +71,7 @@ namespace RagadesCubeWin.States
 
             guiInput = new GuiInputScheme(input);
             cubeGuiInput = new GuiInputScheme(input);
-            
+            timeBegan = DateTime.MinValue;
         }
 
         ~RCTestState()
@@ -101,10 +105,10 @@ namespace RagadesCubeWin.States
                 );
            
 
-            testButton = new RCButton(200f, 50f, 200, 50, LucidaFont);
-            testButton.buttonText.Color = Color.Red;
-            testButton.buttonText.Font = LucidaFont;
-            guiScene.ScreenPane.AddChild(testButton, 100, 50, 0f);
+            timeButton = new RCButton(180f, 50f, 180, 50, LucidaFont);
+            timeButton.buttonText.Color = Color.Red;
+            timeButton.buttonText.Font = LucidaFont;
+            guiScene.ScreenPane.AddChild(timeButton, 100, 50, 0f);
 
 
             guiManager = new RCGUIManager(guiScene);
@@ -201,8 +205,15 @@ namespace RagadesCubeWin.States
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            cubeCursor.IsVisible = !cubeController.IsAnimating;
-
+            if (timeBegan == DateTime.MinValue)
+            {
+                timeBegan = DateTime.Now;
+            }
+            currentTime = DateTime.Now;
+            TimeSpan timeElapsed = (currentTime - timeBegan);
+            timeButton.buttonText.Text = (byte)timeElapsed.TotalHours + ":" + (byte)timeElapsed.TotalMinutes + ":" + (byte)timeElapsed.TotalSeconds + ":" + (byte)timeElapsed.TotalMilliseconds;
+            timeButton.buttonText.Text = timeButton.buttonText.Text + " (BTN)";
+            
             // Simple input watching so we can move our cubelet.
 
 ////            timer = 0;//Comment this to make the button change
