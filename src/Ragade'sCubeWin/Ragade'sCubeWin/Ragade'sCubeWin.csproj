@@ -63,6 +63,18 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CubeController</Name>
     </Compile>
+    <Compile Include="Animation\KeyFrameController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>KeyFrameController</Name>
+    </Compile>
+    <Compile Include="Rendering\LightSource.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>LightSource</Name>
+    </Compile>
+    <Compile Include="States\MainMenu\MenuCameraController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MenuCameraController</Name>
+    </Compile>
     <Compile Include="Cameras\OrthographicCamera.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>OrthographicCamera</Name>
@@ -347,6 +359,22 @@
     <Compile Include="States\GuiTestState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>GuiTestState</Name>
+    </Compile>
+    <Compile Include="States\MainMenu\MainMenuCubeController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MainMenuCubeController</Name>
+    </Compile>
+    <Compile Include="States\MainMenu\MainMenuInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MainMenuInputScheme</Name>
+    </Compile>
+    <Compile Include="States\MainMenu\MainMenuScene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MainMenuScene</Name>
+    </Compile>
+    <Compile Include="States\MainMenu\MainMenuState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MainMenuState</Name>
     </Compile>
     <Compile Include="States\TestInputScheme.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

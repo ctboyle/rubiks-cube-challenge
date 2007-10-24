@@ -14,8 +14,9 @@ namespace RagadesCubeWin.Rendering
     /// 
     /// Children of this node will we rendered with this light enabled.
     /// </summary>
-    class RCDirectionalLight : RCSceneNode
+    public class RCDirectionalLight : RCSceneNode
     {
+        protected RCLightSource _lightSource;
         protected RCRenderManager.DirectionalLightIndex _index;
         protected Vector3 _direction;
         protected Vector3 _diffuse;
@@ -33,11 +34,7 @@ namespace RagadesCubeWin.Rendering
         {
             get
             {
-                return _direction;
-            }
-            set
-            {
-                _direction = value;
+                return _lightSource.WorldTrans.Forward;
             }
         }
 
@@ -63,10 +60,16 @@ namespace RagadesCubeWin.Rendering
             {
                 _specular = value;
             }
-        }      
+        }
+
+        public RCLightSource LightSource
+        {
+            get { return _lightSource; }
+        }
         
         public RCDirectionalLight(RCRenderManager.DirectionalLightIndex index)
         {
+            _lightSource = new RCLightSource(this);
             _index = index;
         }
 

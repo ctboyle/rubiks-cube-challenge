@@ -142,9 +142,14 @@ namespace RagadesCubeWin.States
                 );
             lightNode.Diffuse = new Vector3(1.0f, 1.0f, 1.0f);
             lightNode.Specular = new Vector3(1.0f, 1.0f, 1.0f);
-            Vector3 lightDirection = new Vector3(-1.0f, -1.0f, -1.0f);
-            lightDirection.Normalize();
-            lightNode.Direction = lightDirection;
+
+            lightNode.AddChild(lightNode.LightSource);
+
+            lightNode.LightSource.LocalTrans = Matrix.Invert(Matrix.CreateLookAt(
+                Vector3.One,
+                Vector3.Zero,
+                Vector3.Up
+                ));
 
             
             // Add cube and camera
@@ -153,10 +158,10 @@ namespace RagadesCubeWin.States
             cubeCursor = new RCCubeCursor(theCube, Color.DarkRed);
             
             // Add animation controller
-            cubeController = new RCCubeController();           
-            
+            cubeController = new RCCubeController();
 
-            theCube.AttachController(cubeController);
+
+            cubeController.AttachToObject(theCube);
             theCube.AddChild(cubeCursor);
             lightNode.AddChild(theCube);
             rootNode.AddChild(lightNode);

@@ -11,7 +11,7 @@ using RagadesCubeWin.SceneObjects;
 
 namespace RagadesCubeWin.Animation.Controllers
 {
-    public class RCCubeController : Controller
+    public class RCCubeController : Controller<RCCube>
     {
         private List<RCCublet> _cubletFace;
         private bool _isAnimating;
@@ -37,18 +37,6 @@ namespace RagadesCubeWin.Animation.Controllers
             get { return _isAnimating; }
         }
 
-        protected override bool VerifyParentType(RCSpatial parent)
-        {
-            bool isValid = false;
-
-            if (parent != null)
-            {
-                isValid = (parent.GetType() == typeof(RCCube));
-            }
-
-            return isValid;
-        }
-
         public void RotateFace(
             RCCube.FaceSide face, 
             RCCube.RotationDirection direction
@@ -57,7 +45,7 @@ namespace RagadesCubeWin.Animation.Controllers
             RCCube parentCube = (RCCube)_parentSceneObject;
             List<RCCublet> listCublets = parentCube.GetCubletsOnFace(
                 face
-            );
+                );
 
             Vector3 faceAxis = parentCube.GetFaceNormal(face);
 

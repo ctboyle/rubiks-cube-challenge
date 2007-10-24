@@ -29,7 +29,7 @@ namespace RagadesCubeWin.GraphicsManagement
         protected Matrix _worldTrans;
         private Matrix _localTrans;
 
-        protected List<Controller> _animateControllers;
+        protected List<IController> _animateControllers;
 
 
         public RCSpatial parentNode
@@ -85,7 +85,7 @@ namespace RagadesCubeWin.GraphicsManagement
                 0.0f
                 );
                     
-            _animateControllers = new List<Controller>();
+            _animateControllers = new List<IController>();
 
         }
 
@@ -124,24 +124,20 @@ namespace RagadesCubeWin.GraphicsManagement
     
 
 
-        public bool AttachController(Controller controller)
+        public bool AttachController(IController controller)
         {
             bool fAttachSucceeded = false;
 
             if (controller != null)
             {
-                fAttachSucceeded = controller.AttachParent(this);
-
-                if (fAttachSucceeded)
-                {
-                    _animateControllers.Add(controller);
-                }
+                _animateControllers.Add(controller);
+                fAttachSucceeded = true;
             }
 
             return fAttachSucceeded;
         }
 
-        public void DetachController(Controller controller)
+        public void DetachController(IController controller)
         {
             if (controller != null)
             {
@@ -151,7 +147,7 @@ namespace RagadesCubeWin.GraphicsManagement
 
         protected void UpdateControllers(GameTime gameTime)
         {
-            foreach (Controller controller in _animateControllers)
+            foreach (IController controller in _animateControllers)
             {
                 controller.Update(gameTime);
             }

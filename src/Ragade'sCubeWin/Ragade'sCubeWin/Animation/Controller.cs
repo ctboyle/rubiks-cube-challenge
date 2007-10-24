@@ -9,32 +9,37 @@ using RagadesCubeWin.GraphicsManagement;
 
 namespace RagadesCubeWin.Animation
 {
-    public abstract class Controller
+    public interface IController
     {
-        protected RCSpatial _parentSceneObject;
+        bool IsAnimating { get; }
+        void Update(GameTime gameTime);
+
+        RCSpatial Parent { get;}
+
+    }
+
+
+    public abstract class Controller<CntrlType> : IController where CntrlType : RCSpatial
+    {
+        protected CntrlType _parentSceneObject;
         
         public RCSpatial Parent
         {
             get { return _parentSceneObject; }
-            set { _parentSceneObject = value; }
         }
 
-        public bool AttachParent(RCSpatial parent)
+        public bool AttachToObject(CntrlType parent)
         {
-            bool fSuccess = VerifyParentType(parent);
-
-            if (fSuccess)
+            bool fSuccess = false;
+            if (parent != null)
             {
                 _parentSceneObject = parent;
+                fSuccess = _parentSceneObject.AttachController(this);
             }
 
             return fSuccess;
         }
 
-        protected virtual bool VerifyParentType(RCSpatial parent)
-        {
-            return parent != null;
-        }
 
         public Controller()
         {

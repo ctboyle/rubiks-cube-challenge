@@ -18,6 +18,11 @@ namespace RagadesCubeWin.SceneManagement
         protected RCSpatial _sceneRoot;
         protected bool _isLoaded;
 
+        public RCCamera Camera
+        {
+            get { return RCCameraManager.GetCamera(_cameraLabel); }
+        }
+
         public string SceneCameraLabel
         {
             get { return _cameraLabel; }

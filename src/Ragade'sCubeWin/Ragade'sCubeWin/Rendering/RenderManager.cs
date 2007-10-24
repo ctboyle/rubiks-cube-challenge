@@ -13,7 +13,7 @@ namespace RagadesCubeWin.Rendering
     /// <summary>
     /// Central functionality for Rendering the Scene.
     /// </summary>
-    class RCRenderManager
+    public class RCRenderManager
     {
         /// <summary>
         /// Delegate for rendering objects.
