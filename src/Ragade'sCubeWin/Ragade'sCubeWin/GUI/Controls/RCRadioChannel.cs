@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using RagadesCubeWin.GUI.Panes;
 
 namespace RagadesCubeWin.GUI
 {
@@ -10,20 +11,28 @@ namespace RagadesCubeWin.GUI
     /// it has no graphical elements so it does not inherit from RCControl.
     /// Its members, which are of type RCRadioButton, do, however.
     /// </summary>
-    class RCRadioChannel
+    class RCRadioChannel : RCPane
     {
-        private IDictionary<long,RCRadioButton> membersByID = new Dictionary<long, RCRadioButton>();
-        private IDictionary<string,RCRadioButton> membersByName = new Dictionary<string,RCRadioButton>();
-        private long numberOfMembers = 0;
-        private long activeMemberIndex = -1;
-
-        [notFullyImplemented("Missing most initalization features")]
         [needsXML]
-        public RCRadioChannel(RCRadioButton firstButton)
+        private long numberOfMembers = 0;
+        [needsXML]
+        private RCRadioButton activeMember = null;
+
+        
+        [needsXML]
+        internal RCRadioChannel(
+            float width, 
+            float height,
+            int screenWidth, 
+            int screenHeight,
+            RCRadioButton firstButton
+            ) : base (
+                width,
+                height,
+                screenWidth,
+                screenHeight
+            )
         {
-
-            firstButton.moveToGroup(this);
-
         }
 
         #region Public read-only properties
@@ -41,6 +50,7 @@ namespace RagadesCubeWin.GUI
 
 
 
+        [placeHolder]
         /// <summary>
         /// Returns the active RCRadioButton amongst this RCRadioChannel
         /// </summary>
@@ -48,14 +58,7 @@ namespace RagadesCubeWin.GUI
         [incomplete("If the method of storing the active button changes.")]
         public RCRadioButton getActiveButton()
         {
-            if (activeMemberIndex == -1)
-            {
-                return null;
-            }
-            else
-            {
-                return membersByID[activeMemberIndex];
-            }
+            return null;
         }
     }
 }
