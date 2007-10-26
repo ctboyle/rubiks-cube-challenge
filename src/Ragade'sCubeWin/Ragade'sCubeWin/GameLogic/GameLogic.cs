@@ -45,7 +45,7 @@ namespace RagadesCubeWin.GameLogic
         public override void Update(GameTime gameTime)
         {
             _rules.Update(gameTime);
-
+            
             RCPlayerIndex winnerIndex;
             if (_rules.GetWinner(out winnerIndex))
                 _gamePlayState.AnnounceWinner(winnerIndex.ToString());

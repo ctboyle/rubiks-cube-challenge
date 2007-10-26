@@ -91,7 +91,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
 
         private void OnLeftStick(Vector2 position, Vector2 move)
         {
-            const float stickThreshold = 0.90f;
+            const float stickThreshold = 0.50f;
 
             if (position.Length() < Math.Abs(stickThreshold))
                 return;

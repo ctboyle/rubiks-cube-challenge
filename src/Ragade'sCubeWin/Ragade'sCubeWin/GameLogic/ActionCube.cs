@@ -31,7 +31,7 @@ namespace RagadesCubeWin.GameLogic
             _controller = new RCCubeController();
             _cursor = new RCCubeCursor(_myCube);
 
-            _myCube.AttachController(_controller);
+            _controller.AttachToObject(_myCube);
             _myCube.AddChild(_cursor);
 
             Game.Components.Add(this);

@@ -69,6 +69,7 @@ namespace RagadesCubeWin
 
             // Begin by putting our first state on the stack.
             stateManager.PushState(new RCGuiTestState(this));
+            //stateManager.PushState(new RCMainMenuState(this));
 
             base.Initialize();
         }

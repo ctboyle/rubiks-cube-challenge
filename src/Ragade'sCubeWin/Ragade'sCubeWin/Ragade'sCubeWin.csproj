@@ -83,10 +83,6 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>PerspectiveCamera</Name>
     </Compile>
-    <Compile Include="FPS.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>FPS</Name>
-    </Compile>
     <Compile Include="GameLogic\ActionCube.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>ActionCube</Name>
