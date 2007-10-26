@@ -21,8 +21,7 @@ namespace RagadesCubeWin.SceneObjects
             Back,
             Right,
             Front,
-            Bottom,
-            Count
+            Bottom
         }
 
         public enum RotationDirection
@@ -61,14 +60,16 @@ namespace RagadesCubeWin.SceneObjects
         public RCCube(int length, int width, int height)
             :base()
         {
-            _faces = new Face[(int)FaceSide.Count];
+            int faceCount = Enum.GetValues(typeof(FaceSide)).Length;
+
+            _faces = new Face[faceCount];
 
             this.length = length;
             this.width = width;
             this.height = height;
 
             // Create / intialize each face and cubelet face collection.
-            for (int iFace = 0; iFace < (int)FaceSide.Count; iFace++)
+            for (int iFace = 0; iFace < faceCount; iFace++)
             {
                 switch ((FaceSide)iFace)
                 {
@@ -122,7 +123,7 @@ namespace RagadesCubeWin.SceneObjects
                             (FaceSide)iFace,
                             width,
                             height,
-                            Color.Orange
+                            Color.OrangeRed
                             );
                         break;
                 }
@@ -171,6 +172,17 @@ namespace RagadesCubeWin.SceneObjects
             }
 
             return planeNormal;
+        }
+
+        public List<RCFacelet> GetFaceletsOnFace(FaceSide face)
+        {
+            List<RCFacelet> facelets = new List<RCFacelet>();
+            List<RCCublet> cublets = GetCubletsOnFace(face);
+
+            foreach (RCCublet cublet in cublets)
+                facelets.Add(cublet.Facelets[(int)face]);
+
+            return facelets;
         }
 
         public List<RCCublet> GetCubletsOnFace(FaceSide face)

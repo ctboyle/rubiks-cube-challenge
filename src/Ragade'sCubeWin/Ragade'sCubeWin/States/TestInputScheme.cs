@@ -11,11 +11,6 @@ namespace RagadesCubeWin.States
 {
     public class RCTestInputScheme : RCInputScheme<RCTestState>
     {
-        public RCTestInputScheme(InputManager inMgr)
-            : base(inMgr)
-        {
-        }
-
         protected override IWatcher[] MapWatcherEvents()
         {
             List<IWatcher> watchers = new List<IWatcher>();

@@ -124,10 +124,22 @@ namespace RagadesCubeWin.GUI.Primitives
                 _color.A
                 );
 
+            graphicsDevice.RenderState.AlphaBlendEnable = true;
+            graphicsDevice.RenderState.AlphaBlendOperation = BlendFunction.Add;
+            graphicsDevice.RenderState.AlphaDestinationBlend = Blend.Zero;
+            graphicsDevice.RenderState.AlphaFunction = CompareFunction.Greater;
+            graphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
+            graphicsDevice.RenderState.AlphaTestEnable = true;
+            graphicsDevice.RenderState.DestinationBlend = Blend.InverseSourceAlpha;
+            graphicsDevice.RenderState.SourceBlend = Blend.SourceAlpha;
+
             RCRenderManager.Render(
                 graphicsDevice,
                 OnRender
                 );
+
+            graphicsDevice.RenderState.AlphaBlendEnable = false;
+            graphicsDevice.RenderState.AlphaTestEnable = false;
 
             RCRenderManager.TextureMappingEnabled(false);
 

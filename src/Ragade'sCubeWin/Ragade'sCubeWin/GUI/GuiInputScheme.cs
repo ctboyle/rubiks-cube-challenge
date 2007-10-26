@@ -24,8 +24,7 @@ namespace RagadesCubeWin.GUI
 
         private AnalogstickState _lastLeftAnalogState;
 
-        public GuiInputScheme(InputManager im)
-            : base(im)
+        public GuiInputScheme()
         {
             _lastLeftAnalogState = AnalogstickState.UnderThreshold;
         }

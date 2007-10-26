@@ -106,7 +106,7 @@ namespace RagadesCubeWin.GUI.Primitives
                     Vector2.Zero, 
                     _text
                     );
-
+                
                 foreach (GlyphTextureInfo textureInfo in textureString.TexureInfoList)
                 {
                     RCQuad charQuad = new RCQuad(
@@ -116,7 +116,7 @@ namespace RagadesCubeWin.GUI.Primitives
                         );
 
                     charQuad.Image = textureInfo.glyphTexture;
-
+                    
                     charQuad.Color = _color;
 
                     AddChild(

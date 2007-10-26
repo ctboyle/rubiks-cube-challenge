@@ -122,9 +122,21 @@ namespace RagadesCubeWin.SceneObjects
 
             Vector3 color = _color.ToVector3();
 
+            graphicsDevice.RenderState.AlphaBlendEnable = true;
+            graphicsDevice.RenderState.AlphaBlendOperation = BlendFunction.Add;
+            graphicsDevice.RenderState.AlphaDestinationBlend = Blend.Zero;
+            graphicsDevice.RenderState.AlphaFunction = CompareFunction.Greater;
+            graphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
+            graphicsDevice.RenderState.AlphaTestEnable = true;
+            graphicsDevice.RenderState.DestinationBlend = Blend.InverseSourceAlpha;
+            graphicsDevice.RenderState.SourceBlend = Blend.SourceAlpha;
+
             Rendering.RCRenderManager.SetWorld(WorldTrans);
             Rendering.RCRenderManager.SetEffectMaterial(color, color, color, 1.0f, color, 0.4f);
             Rendering.RCRenderManager.Render(graphicsDevice, OnRender);
+
+            graphicsDevice.RenderState.AlphaBlendEnable = false;
+            graphicsDevice.RenderState.AlphaTestEnable = false;
         }
 
         protected override void UpdateWorldBound()

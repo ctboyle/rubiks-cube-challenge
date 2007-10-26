@@ -25,24 +25,11 @@ namespace RagadesCubeWin.Input
         /// <summary>
         /// Creates a new instance of the <see cref="RCInputScheme"/> class.
         /// </summary>
-        /// <param name="im">The input manager.</param>
-        /// <exception cref="NullReferenceException">If the input manager is null.</exception>
-        public RCInputScheme(InputManager im)
+        public RCInputScheme()
         {
-            if (im == null)
-                throw new NullReferenceException("The input manager cannot be null.");
-
-            _inputMgr = im;
+            _inputMgr = null;
             _cntrlItem = null;
             _watchList = new List<IWatcher>();
-        }
-
-        /// <summary>
-        /// The input manager that the input gets mapped to.
-        /// </summary>
-        public InputManager InputMgr
-        {
-            get { return _inputMgr; }
         }
 
         /// <summary>
@@ -51,16 +38,22 @@ namespace RagadesCubeWin.Input
         /// <param name="cntrlItem">
         /// The instance of <see cref="CntrlType"/> that provides the mapping functions.
         /// </param>
+        /// <param name="im">The input manager.</param>
+        /// <exception cref="NullReferenceException">If the <see cref="im"/> variable is null.</exception>
         /// <exception cref="Exception">If the scheme has already been applied.</exception>
         /// <exception cref="NullReferenceException">The <see cref="cntrlItem"/> variable cannot be null.</exception>
-        public void Apply(CntrlType cntrlItem)
+        public void Apply(InputManager im, CntrlType cntrlItem)
         {
-            if (_cntrlItem != null)
+            if (_cntrlItem != null || _inputMgr != null || _watchList.Count != 0)
                 throw new Exception("Unable to apply because this instance is already in use.");
+
+            if (im == null)
+                throw new NullReferenceException("The input manager cannot be null.");
 
             if (cntrlItem == null)
                 throw new NullReferenceException("The mapping provider cannot be null.");
 
+            _inputMgr = im;
             _cntrlItem = cntrlItem;
 
             IWatcher[] mappedWatchers = MapWatcherEvents();
@@ -79,10 +72,11 @@ namespace RagadesCubeWin.Input
         /// </summary>
         public void Unapply()
         {
-            _cntrlItem = null;
-
             foreach (IWatcher watcher in _watchList)
                 _inputMgr.RemoveWatcher(watcher);
+
+            _inputMgr = null;
+            _cntrlItem = null;
 
             _watchList.Clear();
         }

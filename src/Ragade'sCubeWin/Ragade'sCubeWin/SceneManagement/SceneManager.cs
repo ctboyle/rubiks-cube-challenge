@@ -12,7 +12,7 @@ using RagadesCubeWin.Rendering;
 
 namespace RagadesCubeWin.SceneManagement
 {
-    public class RCSceneManager 
+    public class RCSceneManager : IEnumerable<RCScene>
     {
         List<RCScene> _sceneList;
         IGraphicsDeviceService _graphics;
@@ -107,6 +107,14 @@ namespace RagadesCubeWin.SceneManagement
             }
         }
 
-        
+        public IEnumerator<RCScene> GetEnumerator()
+        {
+            return _sceneList.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return _sceneList.GetEnumerator();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace RagadesCubeWin.StateManagement
 
         public event EventHandler OnStateChange;
 
-        private int initialDrawOrder = 1000;
+        private int initialDrawOrder = 0;
         private int drawOrder;
 
         public RCGameStateManager(Game game)

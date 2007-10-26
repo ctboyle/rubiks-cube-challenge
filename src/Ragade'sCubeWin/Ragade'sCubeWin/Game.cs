@@ -37,7 +37,6 @@ namespace RagadesCubeWin
             content = new ContentManager(Services);
             stateManager = new RCGameStateManager(this);
             fontManager = new FontManager(this);
-
         }
 
 
@@ -49,14 +48,12 @@ namespace RagadesCubeWin
         /// </summary>
         protected override void Initialize()
         {
-            
+            //FPS fps = new FPS(this);
+            //fps.DrawOrder = int.MaxValue;
+            //Components.Add(fps);
+         
             IsMouseVisible = true;
             IsFixedTimeStep = false;
-
-            // Add frame per second counter.
-            FPS fps = new FPS(this);
-            fps.DrawOrder = 1500;
-            Components.Add(fps);
 
             // Add a font to the font manager
             fontManager.AddFontFromAsset(

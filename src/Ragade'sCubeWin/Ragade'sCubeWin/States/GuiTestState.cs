@@ -27,21 +27,19 @@ using RagadesCubeWin.GUI;
 using RagadesCubeWin.SceneManagement;
 using RagadesCubeWin.Input.Watchers;
 using RagadesCubeWin.GUI.Controls.Control_Subclasses;
+using RagadesCubeWin.GameLogic.InputSchemes;
+using RagadesCubeWin.GameLogic;
+using RagadesCubeWin.GameLogic.Rules;
 
 #endregion
 
 namespace RagadesCubeWin.States
 {
-    class RCGuiTestState : RCGameState
+    class RCGuiTestState : RCGameState, IDisposable
     {
-        float xRot, yRot;
-
-        RCScene cubeScene;
-
-
-
         RCGUIManager guiManager;
         GuiInputScheme guiInput;
+        //RCButton testButton;
 
 
         RCButton testButton;
@@ -54,9 +52,8 @@ namespace RagadesCubeWin.States
 
         }
 
-        ~RCGuiTestState()
+        void IDisposable.Dispose()
         {
-
             if (guiInput != null)
             {
                 guiInput.Unapply();
@@ -105,7 +102,6 @@ namespace RagadesCubeWin.States
 
 
             testStateControl.Accepted+= PushTestState;
-            
 
 
 
@@ -123,8 +119,8 @@ namespace RagadesCubeWin.States
 
 
             guiManager = new RCGUIManager(guiScene);
-            guiInput = new GuiInputScheme(input);
-            guiInput.Apply(guiManager);
+            guiInput = new GuiInputScheme();
+            guiInput.Apply(input, guiManager);
 
             guiScene.Camera.ClearOptions = ClearOptions.DepthBuffer | ClearOptions.Target;
 
@@ -132,6 +128,9 @@ namespace RagadesCubeWin.States
                 guiScene
                 );
 
+            _sceneManager.AddScene(
+                new FPScreenScene(graphics.GraphicsDevice.Viewport, Game.Services)
+            );
         }
 
         void flipToggleButton()
@@ -145,7 +144,27 @@ namespace RagadesCubeWin.States
 
         void PushTestState()
         {
-            gameManager.PushState(new RCTestState(this.Game));
+            RCGamePlayState gameState = new RCGamePlayState(Game);
+            RCGameLogic gameLogic = new RCGameLogic(Game, gameState);
+
+            RCGLKeyboardInputScheme k1 = new RCGLKeyboardInputScheme();
+            gameLogic.AddPlayer(k1);
+
+            RCGLGamePadInputScheme gp = new RCGLGamePadInputScheme(PlayerIndex.One);
+            gameLogic.AddPlayer(gp);
+
+            //RCGLKeyboardInputScheme k3 = new RCGLKeyboardInputScheme();
+            //k3.LeftPressKey = Keys.Right;
+            //k3.RightPressKey = Keys.Left;
+            //k3.UpPressKey = Keys.Up;
+            //k3.DownPressKey = Keys.Down;
+            //gameLogic.AddPlayer(k3);
+
+            //RCGLKeyboardInputScheme k2 = new RCGLKeyboardInputScheme();
+            //gameLogic.AddPlayer(k2);
+
+            gameLogic.Start(new RCDefaultGameRules(gameLogic));
+            gameManager.PushState(gameState);
         }
     }
 }

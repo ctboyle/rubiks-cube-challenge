@@ -186,8 +186,6 @@ namespace RagadesCubeWin.Rendering
             }
         }
 
-
-
         /// <summary>
         /// Sets the effects world transform property
         /// </summary>
@@ -239,8 +237,6 @@ namespace RagadesCubeWin.Rendering
                 _sceneEffect.GraphicsDevice.RenderState.DepthBufferWriteEnable = true;
                 _sceneEffect.GraphicsDevice.RenderState.DepthBufferEnable = true;
 
-
-
                 fCameraSuccess = UpdateSceneCameraParameters();
 
 
@@ -287,7 +283,7 @@ namespace RagadesCubeWin.Rendering
                     _sceneEffect.GraphicsDevice.Viewport = RCCameraManager.ActiveCamera.Viewport;
                     _sceneEffect.View = RCCameraManager.ActiveCamera.View;
                     _sceneEffect.Projection = RCCameraManager.ActiveCamera.Projection;
-
+                    
                     _clearColor = RCCameraManager.ActiveCamera.ClearColor;
 
                     fUpdatedCameraParameters = true;

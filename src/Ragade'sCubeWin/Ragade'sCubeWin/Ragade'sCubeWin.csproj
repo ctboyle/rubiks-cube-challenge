@@ -87,6 +87,58 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPS</Name>
     </Compile>
+    <Compile Include="GameLogic\ActionCube.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ActionCube</Name>
+    </Compile>
+    <Compile Include="GameLogic\Rules\DefaultGameRules.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>DefaultGameRules</Name>
+    </Compile>
+    <Compile Include="GameLogic\Rules\IGameRules.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>IGameRules</Name>
+    </Compile>
+    <Compile Include="GameLogic\Scenes\CubeScene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeScene</Name>
+    </Compile>
+    <Compile Include="GameLogic\Scenes\CubeSceneCreator.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeSceneCreator</Name>
+    </Compile>
+    <Compile Include="GameLogic\GameLogic.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameLogic</Name>
+    </Compile>
+    <Compile Include="GameLogic\GamePlayer.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GamePlayer</Name>
+    </Compile>
+    <Compile Include="GameLogic\InputSchemes\GamePadInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GamePadInputScheme</Name>
+    </Compile>
+    <Compile Include="GameLogic\InputSchemes\InputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>InputScheme</Name>
+    </Compile>
+    <Compile Include="GameLogic\InputSchemes\KeyboardInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>KeyboardInputScheme</Name>
+    </Compile>
+    <Compile Include="GameLogic\InputSchemes\MouseInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MouseInputScheme</Name>
+    </Compile>
+    <Compile Include="GameLogic\InputSchemes\MouseKeyboardInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MouseKeyboardInputScheme</Name>
+    </Compile>
+    <Compile Include="GameLogic\PlayerIndex.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>PlayerIndex</Name>
+    </Compile>
     <Compile Include="GraphicsManagement\BoundingVolumes\BoundingBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>BoundingBox</Name>
@@ -110,10 +162,6 @@
     <Compile Include="GraphicsManagement\Spatial.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Spatial</Name>
-    </Compile>
-    <Compile Include="GUI\ScreenScene.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>ScreenScene</Name>
     </Compile>
     <Compile Include="GUI\Controls\Control Subclasses\RCButton.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -198,6 +246,10 @@
     <Compile Include="GUI\Primitives\Text.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Text</Name>
+    </Compile>
+    <Compile Include="GUI\ScreenScene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ScreenScene</Name>
     </Compile>
     <Compile Include="GUI\TemporaryAttributes.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -316,6 +368,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Node</Name>
     </Compile>
+    <Compile Include="SceneManagement\ISceneCreator.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ISceneCreator</Name>
+    </Compile>
     <Compile Include="SceneManagement\Scene.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Scene</Name>
@@ -355,6 +411,14 @@
     <Compile Include="StateManagement\StateManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>StateManager</Name>
+    </Compile>
+    <Compile Include="States\FPScreenScene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>FPScreenScene</Name>
+    </Compile>
+    <Compile Include="States\GamePlayState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GamePlayState</Name>
     </Compile>
     <Compile Include="States\GuiTestState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

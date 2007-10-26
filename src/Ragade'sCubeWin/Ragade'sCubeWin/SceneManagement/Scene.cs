@@ -87,7 +87,7 @@ namespace RagadesCubeWin.SceneManagement
             }
         }
 
-        public void Update(
+        public virtual void Update(
             GameTime gameTime
             )
         {

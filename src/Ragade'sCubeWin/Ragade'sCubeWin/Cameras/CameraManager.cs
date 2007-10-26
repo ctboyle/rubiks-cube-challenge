@@ -18,6 +18,11 @@ namespace RagadesCubeWin.Cameras
             cameras.Add(cameraLabel, newCamera);
         }
 
+        public static void RemoveCamera(string cameraLabel)
+        {
+            cameras.Remove(cameraLabel);
+        }
+
         public static void SetActiveCamera(string cameraLabel)
         {
             if (cameras.ContainsKey(cameraLabel))

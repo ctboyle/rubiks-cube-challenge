@@ -66,11 +66,11 @@ namespace RagadesCubeWin.States
             xRot = 0;
             yRot = 0;
 
-            inputScheme = new RCTestInputScheme(input);
-            inputScheme.Apply(this);
+            inputScheme = new RCTestInputScheme();
+            inputScheme.Apply(input, this);
 
-            guiInput = new GuiInputScheme(input);
-            cubeGuiInput = new GuiInputScheme(input);
+            guiInput = new GuiInputScheme();
+            cubeGuiInput = new GuiInputScheme();
             timeBegan = DateTime.MinValue;
         }
 
@@ -112,7 +112,7 @@ namespace RagadesCubeWin.States
 
 
             guiManager = new RCGUIManager(guiScene);
-            guiInput.Apply(guiManager);
+            guiInput.Apply(input, guiManager);
 
             _sceneManager.AddScene(
                 guiScene

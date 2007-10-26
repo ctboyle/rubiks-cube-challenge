@@ -102,7 +102,7 @@ namespace RagadesCubeWin.GUI.Controls.Control_Subclasses
  	        _pressedImage = null;
 
             imageQuad.Image = null;
-
+            
             base.UnloadGraphicsContent();
         }
         
