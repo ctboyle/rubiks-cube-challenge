@@ -35,7 +35,6 @@ namespace RagadesCubeWin.GameLogic.Scenes
 
             lightNode.Diffuse = new Vector3(1.0f, 1.0f, 1.0f);
             lightNode.Specular = new Vector3(1.0f, 1.0f, 1.0f);
-            lightNode.Direction = new Vector3(-1.0f, -1.0f, -1.0f);
             lightNode.Direction.Normalize();
 
             lightNode.AddChild(theCube);

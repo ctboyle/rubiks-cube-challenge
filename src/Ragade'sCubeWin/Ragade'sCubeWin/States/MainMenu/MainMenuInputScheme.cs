@@ -15,11 +15,6 @@ namespace RagadesCubeWin.States.MainMenu
 {
     class RCMainMenuSceneInputScheme : RCInputScheme<RCMainMenuScene>
     {
-        public RCMainMenuSceneInputScheme(InputManager im)
-            : base(im)
-        {
-        }
-
         void MoveCameraBottom()
         {
             ControlItem.MoveCamera(

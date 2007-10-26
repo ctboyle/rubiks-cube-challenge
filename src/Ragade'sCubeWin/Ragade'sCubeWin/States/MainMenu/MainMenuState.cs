@@ -26,8 +26,8 @@ namespace RagadesCubeWin.States
             menuScene = new RCMainMenuScene(graphics.GraphicsDevice.Viewport);
             _sceneManager.AddScene(menuScene);
 
-            menuInputScheme = new RCMainMenuSceneInputScheme(input);
-            menuInputScheme.Apply(menuScene);
+            menuInputScheme = new RCMainMenuSceneInputScheme();
+            menuInputScheme.Apply(input, menuScene);
             base.Initialize();
         }
 
