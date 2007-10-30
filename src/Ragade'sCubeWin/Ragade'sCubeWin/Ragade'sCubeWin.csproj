@@ -424,10 +424,6 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>WobbleController</Name>
     </Compile>
-    <Compile Include="States\CubeMenuInputScheme.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>CubeMenuInputScheme</Name>
-    </Compile>
     <Compile Include="States\FPScreenScene.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPScreenScene</Name>
@@ -439,6 +435,11 @@
     <Compile Include="States\GuiTestState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>GuiTestState</Name>
+    </Compile>
+    <Compile Include="States\MenuCubeState\CubeMenuInputScheme.cs">
+      <SubType>Code</SubType>
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeMenuInputScheme</Name>
     </Compile>
     <Compile Include="States\MenuCubeState\CubeMenus\CubeMenu.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
