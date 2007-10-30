@@ -126,10 +126,11 @@ namespace RagadesCubeWin.GUI.Primitives
 
             graphicsDevice.RenderState.AlphaBlendEnable = true;
             graphicsDevice.RenderState.AlphaBlendOperation = BlendFunction.Add;
-            graphicsDevice.RenderState.AlphaDestinationBlend = Blend.Zero;
+            graphicsDevice.RenderState.AlphaDestinationBlend = Blend.InverseSourceAlpha;
+            graphicsDevice.RenderState.AlphaSourceBlend = Blend.SourceAlpha;
+
             graphicsDevice.RenderState.AlphaFunction = CompareFunction.Greater;
-            graphicsDevice.RenderState.AlphaSourceBlend = Blend.One;
-            graphicsDevice.RenderState.AlphaTestEnable = true;
+            graphicsDevice.RenderState.AlphaTestEnable= true;
             graphicsDevice.RenderState.DestinationBlend = Blend.InverseSourceAlpha;
             graphicsDevice.RenderState.SourceBlend = Blend.SourceAlpha;
 
@@ -140,6 +141,7 @@ namespace RagadesCubeWin.GUI.Primitives
 
             graphicsDevice.RenderState.AlphaBlendEnable = false;
             graphicsDevice.RenderState.AlphaTestEnable = false;
+            graphicsDevice.RenderState.DepthBufferWriteEnable = true;
 
             RCRenderManager.TextureMappingEnabled(false);
 

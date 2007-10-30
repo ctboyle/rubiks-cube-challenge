@@ -26,13 +26,13 @@ namespace RagadesCubeWin.GUI
         /// are drawn over which other images.  The focus image should probably be 
         /// in the middle, as it should be less visible than the activating image.
         /// </summary>
-        protected float FOCUSED_IMAGE_Z_ORDER = 0.1f;
+        protected float FOCUSED_IMAGE_Z_ORDER = 0.025f;
         /// <summary>
         /// The internal Z-order of the 'pushing' image, used to determine which images
         /// are drawn over which other images.  The 'pushing' image should probably be 
         /// on the top, as it should be the most visible effect.
         /// </summary>
-        protected float ACTIVATING_IMAGE_Z_ORDER = 0.3f;
+        protected float ACTIVATING_IMAGE_Z_ORDER = 0.05f;
 
         #endregion     ------------------------------Local Constants
 
@@ -188,7 +188,7 @@ namespace RagadesCubeWin.GUI
         {
             textObject = new RCText(Font, width, height, screenWidth, screenHeight);
             textObject.Text = "";
-            AddChild(textObject, 15, 15, 0.1f);
+            AddChild(textObject, 15, 15, 0.075f);
             AcceptsFocus = true;
 
             baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
@@ -313,7 +313,7 @@ namespace RagadesCubeWin.GUI
             {
             GUIKeyEvent keyEvent = (GUIKeyEvent)guiEvent;
                 
-                this.textObject.Text = keyEvent.Key.ToString();
+                //this.textObject.Text = keyEvent.Key.ToString();
             }
             else if (guiEvent is GUIMoveEvent)
             {

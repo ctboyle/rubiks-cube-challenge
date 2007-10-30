@@ -16,6 +16,7 @@ using RagadesCubeWin.Rendering;
 using RagadesCubeWin.Cameras;
 
 using RagadesCubeWin.GUI.Fonts;
+using RagadesCubeWin.States.TitleScreen;
 
 #endregion
 
@@ -66,10 +67,30 @@ namespace RagadesCubeWin
                 "Content\\Fonts\\Rockwell Extra Bold -48pt\\font.xml"
                 );
 
+            fontManager.AddFontFromAsset(
+                "Ragade's Cube Small",
+                "Content\\Fonts\\Ragade's Cube\\26\\RCfont.xml"
+                );
+
+            fontManager.AddFontFromAsset(
+                "Ragade's Cube Medium",
+                "Content\\Fonts\\Ragade's Cube\\36\\RCfont.xml"
+                );
+
+            fontManager.AddFontFromAsset(
+                "Ragade's Cube Large",
+                "Content\\Fonts\\Ragade's Cube\\48\\RCfont.xml"
+                );
+
+            fontManager.AddFontFromAsset(
+               "Ragade's Cube Extra Large",
+               "Content\\Fonts\\Ragade's Cube\\72\\RCfont.xml"
+               );
+
 
             // Begin by putting our first state on the stack.
             stateManager.PushState(new RCGuiTestState(this));
-            //stateManager.PushState(new RCMainMenuState(this));
+            
 
             base.Initialize();
         }
@@ -77,7 +98,6 @@ namespace RagadesCubeWin
         // Loading and unloading for games services and singletons.
         protected override void LoadGraphicsContent(bool loadAllContent)
         {
-
             // Initialize the rendermanager
             RCRenderManager.Load(graphics.GraphicsDevice);
             

@@ -6,10 +6,11 @@ using Microsoft.Xna.Framework;
 
 namespace RagadesCubeWin.StateManagement
 {
+    public delegate void StateChangeHandler(RCGameState newState, RCGameState oldState);
 
     public interface IGameStateManager
     {
-        event EventHandler OnStateChange;
+        event StateChangeHandler OnStateChange;
         RCGameState State { get; }
         void PopState();
         void PushState(RCGameState state);
@@ -22,7 +23,7 @@ namespace RagadesCubeWin.StateManagement
     {
         private Stack<RCGameState> states = new Stack<RCGameState>();
 
-        public event EventHandler OnStateChange;
+        public event StateChangeHandler OnStateChange;
 
         private int initialDrawOrder = 0;
         private int drawOrder;
@@ -34,17 +35,16 @@ namespace RagadesCubeWin.StateManagement
             drawOrder = initialDrawOrder;
         }
 
-        private void RemoveState()
+        private RCGameState RemoveState()
         {
             RCGameState oldState = (RCGameState)states.Peek();
-
-            //Unregister the event for this state
-            OnStateChange -= oldState.StateChanged;
 
             //remove the state from our game components
             Game.Components.Remove(oldState.Value);
 
             states.Pop();
+
+            return oldState;
         }
 
         private void AddState(RCGameState state)
@@ -59,25 +59,29 @@ namespace RagadesCubeWin.StateManagement
 
         public void PopState()
         {
-            RemoveState();
+            RCGameState oldState = RemoveState();
 
             drawOrder -= 100;
 
             //Let everyone know we just changed states
             if (OnStateChange != null)
-                OnStateChange(this, null);
+                OnStateChange(State, oldState);
+
+            //Unregister the event for this state
+            OnStateChange -= oldState.StateChanged;
         }
 
         public void PushState(RCGameState newState)
         {
+            RCGameState oldState = State as RCGameState;
             drawOrder += 100;
             newState.DrawOrder = drawOrder;
-
+            
             AddState(newState);
 
             //Let everyone know we just changed states
             if (OnStateChange != null)
-                OnStateChange(this, null);
+                OnStateChange(newState, oldState);
         }
 
         public void ChangeState(RCGameState newState)
@@ -86,7 +90,14 @@ namespace RagadesCubeWin.StateManagement
             //if we don't want to really change states but just modify,
             //we should call PushState and PopState
             while (states.Count > 0)
-                RemoveState();
+            {
+                RCGameState oldState = RemoveState();
+                if (oldState != null)
+                {
+                    //Unregister the event for this state
+                    OnStateChange -= oldState.StateChanged;
+                }
+            }
 
             //changing state, reset our draw order
             newState.DrawOrder = drawOrder = initialDrawOrder;
@@ -94,7 +105,7 @@ namespace RagadesCubeWin.StateManagement
 
             //Let everyone know we just changed states
             if (OnStateChange != null)
-                OnStateChange(this, null);
+                OnStateChange(State, null);
         }
 
         public bool ContainsState(RCGameState state)
@@ -104,7 +115,14 @@ namespace RagadesCubeWin.StateManagement
 
         public RCGameState State
         {
-            get { return (states.Peek()); }
+            get
+            {
+                if (states.Count != 0)
+                {
+                    return (states.Peek());
+                }
+                return null;
+            }
         }
 
 

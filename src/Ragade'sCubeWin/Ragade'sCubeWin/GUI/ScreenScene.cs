@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 
 namespace RagadesCubeWin.GUI
 {
-    class RCScreenScene :RCScene
+    public class RCScreenScene :RCScene
     {
         private static int _sceneID;
         private RCPane _screenPane;

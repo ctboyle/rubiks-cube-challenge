@@ -22,6 +22,14 @@ namespace RagadesCubeWin.GUI
         
         private bool _focusLock;
 
+        private bool _inputEnabled;
+
+        public bool AcceptInput
+        {
+            get { return _inputEnabled; }
+            set { _inputEnabled = value; }
+        }
+
         public RCGUIManager(RCScene scene)
         {
             _scene = scene;
@@ -29,6 +37,7 @@ namespace RagadesCubeWin.GUI
             _picker = new RCScenePicker();
 
             _focusLock = false;
+            _inputEnabled = true;
 
             RebuildGuiObjectList();
         }
@@ -108,12 +117,15 @@ namespace RagadesCubeWin.GUI
             GUISelectEvent.GUISelectType type
             )
         {
-            if (element != null)
+            if (AcceptInput)
             {
-                element.OnEvent(new GUISelectEvent(
-                     type,
-                     this
-                     ));
+                if (element != null)
+                {
+                    element.OnEvent(new GUISelectEvent(
+                         type,
+                         this
+                         ));
+                }
             }
         }
 
@@ -128,29 +140,32 @@ namespace RagadesCubeWin.GUI
         // Forward input events on to GUIElements
         public void GuiInputEvent(GUIEvent inputEvent)
         {
-            if (inputEvent is GUIMouseEvent)
+            if (AcceptInput)
             {
-                OnMouseEvent(inputEvent);
-            }
-            else if (inputEvent is GUIMoveEvent)
-            {
-                bool handled = false;
-                if (_focusedObject != null)
+                if (inputEvent is GUIMouseEvent)
                 {
-                    handled = _focusedObject.OnEvent(inputEvent);
+                    OnMouseEvent(inputEvent);
                 }
+                else if (inputEvent is GUIMoveEvent)
+                {
+                    bool handled = false;
+                    if (_focusedObject != null)
+                    {
+                        handled = _focusedObject.OnEvent(inputEvent);
+                    }
 
-                if (!handled)
-                {
-                    GUIMoveEvent moveEvent = (GUIMoveEvent)inputEvent;
-                    MoveFocus(moveEvent.Direction);
+                    if (!handled)
+                    {
+                        GUIMoveEvent moveEvent = (GUIMoveEvent)inputEvent;
+                        MoveFocus(moveEvent.Direction);
+                    }
                 }
-            }
-            else if (inputEvent is GUIKeyEvent)
-            {
-                if (_focusedObject != null)
+                else if (inputEvent is GUIKeyEvent)
                 {
-                    _focusedObject.OnEvent(inputEvent);
+                    if (_focusedObject != null)
+                    {
+                        _focusedObject.OnEvent(inputEvent);
+                    }
                 }
             }
         }

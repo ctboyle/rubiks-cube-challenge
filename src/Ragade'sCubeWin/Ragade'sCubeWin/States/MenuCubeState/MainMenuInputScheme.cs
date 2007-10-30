@@ -13,10 +13,10 @@ using Microsoft.Xna.Framework;
 
 namespace RagadesCubeWin.States.MainMenu
 {
-    class RCMainMenuSceneInputScheme : RCInputScheme<RCMainMenuScene>
+    class RCMainMenuSceneInputScheme : RCInputScheme<RCMenuCubeScene>
     {
-        public RCMainMenuSceneInputScheme(InputManager im)
-            : base(im)
+        public RCMainMenuSceneInputScheme()
+            : base()
         {
         }
 

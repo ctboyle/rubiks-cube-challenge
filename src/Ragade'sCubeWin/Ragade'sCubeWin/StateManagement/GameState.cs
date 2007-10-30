@@ -68,9 +68,12 @@ namespace RagadesCubeWin.StateManagement
             base.Update(gameTime);
         }
 
-        internal protected virtual void StateChanged(object sender, EventArgs e)
+        internal protected virtual void StateChanged(
+            RCGameState newState,
+            RCGameState oldState
+            )
         {
-            if (gameManager.State == this.Value)
+            if (newState == this)
             {
                 Visible = Enabled = true;
             }

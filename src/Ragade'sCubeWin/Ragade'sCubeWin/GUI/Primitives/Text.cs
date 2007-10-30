@@ -16,8 +16,38 @@ namespace RagadesCubeWin.GUI.Primitives
         string _text;
         bool _textOld;
 
+        bool _sizeTextToWidth;
+        bool _centerText;
+        bool _usingScaling;
+
+
+        Matrix _currentScaling;
+
         BitmapFont _font;
         Color _color;
+
+        public bool SizeTextToWidth
+        {
+            get { return _sizeTextToWidth; }
+            set 
+            {
+                if (_sizeTextToWidth != value)
+                {
+                    _sizeTextToWidth = value;
+                    _textOld = true;
+                }
+            }
+        }
+
+        public bool CenterText
+        {
+            get { return _centerText; }
+            set 
+            { 
+                _centerText = value;
+                _textOld = true;
+            }
+        }
 
         public string Text
         {
@@ -52,6 +82,8 @@ namespace RagadesCubeWin.GUI.Primitives
         {
             _font = font;
             _color = Color.White;
+
+            _usingScaling = false;
         }
 
         public override void LoadGraphicsContent(GraphicsDevice graphics, Microsoft.Xna.Framework.Content.ContentManager content)
@@ -73,25 +105,53 @@ namespace RagadesCubeWin.GUI.Primitives
             if (_textOld)
             {
                 GenerateCharacterQuads();
+                if (_sizeTextToWidth)
+                {
+                    ScaleTextToWidth();
+                }
+                else
+                {
+                    ResetScale();
+                }
                 _textOld = false;
+            }
+
+            if (_usingScaling)
+            {
+                LocalTrans = _currentScaling * LocalTrans;
             }
             
             base.UpdateWorldData(gameTime);
+        }
+
+        private void ResetScale()
+        {
+            // Only undo scaling if it has been applied.
+            if (_usingScaling)
+            {
+                _currentScaling = Matrix.Identity;
+
+                _usingScaling = false;
+            }
         }
 
         public void ScaleText(float PixelToWorldRatio)
         {
             if (PixelToWorldRatio != 0)
             {
-                float WorldToPixelRatio = 1.0f / PixelToWorldRatio;
+                // Enure no scaling is in effect.
+                ResetScale();
 
-                LocalTrans *= Matrix.CreateScale(
+                float WorldToPixelRatio = 1.0f / PixelToWorldRatio;
+                _currentScaling = Matrix.CreateScale(
                     new Vector3(
-                        WorldToPixelRatio,
-                        WorldToPixelRatio,
-                        0.0f
+                        this.PixelsPerWorldUnitWidth * WorldToPixelRatio,
+                        this.PixelsPerWorldUnitHeight * WorldToPixelRatio,
+                        1.0f
                         )
                     );
+
+                _usingScaling = true;
             }
         }
 
@@ -99,6 +159,14 @@ namespace RagadesCubeWin.GUI.Primitives
         {
             if (_font != null)
             {
+                Point drawLocation = new Point(0,0);
+
+                if (CenterText)
+                {
+                    int length = _font.MeasureString(_text);
+                    drawLocation.X =(ScreenWidth  - length) / 2;
+                }
+
                 // Get rid of the old text.
                 _listChildren.Clear();
 
@@ -121,13 +189,19 @@ namespace RagadesCubeWin.GUI.Primitives
 
                     AddChild(
                         charQuad,
-                        textureInfo.position.X,
-                        textureInfo.position.Y,
+                        drawLocation.X + textureInfo.position.X,
+                        drawLocation.Y + textureInfo.position.Y,
                         0.0f
                         );
                 }
                 
             }
+        }
+
+        private void ScaleTextToWidth()
+        {
+            int textPixelLength = _font.MeasureString(_text);
+            ScaleText( textPixelLength / WorldWidth);
         }
 
 

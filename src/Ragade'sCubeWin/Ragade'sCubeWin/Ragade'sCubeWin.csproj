@@ -63,6 +63,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CubeController</Name>
     </Compile>
+    <Compile Include="Animation\DurationController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>DurationController</Name>
+    </Compile>
     <Compile Include="Animation\KeyFrameController.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>KeyFrameController</Name>
@@ -74,10 +78,6 @@
     <Compile Include="Rendering\LightSource.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>LightSource</Name>
-    </Compile>
-    <Compile Include="States\MainMenu\MenuCameraController.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MenuCameraController</Name>
     </Compile>
     <Compile Include="Cameras\OrthographicCamera.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -412,6 +412,22 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>StateManager</Name>
     </Compile>
+    <Compile Include="States\Controllers\ScaleController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ScaleController</Name>
+    </Compile>
+    <Compile Include="States\Controllers\SpinController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SpinController</Name>
+    </Compile>
+    <Compile Include="States\Controllers\WobbleController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>WobbleController</Name>
+    </Compile>
+    <Compile Include="States\CubeMenuInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeMenuInputScheme</Name>
+    </Compile>
     <Compile Include="States\FPScreenScene.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPScreenScene</Name>
@@ -424,21 +440,33 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>GuiTestState</Name>
     </Compile>
-    <Compile Include="States\MainMenu\MainMenuCubeController.cs">
+    <Compile Include="States\MenuCubeState\CubeMenus\CubeMenu.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MainMenuCubeController</Name>
+      <Name>CubeMenu</Name>
     </Compile>
-    <Compile Include="States\MainMenu\MainMenuInputScheme.cs">
+    <Compile Include="States\MenuCubeState\CubeMenus\MainMenu.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MainMenuInputScheme</Name>
+      <Name>MainMenu</Name>
     </Compile>
-    <Compile Include="States\MainMenu\MainMenuScene.cs">
+    <Compile Include="States\MenuCubeState\CubeMenus\NewGame.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MainMenuScene</Name>
+      <Name>NewGame</Name>
     </Compile>
-    <Compile Include="States\MainMenu\MainMenuState.cs">
+    <Compile Include="States\MenuCubeState\CubeMenus\Options.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MainMenuState</Name>
+      <Name>Options</Name>
+    </Compile>
+    <Compile Include="States\MenuCubeState\MenuCameraController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MenuCameraController</Name>
+    </Compile>
+    <Compile Include="States\MenuCubeState\MenuCubeScene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MenuCubeScene</Name>
+    </Compile>
+    <Compile Include="States\MenuCubeState\MenuCubeState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MenuCubeState</Name>
     </Compile>
     <Compile Include="States\TestInputScheme.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -448,6 +476,14 @@
       <SubType>Code</SubType>
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>TestState</Name>
+    </Compile>
+    <Compile Include="States\TitleScreen\TitleScreenInputScheme.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TitleScreenInputScheme</Name>
+    </Compile>
+    <Compile Include="States\TitleScreen\TitleScreenState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>TitleScreenState</Name>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -505,6 +541,138 @@
     <Content Include="Content\Fonts\Lucida Console\font.xml">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>font</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\26\RCFont-0.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-0</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\26\RCFont.xml">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCFont</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\36\RCFont-0.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-0</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\36\RCFont-1.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-1</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\36\RCFont.xml">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCFont</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\48\RCFont-0.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-0</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\48\RCFont-1.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-1</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\48\RCFont-2.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-2</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\48\RCFont.xml">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCFont</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-0.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-0</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-1.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-1</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-2.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-2</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-3.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-3</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-4.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-4</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-5.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-5</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-6.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-6</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-7.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-7</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-8.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-8</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont-9.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RCFont-9</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\Ragade%27s Cube\72\RCFont.xml">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCFont</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Fonts\Rockwell Extra Bold -48pt\font-0.png">
@@ -566,6 +734,36 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Name>Facelet</Name>
+    </Content>
+    <Content Include="Content\Textures\Background1.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Background1</Name>
+    </Content>
+    <Content Include="Content\Textures\Background2.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Background2</Name>
+    </Content>
+    <Content Include="Content\Textures\Background3.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Background3</Name>
+    </Content>
+    <Content Include="Content\Textures\Background4.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Background4</Name>
+    </Content>
+    <Content Include="Content\Textures\Disco.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Disco</Name>
     </Content>
     <Content Include="Content\Textures\BoringHollowArrowImage.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
@@ -692,6 +890,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>TexturedArc1ArrowImage</Name>
+    </Content>
+    <Content Include="Content\Textures\TitleImage2.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>TitleImage2</Name>
     </Content>
     <Content Include="Content\Textures\UpgradeChrisBackground.bmp">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>

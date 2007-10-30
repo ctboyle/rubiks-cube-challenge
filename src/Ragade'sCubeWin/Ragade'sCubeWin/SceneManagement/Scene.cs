@@ -51,7 +51,7 @@ namespace RagadesCubeWin.SceneManagement
 
         }
 
-        public void Load(
+        public virtual void Load(
             GraphicsDevice graphicsDevice,
             ContentManager contentManager
             )
@@ -67,7 +67,7 @@ namespace RagadesCubeWin.SceneManagement
             }
         }
 
-        public void Unload()
+        public virtual void Unload()
         {
             if (_sceneRoot != null)
             {

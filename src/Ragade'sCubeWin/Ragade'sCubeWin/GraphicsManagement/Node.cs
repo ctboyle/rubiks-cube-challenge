@@ -33,6 +33,20 @@ namespace RagadesCubeWin.GraphicsManagement
             listChildren.Add(newChild);
         }
 
+        /// <summary>
+        /// Removes a child from this node.
+        /// </summary>
+        /// <param name="removeChild"></param>
+        /// <returns></returns>
+        public bool RemoveChild(RCSpatial removeChild)
+        {
+            bool removed = false;
+            if (removeChild != null)
+            {
+                removed = listChildren.Remove(removeChild);
+            }
+            return removed;
+        }
 
         /// <summary>
         /// Invokes all children's LoadGraphicsContent.

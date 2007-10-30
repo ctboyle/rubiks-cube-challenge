@@ -124,7 +124,7 @@ namespace RagadesCubeWin.GraphicsManagement
     
 
 
-        public bool AttachController(IController controller)
+        public bool AddController(IController controller)
         {
             bool fAttachSucceeded = false;
 
@@ -137,7 +137,23 @@ namespace RagadesCubeWin.GraphicsManagement
             return fAttachSucceeded;
         }
 
-        public void DetachController(IController controller)
+        public IController GetController<ContrllerType> ()
+        {
+
+            return _animateControllers.FindLast(new Predicate<IController>(
+                    delegate(IController x)
+                    {
+                        if (x is ContrllerType)
+                        {
+                            return true;
+                        }
+
+                        return false;
+                    }
+                ));
+        }   
+
+        public void RemoveController(IController controller)
         {
             if (controller != null)
             {
@@ -147,9 +163,9 @@ namespace RagadesCubeWin.GraphicsManagement
 
         protected void UpdateControllers(GameTime gameTime)
         {
-            foreach (IController controller in _animateControllers)
+            for (int iController = 0; iController < _animateControllers.Count; iController++ )
             {
-                controller.Update(gameTime);
+                _animateControllers[iController].Update(gameTime);
             }
         }
 

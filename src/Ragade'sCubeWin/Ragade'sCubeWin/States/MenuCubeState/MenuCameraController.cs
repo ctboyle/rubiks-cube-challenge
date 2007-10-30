@@ -11,11 +11,13 @@ namespace RagadesCubeWin.States.MainMenu
     class RCMenuCameraController 
         :RCKeyFrameController<RCPerspectiveCamera>
     {
+        public event AnimationCompleteHandler AtDestination;
+
         enum AnimationState
         {
+            FindHome,
             Zooming,
             Unzooming,
-            ToHome,
             ToDestination,
             Stopped
         }
@@ -35,7 +37,7 @@ namespace RagadesCubeWin.States.MainMenu
         AnimationState _state;
 
         const float _moveDuration = 1.00f;
-        const float _zoomDuration = 0.15f;
+        const float _zoomDuration = 0.35f;
         const float _cameraDistance = 14.5f;
         const float _zoomDistance = _cameraDistance - 10.15f;
         
@@ -52,6 +54,7 @@ namespace RagadesCubeWin.States.MainMenu
             : base()
         {
             _keyFrames = new Dictionary<CameraPositions, Matrix>();
+            OnComplete += CompletedMovement;
             CreateKeyFrames();
 
         }
@@ -93,72 +96,60 @@ namespace RagadesCubeWin.States.MainMenu
             }
         }
 
+        public void FindHome(float duration)
+        {
+            _cameraFinalPos = CameraPositions.Home;
+            _state = AnimationState.FindHome;
+
+            TranslationMode = InterpolationMode.SmoothStep;
+            BeginAnimation(
+                _controlledItem.LocalTrans,
+                GetZoomedTransform(_cameraFinalPos),
+                duration
+                );
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            // Remove interpolated scaling.
-
-            Vector3 scale;
-            Vector3 trans;
-            Quaternion q;
-            _parentSceneObject.LocalTrans.Decompose(
-                out scale,
-                out q,
-                out trans
-                );
-
-            _parentSceneObject.LocalTrans =
-                Matrix.CreateFromQuaternion(q) *
-                Matrix.CreateTranslation(trans);
+            
         }
 
-        protected override void OnComplete()
+        protected void CompletedMovement()
         {
             switch (_state)
             {
-                case AnimationState.ToHome:
-                    // Now go to destination.
-                    GoToDestination();
-                    break;
-
                 case AnimationState.ToDestination:
                     ZoomIn();
                     break;
                 case AnimationState.Zooming:
                     // Reached the final transform, stop.
                     _state = AnimationState.Stopped;
+                    
+                    if (AtDestination != null)
+                    {
+                        AtDestination();
+                    }
+
                     break;
                 case AnimationState.Unzooming:
-                    GoToHome();
+                    GoToDestination();
+                    break;
+
+                case AnimationState.FindHome:
+                    _state = AnimationState.Stopped;
+                    TranslationMode = InterpolationMode.Linear;
+
+                    if (AtDestination != null)
+                    {
+                        AtDestination();
+                    }
                     break;
                 case AnimationState.Stopped:
                     break;
-            }
-        }
-
-        private void GoToHome()
-        {
-            // Just unzoomed, go to home position.
-
-
-            // No need to move just stay here, zoom back in.
-            if (_curPosition == _cameraFinalPos)
-            {
-                ZoomIn();
-            }
-            else if (_curPosition == CameraPositions.Home)
-            {
-                 GoToDestination();
-            }
-            else
-            {
-                _state = AnimationState.ToHome;
-                BeginAnimation(
-                    _parentSceneObject.LocalTrans,
-                    _keyFrames[CameraPositions.Home],
-                    _moveDuration
-                    );
+                default:
+                    break;
             }
         }
 
@@ -170,7 +161,7 @@ namespace RagadesCubeWin.States.MainMenu
 
             _state = AnimationState.Zooming;
             BeginAnimation(
-                _parentSceneObject.LocalTrans,
+                _controlledItem.LocalTrans,
                 _curZoomTrans,
                 _zoomDuration
                 );
@@ -178,22 +169,15 @@ namespace RagadesCubeWin.States.MainMenu
 
         private void GoToDestination()
         {
-            if (_cameraFinalPos == CameraPositions.Home)
-            {
-                // We should already be at home.
-                ZoomIn();
-            }
-            else
-            {
-                // Move from home to the final destination.
-                _state = AnimationState.ToDestination;
-                BeginAnimation(
-                    _parentSceneObject.LocalTrans,
-                    _keyFrames[_cameraFinalPos],
-                    _moveDuration
-                    );
-                _curPosition = _cameraFinalPos;
-            }
+            // Move from to the final destination.
+            _state = AnimationState.ToDestination;
+            BeginAnimation(
+                _controlledItem.LocalTrans,
+                _keyFrames[_cameraFinalPos],
+                _moveDuration
+                );
+            _curPosition = _cameraFinalPos;
+            
         }
 
         private Matrix GetZoomedTransform(CameraPositions position)
@@ -211,7 +195,7 @@ namespace RagadesCubeWin.States.MainMenu
         {
             _state = AnimationState.Unzooming;
             BeginAnimation(
-                _parentSceneObject.LocalTrans,
+                _controlledItem.LocalTrans,
                 _keyFrames[_curPosition],
                 _zoomDuration
                 );

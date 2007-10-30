@@ -25,7 +25,7 @@ namespace RagadesCubeWin.Input
         /// Map of all buttons on the keyboard
         /// saves each of their states
         /// </summary>
-        static ButtonState[] r_ButtonState = new ButtonState[256];
+        ButtonState[] r_ButtonState = new ButtonState[256];
 
         /// <summary>
         /// Checks to see if sent key is pressed

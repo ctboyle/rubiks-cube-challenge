@@ -231,17 +231,11 @@ namespace RagadesCubeWin.SceneObjects
                 out worldTranslate
                 );
 
-
             Vector3 worldNormal = Vector3.Transform(-planeNormal, worldRot);
 
             float dWorld  = (worldTranslate + worldNormal * d).Length() ;
 
-            
-
-
             Plane facePlane = new Plane(worldNormal, dWorld);
-
-            
 
             List<RCCublet> listCubelets = new List<RCCublet>();
             foreach (RCSpatial sceneObject in listChildren)

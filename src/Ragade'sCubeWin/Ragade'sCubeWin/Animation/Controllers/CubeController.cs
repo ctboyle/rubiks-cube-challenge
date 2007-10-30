@@ -14,7 +14,6 @@ namespace RagadesCubeWin.Animation.Controllers
     public class RCCubeController : Controller<RCCube>
     {
         private List<RCCublet> _cubletFace;
-        private bool _isAnimating;
         private float _curRotation;
         private float _radsPerSecond;
 
@@ -32,17 +31,12 @@ namespace RagadesCubeWin.Animation.Controllers
             _rotMatrix = Matrix.Identity;
         }
 
-        public override bool IsAnimating
-        {
-            get { return _isAnimating; }
-        }
-
         public void RotateFace(
             RCCube.FaceSide face, 
             RCCube.RotationDirection direction
             )
         {
-            RCCube parentCube = (RCCube)_parentSceneObject;
+            RCCube parentCube = (RCCube)_controlledItem;
             List<RCCublet> listCublets = parentCube.GetCubletsOnFace(
                 face
                 );

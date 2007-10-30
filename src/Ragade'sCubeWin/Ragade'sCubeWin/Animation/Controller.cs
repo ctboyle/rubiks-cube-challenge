@@ -21,20 +21,27 @@ namespace RagadesCubeWin.Animation
 
     public abstract class Controller<CntrlType> : IController where CntrlType : RCSpatial
     {
-        protected CntrlType _parentSceneObject;
-        
+        protected CntrlType _controlledItem;
+        protected bool _isAnimating;
+                
         public RCSpatial Parent
         {
-            get { return _parentSceneObject; }
+            get { return _controlledItem; }
         }
+
+        public bool IsAnimating 
+        {
+            get { return _isAnimating; }
+        }
+
 
         public bool AttachToObject(CntrlType parent)
         {
             bool fSuccess = false;
             if (parent != null)
             {
-                _parentSceneObject = parent;
-                fSuccess = _parentSceneObject.AttachController(this);
+                _controlledItem = parent;
+                fSuccess = _controlledItem.AddController(this);
             }
 
             return fSuccess;
@@ -43,10 +50,11 @@ namespace RagadesCubeWin.Animation
 
         public Controller()
         {
-            _parentSceneObject = null;
+            _controlledItem = null;
+            _isAnimating = false;
         }
 
-        public abstract bool IsAnimating { get; }
+        
         public abstract void Update(GameTime gameTime);
     }
 }

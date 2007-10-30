@@ -20,11 +20,11 @@ namespace RagadesCubeWin.GUI
 
         private float boundingRectWidth;
         private float boundingRectHeight;
-        
+
+       
         private RCBoundingRect localBound;
 
-        
-
+ 
         bool _acceptsFocus;
 
         public bool AcceptsFocus
