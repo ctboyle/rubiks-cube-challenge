@@ -44,6 +44,9 @@ namespace RagadesCubeWin.States
 
         RCButton testButton;
         RCButton toggleButton;
+
+        RCSpinner spinBox;
+        
         int timer = 0;
 
         public RCGuiTestState(Game game)
@@ -131,6 +134,22 @@ namespace RagadesCubeWin.States
             _sceneManager.AddScene(
                 new FPScreenScene(graphics.GraphicsDevice.Viewport, Game.Services)
             );
+
+
+            spinBox = new RCSpinner(100, 100, 100, 100, LucidaFont);
+            guiScene.ScreenPane.AddChild(spinBox, 150, 375, 0f);
+            spinBox.addSpinItem("No Input", "", "EmptySpinBox", LucidaFont);
+            spinBox.addSpinItem("Mouse Input", "Mouse1", "Mouse", LucidaFont);
+            spinBox.spinTo("No Input");
+//            spinBox.spinUp();
+//            spinBox.spinUp();
+            spinBox.Accepted += reflectSpinnerValue;
+            
+        }
+
+        void reflectSpinnerValue()
+        {
+            testButton.buttonText.Text = spinBox.currentKey;
         }
 
         void flipToggleButton()

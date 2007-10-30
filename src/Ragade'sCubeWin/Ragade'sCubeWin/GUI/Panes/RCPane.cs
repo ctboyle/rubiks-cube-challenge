@@ -74,7 +74,7 @@ namespace RagadesCubeWin.GUI.Panes
 
         [needsXML]
         [placeHolder]
-        public void AddChild(
+        public virtual void AddChild(
             RCFlatSpatial newChild,
             int screenCoordX,
             int screenCoordY,

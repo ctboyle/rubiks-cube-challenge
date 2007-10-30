@@ -58,6 +58,19 @@ namespace RagadesCubeWin.GUI
         /// </summary>
         private RCQuad activatingImageObject = null;
 
+        /// <summary>
+        /// The protected RCQuad object that represents the object in question with absolutely no modification.
+        /// </summary>
+        private RCQuad baseImageObject = null;
+
+
+        [needsXML]
+        private string _baseImageObjectFileNameMinusExtension = "roughButtonImage";
+        [needsXML]
+        private string _focusedImageObjectFileNameMinusExtension = "roughSelectedButtonImage";
+        [needsXML]
+        private string _activatingImageObjectFileNameMinusExtension = "roughPressedButtonImageDepressed";
+
         #endregion ------------------------------Private data members
 
         #region    ------------------------------Events and their delegates
@@ -101,8 +114,28 @@ namespace RagadesCubeWin.GUI
             set { textObject = value; }
         }
 
-        #endregion ------------------------------Public properties to access objects contained within
+        [needsXML]
+        public string baseImageFileName
+        {
+            get { return _baseImageObjectFileNameMinusExtension; }
+            set { _baseImageObjectFileNameMinusExtension = value; }
+        }
 
+        [needsXML]
+        public string focusedImageFileName
+        {
+            get { return _focusedImageObjectFileNameMinusExtension; }
+            set { _focusedImageObjectFileNameMinusExtension = value; }
+        }
+
+        [needsXML]
+        public string activatingImageFileName
+        {
+            get { return _activatingImageObjectFileNameMinusExtension; }
+            set { _activatingImageObjectFileNameMinusExtension = value; }
+        }
+
+        #endregion ------------------------------Public properties to access objects contained within
 
         #region    ------------------------------Public properties to return information regarding the state of the button
         
@@ -154,10 +187,11 @@ namespace RagadesCubeWin.GUI
         )
         {
             textObject = new RCText(Font, width, height, screenWidth, screenHeight);
-            textObject.Text = "Nameless Button";
+            textObject.Text = "";
             AddChild(textObject, 15, 15, 0.1f);
             AcceptsFocus = true;
 
+            baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
             
             //            AddChild(selectedImageObject, 0, 0, 0f);
             
@@ -175,21 +209,23 @@ namespace RagadesCubeWin.GUI
 
         #region    ------------------------------Overridden functions
 
-
         public override void LoadGraphicsContent(GraphicsDevice graphics, Microsoft.Xna.Framework.Content.ContentManager content)
         {
             base.LoadGraphicsContent(graphics, content);
-            baseImageObject.Image = content.Load<Texture2D>("Content\\Textures\\roughButtonImage");
-            focusedImageObject.Image = content.Load<Texture2D>("Content\\Textures\\roughSelectedButtonImage");
-            activatingImageObject.Image = content.Load<Texture2D>("Content\\Textures\\roughPressedButtonImageDepressed");
+            baseImageObject.Image = content.Load<Texture2D>("Content\\Textures\\" + _baseImageObjectFileNameMinusExtension);
+            focusedImageObject.Image = content.Load<Texture2D>("Content\\Textures\\" + _focusedImageObjectFileNameMinusExtension);
+            activatingImageObject.Image = content.Load<Texture2D>("Content\\Textures\\" + _activatingImageObjectFileNameMinusExtension);
             //if (currentImageObject.Image == null)
             //{ currentImageObject.Image = baseImageObject.Image; }
         }
-        
-        
-       
-         
 
+
+        public override void UnloadGraphicsContent()
+        {
+            baseImageObject = null;
+            base.UnloadGraphicsContent();
+        }
+        
         #endregion ------------------------------Overridden functions
 
 
@@ -233,15 +269,6 @@ namespace RagadesCubeWin.GUI
            RemoveChild(activatingImageObject);
         }
 
-        [needsXML]
-        [placeHolder]
-        protected override void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
-        {
-            baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
-            //currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
-        }
-
-
         public override bool OnEvent(GUIEvent guiEvent)
         {
             bool handled = false;
@@ -253,7 +280,7 @@ namespace RagadesCubeWin.GUI
                 {
                     case GUIMouseEvent.GUIMouseEventType.MouseDown:
                         PressingInternalLogic();
-                        throwLocalEvent(WhilePressing);
+                        ThrowLocalEvent(WhilePressing);
                         break;
 
                     case GUIMouseEvent.GUIMouseEventType.MouseUp:
@@ -312,7 +339,7 @@ namespace RagadesCubeWin.GUI
                 switch (selectEvent.SelectEvent)
                 {
                     case GUISelectEvent.GUISelectType.Accept:
-                        throwLocalEvent(AfterPressedAndReleased);
+                        ThrowLocalEvent(AfterPressedAndReleased);
                         break;
                     case GUISelectEvent.GUISelectType.Decline:
                         break;
@@ -327,7 +354,7 @@ namespace RagadesCubeWin.GUI
         /// </summary>
         /// <param name="eventToThrow">The event to attempt to throw.</param>
         /// <returns>Whether or not <paramref name="eventToThrow"/> was handled (true if it did, false if it did not).</returns>
-        public bool throwLocalEvent(RCButtonEvent eventToThrow)
+        public bool ThrowLocalEvent(RCButtonEvent eventToThrow)
         {
             if (eventToThrow == null)
             { return false; }

@@ -13,31 +13,7 @@ namespace RagadesCubeWin.GUI
     [needsXML]
     internal abstract class RCControl : RCPane
     {
-        #region    ------------------------------Protected data members
-        
-        //[scaffolding]
-        ///// <summary>
-        ///// The protected RCQuad object that is being displayed at the current time.
-        ///// </summary>
-        //protected RCQuad currentImageObject = null;
 
-        /// <summary>
-        /// The protected RCQuad object that represents the object in question with absolutely no modification.
-        /// </summary>
-        protected RCQuad baseImageObject = null;
-
-        [needsXML]
-        protected List<RCQuad> visibleQuads = new List<RCQuad>();
-        #endregion ------------------------------Protected  data members
-
-        #region    ------------------------------Protected virtual functions
-        [needsXML]
-        virtual protected void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
-        {
-            //currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
-            baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
-        }
-        #endregion ------------------------------Protected virtual functions
 
 
         [placeHolder]
@@ -54,8 +30,7 @@ namespace RagadesCubeWin.GUI
             screenHeight
         )
         {
-            //currentImageObject = new RCQuad(width, height, screenWidth, screenHeight);
-            baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);
+
         }
 
        
@@ -68,7 +43,6 @@ namespace RagadesCubeWin.GUI
         public override void UnloadGraphicsContent()
         {
             //currentImageObject = null;
-            baseImageObject = null;
             base.UnloadGraphicsContent();
         }
 

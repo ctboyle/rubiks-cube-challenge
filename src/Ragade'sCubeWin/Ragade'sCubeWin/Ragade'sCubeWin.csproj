@@ -67,6 +67,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>KeyFrameController</Name>
     </Compile>
+    <Compile Include="GUI\Controls\Control Subclasses\RCSpinner.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RCSpinner</Name>
+    </Compile>
     <Compile Include="Rendering\LightSource.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>LightSource</Name>
@@ -563,17 +567,107 @@
       <Processor>ModelProcessor</Processor>
       <Name>Facelet</Name>
     </Content>
+    <Content Include="Content\Textures\BoringHollowArrowImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>BoringHollowArrowImage</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImage</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImageLeft.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImageLeft</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImageLeftActivating.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImageLeftActivating</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImageLeftSelected.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImageLeftSelected</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImageRight.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImageRight</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImageRightActivating.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImageRightActivating</Name>
+    </Content>
+    <Content Include="Content\Textures\EmergingArrowImageRightSelected.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmergingArrowImageRightSelected</Name>
+    </Content>
+    <Content Include="Content\Textures\EmptySpinBox.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>EmptySpinBox</Name>
+    </Content>
     <Content Include="Content\Textures\GuiTest.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>GuiTest</Name>
     </Content>
+    <Content Include="Content\Textures\HollowArc1ArrowImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>HollowArc1ArrowImage</Name>
+    </Content>
+    <Content Include="Content\Textures\Mouse.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Mouse</Name>
+    </Content>
     <Content Include="Content\Textures\nothing.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>nothing</Name>
+    </Content>
+    <Content Include="Content\Textures\RadioButtonMarkedStatusImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RadioButtonMarkedStatusImage</Name>
+    </Content>
+    <Content Include="Content\Textures\RadioButtonMarkingStatusImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RadioButtonMarkingStatusImage</Name>
+    </Content>
+    <Content Include="Content\Textures\RadioButtonUnmarkedStatusImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RadioButtonUnmarkedStatusImage</Name>
+    </Content>
+    <Content Include="Content\Textures\RadioButtonUnmarkingStatusImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>RadioButtonUnmarkingStatusImage</Name>
     </Content>
     <Content Include="Content\Textures\roughButtonImage.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
@@ -592,6 +686,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>roughSelectedButtonImage</Name>
+    </Content>
+    <Content Include="Content\Textures\TexturedArc1ArrowImage.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>TexturedArc1ArrowImage</Name>
     </Content>
     <Content Include="Content\Textures\UpgradeChrisBackground.bmp">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>

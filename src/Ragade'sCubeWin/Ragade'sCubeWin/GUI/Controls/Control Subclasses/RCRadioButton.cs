@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using RagadesCubeWin.GUI.Fonts;
 
 namespace RagadesCubeWin.GUI
 {
-    [placeHolder]
+ 
     [needsXML]
-    class RCRadioButton : RCControl
+    class RCRadioButton : RCButton
     {
+        [needsXML]
         private RCRadioChannel channel;
 
         [placeHolder]
@@ -18,13 +20,15 @@ namespace RagadesCubeWin.GUI
             float height,
             int screenWidth, 
             int screenHeight,
-            RCRadioChannel channel
+            RCRadioChannel channel,
+            BitmapFont Font
 
         ) : base(
             width,
             height,
             screenWidth,
-            screenHeight
+            screenHeight,
+            Font
         )
         {
         }
@@ -48,16 +52,43 @@ namespace RagadesCubeWin.GUI
 
         [needsXML]
         [placeHolder]
-        internal void moveToGroup(RCRadioChannel rCRadioChannel)
+        internal void MoveToGroup(RCRadioChannel RCRadioChannel)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
+        
+
         [needsXML]
         [placeHolder]
-        protected override void instantiateBaseAndCurrentImageObjects(float width, float height, int screenWidth, int screenHeight)
+        internal void Mark()
         {
             throw new Exception("The method or operation is not implemented.");
         }
+        
+        [needsXML]
+        [placeHolder]
+        internal void Unmark()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+
+        #region    ------------------------------Overridden Functions
+
+        public override void LoadGraphicsContent(GraphicsDevice graphics, Microsoft.Xna.Framework.Content.ContentManager content)
+        {
+            throw new Exception("The method or operation is not implemented.");
+            base.LoadGraphicsContent(graphics, content);
+        }
+
+        public override bool OnEvent(GUIEvent guiEvent)
+        {
+            //Idea: run base.OnEvent, then check again and change the BASE model.
+            throw new Exception("The method or operation is not implemented.");
+            return base.OnEvent(guiEvent);
+        }
+
+        #endregion ------------------------------Overridden Functions
     }
 }
