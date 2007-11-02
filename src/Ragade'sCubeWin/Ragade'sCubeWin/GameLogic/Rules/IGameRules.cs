@@ -7,11 +7,13 @@ namespace RagadesCubeWin.GameLogic.Rules
 {
     public interface IRCGameRules 
     {
-        void Reset();
+        void Reset(RCGameLogic logic);
+        void Stop();
         void Update(GameTime gameTime);
         bool PlayerMoveCube(RCPlayerIndex index);
         bool PlayerSelectCube(RCPlayerIndex index);
         bool PlayerRotateCube(RCPlayerIndex index);
-        bool GetWinner(out RCPlayerIndex index);
+        bool IsWinnerPresent { get; }
+        IRCCubeShuffer CubeShuffler { get; }
     }
 }

@@ -10,10 +10,7 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
     {
         float? Intersects(Ray ray);
         PlaneIntersectionType Intersects(Plane plane);
-
         IRCBoundingVolume Transform (Matrix transform);
-
         RCBoundingSphere ToBoundingShpere();
-
     }
 }

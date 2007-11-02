@@ -27,7 +27,8 @@ namespace RagadesCubeWin.SceneObjects
         /// Creates a new instance of the cursor.
         /// </summary>
         /// <param name="cube">The cube that the cursor will be applied to.</param>
-        public RCCubeCursor(RCCube cube) : this(cube, Color.Yellow)
+        public RCCubeCursor(RCCube cube)
+            : this(cube, Color.Yellow)
         {
         }
 
@@ -82,10 +83,10 @@ namespace RagadesCubeWin.SceneObjects
         {
             // initialize the vertex buffer and its data
             _vertexBuffer = new VertexBuffer(
-                graphics, 
-                typeof(VertexPositionNormalTexture), 
-                24, 
-                ResourceUsage.WriteOnly, 
+                graphics,
+                typeof(VertexPositionNormalTexture),
+                24,
+                ResourceUsage.WriteOnly,
                 ResourceManagementMode.Automatic
             );
 
@@ -93,10 +94,10 @@ namespace RagadesCubeWin.SceneObjects
 
             // initialize the index buffer and its data
             _indexBuffer = new IndexBuffer(
-                graphics, 
+                graphics,
                 sizeof(short) * _vertexIndices.Length,
-                ResourceUsage.None, 
-                ResourceManagementMode.Automatic, 
+                ResourceUsage.None,
+                ResourceManagementMode.Automatic,
                 IndexElementSize.SixteenBits
             );
 
@@ -132,7 +133,7 @@ namespace RagadesCubeWin.SceneObjects
             graphicsDevice.RenderState.SourceBlend = Blend.SourceAlpha;
 
             Rendering.RCRenderManager.SetWorld(WorldTrans);
-            Rendering.RCRenderManager.SetEffectMaterial(color, color, color, 1.0f, color, 0.4f);
+            Rendering.RCRenderManager.SetEffectMaterial(color, color, color, 100.0f, color, 0.4f);
             Rendering.RCRenderManager.Render(graphicsDevice, OnRender);
 
             graphicsDevice.RenderState.AlphaBlendEnable = false;
@@ -156,7 +157,7 @@ namespace RagadesCubeWin.SceneObjects
             Vector3 faceNormal = _theCube.GetFaceNormal(_selectedFace);
 
             // translate and rotate the cursor cube to the correct position
-            switch(_selectedFace)
+            switch (_selectedFace)
             {
                 case RCCube.FaceSide.Top:
                 case RCCube.FaceSide.Bottom:

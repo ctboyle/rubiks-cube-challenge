@@ -1,22 +1,24 @@
 using System;
 using RagadesCubeWin.SceneManagement;
 using RagadesCubeWin.SceneObjects;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace RagadesCubeWin.GameLogic.Scenes
 {
     public class RCCubeSceneCreator : IRCSceneCreator
     {
         private RCCube _cube;
-        private string _cameraLabel;
+        private Viewport _sceneViewport;
 
         public void AttachCube(RCCube cube)
         {
             _cube = cube;
         }
 
-        public void AttachCamera(string cameraLabel)
+        public Viewport SceneViewport
         {
-            _cameraLabel = cameraLabel;
+            get { return _sceneViewport; }
+            set { _sceneViewport = value; }
         }
 
         public RCScene CreateScene()
@@ -24,10 +26,7 @@ namespace RagadesCubeWin.GameLogic.Scenes
             if (_cube == null)
                 throw new Exception("Unable to create scene because no cube attached.");
 
-            if (_cameraLabel == null)
-                throw new Exception("Unable to create scene because no camera attached.");
-
-            return new RCCubeScene(_cube, _cameraLabel);
+            return new RCCubeScene(_sceneViewport, _cube);
         }
     }
 }

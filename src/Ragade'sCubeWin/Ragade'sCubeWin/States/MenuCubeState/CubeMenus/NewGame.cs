@@ -49,51 +49,82 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
             
             RCButton playerButton1 = new RCButton(1, 1, 215, 60, smallFont);
             playerButton1.buttonText.Text = "1 Player";
+            playerButton1.AfterPressedAndReleased +=
+                delegate()
+                {
+                    RCGameStartState gss = new RCGameStartState(
+                        Game,
+                        new RCDefaultGameRules(),
+                        new RCGLInputScheme[] {
+                            new RCGLKeyboardInputScheme()
+                        }
+                    );
+
+                    gameManager.PushState(new FadeState(Game, gss));
+                };
             //newGame.AfterPressedAndReleased += PushGamePlayState;
             _menuPane.AddChild(playerButton1, 50, 225, 0.0f);
 
 
             RCButton playerButton2 = new RCButton(1, 1, 215, 60, smallFont);
             playerButton2.buttonText.Text = "2 Players";
+            playerButton2.AfterPressedAndReleased +=
+               delegate()
+               {
+                   RCGameStartState gss = new RCGameStartState(
+                        Game,
+                        new RCDefaultGameRules(),
+                        new RCGLInputScheme[] {
+                            new RCGLKeyboardInputScheme(),
+                            new RCGLGamePadInputScheme(PlayerIndex.One)
+                        }
+                    );
+
+                   gameManager.PushState(new FadeState(Game, gss));
+               };
             //newGame.AfterPressedAndReleased += PushGamePlayState;
             _menuPane.AddChild(playerButton2, 150, 300, 0.0f);
 
 
             RCButton playerButton3 = new RCButton(1, 1, 215, 60, smallFont);
             playerButton3.buttonText.Text = "3 Players";
-            //newGame.AfterPressedAndReleased += PushGamePlayState;
+            playerButton3.AfterPressedAndReleased +=
+                delegate()
+                {
+                    RCGameStartState gss = new RCGameStartState(
+                         Game,
+                         new RCDefaultGameRules(),
+                         new RCGLInputScheme[] {
+                            new RCGLKeyboardInputScheme(),
+                            new RCGLKeyboardInputScheme(),
+                            new RCGLGamePadInputScheme(PlayerIndex.One)
+                        }
+                     );
+
+                    gameManager.PushState(new FadeState(Game, gss));
+                };
             _menuPane.AddChild(playerButton3, 250, 375, 0.0f);
 
             RCButton playerButton4 = new RCButton(1, 1, 215, 60, smallFont);
             playerButton4.buttonText.Text = "4 Players";
-            //newGame.AfterPressedAndReleased += PushGamePlayState;
+            playerButton4.AfterPressedAndReleased +=
+                delegate()
+                {
+                    RCGameStartState gss = new RCGameStartState(
+                         Game,
+                         new RCDefaultGameRules(),
+                         new RCGLInputScheme[] {
+                            new RCGLKeyboardInputScheme(),
+                            new RCGLMouseInputScheme(),
+                            new RCGLGamePadInputScheme(PlayerIndex.One),
+                            new RCGLGamePadInputScheme(PlayerIndex.Two)
+                        }
+                     );
+
+                    gameManager.PushState(new FadeState(Game, gss));
+                };
             _menuPane.AddChild(playerButton4, 350, 450, 0.0f);
                 
-        }
-
-        void PushGamePlayState()
-        {
-            RCGamePlayState gameState = new RCGamePlayState(Game);
-            RCGameLogic gameLogic = new RCGameLogic(Game, gameState);
-
-            //RCGLKeyboardInputScheme k1 = new RCGLKeyboardInputScheme();
-            //gameLogic.AddPlayer(k1);
-
-            RCGLGamePadInputScheme gp = new RCGLGamePadInputScheme(PlayerIndex.One);
-            gameLogic.AddPlayer(gp);
-
-            //RCGLKeyboardInputScheme k3 = new RCGLKeyboardInputScheme();
-            //k3.LeftPressKey = Keys.Right;
-            //k3.RightPressKey = Keys.Left;
-            //k3.UpPressKey = Keys.Up;
-            //k3.DownPressKey = Keys.Down;
-            //gameLogic.AddPlayer(k3);
-
-            //RCGLKeyboardInputScheme k2 = new RCGLKeyboardInputScheme();
-            //gameLogic.AddPlayer(k2);
-
-            gameLogic.Start(new RCDefaultGameRules(gameLogic));
-            gameManager.PushState(gameState);
         }
     }
 }

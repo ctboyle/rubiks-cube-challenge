@@ -6,18 +6,24 @@ namespace RagadesCubeWin.GameLogic.Rules
     public class RCDefaultGameRules : IRCGameRules
     {
         private RCGameLogic _logic;
-        private bool _winnerFound;
         private RCPlayerIndex _winnerIndex;
 
-        public RCDefaultGameRules(RCGameLogic logic)
+        public RCDefaultGameRules()
         {
-            _logic = logic;
-            _winnerFound = false;
         }
 
-        public void Reset()
+        public void Reset(RCGameLogic logic)
         {
-            _winnerFound = false;
+            _logic = logic;
+        }
+
+        public void Stop()
+        {
+            _logic = null;
+        }
+
+        public void Update(GameTime gameTime)
+        {
         }
 
         public bool PlayerMoveCube(RCPlayerIndex index)
@@ -35,25 +41,20 @@ namespace RagadesCubeWin.GameLogic.Rules
             return true;
         }
 
-        public void Update(GameTime gameTime)
+        public bool IsWinnerPresent
         {
-            _winnerFound = false;
-
-            foreach (IRCGamePlayerViewer player in _logic.GetPlayers())
+            get 
             {
-                if (player.CubeView.IsSolved)
-                {
-                    _winnerFound = true;
-                    _winnerIndex = player.Index;
-                    break;
-                }
+                foreach (IRCGamePlayerViewer player in _logic.GetPlayers())
+                    if (player.CubeView.IsSolved) 
+                        return true;
+                return false;
             }
         }
 
-        public bool GetWinner(out RCPlayerIndex index)
+        public IRCCubeShuffer CubeShuffler
         {
-            index = _winnerIndex;
-            return _winnerFound;
+            get { return new DefaultCubeShuffler(); }
         }
     }
 }

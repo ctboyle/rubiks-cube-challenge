@@ -33,6 +33,16 @@ namespace RagadesCubeWin.SceneObjects
         private float Alpha = 1.0f;
 
 
+        public Vector3 WorldNormal
+        {
+            get 
+            {
+                RCBoundingRect rect = WorldBound as RCBoundingRect;
+                return rect.Normal;
+            }
+        }
+
+
         public Color Color
         {
             get { return _color; }

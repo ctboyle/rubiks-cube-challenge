@@ -82,7 +82,7 @@ namespace RagadesCubeWin.GUI.Primitives
         {
             _font = font;
             _color = Color.White;
-
+            _text = "";
             _usingScaling = false;
         }
 

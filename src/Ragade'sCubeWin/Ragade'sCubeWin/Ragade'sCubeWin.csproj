@@ -14,6 +14,23 @@
     <XNAGlobalContentPipelineAssemblies>Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</XNAGlobalContentPipelineAssemblies>
     <XNAProjectContentPipelineAssemblies>
     </XNAProjectContentPipelineAssemblies>
+    <ManifestCertificateThumbprint>DCB23EE1BAEF688A17885DEC94E376CBD264064E</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Ragade%27sCubeWin_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,6 +87,10 @@
     <Compile Include="Animation\KeyFrameController.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>KeyFrameController</Name>
+    </Compile>
+    <Compile Include="GameLogic\CubeShuffler.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CubeShuffler</Name>
     </Compile>
     <Compile Include="GUI\Controls\Control Subclasses\RCSpinner.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -130,10 +151,6 @@
     <Compile Include="GameLogic\InputSchemes\MouseInputScheme.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>MouseInputScheme</Name>
-    </Compile>
-    <Compile Include="GameLogic\InputSchemes\MouseKeyboardInputScheme.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>MouseKeyboardInputScheme</Name>
     </Compile>
     <Compile Include="GameLogic\PlayerIndex.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -428,9 +445,17 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>WobbleController</Name>
     </Compile>
+    <Compile Include="States\FadeState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>FadeState</Name>
+    </Compile>
     <Compile Include="States\FPScreenScene.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FPScreenScene</Name>
+    </Compile>
+    <Compile Include="States\GameCompleteState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameCompleteState</Name>
     </Compile>
     <Compile Include="States\GamePlayState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -472,6 +497,10 @@
     <Compile Include="States\MenuCubeState\MenuCubeState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>MenuCubeState</Name>
+    </Compile>
+    <Compile Include="States\GameStartState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameStartState</Name>
     </Compile>
     <Compile Include="States\TestInputScheme.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -912,6 +941,19 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Name>UpgradeChrisBackground</Name>
     </Content>
+    <Content Include="Content\Textures\yello002.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>yello002</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sounds\RCSoundBank.xap">

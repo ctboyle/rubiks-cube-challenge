@@ -168,28 +168,18 @@ namespace RagadesCubeWin.States
 
         void PushTestState()
         {
+            RCGLInputScheme[] inputSchemes = {
+                new RCGLMouseInputScheme(),
+                new RCGLKeyboardInputScheme(),
+                new RCGLGamePadInputScheme(PlayerIndex.One),
+                new RCGLGamePadInputScheme(PlayerIndex.Two)
+            };
 
-            RCGamePlayState gameState = new RCGamePlayState(Game);
-            RCGameLogic gameLogic = new RCGameLogic(Game, gameState);
+            IRCGameRules rules = new RCDefaultGameRules();
 
-            RCGLKeyboardInputScheme k1 = new RCGLKeyboardInputScheme();
-            gameLogic.AddPlayer(k1);
+            RCGameStartState gss = new RCGameStartState(Game, rules, inputSchemes);
 
-            RCGLGamePadInputScheme gp = new RCGLGamePadInputScheme(PlayerIndex.One);
-            gameLogic.AddPlayer(gp);
-
-            //RCGLKeyboardInputScheme k3 = new RCGLKeyboardInputScheme();
-            //k3.LeftPressKey = Keys.Right;
-            //k3.RightPressKey = Keys.Left;
-            //k3.UpPressKey = Keys.Up;
-            //k3.DownPressKey = Keys.Down;
-            //gameLogic.AddPlayer(k3);
-
-            //RCGLKeyboardInputScheme k2 = new RCGLKeyboardInputScheme();
-            //gameLogic.AddPlayer(k2);
-
-            gameLogic.Start(new RCDefaultGameRules(gameLogic));
-            gameManager.PushState(gameState);
+            gameManager.PushState(new FadeState(Game, gss));
         }
     }
 }

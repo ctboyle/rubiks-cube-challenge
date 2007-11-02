@@ -71,7 +71,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
 
         private void OnExit()
         {
-            ControlItem.Stop();
+            ControlItem.StopGame();
         }
 
         private void OnLeftButton()

@@ -12,32 +12,20 @@ namespace RagadesCubeWin.GameLogic
     {
         IRCCubeViewer CubeView { get; }
         RCPlayerIndex Index { get; }
-        string CameraLabel { get; }
+        RCCamera Camera { get; }
     }
 
-    public class RCGamePlayer : IRCGamePlayerViewer, IDisposable
+    public class RCGamePlayer : IRCGamePlayerViewer
     {
-        private static int CreatedPlayers = 0;
-
-        private string _cameraName;
         private RCPlayerIndex _index;
         private RCActionCube _myCube;
+        private RCCamera _camera;
 
-        public RCGamePlayer(RCActionCube cube, RCPlayerIndex index)
+        public RCGamePlayer(RCActionCube cube, RCPlayerIndex index, RCCamera camera)
         {
             _index = index;
             _myCube = cube;
-            _cameraName = "RC Game Player Camera - " + (CreatedPlayers++).ToString();
-
-            RCCameraManager.AddCamera(
-                new RCPerspectiveCamera(new Microsoft.Xna.Framework.Graphics.Viewport()),
-                _cameraName
-            );
-        }
-
-        public void Dispose()
-        {
-            RCCameraManager.RemoveCamera(_cameraName);
+            _camera = camera;
         }
 
         public RCActionCube MyCube
@@ -50,20 +38,14 @@ namespace RagadesCubeWin.GameLogic
             get { return _myCube; }
         }
 
-        public string CameraLabel
+        public RCCamera Camera
         {
-            get { return _cameraName; }
+            get { return _camera; }
         }
 
         public RCPlayerIndex Index
         {
             get { return _index; }
-        }
-
-        public void AttachToScene(RCCubeSceneCreator sceneCreator)
-        {
-            _myCube.AttachToScene(sceneCreator);
-            sceneCreator.AttachCamera(_cameraName);
         }
     }
 }

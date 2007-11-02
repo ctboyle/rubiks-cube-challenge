@@ -22,7 +22,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
 
         protected void Move(Vector2 where)
         {
-            RCCamera camera = RCCameraManager.GetCamera(Player.CameraLabel);
+            RCCamera camera = Player.Camera;
 
             if (Vector3.Dot(Player.CubeView.WorldTrans.Up, Vector3.Up) < 0)
                 where = new Vector2(where.X, -where.Y);
@@ -66,7 +66,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
                         break;
                 }
 
-                RCCamera camera = RCCameraManager.GetCamera(Player.CameraLabel);
+                RCCamera camera = Player.Camera;
 
                 Vector3 orgin = camera.Viewport.Project(
                     Player.CubeView.WorldTrans.Translation,

@@ -48,7 +48,17 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
             _p3 = p3;
         }
 
-
+        public Vector3 Normal
+        {
+            get
+            {
+                Vector3 right = _p2 - _p1;
+                Vector3 up = _p2 - _p3;
+                Vector3 normal = Vector3.Cross(right, up);
+                normal.Normalize();
+                return normal;
+            }
+        }
 
 
         #region RCIBoundingVolume Members
@@ -61,7 +71,7 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
                 _p2,
                 _p3
                 );
-
+            
             float? dist = ray.Intersects(p);
 
             // We have a collision with the plane, find the
@@ -105,9 +115,32 @@ namespace RagadesCubeWin.GraphicsManagement.BoundingVolumes
         {
             // Dot each vertex + plane origin with plane normal. If they
             // all have same sign, no collision.
-            
-            throw new Exception("The method or operation is not implemented.");
-            
+
+            // Find plane of rectangle.
+            Plane rectPlane = new Plane(
+                _p1,
+                _p2,
+                _p3
+                );
+
+            // L = positionV + t * directionV
+
+            // Compute direction of intersection line
+            Vector3 direction = Vector3.Cross(rectPlane.Normal, plane.Normal);
+
+            // If direction is (near) zero, the planes are parallel (and separated)
+            // or coincident, so they’re not considered intersecting
+            float denom = direction.Length();
+            if (denom < 0.00001f) return PlaneIntersectionType.Back;
+
+            // compute position vector on intersection line
+            Vector3 position = Vector3.Cross(
+                rectPlane.D * plane.Normal - plane.D * rectPlane.Normal, 
+                direction);
+
+            position /= denom;
+
+            return PlaneIntersectionType.Intersecting;
         }
 
         public IRCBoundingVolume Transform(Matrix transform)

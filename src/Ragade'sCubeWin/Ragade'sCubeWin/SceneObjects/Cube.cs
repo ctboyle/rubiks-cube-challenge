@@ -177,10 +177,26 @@ namespace RagadesCubeWin.SceneObjects
         public List<RCFacelet> GetFaceletsOnFace(FaceSide face)
         {
             List<RCFacelet> facelets = new List<RCFacelet>();
-            List<RCCublet> cublets = GetCubletsOnFace(face);
 
-            foreach (RCCublet cublet in cublets)
-                facelets.Add(cublet.Facelets[(int)face]);
+            foreach (RCSpatial sceneObject in listChildren)
+            {
+                if (sceneObject is RCCublet)
+                {
+                    RCCublet cublet = sceneObject as RCCublet;
+                    Vector3 faceNormal = GetFaceNormal(face);
+
+                    foreach (RCFacelet facelet in cublet.Facelets)
+                    {
+                        if (facelet != null)
+                        {
+                            Vector3 faceletNormal = facelet.WorldNormal;
+
+                            if (Vector3.Dot(faceletNormal, faceNormal) > 0.9)
+                                facelets.Add(facelet);
+                        }
+                    }
+                }
+            }
 
             return facelets;
         }

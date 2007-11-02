@@ -6,6 +6,7 @@ using RagadesCubeWin.Input.Types;
 using Microsoft.Xna.Framework;
 using RagadesCubeWin.Cameras;
 using RagadesCubeWin.Input.Events;
+using RagadesCubeWin.SceneObjects;
 
 namespace RagadesCubeWin.GameLogic.InputSchemes
 {
@@ -15,78 +16,47 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
         public Keys RightPressKey = Keys.D;
         public Keys UpPressKey = Keys.W;
         public Keys DownPressKey = Keys.S;
+        public Keys FirePressKey = Keys.F;
+
+        bool _leftShiftActive = false;
 
         protected override IWatcher[] MapWatcherEvents()
         {
             KeyboardWatcher keyWatcher = new KeyboardWatcher();
 
-            #region Move
+            keyWatcher.WatchEvent(
+                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                    Keys.LeftShift,
+                    EventTypes.OnDown,
+                    delegate()
+                    {
+                        _leftShiftActive = true;
+                    }
+                )
+            );
 
-            KeyboardEvent moveLeft = new KeyboardEvent(
-                Keys.LeftShift,
-                EventTypes.Pressed,
-                OnLeftMove
+            keyWatcher.WatchEvent(
+                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                    Keys.LeftShift,
+                    EventTypes.OnUp,
+                    delegate()
+                    {
+                        _leftShiftActive = false;
+                    }
+                )
             );
 
             keyWatcher.WatchEvent(
                 new RagadesCubeWin.Input.Events.KeyboardEvent(
                     LeftPressKey,
                     EventTypes.Pressed,
-                    moveLeft
-                )
-            );
-
-            KeyboardEvent moveRight = new KeyboardEvent(
-                Keys.LeftShift,
-                EventTypes.Pressed,
-                OnRightMove
-            );
-
-            keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
-                    RightPressKey,
-                    EventTypes.Pressed,
-                    moveRight
-                )
-            );
-
-            KeyboardEvent moveUp = new KeyboardEvent(
-                Keys.LeftShift,
-                EventTypes.Pressed,
-                OnUpMove
-            );
-
-            keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
-                    UpPressKey,
-                    EventTypes.Pressed,
-                    moveUp
-                )
-            );
-
-            KeyboardEvent moveDown = new KeyboardEvent(
-                Keys.LeftShift,
-                EventTypes.Pressed,
-                OnDownMove
-            );
-
-            keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
-                    DownPressKey,
-                    EventTypes.Pressed,
-                    moveDown
-                )
-            );
-
-            #endregion
-
-            #region Cursor Move
-
-            keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
-                    LeftPressKey,
-                    EventTypes.Pressed,
-                    OnLeftCursorMove
+                    delegate()
+                    {
+                        if(_leftShiftActive)
+                            Move(new Vector2(0, -0.05f));
+                        else
+                            MoveCursor(new Vector2(-1, 0));
+                    }
                 )
             );
 
@@ -94,7 +64,13 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
                 new RagadesCubeWin.Input.Events.KeyboardEvent(
                     RightPressKey,
                     EventTypes.Pressed,
-                    OnRightCursorMove
+                    delegate()
+                    {
+                        if (_leftShiftActive)
+                            Move(new Vector2(0, 0.05f));
+                        else
+                            MoveCursor(new Vector2(1, 0));
+                    }
                 )
             );
 
@@ -102,7 +78,13 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
                 new RagadesCubeWin.Input.Events.KeyboardEvent(
                     UpPressKey,
                     EventTypes.Pressed,
-                    OnUpCursorMove
+                    delegate()
+                    {
+                        if (_leftShiftActive)
+                            Move(new Vector2(-0.05f, 0));
+                        else
+                            MoveCursor(new Vector2(0, 1));
+                    }
                 )
             );
 
@@ -110,53 +92,31 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
                 new RagadesCubeWin.Input.Events.KeyboardEvent(
                     DownPressKey,
                     EventTypes.Pressed,
-                    OnDownCursorMove
+                    delegate()
+                    {
+                        if (_leftShiftActive)
+                            Move(new Vector2(0.05f, 0));
+                        else
+                            MoveCursor(new Vector2(0, -1));
+                    }
                 )
             );
 
-            #endregion
+            keyWatcher.WatchEvent(
+                new KeyboardEvent(
+                    FirePressKey,
+                    EventTypes.Pressed,
+                    delegate()
+                    {
+                        if(_leftShiftActive)
+                            Rotate(RCCube.RotationDirection.Clockwise);
+                        else
+                            Rotate(RCCube.RotationDirection.CounterClockwise);
+                    }
+                )
+            );
 
             return new IWatcher[] { keyWatcher };
-        }
-
-        private void OnLeftCursorMove()
-        {
-            MoveCursor(new Vector2(-1, 0));
-        }
-
-        private void OnRightCursorMove()
-        {
-            MoveCursor(new Vector2(1, 0));
-        }
-
-        private void OnUpCursorMove()
-        {
-            MoveCursor(new Vector2(0, 1));
-        }
-
-        private void OnDownCursorMove()
-        {
-            MoveCursor(new Vector2(0, -1));
-        }
-
-        private void OnLeftMove()
-        {
-            Move(new Vector2(0, -0.05f));
-        }
-
-        private void OnRightMove()
-        {
-            Move(new Vector2(0, 0.05f));
-        }
-
-        private void OnUpMove()
-        {
-            Move(new Vector2(-0.05f, 0));
-        }
-
-        private void OnDownMove()
-        {
-            Move(new Vector2(0.05f, 0));
         }
     }
 }
