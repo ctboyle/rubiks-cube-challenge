@@ -31,12 +31,15 @@ using RagadesCubeWin.GameLogic.InputSchemes;
 using RagadesCubeWin.GameLogic;
 using RagadesCubeWin.GameLogic.Rules;
 
+
 #endregion
 
 namespace RagadesCubeWin.States
 {
     class RCGuiTestState : RCGameState, IDisposable
     {
+       
+
         RCGUIManager guiManager;
         GuiInputScheme guiInput;
         //RCButton testButton;
@@ -149,11 +152,13 @@ namespace RagadesCubeWin.States
 
         void reflectSpinnerValue()
         {
+    
             testButton.buttonText.Text = spinBox.currentKey;
         }
 
         void flipToggleButton()
         {
+        
             if (toggleButton.isBeingPushed)
             { toggleButton.UnPressingInternalLogic(); }
             else
@@ -163,6 +168,7 @@ namespace RagadesCubeWin.States
 
         void PushTestState()
         {
+
             RCGamePlayState gameState = new RCGamePlayState(Game);
             RCGameLogic gameLogic = new RCGameLogic(Game, gameState);
 

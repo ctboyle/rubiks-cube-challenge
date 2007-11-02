@@ -404,6 +404,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Facelet</Name>
     </Compile>
+    <Compile Include="SoundManagement\SoundManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SoundManager</Name>
+    </Compile>
     <Compile Include="StateManagement\GameState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>GameState</Name>
@@ -736,6 +740,10 @@
       <Processor>ModelProcessor</Processor>
       <Name>Facelet</Name>
     </Content>
+    <Content Include="Content\Sounds\notify.wav">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>notify</Name>
+    </Content>
     <Content Include="Content\Textures\Background1.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -903,6 +911,14 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>UpgradeChrisBackground</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Sounds\RCSoundBank.xap">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XactImporter</Importer>
+      <Processor>XactProcessor</Processor>
+      <Name>RCSoundBank</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

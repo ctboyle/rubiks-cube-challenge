@@ -11,7 +11,7 @@ using RagadesCubeWin.StateManagement;
 using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.SceneManagement;
-
+using RagadesCubeWin.SoundManagement;
 
 
 
@@ -28,6 +28,7 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
         protected GuiInputScheme _guiInput;
         protected IFontManager _fontManager;
         protected CubeMenuInputScheme _inputScheme;
+        protected SoundManager _soundmanager;
 
         public RCMenuCameraController.CameraPositions Position
         {
@@ -51,6 +52,8 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
         public override void Initialize()
         {
             CreateDefaultGuiElements();
+
+            _soundmanager = new SoundManager();
 
             ConstructGuiElements();
 
@@ -197,6 +200,7 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
 
         public void ExitState()
         {
+            _soundmanager.PlaySound("notify");
             if (!_menuScene.CameraController.IsAnimating)
             {
                 gameManager.PopState();

@@ -25,6 +25,7 @@ using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.GUI;
 using RagadesCubeWin.SceneManagement;
+using RagadesCubeWin.SoundManagement;
 using RagadesCubeWin.Input.Watchers;
 using RagadesCubeWin.GUI.Controls.Control_Subclasses;
 
@@ -52,7 +53,7 @@ namespace RagadesCubeWin.States
         RCGUIManager guiManager;
         GuiInputScheme guiInput;
         GuiInputScheme cubeGuiInput;
-
+        SoundManager soundmanager;
        
         RCButton timeButton;
 
@@ -340,6 +341,7 @@ namespace RagadesCubeWin.States
 
         public void OnSelOppFace()
         {
+            
             switch (cubeCursor.SelectedFace)
             {
                 case RCCube.FaceSide.Top:
