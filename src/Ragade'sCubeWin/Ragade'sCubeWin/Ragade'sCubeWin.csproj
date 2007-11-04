@@ -17,7 +17,7 @@
     <ManifestCertificateThumbprint>DCB23EE1BAEF688A17885DEC94E376CBD264064E</ManifestCertificateThumbprint>
     <ManifestKeyFile>Ragade%27sCubeWin_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
