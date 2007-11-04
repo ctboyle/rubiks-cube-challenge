@@ -27,6 +27,7 @@ namespace RagadesCubeWin.StateManagement
         protected ContentManager content;
         protected IGraphicsDeviceService graphics;
         protected RCSceneManager _sceneManager;
+        protected Cue music;
 
         public RCGameState(Game game)
             : base(game)
@@ -37,11 +38,12 @@ namespace RagadesCubeWin.StateManagement
             _sceneManager = new RCSceneManager(graphics, content);
             input = new InputManager(game);
             input.Initialize();
+            
         }
 
         protected override void LoadGraphicsContent(bool loadAllContent)
         {
-
+          
             _sceneManager.Load(
                     content
                     );
@@ -51,6 +53,8 @@ namespace RagadesCubeWin.StateManagement
 
         protected override void UnloadGraphicsContent(bool unloadAllContent)
         {
+
+
             _sceneManager.Unload();
             base.UnloadGraphicsContent(unloadAllContent);
         }

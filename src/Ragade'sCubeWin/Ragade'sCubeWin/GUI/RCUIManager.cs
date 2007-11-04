@@ -9,6 +9,7 @@ using RagadesCubeWin.Picking;
 using Microsoft.Xna.Framework;
 using RagadesCubeWin.GUI.Panes;
 using System.Diagnostics;
+
 namespace RagadesCubeWin.GUI
 {
     public class RCGUIManager
@@ -77,23 +78,28 @@ namespace RagadesCubeWin.GUI
         #region Move Functions
         public void MoveDown()
         {
+         
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Down);
         }
         public void MoveUp()
         {
+         
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Up);
         }
         public void MoveLeft()
         {
+         
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Left);
         }
         public void MoveRight()
         {
+         
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Right);
         }
 
         public void MoveEvent(GUIMoveEvent.GUIMoveDirection direction)
         {
+            SoundManagement.SoundManager.PlaySound("blip");
             GuiInputEvent(new GUIMoveEvent(
                     direction,
                     this
@@ -142,6 +148,7 @@ namespace RagadesCubeWin.GUI
         {
             if (AcceptInput)
             {
+               
                 if (inputEvent is GUIMouseEvent)
                 {
                     OnMouseEvent(inputEvent);

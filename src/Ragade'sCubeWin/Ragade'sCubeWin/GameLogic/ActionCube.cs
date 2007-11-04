@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RagadesCubeWin.GameLogic.Scenes;
 using System.Collections.Generic;
 
+
 namespace RagadesCubeWin.GameLogic
 {
     public interface IRCCubeViewer
@@ -25,6 +26,7 @@ namespace RagadesCubeWin.GameLogic
         private RCCubeCursor _cursor;
         private Vector2 _moveVector;
         private Vector3 _axis;
+ 
 
         public RCActionCube(Game game)
             : base(game)
@@ -36,6 +38,8 @@ namespace RagadesCubeWin.GameLogic
             _cursor = new RCCubeCursor(_myCube);
             _controller.AttachToObject(_myCube);
             _myCube.AddChild(_cursor);
+          
+
             Game.Components.Add(this);
         }
 
@@ -91,7 +95,7 @@ namespace RagadesCubeWin.GameLogic
         public void Move(Vector3 axis, Vector2 where)
         {
             if (IsMoving) return;
-
+            
             _axis = axis;
             _moveVector += where;
             _isMoving = true;
@@ -101,6 +105,7 @@ namespace RagadesCubeWin.GameLogic
         {
             if (IsRotating) return;
 
+            SoundManagement.SoundManager.PlaySound("slice");
             RCCube.FaceSide faceSide = _cursor.SelectedFace;
             _controller.RotateFace(faceSide, rotationDir);
             _moveCount++;

@@ -7,24 +7,65 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace RagadesCubeWin.SoundManagement
 {
-    class SoundManager
+    public static class SoundManager
     {
         // needed to make sound
         private static AudioEngine audioengine;
         private static WaveBank wavebank;
         private static SoundBank soundbank;
 
-        public SoundManager()
+        private static List<Cue> lstCue;
+
+        public static void Initialize(string AudioEngineFile,
+                            string WaveBankFile,
+                            string SoundBankFile)
         {
             // sound related
-            audioengine = new AudioEngine(@"Content/Sounds/RCSoundBank.xgs");
-            wavebank = new WaveBank(audioengine, @"Content/Sounds/wave bank.xwb");
-            soundbank = new SoundBank(audioengine, @"Content/Sounds/sound bank.xsb");
+            audioengine = new AudioEngine( AudioEngineFile);
+            wavebank = new WaveBank(audioengine, WaveBankFile);
+            soundbank = new SoundBank(audioengine, SoundBankFile);
+            lstCue = new List<Cue>();
         }
 
-        public void PlaySound(string soundname)
+        public static void Dispose()
         {
-            soundbank.PlayCue("notify");
+            audioengine.Dispose();
+            wavebank.Dispose();
+            soundbank.Dispose();
+        }
+
+        public static void PlaySound(string soundname)
+        {
+            soundbank.PlayCue(soundname);
+        }
+
+        public static void PlayCue(string soundname)
+        {
+            Cue cue = soundbank.GetCue(soundname);
+            cue.Play();
+            lstCue.Add(cue);
+        }
+
+        public static void Stop(string soundname)
+        {
+            
+            foreach (Cue c in lstCue)
+            {
+                
+                if (c.Name == soundname)
+                {   
+                    c.Stop(AudioStopOptions.Immediate);
+                }
+                
+            }
+        }
+
+        public static void Stop()
+        {
+            foreach (Cue c in lstCue)
+            {
+                c.Stop(AudioStopOptions.Immediate);
+            }
         }
     }
 }

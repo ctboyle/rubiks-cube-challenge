@@ -53,7 +53,7 @@ namespace RagadesCubeWin.States
         RCGUIManager guiManager;
         GuiInputScheme guiInput;
         GuiInputScheme cubeGuiInput;
-        SoundManager soundmanager;
+
        
         RCButton timeButton;
 

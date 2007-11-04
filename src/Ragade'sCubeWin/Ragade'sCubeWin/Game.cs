@@ -31,6 +31,8 @@ namespace RagadesCubeWin
         ContentManager content;
         RCGameStateManager stateManager;
         FontManager fontManager;
+        
+        
 
         public RagadesCube()
         {
@@ -38,6 +40,12 @@ namespace RagadesCubeWin
             content = new ContentManager(Services);
             stateManager = new RCGameStateManager(this);
             fontManager = new FontManager(this);
+            //soundmanager
+            SoundManagement.SoundManager.Initialize(@"content/sounds/RCSoundBank.xgs", 
+                                                    @"content/sounds/Wave Bank.xwb", 
+                                                    @"content/sounds/Sound Bank.xsb");
+
+           
         }
 
 
@@ -91,7 +99,8 @@ namespace RagadesCubeWin
             // Begin by putting our first state on the stack.
             //stateManager.PushState(new RCGuiTestState(this));
             stateManager.PushState(new RCTitleScreenState(this));
-
+           SoundManagement.SoundManager.PlayCue("musicbeat");
+            
             base.Initialize();
         }
 
@@ -105,7 +114,7 @@ namespace RagadesCubeWin
                 graphics.GraphicsDevice,
                 content
                 );
-
+          
             base.LoadGraphicsContent(loadAllContent);
         }
 
@@ -115,8 +124,11 @@ namespace RagadesCubeWin
 
             fontManager.UnloadFonts();
 
+            SoundManagement.SoundManager.Stop();
+
             content.Unload();
             base.UnloadGraphicsContent(unloadAllContent);
+           
            
         }
 

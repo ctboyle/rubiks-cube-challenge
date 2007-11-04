@@ -17,6 +17,7 @@ using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.States.Controllers;
 using RagadesCubeWin.GameLogic.Rules;
+using RagadesCubeWin.SoundManagement;
 
 namespace RagadesCubeWin.States
 {
@@ -30,7 +31,7 @@ namespace RagadesCubeWin.States
         protected RCScreenScene _screen;
         protected RCText _titleText;
         protected RCText[] _playerText;
-
+      
         public RCGamePlayState(
             Game game, 
             RCGameLogic logic, 
@@ -42,6 +43,7 @@ namespace RagadesCubeWin.States
             _logic = logic;
             _cubeScenes = scenes;
             _inputSchemes = inputSchemes;
+            
         }
 
         protected override void Dispose(bool disposing)
