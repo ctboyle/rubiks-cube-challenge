@@ -188,7 +188,7 @@ namespace RagadesCubeWin.GUI
         {
             textObject = new RCText(Font, width, height, screenWidth, screenHeight);
             textObject.Text = "";
-            AddChild(textObject, 15, 15, 0.075f);
+            AddChild(textObject, 0, (int)(.25 * (float)screenHeight), 0.075f);
             AcceptsFocus = true;
 
             baseImageObject = new RCQuad(width, height, screenWidth, screenHeight);

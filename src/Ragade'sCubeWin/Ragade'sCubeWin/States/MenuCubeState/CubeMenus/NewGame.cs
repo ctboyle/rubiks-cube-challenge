@@ -11,6 +11,7 @@ using RagadesCubeWin.GameLogic.Rules;
 using RagadesCubeWin.GUI.Fonts;
 using RagadesCubeWin.GUI.Primitives;
 using RagadesCubeWin.States.MainMenu;
+using RagadesCubeWin.GUI.Controls.Control_Subclasses;
 
 
 
@@ -18,16 +19,32 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
 {
     class RCNewGame : RCCubeMenu
     {
+        public enum SpinnerIndex
+        {
+            Player1 = 0,
+            Player2,
+            Player3,
+            Player4
+        }
+
+        private RCSpinner[] _playerSpinners;
+        private PlayerInputSpinnerManager _spinnerManager;
+
 
         public RCNewGame(Game game)
             : base(game)
         {
+            // Set this menu position on the cube.
             _menuPos = RCMenuCameraController.CameraPositions.Right;
+
+            _playerSpinners = new RCSpinner[4];
+            _spinnerManager = new PlayerInputSpinnerManager();
         }
 
 
         public override void Initialize()
         {
+
             base.Initialize();   
         }
 
@@ -38,93 +55,88 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
 
             _titleText.Text = "New Game";
 
+            CreateSpinners(100 ,180 ,275, 25, smallFont);
+
             // Players
             RCText playerText = new RCText(mediumFont, 1, 1, 600, 75);
-            playerText.Text = "How many players?";
+            playerText.Text = "Choose who will play.";
             playerText.CenterText = true;
             _menuPane.AddChild(playerText, 0, 175, 0.0f);
 
-            // Player buttons
+            RCButton startGameButton = new RCButton(1, 1, 200, 50, smallFont);
+            startGameButton.buttonText.Text = "  Start Game  ";
+            startGameButton.buttonText.SizeTextToWidth = true;
 
-            
-            RCButton playerButton1 = new RCButton(1, 1, 215, 60, smallFont);
-            playerButton1.buttonText.Text = "1 Player";
-            playerButton1.AfterPressedAndReleased +=
-                delegate()
-                {
-                    RCGameStartState gss = new RCGameStartState(
-                        Game,
-                        new RCDefaultGameRules(),
-                        new RCGLInputScheme[] {
-                            new RCGLKeyboardInputScheme()
-                        }
+            startGameButton.AfterPressedAndReleased += StartGame;
+
+            _menuPane.AddChild(startGameButton, 200, 450, 0.0f);
+
+                           
+        }
+
+        private void CreateSpinners(
+            int width,
+            int height,
+            int yVerticalPos,
+            int xHorizontalSpacing,
+            BitmapFont spinnerFont
+            )
+        {
+            // Calculate the total width of the 4 sinners so that
+            // we can center them on the menucube face.
+            int spinnerGroupWidth = 4 * width + 3 * xHorizontalSpacing;
+            int xSpinnerStart = _menuPane.ScreenWidth/2 - spinnerGroupWidth / 2;
+
+            Vector2 spinnerPos = new Vector2(xSpinnerStart, yVerticalPos);
+
+            Array playerIndicies = Enum.GetValues(typeof(PlayerIndex));
+
+            for (int playerIndex = 0; playerIndex < playerIndicies.Length; playerIndex++ )
+            {
+                // Create and position the spinner at the current spinner pos.
+                _playerSpinners[playerIndex] = new RCSpinner(
+                    width, height,
+                    width, height,
+                    spinnerFont
                     );
 
-                    gameManager.PushState(new FadeState(Game, gss));
-                };
-            //newGame.AfterPressedAndReleased += PushGamePlayState;
-            _menuPane.AddChild(playerButton1, 50, 225, 0.0f);
-
-
-            RCButton playerButton2 = new RCButton(1, 1, 215, 60, smallFont);
-            playerButton2.buttonText.Text = "2 Players";
-            playerButton2.AfterPressedAndReleased +=
-               delegate()
-               {
-                   RCGameStartState gss = new RCGameStartState(
-                        Game,
-                        new RCDefaultGameRules(),
-                        new RCGLInputScheme[] {
-                            new RCGLKeyboardInputScheme(),
-                            new RCGLGamePadInputScheme(PlayerIndex.One)
-                        }
+                _menuPane.AddChild(
+                    _playerSpinners[playerIndex],
+                    (int)spinnerPos.X, (int)spinnerPos.Y,
+                    0.0f
                     );
 
-                   gameManager.PushState(new FadeState(Game, gss));
-               };
-            //newGame.AfterPressedAndReleased += PushGamePlayState;
-            _menuPane.AddChild(playerButton2, 150, 300, 0.0f);
+                // Add label over spinner
+
+                RCText label = new RCText(spinnerFont, 1, 1, width, 75);
+                label.Text = "Player " + (playerIndex + 1).ToString();
+                label.SizeTextToWidth = true;
+                _menuPane.AddChild(label, (int)spinnerPos.X, (int)spinnerPos.Y - 25, 0.0f);
 
 
-            RCButton playerButton3 = new RCButton(1, 1, 215, 60, smallFont);
-            playerButton3.buttonText.Text = "3 Players";
-            playerButton3.AfterPressedAndReleased +=
-                delegate()
-                {
-                    RCGameStartState gss = new RCGameStartState(
-                         Game,
-                         new RCDefaultGameRules(),
-                         new RCGLInputScheme[] {
-                            new RCGLKeyboardInputScheme(),
-                            new RCGLKeyboardInputScheme(),
-                            new RCGLGamePadInputScheme(PlayerIndex.One)
-                        }
-                     );
+                spinnerPos.X += width + xHorizontalSpacing;
 
-                    gameManager.PushState(new FadeState(Game, gss));
-                };
-            _menuPane.AddChild(playerButton3, 250, 375, 0.0f);
-
-            RCButton playerButton4 = new RCButton(1, 1, 215, 60, smallFont);
-            playerButton4.buttonText.Text = "4 Players";
-            playerButton4.AfterPressedAndReleased +=
-                delegate()
-                {
-                    RCGameStartState gss = new RCGameStartState(
-                         Game,
-                         new RCDefaultGameRules(),
-                         new RCGLInputScheme[] {
-                            new RCGLKeyboardInputScheme(),
-                            new RCGLMouseInputScheme(),
-                            new RCGLGamePadInputScheme(PlayerIndex.One),
-                            new RCGLGamePadInputScheme(PlayerIndex.Two)
-                        }
-                     );
-
-                    gameManager.PushState(new FadeState(Game, gss));
-                };
-            _menuPane.AddChild(playerButton4, 350, 450, 0.0f);
                 
+
+
+            }
+
+            // Tell the spinner manager to initialize the newly created spinners.
+            _spinnerManager.InitializeSpinners(_playerSpinners, spinnerFont);
+        }
+
+        private void StartGame()
+        {
+            RCGLInputScheme[] inputSchemes = _spinnerManager.GetPlayerSchemes();
+
+            if (inputSchemes.Length != 0)
+            {
+                IRCGameRules rules = new RCDefaultGameRules();
+
+                RCGameStartState gss = new RCGameStartState(Game, rules, inputSchemes);
+
+                gameManager.PushState(new FadeState(Game, gss));
+            }
         }
     }
 }

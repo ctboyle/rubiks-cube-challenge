@@ -482,6 +482,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>NewGame</Name>
     </Compile>
+    <Compile Include="States\MenuCubeState\CubeMenus\NewGame\PlayerInputSpinnerManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>PlayerInputSpinnerManager</Name>
+    </Compile>
     <Compile Include="States\MenuCubeState\CubeMenus\Options.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Options</Name>
@@ -961,6 +965,42 @@
       <Importer>XactImporter</Importer>
       <Processor>XactProcessor</Processor>
       <Name>RCSoundBank</Name>
+    </Content>
+    <Content Include="Content\Textures\GamePad1.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>GamePad1</Name>
+    </Content>
+    <Content Include="Content\Textures\GamePad2.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>GamePad2</Name>
+    </Content>
+    <Content Include="Content\Textures\GamePad3.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>GamePad3</Name>
+    </Content>
+    <Content Include="Content\Textures\GamePad4.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>GamePad4</Name>
+    </Content>
+    <Content Include="Content\Textures\Keyboard.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Keyboard</Name>
+    </Content>
+    <Content Include="Content\Textures\NoPlayer.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>NoPlayer</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

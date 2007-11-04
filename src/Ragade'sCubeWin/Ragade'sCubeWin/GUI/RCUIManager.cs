@@ -315,6 +315,12 @@ namespace RagadesCubeWin.GUI
                                 dirToNext
                                 );
 
+                            // Exclude candidates that are essentailly entrily in the ortho direction.
+                            if (Math.Abs(compInOrthoDir) / dirToNext.Length() > .995)
+                            {
+                                continue;
+                            }
+
                             float candidateCloseness =
                                 1 * compInMoveDir * compInMoveDir +
                                 100 * compInOrthoDir * compInOrthoDir;
