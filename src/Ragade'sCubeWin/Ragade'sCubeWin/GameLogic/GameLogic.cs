@@ -57,6 +57,8 @@ namespace RagadesCubeWin.GameLogic
 
         public override void Update(GameTime gameTime)
         {
+            // BUG BUG: _rules.CubeShuffler.IsShuffling always retruns false.
+            // _cubes are set upon Shuffle which is called later.
             if (_shuffleCount != 0 && !_rules.CubeShuffler.IsShuffling)
             {
                 List<RCActionCube> cubes = new List<RCActionCube>();

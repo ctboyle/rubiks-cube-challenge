@@ -105,7 +105,6 @@ namespace RagadesCubeWin.GameLogic
         {
             if (IsRotating) return;
 
-            SoundManagement.SoundManager.PlaySound("slice");
             RCCube.FaceSide faceSide = _cursor.SelectedFace;
             _controller.RotateFace(faceSide, rotationDir);
             _moveCount++;

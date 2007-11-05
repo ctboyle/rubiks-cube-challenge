@@ -143,6 +143,14 @@ namespace RagadesCubeWin.States.TitleScreen
             _menuScene.Cube.RemoveController(cubeSpin);
 
             RCWobbleController cubeWobble = new RCWobbleController();
+
+            cubeWobble.Period = 2 * new Vector3(5.0f, 6.4f, 7.7f);
+            cubeWobble.RotationAmplitude = new Vector3(
+                MathHelper.ToRadians(2.0f),
+                MathHelper.ToRadians(2.0f),
+                MathHelper.ToRadians(2.0f)
+                );
+
             cubeWobble.AttachToObject(_menuScene.Cube);
             
         }

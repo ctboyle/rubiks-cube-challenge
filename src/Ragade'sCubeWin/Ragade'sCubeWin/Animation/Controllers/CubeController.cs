@@ -58,6 +58,7 @@ namespace RagadesCubeWin.Animation.Controllers
         {
             if (!_isAnimating)
             {
+                SoundManagement .SoundManager.PlaySound("slice");
                 if (listCubletsFace != null)
                 {
                     _cubletFace = listCubletsFace;

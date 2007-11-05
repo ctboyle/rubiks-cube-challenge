@@ -44,8 +44,7 @@ namespace RagadesCubeWin
             SoundManagement.SoundManager.Initialize(@"content/sounds/RCSoundBank.xgs", 
                                                     @"content/sounds/Wave Bank.xwb", 
                                                     @"content/sounds/Sound Bank.xsb");
-
-           
+            
         }
 
 
@@ -95,7 +94,7 @@ namespace RagadesCubeWin
                "Content\\Fonts\\Ragade's Cube\\72\\RCfont.xml"
                );
 
-
+            
             // Begin by putting our first state on the stack.
             //stateManager.PushState(new RCGuiTestState(this));
             stateManager.PushState(new RCTitleScreenState(this));

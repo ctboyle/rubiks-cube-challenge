@@ -5,21 +5,36 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 using RagadesCubeWin.Animation;
-using RagadesCubeWin.SceneObjects;
+using RagadesCubeWin.GraphicsManagement;
 
 
 namespace RagadesCubeWin.States.Controllers
 {
-    class RCWobbleController: Controller<RCCube>
+    class RCWobbleController: Controller<RCSpatial>
     {
 
         Vector3 _currentRotation;
         Vector3 _rotationAmplitude;
         Vector3 _period;
+        Vector3 _translation;
+
+        Vector3 _pivot;
 
         float _secondsCount;
 
         bool _wobble;
+
+        public Vector3 Period
+        {
+            get { return _period; }
+            set { _period = value; }
+        }
+
+        public Vector3 RotationAmplitude
+        {
+            get { return _rotationAmplitude; }
+            set { _rotationAmplitude = value; }
+        }
 
         public bool Wobble
         {
@@ -27,16 +42,23 @@ namespace RagadesCubeWin.States.Controllers
             set { _wobble = true; }
         }
 
+        public Vector3 LocalPivot
+        {
+            get { return _pivot; }
+            set { _pivot = value; }
+        }
+
+        public Vector3 Translation
+        {
+            get { return _translation; }
+            set { _translation = value; }
+        }
+
         public RCWobbleController()
             :base()
         {
             _currentRotation = Vector3.Zero;
-            _period = 2 * new Vector3(5.0f, 6.4f, 7.7f);
-            _rotationAmplitude = new Vector3(
-                MathHelper.ToRadians(2.0f),
-                MathHelper.ToRadians(2.0f),
-                MathHelper.ToRadians(2.0f)
-                );
+            _pivot = Vector3.Zero;
 
             _secondsCount = 0.0f;
 
@@ -48,21 +70,35 @@ namespace RagadesCubeWin.States.Controllers
         {
             if (_wobble)
             {
+                Vector3 trans;
+                Vector3 scale;
+                Quaternion rot;
+
+                _controlledItem.LocalTrans.Decompose(
+                    out scale,
+                    out rot,
+                    out trans
+                    );
+
                 _secondsCount += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                 _currentRotation = _rotationAmplitude *
                     new Vector3(
-                        (float)Math.Sin(MathHelper.TwoPi / _period.X * _secondsCount),
-                        (float)Math.Sin(MathHelper.TwoPi / _period.Y * _secondsCount),
-                        (float)Math.Sin(MathHelper.TwoPi / _period.Z * _secondsCount)
+                        _period.X == 0.0f ? 0.0f : (float)Math.Sin(MathHelper.TwoPi / _period.X * _secondsCount),
+                        _period.Y == 0.0f ? 0.0f : (float)Math.Sin(MathHelper.TwoPi / _period.Y * _secondsCount),
+                        _period.Z == 0.0f ? 0.0f : (float)Math.Sin(MathHelper.TwoPi / _period.Z * _secondsCount)
                      );
 
 
 
                 _controlledItem.LocalTrans =
+                    Matrix.CreateTranslation(-_pivot) *
+                    Matrix.CreateScale(scale) *
                     Matrix.CreateRotationX(_currentRotation.X) *
                     Matrix.CreateRotationY(_currentRotation.Y) *
-                    Matrix.CreateRotationZ(_currentRotation.Z);
+                    Matrix.CreateRotationZ(_currentRotation.Z) *
+                    Matrix.CreateTranslation(_pivot + trans);
+
             }
                 
 

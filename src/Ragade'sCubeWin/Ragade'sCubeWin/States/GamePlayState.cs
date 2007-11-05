@@ -80,7 +80,7 @@ namespace RagadesCubeWin.States
             }
             else
             {
-                gameManager.PopState();
+                //gameManager.PopState();
 
                 List<IRCGamePlayerViewer> winners = new List<IRCGamePlayerViewer>();
                 IRCGamePlayerViewer[] players = _logic.GetPlayers();
@@ -94,7 +94,7 @@ namespace RagadesCubeWin.States
                 if (winners.Count > 0)
                 {
                     RCGameCompleteState gcs = new RCGameCompleteState(Game, winners.ToArray());
-                    gameManager.PushState(new FadeState(Game, gcs));
+                    gameManager.PushState(gcs);
                 }
             }
 
@@ -164,6 +164,19 @@ namespace RagadesCubeWin.States
             }
 
             base.Initialize();
+        }
+
+        protected internal override void StateChanged(RCGameState newState, RCGameState oldState)
+        {
+            if ((oldState == this) && (newState is RCGameCompleteState))
+            {
+                this.Visible = true;
+                this.Enabled = false;
+            }
+            else
+            {
+                base.StateChanged(newState, oldState);
+            }
         }
     }
 }
