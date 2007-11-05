@@ -5,8 +5,9 @@ namespace RagadesCubeWin.GameLogic.Rules
 {
     public class RCDefaultGameRules : IRCGameRules
     {
+        private readonly DefaultCubeShuffler SHUFFLER = new DefaultCubeShuffler();
+
         private RCGameLogic _logic;
-        private RCPlayerIndex _winnerIndex;
 
         public RCDefaultGameRules()
         {
@@ -54,7 +55,7 @@ namespace RagadesCubeWin.GameLogic.Rules
 
         public IRCCubeShuffer CubeShuffler
         {
-            get { return new DefaultCubeShuffler(); }
+            get { return SHUFFLER;  }
         }
     }
 }

@@ -41,6 +41,9 @@ namespace RagadesCubeWin.GameLogic
 
         public void Shuffle(RCActionCube[] cubes)
         {
+            if (IsShuffling)
+                throw new Exception("Cannot shuffle cube because busy.");
+
             _cubes = cubes;
 
             int rotationCount = Enum.GetValues(typeof(RCCube.RotationDirection)).Length;
