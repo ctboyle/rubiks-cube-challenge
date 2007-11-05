@@ -80,7 +80,7 @@ namespace RagadesCubeWin.States
             }
             else
             {
-                //gameManager.PopState();
+                gameManager.PopState();
 
                 List<IRCGamePlayerViewer> winners = new List<IRCGamePlayerViewer>();
                 IRCGamePlayerViewer[] players = _logic.GetPlayers();
@@ -114,9 +114,6 @@ namespace RagadesCubeWin.States
 
             for (int i = 0; i < _cubeScenes.Length; ++i)
                 _sceneManager.AddScene(_cubeScenes[i]);
-
-
-
 
             IFontManager fontManager = (IFontManager)Game.Services.GetService(typeof(IFontManager));
 

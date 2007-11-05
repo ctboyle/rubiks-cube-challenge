@@ -17,6 +17,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
         public Keys UpPressKey = Keys.W;
         public Keys DownPressKey = Keys.S;
         public Keys FirePressKey = Keys.F;
+        public Keys ExitKey = Keys.Escape;
 
         bool _leftShiftActive = false;
 
@@ -42,6 +43,17 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
                     delegate()
                     {
                         _leftShiftActive = false;
+                    }
+                )
+            );
+
+            keyWatcher.WatchEvent(
+                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                    ExitKey,
+                    EventTypes.Pressed,
+                    delegate()
+                    {
+                        ControlItem.StopGame();
                     }
                 )
             );
