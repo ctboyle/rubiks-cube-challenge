@@ -109,21 +109,21 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>XBox360GamePadTypes</Name>
     </Compile>
-    <Compile Include="Watchers\Keyboard.cs">
+    <Compile Include="Watchers\KeyboardWatcher.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Keyboard</Name>
+      <Name>KeyboardWatcher</Name>
     </Compile>
-    <Compile Include="Watchers\Mouse.cs">
+    <Compile Include="Watchers\MouseWatcher.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Mouse</Name>
+      <Name>MouseWatcher</Name>
     </Compile>
     <Compile Include="Watchers\Watcher.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Watcher</Name>
     </Compile>
-    <Compile Include="Watchers\XBox360GamePad.cs">
+    <Compile Include="Watchers\XBox360GamePadWatcher.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>XBox360GamePad</Name>
+      <Name>XBox360GamePadWatcher</Name>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
