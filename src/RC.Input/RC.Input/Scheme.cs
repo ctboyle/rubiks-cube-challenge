@@ -5,7 +5,7 @@ using RC.Input.Events;
 using RC.Input.Types;
 using RC.Engine.Input;
 
-namespace RagadesCubeWin.Input
+namespace RC.Input
 {
     /// <summary>
     /// Defines an input scheme for a class that can be used for 
