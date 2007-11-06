@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.GraphicsManagement;
+using RC.Engine.GraphicsManagement;
 
-namespace RagadesCubeWin.Animation
+namespace RC.Engine.Animation
 {
     abstract public class DurationController<CntrlType>
         : Controller<CntrlType> where CntrlType : RCSpatial

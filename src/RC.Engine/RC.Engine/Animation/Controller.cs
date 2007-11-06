@@ -4,10 +4,10 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.GraphicsManagement;
+using RC.Engine.GraphicsManagement;
 
 
-namespace RagadesCubeWin.Animation
+namespace RC.Engine.Animation
 {
     public interface IController
     {

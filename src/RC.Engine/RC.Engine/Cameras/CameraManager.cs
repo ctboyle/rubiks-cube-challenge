@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Text;
 
-using RagadesCubeWin.Rendering;
+using RC.Engine.Rendering;
 
-namespace RagadesCubeWin.Cameras
+namespace RC.Engine.Cameras
 {
     class RCCameraManager
     {

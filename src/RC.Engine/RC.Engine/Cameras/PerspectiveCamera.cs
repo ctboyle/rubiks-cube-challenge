@@ -5,10 +5,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using RagadesCubeWin.GraphicsManagement;
-using RagadesCubeWin.Rendering;
+using RC.Engine.GraphicsManagement;
+using RC.Engine.Rendering;
 
-namespace RagadesCubeWin.Cameras
+namespace RC.Engine.Cameras
 {
     public class RCPerspectiveCamera : RCCamera
     {

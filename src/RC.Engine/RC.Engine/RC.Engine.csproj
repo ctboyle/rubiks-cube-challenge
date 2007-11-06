@@ -53,24 +53,121 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\Controller.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Controller</Name>
+    </Compile>
+    <Compile Include="Animation\DurationController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>DurationController</Name>
+    </Compile>
+    <Compile Include="Animation\KeyFrameController.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>KeyFrameController</Name>
+    </Compile>
+    <Compile Include="Cameras\Camera.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Camera</Name>
+    </Compile>
+    <Compile Include="Cameras\CameraManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>CameraManager</Name>
+    </Compile>
+    <Compile Include="Cameras\OrthographicCamera.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>OrthographicCamera</Name>
+    </Compile>
+    <Compile Include="Cameras\PerspectiveCamera.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>PerspectiveCamera</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingBox.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>BoundingBox</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingRect.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>BoundingRect</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingSphere.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>BoundingSphere</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingVolume.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>BoundingVolume</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\Node.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Node</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\SceneInterfaces.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SceneInterfaces</Name>
+    </Compile>
+    <Compile Include="GraphicsManagement\Spatial.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Spatial</Name>
+    </Compile>
+    <Compile Include="Input\InputManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>InputManager</Name>
+    </Compile>
+    <Compile Include="Input\IWatcher.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>IWatcher</Name>
+    </Compile>
+    <Compile Include="Picking\PickRecord.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>PickRecord</Name>
+    </Compile>
+    <Compile Include="Picking\ScenePicker.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ScenePicker</Name>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\DirectionalLight.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>DirectionalLight</Name>
+    </Compile>
+    <Compile Include="Rendering\LightSource.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>LightSource</Name>
+    </Compile>
+    <Compile Include="Rendering\RenderManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>RenderManager</Name>
+    </Compile>
+    <Compile Include="SceneManagement\ISceneCreator.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ISceneCreator</Name>
+    </Compile>
+    <Compile Include="SceneManagement\Scene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Scene</Name>
+    </Compile>
+    <Compile Include="SceneManagement\SceneManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SceneManager</Name>
+    </Compile>
+    <Compile Include="SoundManagement\SoundManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SoundManager</Name>
+    </Compile>
+    <Compile Include="StateManagement\GameState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameState</Name>
+    </Compile>
+    <Compile Include="StateManagement\StateManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>StateManager</Name>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Millennium-falcon.ico">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Millennium-falcon</Name>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Animation\" />
-    <Folder Include="Cameras\" />
-    <Folder Include="GraphicsManagement\" />
-    <Folder Include="Input\" />
-    <Folder Include="Picking\" />
-    <Folder Include="Rendering\" />
-    <Folder Include="SceneManagement\" />
-    <Folder Include="SoundManagement\" />
-    <Folder Include="StateManagement\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.ContentPipeline.targets" />

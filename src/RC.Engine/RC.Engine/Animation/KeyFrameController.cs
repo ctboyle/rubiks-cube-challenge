@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using RagadesCubeWin.GraphicsManagement;
+using RC.Engine.GraphicsManagement;
 using Microsoft.Xna.Framework;
 
-namespace RagadesCubeWin.Animation
+namespace RC.Engine.Animation
 {
     public class RCKeyFrameController<CntrlType> 
         : DurationController<CntrlType> where CntrlType : RCSpatial
