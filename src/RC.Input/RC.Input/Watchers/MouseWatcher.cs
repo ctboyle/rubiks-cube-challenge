@@ -8,7 +8,7 @@ using RC.Input.Internal;
 
 namespace RC.Input.Watchers
 {
-    class MouseWatcher : RCWatcher<MouseEvent>
+    public class MouseWatcher : RCWatcher<MouseEvent>
     {
         #region vars
         RealMouseState realstate;

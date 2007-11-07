@@ -10,7 +10,7 @@ using RC.Input.Internal;
 
 namespace RC.Input.Watchers
 {
-    class XBox360GamePad : RCWatcher<XBox360GamePadEvent>
+    public class XBox360GamePad : RCWatcher<XBox360GamePadEvent>
     { 
          #region vars
         RealXBoxGamePad realstate;

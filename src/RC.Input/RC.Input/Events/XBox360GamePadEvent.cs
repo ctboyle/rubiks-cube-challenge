@@ -11,7 +11,7 @@ namespace RC.Input.Events
     public delegate void geventanalog(Vector2 position, Vector2 move);
     public delegate void geventbinary();
 
-    class XBox360GamePadEvent:Event
+    public class XBox360GamePadEvent:Event
     {
         #region vars
         Types.XBox360GamePadTypes m_type;

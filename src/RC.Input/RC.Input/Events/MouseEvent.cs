@@ -11,7 +11,7 @@ namespace RC.Input.Events
     public delegate void mouseevent(Vector2 position, Vector2 move);
 
 
-    class MouseEvent:Event
+    public class MouseEvent:Event
     {
         Types.MouseInput m_type;
         Types.EventTypes m_eventtype;
