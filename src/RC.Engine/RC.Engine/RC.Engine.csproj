@@ -51,6 +51,8 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation\Controller.cs">
@@ -80,6 +82,10 @@
     <Compile Include="Cameras\PerspectiveCamera.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>PerspectiveCamera</Name>
+    </Compile>
+    <Compile Include="BasicGame.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>BasicGame</Name>
     </Compile>
     <Compile Include="GraphicsManagement\BoundingVolumes\BoundingBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
