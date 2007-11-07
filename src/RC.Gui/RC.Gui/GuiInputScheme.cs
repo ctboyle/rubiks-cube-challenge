@@ -15,7 +15,7 @@ using RC.Input;
 
 namespace RC.Gui
 {
-    class GuiInputScheme : RCInputScheme<RCGUIManager>
+    public class GuiInputScheme : RCInputScheme<RCGUIManager>
     {
         enum AnalogstickState
         {

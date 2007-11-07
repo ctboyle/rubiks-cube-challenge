@@ -9,7 +9,7 @@ namespace RC.Gui
 {
     [placeHolder]
     [needsXML]
-    class RCButton : RCControl
+    public class RCButton : RCControl
     {
         #region    ------------------------------Private data members
 
@@ -77,28 +77,28 @@ namespace RC.Gui
         /// <summary>
         /// The type of function that an RCButton's events call; void and parameterless.
         /// </summary>
-        internal delegate void RCButtonEvent();
+        public delegate void RCButtonEvent();
         /// <summary>
         /// The event to throw when the RCButton begins to be pressed.
         /// </summary>
-        internal event RCButtonEvent WhilePressing = null;
+        public event RCButtonEvent WhilePressing = null;
         /// <summary>
         /// The event to throw when the RCButton begins to be released, if the mouse
         /// is hovering over it.
         /// </summary>
-        internal event RCButtonEvent WhileReleasing = null;
+        public event RCButtonEvent WhileReleasing = null;
         /// <summary>
         /// The event to throw when the RCButton has been pressed and released.
         /// </summary>
-        internal event RCButtonEvent AfterPressedAndReleased = null;
+        public event RCButtonEvent AfterPressedAndReleased = null;
         /// <summary>
         /// The event to throw when the RCButton takes focus.
         /// </summary>
-        internal event RCButtonEvent Focus = null;
+        public event RCButtonEvent Focus = null;
         /// <summary>
         /// The event to throw when the RCButton loses focus.
         /// </summary>
-        internal event RCButtonEvent UnFocus = null;
+        public event RCButtonEvent UnFocus = null;
 
         #endregion ------------------------------Events and their delegates
 
@@ -173,7 +173,7 @@ namespace RC.Gui
         /// <param name="screenHeight">The height of the object in screen-coordinates.</param>
         /// <param name="Font">The BitmapFont that the button's text uses.</param>
         [placeHolder]
-        internal RCButton(
+        public RCButton(
             float width, 
             float height,
             int screenWidth, 

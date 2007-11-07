@@ -11,7 +11,7 @@ namespace RC.Gui.Controls.Control_Subclasses
     /// Two buttons beneath an image.  A button is clicked on to change the image.  Each image has a 
     /// uniquely identifying string 'key' that the code usese to identify which image the user has selected.
     /// </summary>
-    class RCSpinner : RCControl
+    public class RCSpinner : RCControl
     {
         #region    ------------------------------Private Data Members
 
@@ -101,7 +101,7 @@ namespace RC.Gui.Controls.Control_Subclasses
         /// <summary>
         /// The delegate for RCSpinner events with no parameters.
         /// </summary>
-        internal delegate void RCSpinnerEvent();
+        public delegate void RCSpinnerEvent();
 
         /// <summary>
         /// Thrown when an action button has been pressed over the spinner but is then cancelled.
@@ -143,7 +143,7 @@ namespace RC.Gui.Controls.Control_Subclasses
         /// <param name="screenWidth">The width of the entire spinner, in pixels.</param>
         /// <param name="screenHeight">The height of the entire spinner, in pixels.</param>
         /// <param name="Font">The font used for the internal buttons.  Not nullable, but doesn't really matter at this point.</param>
-        internal RCSpinner(
+        public RCSpinner(
             float width,
             float height,
             int screenWidth,

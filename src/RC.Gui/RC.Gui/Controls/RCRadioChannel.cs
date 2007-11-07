@@ -11,7 +11,7 @@ namespace RC.Gui
     /// it has no graphical elements so it does not inherit from RCControl.
     /// Its members, which are of type RCRadioButton, do, however.
     /// </summary>
-    class RCRadioChannel : RCPane
+    public class RCRadioChannel : RCPane
     {
         [needsXML]
         private RCRadioButton markedMember = null;

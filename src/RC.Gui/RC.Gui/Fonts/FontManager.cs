@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content;
 namespace RC.Gui.Fonts
 {
 
-    interface IFontManager
+    public interface IFontManager
     {
         bool AddFont(
             string fontLabel,
@@ -42,7 +42,7 @@ namespace RC.Gui.Fonts
 
     }
 
-    public class FontManager: IFontManager
+    class FontManager: IFontManager
     {
         
         private Dictionary<string, BitmapFont> _managedFonts;

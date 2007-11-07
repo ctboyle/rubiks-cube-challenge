@@ -11,7 +11,7 @@ using RC.Engine.Rendering;
 
 namespace RC.Gui.Primitives
 {
-    class RCQuad : RCFlatSpatial
+    public class RCQuad : RCFlatSpatial
     {
         private Texture2D _image;
 

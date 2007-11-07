@@ -8,14 +8,14 @@ namespace RC.Gui
 {
  
     [needsXML]
-    class RCRadioButton : RCButton
+    public class RCRadioButton : RCButton
     {
         [needsXML]
         private RCRadioChannel channel;
 
         [placeHolder]
         [needsXML]
-        internal RCRadioButton(
+        public RCRadioButton(
             float width, 
             float height,
             int screenWidth, 

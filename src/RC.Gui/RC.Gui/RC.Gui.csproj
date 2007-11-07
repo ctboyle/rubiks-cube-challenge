@@ -58,6 +58,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +125,10 @@
     <Compile Include="Fonts\FontManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FontManager</Name>
+    </Compile>
+    <Compile Include="Game.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Game</Name>
     </Compile>
     <Compile Include="GUIEvent.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

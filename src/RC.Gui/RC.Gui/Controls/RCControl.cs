@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace RC.Gui
 {
     [needsXML]
-    internal abstract class RCControl : RCPane
+    public abstract class RCControl : RCPane
     {
 
 
