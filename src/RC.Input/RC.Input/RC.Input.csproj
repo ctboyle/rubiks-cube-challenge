@@ -136,4 +136,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)*" "$(ProjectDir)..\..\Dependencies"  /i /d /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
