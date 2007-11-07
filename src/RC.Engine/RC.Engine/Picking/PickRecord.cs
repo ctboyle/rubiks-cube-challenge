@@ -26,7 +26,7 @@ namespace RC.Engine.Picking
         #endregion
     }
 
-    class RCPickRecord
+    public class RCPickRecord
     {
         public enum SortModeType
         {

@@ -8,7 +8,7 @@ using RC.Engine.Cameras;
 
 namespace RC.Engine.Picking
 {
-    class RCScenePicker
+    public class RCScenePicker
     {
         /// <summary>
         /// Gets the collection of items in the specified scene
