@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C# Express 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagadesCube-Xbox360", "RagadesCube-Win\RagadesCube-Xbox360.csproj", "{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Xbox 360 = Debug|Xbox 360
+		Release|Xbox 360 = Release|Xbox 360
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}.Debug|Xbox 360.ActiveCfg = Debug|Xbox 360
+		{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}.Debug|Xbox 360.Build.0 = Debug|Xbox 360
+		{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}.Debug|Xbox 360.Deploy.0 = Debug|Xbox 360
+		{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}.Release|Xbox 360.ActiveCfg = Release|Xbox 360
+		{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}.Release|Xbox 360.Build.0 = Release|Xbox 360
+		{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}.Release|Xbox 360.Deploy.0 = Release|Xbox 360
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
