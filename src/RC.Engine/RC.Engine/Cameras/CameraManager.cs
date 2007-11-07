@@ -6,7 +6,7 @@ using RC.Engine.Rendering;
 
 namespace RC.Engine.Cameras
 {
-    class RCCameraManager
+    public class RCCameraManager
     {
         private static Hashtable cameras = new Hashtable();
         private static RCCamera activeCamera;
