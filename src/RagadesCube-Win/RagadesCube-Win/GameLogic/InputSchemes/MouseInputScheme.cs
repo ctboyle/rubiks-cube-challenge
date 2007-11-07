@@ -1,11 +1,11 @@
 using System;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.Input.Watchers;
-using RagadesCubeWin.Input.Types;
+using RC.Engine.Input;
+using RC.Input.Watchers;
+using RC.Input.Types;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.SceneObjects;
+using RagadesCube.SceneObjects;
 
-namespace RagadesCubeWin.GameLogic.InputSchemes
+namespace RagadesCube.GameLogic.InputSchemes
 {
     public class RCGLMouseInputScheme : RCGLInputScheme
     {
@@ -17,7 +17,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             MouseWatcher mouseWatcher = new MouseWatcher();
 
             mouseWatcher.WatchEvent(
-               new RagadesCubeWin.Input.Events.MouseEvent(
+               new RC.Input.Events.MouseEvent(
                    MouseInput.RightButton,
                    EventTypes.OnDown,
                    delegate(Vector2 position, Vector2 move)
@@ -28,7 +28,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
            );
 
             mouseWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.MouseEvent(
+                new RC.Input.Events.MouseEvent(
                     MouseInput.LeftButton,
                     EventTypes.OnUp,
                     delegate(Vector2 position, Vector2 move)
@@ -43,7 +43,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             mouseWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.MouseEvent(
+                new RC.Input.Events.MouseEvent(
                     MouseInput.LeftButton,
                     EventTypes.OnDown,
                     delegate(Vector2 position, Vector2 move)
@@ -54,7 +54,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             mouseWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.MouseEvent(
+                new RC.Input.Events.MouseEvent(
                     MouseInput.NoButton,
                     EventTypes.Leaned,
                     delegate(Vector2 position, Vector2 move)

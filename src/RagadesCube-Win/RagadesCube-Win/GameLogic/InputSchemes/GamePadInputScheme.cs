@@ -1,13 +1,13 @@
 using System;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.Input.Watchers;
+using RC.Engine.Input;
+using RC.Input.Watchers;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.Input.Events;
-using RagadesCubeWin.Input.Types;
-using RagadesCubeWin.Cameras;
-using RagadesCubeWin.SceneObjects;
+using RC.Input.Events;
+using RC.Input.Types;
+using RC.Engine.Cameras;
+using RagadesCube.SceneObjects;
 
-namespace RagadesCubeWin.GameLogic.InputSchemes
+namespace RagadesCube.GameLogic.InputSchemes
 {
     public class RCGLGamePadInputScheme : RCGLInputScheme
     {

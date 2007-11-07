@@ -1,14 +1,14 @@
 using System;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.Input.Watchers;
+using RC.Engine.Input;
+using RC.Input.Watchers;
 using Microsoft.Xna.Framework.Input;
-using RagadesCubeWin.Input.Types;
+using RC.Input.Types;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.Cameras;
-using RagadesCubeWin.Input.Events;
-using RagadesCubeWin.SceneObjects;
+using RC.Engine.Cameras;
+using RC.Input.Events;
+using RagadesCube.SceneObjects;
 
-namespace RagadesCubeWin.GameLogic.InputSchemes
+namespace RagadesCube.GameLogic.InputSchemes
 {
     public class RCGLKeyboardInputScheme : RCGLInputScheme
     {
@@ -26,7 +26,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             KeyboardWatcher keyWatcher = new KeyboardWatcher();
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     Keys.LeftShift,
                     EventTypes.OnDown,
                     delegate()
@@ -37,7 +37,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     Keys.LeftShift,
                     EventTypes.OnUp,
                     delegate()
@@ -48,7 +48,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     ExitKey,
                     EventTypes.Pressed,
                     delegate()
@@ -59,7 +59,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     LeftPressKey,
                     EventTypes.Pressed,
                     delegate()
@@ -73,7 +73,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     RightPressKey,
                     EventTypes.Pressed,
                     delegate()
@@ -87,7 +87,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     UpPressKey,
                     EventTypes.Pressed,
                     delegate()
@@ -101,7 +101,7 @@ namespace RagadesCubeWin.GameLogic.InputSchemes
             );
 
             keyWatcher.WatchEvent(
-                new RagadesCubeWin.Input.Events.KeyboardEvent(
+                new RC.Input.Events.KeyboardEvent(
                     DownPressKey,
                     EventTypes.Pressed,
                     delegate()

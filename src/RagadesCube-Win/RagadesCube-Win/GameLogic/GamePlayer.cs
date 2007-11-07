@@ -1,12 +1,12 @@
 using System;
-using RagadesCubeWin.Cameras;
-using RagadesCubeWin.SceneObjects;
+using RC.Engine.Cameras;
+using RagadesCube.SceneObjects;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.Animation.Controllers;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.GameLogic.Scenes;
+using RagadesCube.Controllers;
+using RC.Engine.Input;
+using RagadesCube.Scenes;
 
-namespace RagadesCubeWin.GameLogic
+namespace RagadesCube.GameLogic
 {
     public interface IRCGamePlayerViewer
     {

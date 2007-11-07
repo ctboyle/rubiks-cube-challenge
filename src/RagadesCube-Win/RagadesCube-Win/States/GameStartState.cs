@@ -1,19 +1,19 @@
 using System;
-using RagadesCubeWin.StateManagement;
+using RC.Engine.StateManagement;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.GameLogic;
-using RagadesCubeWin.GUI;
-using RagadesCubeWin.GameLogic.Rules;
-using RagadesCubeWin.GUI.Primitives;
-using RagadesCubeWin.GUI.Fonts;
+using RagadesCube.GameLogic;
+using RC.Gui;
+using RagadesCube.GameLogic.Rules;
+using RC.Gui.Primitives;
+using RC.Gui.Fonts;
 using Microsoft.Xna.Framework.Graphics;
-using RagadesCubeWin.GameLogic.InputSchemes;
-using RagadesCubeWin.SceneManagement;
+using RagadesCube.GameLogic.InputSchemes;
+using RC.Engine.SceneManagement;
 using System.Collections.Generic;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.Cameras;
+using RC.Engine.Input;
+using RC.Engine.Cameras;
 
-namespace RagadesCubeWin.States
+namespace RagadesCube.States
 {
     class RCGameStartState : RCGameState
     {

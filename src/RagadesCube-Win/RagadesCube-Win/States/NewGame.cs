@@ -4,18 +4,20 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.GUI;
-using RagadesCubeWin.GameLogic;
-using RagadesCubeWin.GameLogic.InputSchemes;
-using RagadesCubeWin.GameLogic.Rules;
-using RagadesCubeWin.GUI.Fonts;
-using RagadesCubeWin.GUI.Primitives;
-using RagadesCubeWin.States.MainMenu;
-using RagadesCubeWin.GUI.Controls.Control_Subclasses;
+using RC.Gui;
+using RagadesCube.GameLogic;
+using RagadesCube.GameLogic.InputSchemes;
+using RagadesCube.GameLogic.Rules;
+using RC.Gui.Fonts;
+using RC.Gui.Primitives;
+using RagadesCube.States;
+using RC.Gui.Controls.Control_Subclasses;
+using RagadesCube.Misc;
+using RagadesCube.Controllers;
 
 
 
-namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
+namespace RagadesCube.States
 {
     class RCNewGame : RCCubeMenu
     {

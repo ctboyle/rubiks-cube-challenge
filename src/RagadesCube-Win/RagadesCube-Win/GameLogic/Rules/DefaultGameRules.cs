@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 
-namespace RagadesCubeWin.GameLogic.Rules
+namespace RagadesCube.GameLogic.Rules
 {
     public class RCDefaultGameRules : IRCGameRules
     {

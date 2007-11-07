@@ -4,13 +4,14 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.StateManagement;
-using RagadesCubeWin.SceneObjects;
-using RagadesCubeWin.States.MainMenu;
+using RC.Engine.StateManagement;
+using RagadesCube.SceneObjects;
+using RagadesCube.States;
+using RagadesCube.Scenes;
 
 
 
-namespace RagadesCubeWin.States.MenuCubeState
+namespace RagadesCube.States
 {
     class RCMenuCubeState : RCGameState
     {

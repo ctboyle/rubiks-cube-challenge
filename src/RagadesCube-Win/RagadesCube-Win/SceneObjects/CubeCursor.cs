@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
-using RagadesCubeWin.GraphicsManagement;
+using RC.Engine.GraphicsManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using RC.Engine.Rendering;
 
-namespace RagadesCubeWin.SceneObjects
+namespace RagadesCube.SceneObjects
 {
     /// <summary>
     /// The cube cursor is used to visibly select a cube face to aid with
@@ -132,9 +133,9 @@ namespace RagadesCubeWin.SceneObjects
             graphicsDevice.RenderState.DestinationBlend = Blend.InverseSourceAlpha;
             graphicsDevice.RenderState.SourceBlend = Blend.SourceAlpha;
 
-            Rendering.RCRenderManager.SetWorld(WorldTrans);
-            Rendering.RCRenderManager.SetEffectMaterial(color, color, color, 100.0f, color, 0.4f);
-            Rendering.RCRenderManager.Render(graphicsDevice, OnRender);
+            RCRenderManager.SetWorld(WorldTrans);
+            RCRenderManager.SetEffectMaterial(color, color, color, 100.0f, color, 0.4f);
+            RCRenderManager.Render(graphicsDevice, OnRender);
 
             graphicsDevice.RenderState.AlphaBlendEnable = false;
             graphicsDevice.RenderState.AlphaTestEnable = false;

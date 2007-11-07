@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
-using RagadesCubeWin.States;
+using RagadesCube.States;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.SceneObjects;
-using RagadesCubeWin.Animation.Controllers;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.SceneManagement;
-using RagadesCubeWin.Cameras;
-using RagadesCubeWin.GameLogic.InputSchemes;
-using RagadesCubeWin.GameLogic.Scenes;
-using RagadesCubeWin.GameLogic.Rules;
+using RagadesCube.SceneObjects;
+using RagadesCube.Controllers;
+using RC.Engine.Input;
+using RC.Engine.SceneManagement;
+using RC.Engine.Cameras;
+using RagadesCube.GameLogic.InputSchemes;
+using RagadesCube.Scenes;
+using RagadesCube.GameLogic.Rules;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RagadesCubeWin.GameLogic
+namespace RagadesCube.GameLogic
 {
     public class RCGameLogic : GameComponent, IDisposable
     {

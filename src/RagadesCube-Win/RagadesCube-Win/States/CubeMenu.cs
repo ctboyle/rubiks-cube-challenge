@@ -4,18 +4,20 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.GUI.Panes;
-using RagadesCubeWin.States.MainMenu;
-using RagadesCubeWin.GUI;
-using RagadesCubeWin.StateManagement;
-using RagadesCubeWin.GUI.Primitives;
-using RagadesCubeWin.GUI.Fonts;
-using RagadesCubeWin.SceneManagement;
-using RagadesCubeWin.SoundManagement;
+using RC.Gui.Panes;
+using RagadesCube.States;
+using RC.Gui;
+using RC.Engine.StateManagement;
+using RC.Gui.Primitives;
+using RC.Gui.Fonts;
+using RC.Engine.SceneManagement;
+using RC.Engine.SoundManagement;
+using RagadesCube.Controllers;
+using RagadesCube.States.InputSchemes;
 
 
 
-namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
+namespace RagadesCube.States
 {
     abstract class  RCCubeMenu : RCMenuCubeState
     {
@@ -118,7 +120,7 @@ namespace RagadesCubeWin.States.MenuCubeState.CubeMenus
         /// </summary>
         /// <param name="newState"></param>
         /// <param name="oldState"></param>
-        protected internal override void StateChanged(
+        protected override void StateChanged(
             RCGameState newState,
             RCGameState oldState
             )

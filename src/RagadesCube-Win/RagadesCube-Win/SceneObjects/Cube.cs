@@ -6,11 +6,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using RagadesCubeWin.GraphicsManagement;
-using RagadesCubeWin.Rendering;
+using RC.Engine.GraphicsManagement;
+using RC.Engine.Rendering;
 
 
-namespace RagadesCubeWin.SceneObjects
+namespace RagadesCube.SceneObjects
 {
     public class RCCube : RCSceneNode
     {

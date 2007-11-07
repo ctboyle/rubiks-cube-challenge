@@ -1,9 +1,9 @@
 using System;
-using RagadesCubeWin.StateManagement;
+using RC.Engine.StateManagement;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace RagadesCubeWin.States
+namespace RagadesCube.States
 {
     public class FadeState : RCGameState
     {

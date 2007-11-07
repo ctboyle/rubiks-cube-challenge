@@ -4,11 +4,11 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.GraphicsManagement;
-using RagadesCubeWin.Animation;
+using RC.Engine.GraphicsManagement;
+using RC.Engine.Animation;
 
 
-namespace RagadesCubeWin.States.Controllers
+namespace RagadesCube.Controllers
 {
     class SpinController : Controller<RCSpatial>
     {

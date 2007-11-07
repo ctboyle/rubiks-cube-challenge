@@ -1,25 +1,25 @@
 using System;
-using RagadesCubeWin.StateManagement;
-using RagadesCubeWin.SceneManagement;
-using RagadesCubeWin.GameLogic;
+using RC.Engine.StateManagement;
+using RC.Engine.SceneManagement;
+using RagadesCube.GameLogic;
 using System.Collections.Generic;
-using RagadesCubeWin.GraphicsManagement;
+using RC.Engine.GraphicsManagement;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.SceneObjects;
-using RagadesCubeWin.Cameras;
-using RagadesCubeWin.Animation.Controllers;
+using RagadesCube.SceneObjects;
+using RC.Engine.Cameras;
+using RagadesCube.Controllers;
 using Microsoft.Xna.Framework.Graphics;
-using RagadesCubeWin.GameLogic.InputSchemes;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.GUI.Panes;
-using RagadesCubeWin.GUI;
-using RagadesCubeWin.GUI.Primitives;
-using RagadesCubeWin.GUI.Fonts;
-using RagadesCubeWin.States.Controllers;
-using RagadesCubeWin.GameLogic.Rules;
-using RagadesCubeWin.SoundManagement;
+using RagadesCube.GameLogic.InputSchemes;
+using RC.Engine.Input;
+using RC.Gui.Panes;
+using RC.Gui;
+using RC.Gui.Primitives;
+using RC.Gui.Fonts;
+using RagadesCube.Controllers;
+using RagadesCube.GameLogic.Rules;
+using RC.Engine.SoundManagement;
 
-namespace RagadesCubeWin.States
+namespace RagadesCube.States
 {
     public class RCGamePlayState : RCGameState
     {
@@ -163,7 +163,7 @@ namespace RagadesCubeWin.States
             base.Initialize();
         }
 
-        protected internal override void StateChanged(RCGameState newState, RCGameState oldState)
+        protected override void StateChanged(RCGameState newState, RCGameState oldState)
         {
             if ((oldState == this) && (newState is RCGameCompleteState))
             {

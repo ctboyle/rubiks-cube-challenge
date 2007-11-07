@@ -5,19 +5,20 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-using RagadesCubeWin.States.MenuCubeState.CubeMenus;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.StateManagement;
-using RagadesCubeWin.Input.Types;
-using RagadesCubeWin.Input.Watchers;
-using RagadesCubeWin.Input.Events;
+using RagadesCube.States;
+using RC.Input;
+using RC.Engine.Input;
+using RC.Engine.StateManagement;
+using RC.Input.Types;
+using RC.Input.Watchers;
+using RC.Input.Events;
 
 
-namespace RagadesCubeWin.States.MenuCubeState
+namespace RagadesCube.States.InputSchemes
 {
     class CubeMenuInputScheme : RCInputScheme<RCCubeMenu>
     {
-        RCGameStateManager _stateManager;
+        IGameStateManager _stateManager;
         public CubeMenuInputScheme()
             :base()
         {

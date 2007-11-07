@@ -4,12 +4,13 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.Animation;
-using RagadesCubeWin.GraphicsManagement;
-using RagadesCubeWin.SceneObjects;
+using RC.Engine.Animation;
+using RC.Engine.GraphicsManagement;
+using RagadesCube.SceneObjects;
+using RC.Engine.SoundManagement;
 
 
-namespace RagadesCubeWin.Animation.Controllers
+namespace RagadesCube.Controllers
 {
     public class RCCubeController : Controller<RCCube>
     {
@@ -58,7 +59,7 @@ namespace RagadesCubeWin.Animation.Controllers
         {
             if (!_isAnimating)
             {
-                SoundManagement .SoundManager.PlaySound("slice");
+                SoundManager.PlaySound("slice");
                 if (listCubletsFace != null)
                 {
                     _cubletFace = listCubletsFace;

@@ -1,6 +1,6 @@
 using System;
 
-namespace RagadesCube_Win
+namespace RagadesCube
 {
     static class Program
     {
@@ -9,7 +9,7 @@ namespace RagadesCube_Win
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (RagadesCube game = new RagadesCube())
             {
                 game.Run();
             }

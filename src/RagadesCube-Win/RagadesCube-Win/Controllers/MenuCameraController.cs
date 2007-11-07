@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using RagadesCubeWin.Animation;
+using RC.Engine.Animation;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.Cameras;
+using RC.Engine.Cameras;
 
-namespace RagadesCubeWin.States.MainMenu
+namespace RagadesCube.Controllers
 {
     class RCMenuCameraController 
         :RCKeyFrameController<RCPerspectiveCamera>

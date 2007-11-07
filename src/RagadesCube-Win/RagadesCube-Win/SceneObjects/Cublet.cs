@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using RagadesCubeWin.GraphicsManagement;
-using RagadesCubeWin.GraphicsManagement.BoundingVolumes;
-using RagadesCubeWin.Rendering;
-using RagadesCubeWin.Cameras;
+using RC.Engine.GraphicsManagement;
+using RC.Engine.GraphicsManagement.BoundingVolumes;
+using RC.Engine.Rendering;
+using RC.Engine.Cameras;
 #endregion
 
-namespace RagadesCubeWin.SceneObjects
+namespace RagadesCube.SceneObjects
 {
     /// <summary>
     /// This represents the smaller unit cubes on the Rubics Cube.

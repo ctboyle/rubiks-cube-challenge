@@ -1,16 +1,16 @@
 using System;
-using RagadesCubeWin.SceneManagement;
-using RagadesCubeWin.Cameras;
+using RC.Engine.SceneManagement;
+using RC.Engine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.GraphicsManagement;
-using RagadesCubeWin.Rendering;
-using RagadesCubeWin.SceneObjects;
-using RagadesCubeWin.Animation.Controllers;
-using RagadesCubeWin.GUI.Primitives;
-using RagadesCubeWin.GUI;
+using RC.Engine.GraphicsManagement;
+using RC.Engine.Rendering;
+using RagadesCube.SceneObjects;
+using RagadesCube.Controllers;
+using RC.Gui.Primitives;
+using RC.Gui;
 
-namespace RagadesCubeWin.GameLogic.Scenes
+namespace RagadesCube.Scenes
 {
     public class RCCubeScene : RCScene, IDisposable
     {

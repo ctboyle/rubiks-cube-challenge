@@ -1,9 +1,9 @@
 using System;
-using RagadesCubeWin.SceneManagement;
-using RagadesCubeWin.SceneObjects;
+using RC.Engine.SceneManagement;
+using RagadesCube.SceneObjects;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RagadesCubeWin.GameLogic.Scenes
+namespace RagadesCube.Scenes
 {
     public class RCCubeSceneCreator : IRCSceneCreator
     {

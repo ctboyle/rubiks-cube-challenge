@@ -4,14 +4,17 @@ using System.Text;
 
 using Microsoft.Xna.Framework.Input;
 
-using RagadesCubeWin.Input;
-using RagadesCubeWin.Input.Watchers;
-using RagadesCubeWin.Input.Types;
-using RagadesCubeWin.Input.Events;
+using RC.Input.Watchers;
+using RC.Input.Types;
+using RC.Input.Events;
 using Microsoft.Xna.Framework;
+using RagadesCube.Scenes;
+using RC.Engine.Input;
+using RC.Input;
+using RagadesCube.Controllers;
 
 
-namespace RagadesCubeWin.States.MainMenu
+namespace RagadesCube.States.InputSchemes
 {
     class RCMainMenuSceneInputScheme : RCInputScheme<RCMenuCubeScene>
     {

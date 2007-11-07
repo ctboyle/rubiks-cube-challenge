@@ -4,11 +4,11 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-using RagadesCubeWin.Animation;
-using RagadesCubeWin.GraphicsManagement;
+using RC.Engine.Animation;
+using RC.Engine.GraphicsManagement;
 
 
-namespace RagadesCubeWin.States.Controllers
+namespace RagadesCube.Controllers
 {
     class RCWobbleController: Controller<RCSpatial>
     {

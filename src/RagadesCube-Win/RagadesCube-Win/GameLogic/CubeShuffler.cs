@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using RagadesCubeWin.SceneObjects;
+using RagadesCube.SceneObjects;
 
-namespace RagadesCubeWin.GameLogic
+namespace RagadesCube.GameLogic
 {
     public interface IRCCubeShuffer
     {

@@ -1,20 +1,19 @@
 using System;
-using RagadesCubeWin.StateManagement;
+using RC.Engine.StateManagement;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.GameLogic;
-using RagadesCubeWin.GUI.Primitives;
-using RagadesCubeWin.GUI.Fonts;
-using RagadesCubeWin.GUI;
+using RagadesCube.GameLogic;
+using RC.Gui.Primitives;
+using RC.Gui.Fonts;
+using RC.Gui;
 using Microsoft.Xna.Framework.Graphics;
-using RagadesCubeWin.States.Controllers;
-using RagadesCubeWin.Input.Watchers;
-using RagadesCubeWin.Input.Events;
-using RagadesCubeWin.Input.Types;
+using RagadesCube.Controllers;
+using RC.Input.Watchers;
+using RC.Input.Events;
+using RC.Input.Types;
 using Microsoft.Xna.Framework.Input;
-using RagadesCubeWin.States.MenuCubeState.CubeMenus;
-using RagadesCubeWin.States.TitleScreen;
+using RagadesCube.States;
 
-namespace RagadesCubeWin.States
+namespace RagadesCube.States
 {
     class RCGameCompleteState : RCGameState
     {

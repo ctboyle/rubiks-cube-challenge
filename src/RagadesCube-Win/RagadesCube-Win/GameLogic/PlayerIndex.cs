@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RagadesCubeWin.GameLogic
+namespace RagadesCube.GameLogic
 {
     public enum RCPlayerIndex : short
     {

@@ -5,15 +5,16 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-using RagadesCubeWin.Input.Watchers;
-using RagadesCubeWin.Input.Events;
-using RagadesCubeWin.Input;
-using RagadesCubeWin.Input.Types;
+using RC.Input;
+using RC.Input.Watchers;
+using RC.Input.Events;
+using RC.Engine.Input;
+using RC.Input.Types;
 
 
 
 
-namespace RagadesCubeWin.States.TitleScreen
+namespace RagadesCube.States.InputSchemes
 {
     class TitleScreenInputScheme : RCInputScheme<RCTitleScreenState>
     {

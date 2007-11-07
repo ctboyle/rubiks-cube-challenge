@@ -1,13 +1,13 @@
 using System;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.SceneObjects;
-using RagadesCubeWin.Animation.Controllers;
+using RagadesCube.SceneObjects;
+using RagadesCube.Controllers;
 using Microsoft.Xna.Framework.Graphics;
-using RagadesCubeWin.GameLogic.Scenes;
+using RagadesCube.Scenes;
 using System.Collections.Generic;
 
 
-namespace RagadesCubeWin.GameLogic
+namespace RagadesCube.GameLogic
 {
     public interface IRCCubeViewer
     {

@@ -1,10 +1,10 @@
 using System;
-using RagadesCubeWin.Input;
+using RC.Input;
 using Microsoft.Xna.Framework;
-using RagadesCubeWin.Cameras;
-using RagadesCubeWin.SceneObjects;
+using RC.Engine.Cameras;
+using RagadesCube.SceneObjects;
 
-namespace RagadesCubeWin.GameLogic.InputSchemes
+namespace RagadesCube.GameLogic.InputSchemes
 {
     public abstract class RCGLInputScheme : RCInputScheme<RCGameLogic>
     {
