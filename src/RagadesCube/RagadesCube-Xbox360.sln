@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual C# Express 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagadesCube-Xbox360", "RagadesCube-Win\RagadesCube-Xbox360.csproj", "{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagadesCube-Xbox360", "RagadesCube\RagadesCube-Xbox360.csproj", "{3CE18D21-7792-4A35-8EA8-BB8E36E4721B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
