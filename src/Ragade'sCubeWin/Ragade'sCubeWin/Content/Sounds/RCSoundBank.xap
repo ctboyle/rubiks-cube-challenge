@@ -537,8 +537,8 @@ Sound Bank
     Sound
     {
         Name = musicbeat;
-        Volume = 600;
-        Pitch = 0;
+        Volume = -1636;
+        Pitch = -345;
         Priority = 0;
 
         Category Entry
@@ -566,6 +566,14 @@ Sound Bank
                     Relative = 0;
                     Random Recurrence = 0;
                     Random Offset = 0;
+                }
+
+                Pitch Variation
+                {
+                    Min = 0;
+                    Max = 0;
+                    Operator = 1;
+                    New Variation On Loop = 1;
                 }
 
                 Wave Entry
