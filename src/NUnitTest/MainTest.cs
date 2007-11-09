@@ -11,9 +11,7 @@ namespace NUnitTest
         /// </summary>
         static void Main(string[] args)
         {
-            InputTest IT = new InputTest();
-
-           
+            // just so it will build
         }
     }
 }

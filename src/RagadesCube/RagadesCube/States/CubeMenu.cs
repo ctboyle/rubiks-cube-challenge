@@ -170,6 +170,7 @@ namespace RagadesCube.States
             // go there.
             if (_menuScene.CameraController.CurrentPosition != _menuPos)
             {
+                
                 // Turn off input while animating.
                 _guiManager.AcceptInput = false;
 
