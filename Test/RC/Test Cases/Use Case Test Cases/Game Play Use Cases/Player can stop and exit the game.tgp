@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_suite>
+<id>Player can stop and exit the game</id>
+<suite_title>Player can stop and exit the game</suite_title>
+<suite_description></suite_description>
+</test_suite>

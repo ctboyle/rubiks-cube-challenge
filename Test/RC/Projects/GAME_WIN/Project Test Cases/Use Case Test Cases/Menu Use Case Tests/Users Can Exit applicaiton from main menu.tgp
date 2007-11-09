@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_suite>
+<id>Users Can Exit applicaiton from main menu</id>
+<suite_title>Users Can Exit the game (from the main Menu)</suite_title>
+<suite_description></suite_description>
+</test_suite>
