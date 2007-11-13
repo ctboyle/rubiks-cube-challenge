@@ -31,9 +31,11 @@
 </builds>
 <versions>
 </versions>
-<notes_1></notes_1>
-<notes_2></notes_2>
-<notes_res></notes_res>
+<notes_1>Notes Field 1</notes_1>
+<notes_2>Notes Field 2</notes_2>
+<notes_res>Result Notes</notes_res>
+<computer_name>THEINDULGENCE</computer_name>
+<user_name>steven</user_name>
 <default_vals>
 <expected>0:0</expected>
 <autoDigits>3</autoDigits>
