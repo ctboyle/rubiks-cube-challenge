@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_case>
+<id>GamePadInputSelect1</id>
+<test_title>Gamepad Player Select Test</test_title>
+<test_duration>00:15</test_duration>
+<test_type>Functionality</test_type>
+<test_phase>System test</test_phase>
+<create_date>20071114</create_date>
+<create_time>15:56:37</create_time>
+<update_date>20071114</update_date>
+<update_time>15:56:37</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<prerequisites><![CDATA[Are in the New Game Menu selecting players.<br>Have 4 four game pads able to connect to the computer<br>&nbsp;]]></prerequisites>
+<test_description><![CDATA[<OL><LI>Connect all four gamepads.</LI><LI>Use all four gamepads for players 1 - 4</LI><LI>Test that each player's cube responds to the selected gamepad</LI></OL>]]></test_description>
+<test_result><![CDATA[The corresponding player's cube should correspond to the correct gamepad.]]></test_result>
+<notes1></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<requirement></requirement>
+</test_case>

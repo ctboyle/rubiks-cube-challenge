@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_case>
+<id>KeybaordPlayerSelect1</id>
+<test_title>Keyboard Player Select Test</test_title>
+<test_duration>00:05</test_duration>
+<test_type>[None Selected]</test_type>
+<test_phase>[None Selected]</test_phase>
+<create_date>20071114</create_date>
+<create_time>16:05:22</create_time>
+<update_date>20071114</update_date>
+<update_time>16:05:22</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<prerequisites><![CDATA[In new game screen and have a keyboard attached to computer.]]></prerequisites>
+<test_description><![CDATA[<OL><LI>Select keyboard player for player one ftom the spin control.</LI><LI>Begin new game with at least a Keyboard player.</LI><LI>The keyboard player's cube&nbsp;should respond to appropriate keyboard input.</LI></OL>]]></test_description>
+<test_result><![CDATA[The keyboard player's cube should respond to appropriate keyboard input.]]></test_result>
+<notes1></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<requirement></requirement>
+</test_case>

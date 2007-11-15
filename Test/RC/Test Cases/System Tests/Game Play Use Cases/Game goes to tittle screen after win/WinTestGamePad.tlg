@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_case>
+<id>WinTestGamePad</id>
+<test_title>Directed to Title Screen After Win (gamepad)</test_title>
+<test_duration>00:30</test_duration>
+<test_type>Functionality</test_type>
+<test_phase>System test</test_phase>
+<create_date>20071114</create_date>
+<create_time>14:46:04</create_time>
+<update_date>20071114</update_date>
+<update_time>14:54:00</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<prerequisites><![CDATA[Are Able to Win A game.<br>Using gamepad player to win.]]></prerequisites>
+<test_description><![CDATA[<OL><LI>Begin a game with any number of players.</LI><LI>Complete the game to win.</LI><LI>Observe winner text.</LI><LI>Press any key with active input device.</LI></OL>]]></test_description>
+<test_result><![CDATA[Game should transition to the title screen.]]></test_result>
+<notes1><![CDATA[Equivalence test for all game pad devices.]]></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<requirement></requirement>
+</test_case>
