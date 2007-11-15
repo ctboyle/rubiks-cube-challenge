@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Input;
 
 using NUnit.Framework;
 
+using RagadesCube.Controllers;
+
 namespace NUnitTest
 {
     [TestFixture]
@@ -15,7 +17,18 @@ namespace NUnitTest
         [Test]
         public void TestCubeController()
         {
-            // ADD TEST HERE
+            RCCubeController rccont = new RCCubeController();
+
+            rccont.AttachToObject(new RagadesCube.SceneObjects.RCCube(3, 3, 3));
+            
+
+            Assert.IsFalse(rccont.IsAnimating);
+
+            rccont.RotateFace(RagadesCube.SceneObjects.RCCube.FaceSide.Front,
+                                RagadesCube.SceneObjects.RCCube.RotationDirection.Clockwise);
+
+            Assert.IsTrue(rccont.IsAnimating);
+            
         }
 
         [Test]
