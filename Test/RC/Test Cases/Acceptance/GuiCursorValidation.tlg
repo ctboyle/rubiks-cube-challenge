@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_case>
+<id>GuiCursorValidation</id>
+<test_title>THE GUI SHALL PROVIDE A CURSOR TO SELECT MENU ITEMS.</test_title>
+<test_duration>00:05</test_duration>
+<test_type>Functionality</test_type>
+<test_phase>Acceptance test</test_phase>
+<create_date>20071115</create_date>
+<create_time>14:30:41</create_time>
+<update_date>20071115</update_date>
+<update_time>14:33:25</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<prerequisites><![CDATA[Game in in any menu state.]]></prerequisites>
+<test_description><![CDATA[THE GUI SHALL PROVIDE A CURSOR TO SELECT MENU ITEMS.<br><br>1. Go to a menu screen.<br>2. Identify that the selected item is highlighted]]></test_description>
+<test_result><![CDATA[Focused items are identified on screen]]></test_result>
+<notes1></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<requirement></requirement>
+</test_case>
