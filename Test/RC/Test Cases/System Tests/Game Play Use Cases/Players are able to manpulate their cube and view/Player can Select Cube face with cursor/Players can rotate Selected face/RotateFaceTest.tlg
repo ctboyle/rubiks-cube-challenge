@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_case>
+<id>RotateFaceTest</id>
+<test_title>Face Rotation Test</test_title>
+<test_duration>00:03</test_duration>
+<test_type>Functionality</test_type>
+<test_phase>System test</test_phase>
+<create_date>20071114</create_date>
+<create_time>15:43:17</create_time>
+<update_date>20071114</update_date>
+<update_time>15:43:17</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<prerequisites><![CDATA[The game is in the gameplay state.]]></prerequisites>
+<test_description><![CDATA[<OL><LI>Begin a new game with an input device</LI><LI>Use the input devices's roation button/keys to roatate the selected face.</LI></OL><br>Repeat for all input devices.]]></test_description>
+<test_result><![CDATA[The selected face should rotate in the direction corresponding to key.]]></test_result>
+<notes1><![CDATA[The rotations should always be relative to the players perspective.]]></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<requirement></requirement>
+</test_case>
