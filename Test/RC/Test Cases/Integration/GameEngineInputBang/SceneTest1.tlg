@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_case>
+<id>SceneTest1</id>
+<test_title>Scenes are drawn and updated.</test_title>
+<test_duration>00:03</test_duration>
+<test_type>[None Selected]</test_type>
+<test_phase>[None Selected]</test_phase>
+<create_date>20071115</create_date>
+<create_time>11:06:30</create_time>
+<update_date>20071115</update_date>
+<update_time>11:06:30</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<prerequisites><![CDATA[Using Test Scaffolding State as initial state. GUITestState]]></prerequisites>
+<test_description><![CDATA[This test tests wether or not scenes are being updated and drawn.<br><br>Drawn:<br><br>Use our Test Framework Class: GUITestState<br><br>1. If a scene appears with buttons, drawing is taking place. Should not be a clear screen.<br><br>Updated:<br><br>2. If Update is called, time varying quantitiees are updated. See if you can modify the scene by using the directional arrows on the keyboard.]]></test_description>
+<test_result><![CDATA[Should be able to see the scene.<br>Should be able to see changes in the scene.]]></test_result>
+<notes1><![CDATA[Tests link between GUI.ScreenSceen and  Engine.Scene]]></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<requirement></requirement>
+</test_case>
