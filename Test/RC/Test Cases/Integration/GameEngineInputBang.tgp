@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_suite>
+<id>GameEngineInputBang</id>
+<suite_title>Integration Tests of Ragde&apos;s Cube Game / Engine / Input</suite_title>
+<suite_description></suite_description>
+</test_suite>
