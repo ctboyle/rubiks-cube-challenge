@@ -123,7 +123,7 @@ namespace RagadesCube.SceneObjects
                             (FaceSide)iFace,
                             width,
                             height,
-                            Color.OrangeRed
+                            Color.DarkOrange
                             );
                         break;
                 }
