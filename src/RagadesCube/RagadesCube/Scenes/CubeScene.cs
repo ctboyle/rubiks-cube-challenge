@@ -32,7 +32,7 @@ namespace RagadesCube.Scenes
                     Vector3.Up
                 )
             );
-           
+
             RCDirectionalLight lightNode = new RCDirectionalLight(
                 RCRenderManager.DirectionalLightIndex.Light0
             );
@@ -51,7 +51,7 @@ namespace RagadesCube.Scenes
             Camera.AddChild(lightNode.LightSource);
 
             lightNode.Diffuse = new Vector3(1.2f);
-            lightNode.Specular = new Vector3(8.0f);
+            lightNode.Specular = new Vector3(0.8f);
 
             _sceneRoot = lightNode;
             
