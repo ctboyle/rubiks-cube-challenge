@@ -31,6 +31,9 @@ namespace RagadesCube.States
         protected RCScreenScene _screen;
         protected RCText _titleText;
         protected RCText[] _playerText;
+        protected RCButton _exitButton;
+        protected RCGUIManager _guiManager;
+        protected GuiInputScheme _guiInputScheme;
       
         public RCGamePlayState(
             Game game, 
@@ -43,13 +46,15 @@ namespace RagadesCube.States
             _logic = logic;
             _cubeScenes = scenes;
             _inputSchemes = inputSchemes;
-            
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
+                if(_guiInputScheme != null)
+                    _guiInputScheme.Unapply();
+
                 for (int i = 0; i < _inputSchemes.Length; ++i)
                     _inputSchemes[i].Unapply();
             }
@@ -103,14 +108,12 @@ namespace RagadesCube.States
 
         public override void Initialize()
         {
-            
             for (int i = 0; i < _inputSchemes.Length; ++i)
             {
                 IRCGamePlayerViewer player = _logic.GetPlayer((RCPlayerIndex)i);
                 _inputSchemes[i].AttachPlayer(player);
                 _inputSchemes[i].Apply(input, _logic);
             }
-
 
             for (int i = 0; i < _cubeScenes.Length; ++i)
                 _sceneManager.AddScene(_cubeScenes[i]);
@@ -119,8 +122,12 @@ namespace RagadesCube.States
 
             BitmapFont largeFont = fontManager.GetFont("Ragade's Cube Large");
             BitmapFont mediumFont = fontManager.GetFont("Ragade's Cube Small");
+            BitmapFont smallFont = fontManager.GetFont("Lucida Console");
 
             _screen = new RCScreenScene(graphics.GraphicsDevice.Viewport);
+            _screen.Camera.ClearScreen = false;
+            _sceneManager.AddScene(_screen);
+
             _titleText = new RCText(
                largeFont,
                graphics.GraphicsDevice.Viewport.Width,
@@ -132,12 +139,41 @@ namespace RagadesCube.States
             _titleText.CenterText = true;
             _titleText.Color = Color.Maroon;
             _screen.ScreenPane.AddChild(_titleText, 0, 0, 1f);
-            _screen.Camera.ClearScreen = false;
-            _sceneManager.AddScene(_screen);
 
+            if (Array.Find<RCGLInputScheme>(
+                _inputSchemes, 
+                delegate(RCGLInputScheme scheme) 
+                { 
+                    return scheme is RCGLMouseInputScheme; 
+                }
+            ) != null)
+            {
+                _exitButton = new RCButton(
+                   1,
+                   1,
+                   70,
+                   25,
+                   smallFont
+                );
+                _exitButton.buttonText.Text = "Exit";
+                _exitButton.buttonText.CenterText = true;
+                _exitButton.buttonText.Color = Color.DarkSlateBlue;
+                _exitButton.AfterPressedAndReleased += delegate()
+                {
+                    gameManager.PopState();
+                };
 
+                _screen.ScreenPane.AddChild(
+                    _exitButton, 
+                    graphics.GraphicsDevice.Viewport.Width - 70, 
+                    0, 
+                    1.0f
+                );
 
-
+                _guiManager = new RCGUIManager(_screen);
+                _guiInputScheme = new GuiInputScheme();
+                _guiInputScheme.Apply(input, _guiManager);
+            }
 
             _playerText = new RCText[_cubeScenes.Length];
             _infoScenes = new RCScreenScene[_cubeScenes.Length];
