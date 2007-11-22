@@ -28,6 +28,7 @@
 <phase>Other</phase>
 </test_phases>
 <builds>
+<build>rev </build>
 </builds>
 <versions>
 </versions>
