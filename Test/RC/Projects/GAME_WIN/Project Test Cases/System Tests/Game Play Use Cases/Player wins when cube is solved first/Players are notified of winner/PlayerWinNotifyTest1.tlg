@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project_test_case>
+<id>PlayerWinNotifyTest1</id>
+<test_title>Player win notification</test_title>
+<test_duration>00:30</test_duration>
+<test_type>Functionality</test_type>
+<test_phase>System test</test_phase>
+<rec_test_configs></rec_test_configs>
+<test_resources></test_resources>
+<test_status>Not yet attempted</test_status>
+<test_attempts>0</test_attempts>
+<last_attempt_date>N/A</last_attempt_date>
+<last_attempt_time>N/A</last_attempt_time>
+<actual_duration></actual_duration>
+<testers></testers>
+<fault_report_id></fault_report_id>
+<change_req_id></change_req_id>
+<results_obtained></results_obtained>
+<version_tested></version_tested>
+<build_tested></build_tested>
+<external_link2></external_link2>
+<result_notes></result_notes>
+<requirement></requirement>
+<create_date>20071114</create_date>
+<create_time>15:09:51</create_time>
+<update_date>20071114</update_date>
+<update_time>15:09:51</update_time>
+<create_user_id>LOCKHART</create_user_id>
+<update_user_id>LOCKHART</update_user_id>
+<prerequisites><![CDATA[A game has been played and a winner can be determined.]]></prerequisites>
+<test_description><![CDATA[<OL><LI>Create a new game.</LI><LI>Play the game with any number of players.</LI><LI>Win the game with any player.</LI><LI>When the game is considered complete, the game state should change to Game Complete State.</LI><LI>The winning player's identifier should be displayed on the screen.</LI></OL>]]></test_description>
+<test_result><![CDATA[The winning player's identifier will be displayed on the screen.]]></test_result>
+<notes1></notes1>
+<notes2></notes2>
+<external_link></external_link>
+<priority>2</priority>
+<history_entry><time>22:48:22</time><date>21-11-2007</date><type>ET_NEW</type><old_status>Not yet attempted</old_status><new_status>Not yet attempted</new_status><num_tries>0</num_tries><phase>System test</phase><version></version><build></build></history_entry>
+</project_test_case>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<test_suite>
+<id>Each Player has cube shuffled to same configuration</id>
+<suite_title>Each Player has cube shuffled to same configuration</suite_title>
+<suite_description></suite_description>
+</test_suite>
