@@ -29,13 +29,13 @@ namespace RagadesCube.Misc
     {
         private SpinItemMapEntry[] _inputMap = new SpinItemMapEntry[]
             {
+                new SpinItemMapEntry("None",        "NoPlayer", null),
                 new SpinItemMapEntry("Keyboard",    "Keyboard", new RCGLKeyboardInputScheme()),
                 new SpinItemMapEntry("Mouse",       "Mouse",    new RCGLMouseInputScheme()),
                 new SpinItemMapEntry("GamePad1",    "GamePad1", new RCGLGamePadInputScheme(PlayerIndex.One)),
                 new SpinItemMapEntry("GamePad2",    "GamePad2", new RCGLGamePadInputScheme(PlayerIndex.Two)),
                 new SpinItemMapEntry("GamePad3",    "GamePad3", new RCGLGamePadInputScheme(PlayerIndex.Three)),
-                new SpinItemMapEntry("GamePad4",    "GamePad4", new RCGLGamePadInputScheme(PlayerIndex.Four)),
-                new SpinItemMapEntry("None",        "NoPlayer", null)
+                new SpinItemMapEntry("GamePad4",    "GamePad4", new RCGLGamePadInputScheme(PlayerIndex.Four))
             };
 
 
@@ -112,10 +112,10 @@ namespace RagadesCube.Misc
                 {
                     spinner.addSpinItem(entry.key, "", entry.filename, _spinnerFont);
 
-                    // Set default spinner kry to coresponding map entry
-                    if (iCurrentSpinItem == iCurrentSpinner)
+                    // Set default spinner key to first map entry.
+                    if (iCurrentSpinItem == 0)
                     {
-                        spinner.spinTo(entry.key);
+                        spinner.spinTo(_inputMap[0].key);        
                     }
 
                     iCurrentSpinItem++;                     
