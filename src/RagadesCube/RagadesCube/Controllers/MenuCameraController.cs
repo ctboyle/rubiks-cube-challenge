@@ -5,6 +5,7 @@ using System.Text;
 using RC.Engine.Animation;
 using Microsoft.Xna.Framework;
 using RC.Engine.Cameras;
+using RC.Engine.SoundManagement;
 
 namespace RagadesCube.Controllers
 {
@@ -87,6 +88,9 @@ namespace RagadesCube.Controllers
         {
             if (!IsAnimating)
             {
+                // make sound here
+                SoundManager.PlayCue("menuswitch");
+
                 // Begin animation state machine.
                 _state = AnimationState.Unzooming;
 

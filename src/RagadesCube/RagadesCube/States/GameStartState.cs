@@ -12,6 +12,7 @@ using RC.Engine.SceneManagement;
 using System.Collections.Generic;
 using RC.Engine.Input;
 using RC.Engine.Cameras;
+using RC.Engine.SoundManagement;
 
 namespace RagadesCube.States
 {
@@ -46,6 +47,9 @@ namespace RagadesCube.States
 
         public override void Initialize()
         {
+            // kill music beat and everything else here
+            //SoundManager.Stop();
+
             _logic.Shuffle();
 
             IFontManager fontManager = (IFontManager)Game.Services.GetService(typeof(IFontManager));

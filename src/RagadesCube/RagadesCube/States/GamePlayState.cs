@@ -108,6 +108,10 @@ namespace RagadesCube.States
 
         public override void Initialize()
         {
+            // kill music beat and everything else here
+            //SoundManager.Stop();
+
+
             for (int i = 0; i < _inputSchemes.Length; ++i)
             {
                 IRCGamePlayerViewer player = _logic.GetPlayer((RCPlayerIndex)i);

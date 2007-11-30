@@ -89,7 +89,6 @@ namespace RagadesCube
             // Begin by putting our first state on the stack.
             //stateManager.PushState(new RCGuiTestState(this));
             stateManager.PushState(new RCTitleScreenState(this));
-            SoundManager.PlayCue("musicbeat");
             base.BeginRun();
         }
 

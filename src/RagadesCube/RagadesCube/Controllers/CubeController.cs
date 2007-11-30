@@ -37,6 +37,9 @@ namespace RagadesCube.Controllers
             RCCube.RotationDirection direction
             )
         {
+
+            SoundManager.PlayCue("slice");
+
             RCCube parentCube = (RCCube)_controlledItem;
             List<RCCublet> listCublets = parentCube.GetCubletsOnFace(
                 face
@@ -59,7 +62,7 @@ namespace RagadesCube.Controllers
         {
             if (!_isAnimating)
             {
-                SoundManager.PlaySound("slice");
+
                 if (listCubletsFace != null)
                 {
                     _cubletFace = listCubletsFace;

@@ -14,6 +14,7 @@ using RC.Input.Watchers;
 using RC.Gui;
 using RagadesCube.States.InputSchemes;
 using RC.Engine.Animation;
+using RC.Engine.SoundManagement;
 
 namespace RagadesCube.States
 {
@@ -47,6 +48,9 @@ namespace RagadesCube.States
             InitializeCube();
             //_menuScene.Camera.ClearScreen = tr;
             InitializeScreenScene();
+
+            // begin theme music
+            SoundManager.PlayCue("musicbeat");
             
             base.Initialize();
             _sceneManager.AddScene(_screenScene);

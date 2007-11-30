@@ -52,6 +52,8 @@ namespace RagadesCube.States
 
         public override void Initialize()
         {
+           
+
             CreateDefaultGuiElements();
 
             ConstructGuiElements();
@@ -125,6 +127,7 @@ namespace RagadesCube.States
             RCGameState oldState
             )
         {
+            
             if (newState == this)
             {
                 if (oldState is RCCubeMenu)
@@ -150,6 +153,8 @@ namespace RagadesCube.States
         /// <param name="previous"></param>
         public void OnEnter(RCCubeMenu previous)
         {
+            
+            
             // Turn on the menu pane for this menu.
             _menuScene.Cube.AddChild(_menuPane);
 

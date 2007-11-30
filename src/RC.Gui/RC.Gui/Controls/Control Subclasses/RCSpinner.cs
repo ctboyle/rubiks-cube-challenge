@@ -5,6 +5,8 @@ using RC.Gui.Primitives;
 using RC.Gui.Fonts;
 using Microsoft.Xna.Framework.Graphics;
 
+using RC.Engine.SoundManagement;
+
 namespace RC.Gui.Controls.Control_Subclasses
 {
     /// <summary>
@@ -252,6 +254,10 @@ namespace RC.Gui.Controls.Control_Subclasses
         /// </summary>
         public void spinUp()
         {
+            // will need to think of a way to avoid doing this
+            //  but will play sound when toggling spinners
+            SoundManager.PlayCue("blip");
+
             if (curIndex >= keys.Count - 1)
             { SpinToIndex(0); }
             else
@@ -263,6 +269,10 @@ namespace RC.Gui.Controls.Control_Subclasses
         /// </summary>
         public void spinDown()
         {
+            // will need to think of a way to avoid doing this
+            //  but will play sound when toggling spinners
+            SoundManager.PlayCue("blip");
+
             if (curIndex == 0)
             { SpinToIndex(keys.Count - 1); }
             else

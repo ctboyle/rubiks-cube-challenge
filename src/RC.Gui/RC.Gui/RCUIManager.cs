@@ -79,28 +79,27 @@ namespace RC.Gui
         #region Move Functions
         public void MoveDown()
         {
-         
+
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Down);
         }
         public void MoveUp()
         {
-         
+
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Up);
         }
         public void MoveLeft()
         {
-         
+
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Left);
         }
         public void MoveRight()
         {
-         
+
             MoveEvent(GUIMoveEvent.GUIMoveDirection.Right);
         }
 
         public void MoveEvent(GUIMoveEvent.GUIMoveDirection direction)
         {
-            SoundManager.PlaySound("blip");
             GuiInputEvent(new GUIMoveEvent(
                     direction,
                     this
@@ -339,6 +338,9 @@ namespace RC.Gui
             if (nextCandidate != null)
             {
                 FocusElement(nextCandidate);
+                // there should be a better way of doing this
+                //      plays sound when there is an actual movement
+                SoundManager.PlayCue("blip");
             }
             
         }
