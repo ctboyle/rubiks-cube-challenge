@@ -121,12 +121,40 @@ namespace RagadesCube.Misc
                     iCurrentSpinItem++;                     
                 }
 
+                spinner.SelectionChange += OnSpinnerSelChange;
+
                 iCurrentSpinner++;
             }
         }
 
 
+        private void OnSpinnerSelChange(RCSpinner sender)
+        {
+            // Enable all the keys.
+            foreach (RCSpinner spinner in _playerSpinners)
+            {
+                spinner.enableAllKeys();
+            }
 
+            // Disable currently shown items in each spinner from all ther spinners.
+            foreach (RCSpinner spinner in _playerSpinners)
+            {
+                string currentSpinnerKey = spinner.currentKey;
+                if (spinner.currentKey != "None")
+                {
+                    foreach (RCSpinner otherSpinner in _playerSpinners)
+                    {
+                        if (spinner == otherSpinner)
+                        {
+                            continue;
+                        }
+
+                        // Disable the key;
+                        otherSpinner.enableKey(spinner.currentKey, false);
+                    }
+                }
+            }
+        }
         
 
         

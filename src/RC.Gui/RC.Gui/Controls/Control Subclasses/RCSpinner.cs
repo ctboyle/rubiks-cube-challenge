@@ -88,6 +88,11 @@ namespace RC.Gui.Controls.Control_Subclasses
         private List<string> keys = new List<string>();
 
         /// <summary>
+        /// A list of keys that are disabled.
+        /// </summary>
+        private List<string> disabledKeys = new List<string>();
+
+        /// <summary>
         /// The index of the current string.  This index is used to coordinate between
         /// the string-key, the RCText object, the image, and the image's file name.
         /// </summary>
@@ -103,7 +108,7 @@ namespace RC.Gui.Controls.Control_Subclasses
         /// <summary>
         /// The delegate for RCSpinner events with no parameters.
         /// </summary>
-        public delegate void RCSpinnerEvent();
+        public delegate void RCSpinnerEvent(RCSpinner sender);
 
         /// <summary>
         /// Thrown when an action button has been pressed over the spinner but is then cancelled.
@@ -115,6 +120,13 @@ namespace RC.Gui.Controls.Control_Subclasses
         /// Thrown when an action button has been pressed and released over the spinner. 
         /// </summary>
         public event RCSpinnerEvent Accepted;
+
+        /// <summary>
+        /// Thrown when the selected index changes.
+        /// </summary>
+        public event RCSpinnerEvent SelectionChange;
+
+
 
 
 
@@ -214,6 +226,7 @@ namespace RC.Gui.Controls.Control_Subclasses
         [notFullyImplemented("Validate new item")]
         public void addSpinItem(string key, string text, RCQuad image, BitmapFont Font)
         {
+            keys.Add(key);
             images.Add(image);
             addTextToListByString(key, text, Font);
         }
@@ -258,10 +271,9 @@ namespace RC.Gui.Controls.Control_Subclasses
             //  but will play sound when toggling spinners
             SoundManager.PlayCue("blip");
 
-            if (curIndex >= keys.Count - 1)
-            { SpinToIndex(0); }
-            else
-            { SpinToIndex(curIndex + 1); }
+            spinUpRecursive();
+
+            ThrowLocalEvent(SelectionChange);
         }
 
         /// <summary>
@@ -273,11 +285,12 @@ namespace RC.Gui.Controls.Control_Subclasses
             //  but will play sound when toggling spinners
             SoundManager.PlayCue("blip");
 
-            if (curIndex == 0)
-            { SpinToIndex(keys.Count - 1); }
-            else
-            { SpinToIndex(curIndex - 1); }
+            spinDownRecursive();
+
+            ThrowLocalEvent(SelectionChange);
         }
+
+        
 
         /// <summary>
         /// Spins directly to the image or text associated with <paramref name="stringToSpinTo"/>
@@ -297,7 +310,45 @@ namespace RC.Gui.Controls.Control_Subclasses
             return false;
         }
 
-        
+        /// <summary>
+        /// Enables or disables a spinner key entry.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="enable"></param>
+        /// <returns></returns>
+        public bool enableKey(string key, bool enable)
+        {
+            bool success = false;
+
+            // First check to see if the key exists in the spinner.
+            if (keys.Contains(key))
+            {
+                if (!enable)
+                {
+                    // Add the key to the disabled keys list.
+                    if (!disabledKeys.Contains(key))
+                    {
+                        disabledKeys.Add(key);
+                    }
+                    success = true;
+                }
+                else
+                {
+                    // remove from disabled keys, if exists.
+                    success = disabledKeys.Remove(key);
+                }
+            }
+
+            return success;
+        }
+
+        /// <summary>
+        /// Enables all the spinner keys;
+        /// </summary>
+        public void enableAllKeys()
+        {
+            disabledKeys.Clear();
+        }
         
         #endregion ------------------------------Public spinner manipulations
 
@@ -386,6 +437,52 @@ namespace RC.Gui.Controls.Control_Subclasses
             curIndex = indexToSpinTo;
             AddChild(images[curIndex], 0, 0, 0);
             AddChild(texts[curIndex], 0, 0, 0);
+
+        }
+
+        /// <summary>
+        ///  Used to spin the spiner and to avoid spining to the disabled spinners
+        /// </summary>
+        private void spinDownRecursive()
+        {
+            int nextIndex = curIndex - 1;
+            if (nextIndex < 0)
+            {
+                nextIndex = keys.Count - 1;
+            }
+
+            SpinToIndex(nextIndex);
+
+            // Spin one more down if current key is disabled
+            // and if all of them are not diabled.
+            if (disabledKeys.Contains(currentKey) &&
+                disabledKeys.Count != keys.Count)
+            {
+                spinDownRecursive();
+            }
+        }
+
+        /// <summary>
+        ///  Used to spin the spiner and to avoid spining to the disabled spinners
+        /// </summary>
+        private void spinUpRecursive()
+        {
+
+            int nextIndex = curIndex + 1;
+            if (nextIndex >= keys.Count)
+            {
+                nextIndex = 0;
+            }
+
+            SpinToIndex(nextIndex);
+
+            // Spin one more if current key is disabled
+            // and if all of them are not diabled.
+            if (disabledKeys.Contains(currentKey) &&
+                disabledKeys.Count != keys.Count)
+            {
+                spinUpRecursive();
+            }
         }
 
         #endregion ------------------------------Private Helper Functions
@@ -402,7 +499,7 @@ namespace RC.Gui.Controls.Control_Subclasses
             { return false; }
             else
             {
-                eventToThrow();
+                eventToThrow(this);
                 return true;
             }
         }
