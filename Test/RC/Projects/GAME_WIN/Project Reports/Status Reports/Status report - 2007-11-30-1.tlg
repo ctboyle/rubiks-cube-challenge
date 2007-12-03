@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<status_report>
+<id>Status report - 2007-11-30-1</id>
+<create_date>20071130</create_date>
+<create_time>19:00:01</create_time>
+<filter_name></filter_name>
+<report_type>Status</report_type>
+<num_series>5</num_series>
+<report_string>Not yet attempted</report_string>
+<report_string>Fail</report_string>
+<report_string>Pass</report_string>
+<report_string>Other</report_string>
+<report_string>Postponed</report_string>
+<report_colours>65535</report_colours>
+<report_colours>255</report_colours>
+<report_colours>65280</report_colours>
+<report_colours>16776960</report_colours>
+<report_colours>12483995</report_colours>
+<series_value>19</series_value>
+<series_value>4</series_value>
+<series_value>19</series_value>
+<series_value>0</series_value>
+<series_value>29</series_value>
+<total_test_time>1521</total_test_time>
+<expended_test_time>49</expended_test_time>
+<expected_test_time>73</expected_test_time>
+<total_predicted_test_time>1066</total_predicted_test_time>
+<total_failed_time>12</total_failed_time>
+<total_attempted_time>61</total_attempted_time>
+<total_number_tests>71</total_number_tests>
+<average_time_per_attempted_test>2</average_time_per_attempted_test>
+<average_time_per_planned_test>21</average_time_per_planned_test>
+<per_tests_complete>26.76</per_tests_complete>
+<per_time_used>4.01</per_time_used>
+</status_report>

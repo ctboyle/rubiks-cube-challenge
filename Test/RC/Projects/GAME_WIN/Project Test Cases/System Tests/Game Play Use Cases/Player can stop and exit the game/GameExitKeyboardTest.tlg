@@ -12,7 +12,7 @@
 <last_attempt_date>N/A</last_attempt_date>
 <last_attempt_time>N/A</last_attempt_time>
 <actual_duration>00:01</actual_duration>
-<testers>steven</testers>
+<testers>steven, LOCKHART</testers>
 <fault_report_id></fault_report_id>
 <change_req_id></change_req_id>
 <results_obtained><![CDATA[The game will exit when ESC is pressed on the keyboard no matter which player is the keyboard player, with 1, 2, 3, or 4 players.]]></results_obtained>

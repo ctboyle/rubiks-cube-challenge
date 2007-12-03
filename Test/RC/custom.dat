@@ -29,6 +29,7 @@
 </test_phases>
 <builds>
 <build>rev </build>
+<build>rev 279</build>
 </builds>
 <versions>
 </versions>
@@ -41,6 +42,8 @@
 <user_name>chrisb</user_name>
 <computer_name>PETFIRST505</computer_name>
 <user_name>jason</user_name>
+<computer_name>LOCKHART</computer_name>
+<user_name>LOCKHART</user_name>
 <default_vals>
 <expected>0:0</expected>
 <autoDigits>3</autoDigits>

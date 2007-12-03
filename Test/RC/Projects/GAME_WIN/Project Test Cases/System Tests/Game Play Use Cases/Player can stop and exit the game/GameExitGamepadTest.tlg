@@ -12,10 +12,10 @@
 <last_attempt_date>N/A</last_attempt_date>
 <last_attempt_time>N/A</last_attempt_time>
 <actual_duration>00:01</actual_duration>
-<testers>steven</testers>
+<testers>steven, LOCKHART</testers>
 <fault_report_id></fault_report_id>
 <change_req_id></change_req_id>
-<results_obtained><![CDATA[A single-player game was started using Mouse as the input device.  The ESCAPE key was hit, to exit the game.  Nothing happened.]]></results_obtained>
+<results_obtained><![CDATA[Nothing happens.]]></results_obtained>
 <version_tested></version_tested>
 <build_tested></build_tested>
 <external_link2></external_link2>
@@ -23,10 +23,10 @@
 <requirement></requirement>
 <create_date>20071114</create_date>
 <create_time>14:55:28</create_time>
-<update_date>20071121</update_date>
-<update_time>23:28:07</update_time>
+<update_date>20071202</update_date>
+<update_time>23:20:46</update_time>
 <create_user_id>LOCKHART</create_user_id>
-<update_user_id>steven</update_user_id>
+<update_user_id>LOCKHART</update_user_id>
 <prerequisites><![CDATA[Gameplay is active, the game is in the gameplay state.<br>Test is performed with gamepad.]]></prerequisites>
 <test_description><![CDATA[<OL><LI>Begin a new game with any number of players.</LI><LI>Press the 'back' button on the GamePad</LI></OL>]]></test_description>
 <test_result><![CDATA[The Game transitions back to the menu.]]></test_result>
@@ -36,4 +36,6 @@
 <priority>2</priority>
 <history_entry><time>00:00:00</time><date>14-11-2007</date><type>ET_NEW</type><old_status>Not yet attempted</old_status><new_status>Not yet attempted</new_status><num_tries>0</num_tries><phase>System test</phase><version></version><build></build></history_entry>
 <history_entry><time>23:28:07</time><date>21-11-2007</date><type>ET_UPDATE</type><old_status>Not yet attempted</old_status><new_status>Fail</new_status><num_tries>1</num_tries><phase>System test</phase><version></version><build></build></history_entry>
+<history_entry><time>23:18:55</time><date>02-12-2007</date><type>ET_UPDATE</type><old_status>Fail</old_status><new_status>Pass</new_status><num_tries>1</num_tries><phase>System test</phase><version></version><build></build></history_entry>
+<history_entry><time>23:20:46</time><date>02-12-2007</date><type>ET_UPDATE</type><old_status>Pass</old_status><new_status>Fail</new_status><num_tries>1</num_tries><phase>System test</phase><version></version><build></build></history_entry>
 </project_test_case>
