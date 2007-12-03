@@ -34,25 +34,25 @@ namespace NUnitTest
         [Test]
         public void TestMenuCameraController()
         {
-            // ADD TEST HERE
+            // PRIVATE CLASS, CANNOT MAKE TESTS
         }
 
         [Test]
         public void TestScaleController()
         {
-            // ADD TEST HERE
+            // PRIVATE CLASS, CANNOT MAKE TESTS
         }
 
         [Test]
         public void TestSpinController()
         {
-            // ADD TEST HERE
+            // PRIVATE CLASS, CANNOT MAKE TESTS
         }
 
         [Test]
         public void TestWobbleController()
         {
-            // ADD TEST HERE
+            // PRIVATE CLASS, CANNOT MAKE TESTS
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+using RagadesCube.GameLogic;
+
 using NUnit.Framework;
 
 namespace NUnitTest
@@ -15,19 +17,28 @@ namespace NUnitTest
         [Test]
         public void TestActionCube()
         {
-            // ADD TEST HERE
+            RCActionCube acube = new RCActionCube(new Game());
+
+            acube.Move(Vector3.Up, Vector2.One);
+
+            Assert.IsTrue(acube.IsMoving);
+
+            // will need to test more here
         }
 
         [Test]
         public void TestCubeShuffler()
         {
-            // ADD TEST HERE
+            // Private class, can not be tested
         }
 
         [Test]
         public void TestGameLogic()
         {
-            // ADD TEST HERE
+            RCGameLogic gamelog = new RCGameLogic(new Game());
+
+            Assert.AreEqual(0, gamelog.PlayerCount);
+
         }
 
         [Test]
