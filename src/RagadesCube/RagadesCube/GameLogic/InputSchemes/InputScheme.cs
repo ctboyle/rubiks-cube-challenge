@@ -22,12 +22,12 @@ namespace RagadesCube.GameLogic.InputSchemes
 
         protected void Move(Vector2 where)
         {
-            RCCamera camera = Player.Camera;
-
-            if (Vector3.Dot(Player.CubeView.WorldTrans.Up, Vector3.Up) < 0)
-                where = new Vector2(where.X, -where.Y);
-            
-            ControlItem.MovePlayerCube(Player.Index, camera.WorldTrans.Right, where);
+            ControlItem.MovePlayerCube(
+                Player.Index, 
+                Player.Camera.WorldTrans.Up,
+                Player.Camera.WorldTrans.Right, 
+                where
+            );
         }
 
         protected void Rotate(RCCube.RotationDirection dir)

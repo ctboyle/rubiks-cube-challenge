@@ -28,7 +28,8 @@ namespace RagadesCube.GameLogic
         private RCCubeController _controller;
         private RCCubeCursor _cursor;
         private Vector2 _moveVector;
-        private Vector3 _axis;
+        private Vector3 _xAxis;
+        private Vector3 _yAxis;
  
 
         public RCActionCube(Game game)
@@ -78,9 +79,11 @@ namespace RagadesCube.GameLogic
             
             if (_isMoving)
             {
-                _myCube.LocalTrans =
-                    Matrix.CreateRotationY(_moveVector.Y) * 
-                    Matrix.CreateFromAxisAngle(_axis, _moveVector.X);
+                Quaternion yRot = Quaternion.CreateFromAxisAngle(_xAxis, _moveVector.X);
+                Quaternion xRot = Quaternion.CreateFromAxisAngle(_yAxis, _moveVector.Y);
+                Quaternion totalRot =  Quaternion.Concatenate(xRot, yRot);
+
+                _myCube.LocalTrans = Matrix.CreateFromQuaternion(totalRot);
                 _isMoving = false;
             }
         }
@@ -96,11 +99,12 @@ namespace RagadesCube.GameLogic
             _cursor.SelectedFace = selectedFace;
         }
 
-        public void Move(Vector3 axis, Vector2 where)
+        public void Move(Vector3 xAxis, Vector3 yAxis, Vector2 where)
         {
             if (IsMoving) return;
             
-            _axis = axis;
+            _xAxis = xAxis;
+            _yAxis = yAxis;
             _moveVector += where;
             _isMoving = true;
         }

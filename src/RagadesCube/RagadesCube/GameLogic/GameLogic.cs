@@ -93,12 +93,12 @@ namespace RagadesCube.GameLogic
             return player;
         }
 
-        public void MovePlayerCube(RCPlayerIndex playerIndex, Vector3 axis, Vector2 where)
+        public void MovePlayerCube(RCPlayerIndex playerIndex, Vector3 xAxis, Vector3 yAxis, Vector2 where)
         {
             if (IsPlaying && _rules.PlayerMoveCube(playerIndex))
             {
                 RCGamePlayer player = _players[(int)playerIndex];
-                player.MyCube.Move(axis, where);
+                player.MyCube.Move(xAxis, yAxis, where);
             }
         }
 
