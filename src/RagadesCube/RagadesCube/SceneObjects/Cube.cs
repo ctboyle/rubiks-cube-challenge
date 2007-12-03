@@ -185,13 +185,25 @@ namespace RagadesCube.SceneObjects
                     RCCublet cublet = sceneObject as RCCublet;
                     Vector3 faceNormal = GetFaceNormal(face);
 
+                    Vector3 worldTranslate;
+                    Quaternion worldRot;
+                    Vector3 worldScale;
+
+                    WorldTrans.Decompose(
+                       out worldScale,
+                       out worldRot,
+                       out worldTranslate
+                       );
+
+                    Vector3 worldFaceNormal = Vector3.Transform(-faceNormal, worldRot);
+
                     foreach (RCFacelet facelet in cublet.Facelets)
                     {
                         if (facelet != null)
                         {
                             Vector3 faceletNormal = facelet.WorldNormal;
 
-                            if (Vector3.Dot(faceletNormal, faceNormal) > 0.9)
+                            if (Vector3.Dot(faceletNormal, worldFaceNormal) > 0.9)
                                 facelets.Add(facelet);
                         }
                     }

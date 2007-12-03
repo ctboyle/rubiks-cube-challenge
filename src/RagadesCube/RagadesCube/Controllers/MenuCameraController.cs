@@ -104,6 +104,7 @@ namespace RagadesCube.Controllers
         {
             _cameraFinalPos = CameraPositions.Home;
             _state = AnimationState.FindHome;
+            _curPosition = CameraPositions.Home;
 
             TranslationMode = InterpolationMode.SmoothStep;
             BeginAnimation(

@@ -28,9 +28,6 @@ namespace RagadesCube.States
 
         SpinController cubeSpin;
         
-        ScaleController cubeScale;
-        RCWobbleController cubeWobble;
-
         bool _transitioning;
 
         public RCTitleScreenState(
@@ -49,8 +46,10 @@ namespace RagadesCube.States
             //_menuScene.Camera.ClearScreen = tr;
             InitializeScreenScene();
 
-            // begin theme music
+            // begin theme music and ensure noe is playing before.
+            SoundManager.Stop();
             SoundManager.PlayCue("musicbeat");
+            
             
             base.Initialize();
             _sceneManager.AddScene(_screenScene);

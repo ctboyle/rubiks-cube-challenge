@@ -63,6 +63,8 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CubeController.cs">
@@ -185,6 +187,10 @@
     <Compile Include="States\CubeMenu.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CubeMenu</Name>
+    </Compile>
+    <Compile Include="States\Exit.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Exit</Name>
     </Compile>
     <Compile Include="States\FadeState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

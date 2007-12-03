@@ -19,6 +19,9 @@ namespace RagadesCube.GameLogic
 
     public class RCActionCube : GameComponent, IRCCubeViewer
     {
+        public delegate void ActionCubeEventHandler(RCActionCube cube);
+        public event ActionCubeEventHandler RotateAnimationComplete;
+
         private bool _isMoving;
         private int _moveCount;
         private RCCube _myCube;
@@ -38,7 +41,8 @@ namespace RagadesCube.GameLogic
             _cursor = new RCCubeCursor(_myCube);
             _controller.AttachToObject(_myCube);
             _myCube.AddChild(_cursor);
-          
+
+            _controller.OnComplete += OnAnimationComplete;
 
             Game.Components.Add(this);
         }
@@ -151,6 +155,14 @@ namespace RagadesCube.GameLogic
                 }
 
                 return true;
+            }
+        }
+
+        protected void OnAnimationComplete(object sender, EventArgs e)
+        {
+            if (RotateAnimationComplete != null)
+            {
+                RotateAnimationComplete(this);
             }
         }
 

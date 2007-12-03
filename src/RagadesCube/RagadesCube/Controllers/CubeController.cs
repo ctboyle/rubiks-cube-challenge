@@ -14,6 +14,8 @@ namespace RagadesCube.Controllers
 {
     public class RCCubeController : Controller<RCCube>
     {
+        public event EventHandler OnComplete;
+
         private List<RCCublet> _cubletFace;
         private float _curRotation;
         private float _radsPerSecond;
@@ -106,6 +108,10 @@ namespace RagadesCube.Controllers
                 if (_curRotation >= MathHelper.PiOver2)
                 {
                     _isAnimating = false;
+                    if (OnComplete != null)
+                    {
+                        OnComplete(this, null);
+                    }
                 }
                 
             }

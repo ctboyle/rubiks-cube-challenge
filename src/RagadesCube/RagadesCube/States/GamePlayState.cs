@@ -83,10 +83,9 @@ namespace RagadesCube.States
                     );
                 }
             }
-            else
+            else if(!(gameManager.State is RCGameCompleteState))
             {
-                gameManager.PopState();
-
+                
                 List<IRCGamePlayerViewer> winners = new List<IRCGamePlayerViewer>();
                 IRCGamePlayerViewer[] players = _logic.GetPlayers();
 
@@ -164,7 +163,7 @@ namespace RagadesCube.States
                 _exitButton.buttonText.Color = Color.DarkSlateBlue;
                 _exitButton.AfterPressedAndReleased += delegate()
                 {
-                    gameManager.PopState();
+                    gameManager.ChangeState(new RCTitleScreenState(Game));
                 };
 
                 _screen.ScreenPane.AddChild(

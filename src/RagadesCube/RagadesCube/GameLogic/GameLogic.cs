@@ -70,9 +70,6 @@ namespace RagadesCube.GameLogic
 
             _rules.Update(gameTime);
 
-            if (IsPlaying && _rules.IsWinnerPresent)
-                StopGame();
-
             base.Update(gameTime);
         }
 
@@ -90,6 +87,8 @@ namespace RagadesCube.GameLogic
             _players.Add(player);
 
             createdScene = scene;
+
+            cube.RotateAnimationComplete += OnPlayerMoveComplete;
 
             return player;
         }
@@ -137,7 +136,7 @@ namespace RagadesCube.GameLogic
         {
             if (_rules == null)
                 throw new NullReferenceException("Rules must be specified for the shuffle to start.");
-            _shuffleCount = 50;
+            _shuffleCount = 5;
         }
 
         public void StartGame()
@@ -159,6 +158,12 @@ namespace RagadesCube.GameLogic
 
             _rules.Stop();
             _isPlaying = false;
+        }
+
+        private void OnPlayerMoveComplete(RCActionCube playerCube)
+        {
+            if (IsPlaying && _rules.IsWinnerPresent)
+                StopGame();
         }
 
         protected override void Dispose(bool disposing)

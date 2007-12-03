@@ -47,7 +47,7 @@ namespace RagadesCube.States
             _menuPane.AddChild(newGame, 0, 225, 0.0f);
 
             RCButton options = new RCButton(1, 1, 600, 75, mediumFont);
-            options.buttonText.Text = "Options";
+            options.buttonText.Text = "Credits";
             options.buttonText.CenterText = true;
             options.AfterPressedAndReleased +=
                 delegate()
@@ -57,6 +57,18 @@ namespace RagadesCube.States
 
             
             _menuPane.AddChild(options, 0, 300, 0.0f);
+
+            RCButton exit = new RCButton(1, 1, 600, 75, mediumFont);
+            exit.buttonText.Text = "Exit";
+            exit.buttonText.CenterText = true;
+            exit.AfterPressedAndReleased +=
+                delegate()
+                {
+                    gameManager.PushState(new RCExit(Game));
+                };
+
+
+            _menuPane.AddChild(exit, 0, 375, 0.0f);
 
         }
 
