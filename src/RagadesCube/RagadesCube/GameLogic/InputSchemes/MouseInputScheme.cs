@@ -63,19 +63,16 @@ namespace RagadesCube.GameLogic.InputSchemes
 
                         if (_clickActive)
                         {
-                            Move(new Vector2(-move.X, -move.Y) / 100);
+                            Move(new Vector2(-move.Y, -move.X) / 100);
                             _isMoving = true;
                         }
                         else
                         {
                             position.X -= Player.Camera.Viewport.X;
-                            position.Y -= Player.Camera.Viewport.Y;
-
                             position.X -= (Player.Camera.Viewport.Width / 2);
+                            position.Y -= Player.Camera.Viewport.Y;
                             position.Y -= (Player.Camera.Viewport.Height / 2);
-
                             position.Y = -position.Y;
-
                             position.Normalize();
                             MoveCursor(position);
                         }
