@@ -57,8 +57,6 @@ namespace RagadesCube.GameLogic
 
         public override void Update(GameTime gameTime)
         {
-            // BUG BUG: _rules.CubeShuffler.IsShuffling always retruns false.
-            // _cubes are set upon Shuffle which is called later.
             if (_shuffleCount != 0 && !_rules.CubeShuffler.IsShuffling)
             {
                 List<RCActionCube> cubes = new List<RCActionCube>();
@@ -111,13 +109,13 @@ namespace RagadesCube.GameLogic
             }
         }
 
-        public void RotatePlayerCube(RCPlayerIndex playerIndex, RCCube.RotationDirection rotDir)
+        public void RotatePlayerCube(RCPlayerIndex playerIndex, Vector3 viewVector, RCCube.RotationDirection rotDir)
         {
             if (IsPlaying && _rules.PlayerRotateCube(playerIndex))
             {
                 RCGamePlayer player = _players[(int)playerIndex];
                 if(!player.MyCube.IsRotating)
-                    player.MyCube.Rotate(rotDir);
+                    player.MyCube.Rotate(viewVector, rotDir);
             }
         }
 

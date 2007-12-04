@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using RagadesCube.SceneObjects;
+using Microsoft.Xna.Framework;
 
 namespace RagadesCube.GameLogic
 {

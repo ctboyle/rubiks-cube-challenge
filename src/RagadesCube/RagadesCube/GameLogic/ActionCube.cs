@@ -5,6 +5,7 @@ using RagadesCube.Controllers;
 using Microsoft.Xna.Framework.Graphics;
 using RagadesCube.Scenes;
 using System.Collections.Generic;
+using RC.Engine.Cameras;
 
 
 namespace RagadesCube.GameLogic
@@ -109,12 +110,28 @@ namespace RagadesCube.GameLogic
             _isMoving = true;
         }
 
-        public void Rotate(RCCube.RotationDirection rotationDir)
+        public void Rotate(Vector3 viewVector, RCCube.RotationDirection rotationDir)
         {
             if (IsRotating) return;
 
             RCCube.FaceSide faceSide = _cursor.SelectedFace;
-            _controller.RotateFace(faceSide, rotationDir);
+            Vector3 faceNormal = _myCube.GetWorldFaceNormal(faceSide);
+
+            if (Vector3.Dot(viewVector, faceNormal) < 0)
+            {
+                if (rotationDir == RCCube.RotationDirection.Clockwise)
+                    rotationDir = RCCube.RotationDirection.CounterClockwise;
+                else
+                    rotationDir = RCCube.RotationDirection.Clockwise;
+            }
+
+            Rotate(rotationDir);
+        }
+
+        public void Rotate(RCCube.RotationDirection rotationDir)
+        {
+            if (IsRotating) return;
+            _controller.RotateFace(_cursor.SelectedFace, rotationDir);
             _moveCount++;
         }
 

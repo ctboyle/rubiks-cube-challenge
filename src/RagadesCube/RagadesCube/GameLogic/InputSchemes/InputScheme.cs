@@ -24,15 +24,19 @@ namespace RagadesCube.GameLogic.InputSchemes
         {
             ControlItem.MovePlayerCube(
                 Player.Index, 
-                Player.Camera.WorldTrans.Up,
-                Player.Camera.WorldTrans.Right, 
+                Player.Camera.WorldTrans.Right,
+                Player.Camera.WorldTrans.Up, 
                 where
             );
         }
 
         protected void Rotate(RCCube.RotationDirection dir)
         {
-            ControlItem.RotatePlayerCube(Player.Index, dir);
+            ControlItem.RotatePlayerCube(
+                Player.Index, 
+                Player.Camera.WorldTrans.Forward, 
+                dir
+            );
         }
 
         protected void MoveCursor(Vector2 position)

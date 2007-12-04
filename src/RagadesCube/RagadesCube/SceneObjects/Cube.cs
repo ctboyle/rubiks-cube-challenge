@@ -144,7 +144,7 @@ namespace RagadesCube.SceneObjects
             _faces[(int)face].Color = faceColor;
         }
 
-        public Vector3 GetFaceNormal(FaceSide face)
+        public Vector3 GetLocalFaceNormal(FaceSide face)
         {
             Vector3 planeNormal;
             switch (face)
@@ -174,6 +174,23 @@ namespace RagadesCube.SceneObjects
             return planeNormal;
         }
 
+        public Vector3 GetWorldFaceNormal(FaceSide faceSide)
+        {
+            Vector3 planeNormal = GetLocalFaceNormal(faceSide);
+
+            Vector3 worldTranslate;
+            Quaternion worldRot;
+            Vector3 worldScale;
+
+            WorldTrans.Decompose(
+                out worldScale,
+                out worldRot,
+                out worldTranslate
+            );
+
+            return Vector3.Transform(-planeNormal, worldRot);
+        }
+
         public List<RCFacelet> GetFaceletsOnFace(FaceSide face)
         {
             List<RCFacelet> facelets = new List<RCFacelet>();
@@ -183,7 +200,7 @@ namespace RagadesCube.SceneObjects
                 if (sceneObject is RCCublet)
                 {
                     RCCublet cublet = sceneObject as RCCublet;
-                    Vector3 faceNormal = GetFaceNormal(face);
+                    Vector3 faceNormal = GetLocalFaceNormal(face);
 
                     Vector3 worldTranslate;
                     Quaternion worldRot;
@@ -221,7 +238,7 @@ namespace RagadesCube.SceneObjects
             int yRange = height/2;
             int zRange = length/2;
 
-            Vector3 planeNormal = GetFaceNormal(face);
+            Vector3 planeNormal = GetLocalFaceNormal(face);
             float d = 0.0f;
 
             switch (face)

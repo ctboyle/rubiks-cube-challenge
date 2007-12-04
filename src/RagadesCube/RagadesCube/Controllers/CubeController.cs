@@ -47,7 +47,7 @@ namespace RagadesCube.Controllers
                 face
                 );
 
-            Vector3 faceAxis = parentCube.GetFaceNormal(face);
+            Vector3 faceAxis = parentCube.GetLocalFaceNormal(face);
 
             if (direction == RCCube.RotationDirection.Clockwise)
             {

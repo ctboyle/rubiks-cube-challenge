@@ -155,7 +155,7 @@ namespace RagadesCube.SceneObjects
             Vector3 scale = new Vector3((float)_theCube.Width - 0.01f, (float)_theCube.Height, 1.0f);
             LocalTrans = Matrix.CreateScale(scale);
 
-            Vector3 faceNormal = _theCube.GetFaceNormal(_selectedFace);
+            Vector3 faceNormal = _theCube.GetLocalFaceNormal(_selectedFace);
 
             // translate and rotate the cursor cube to the correct position
             switch (_selectedFace)

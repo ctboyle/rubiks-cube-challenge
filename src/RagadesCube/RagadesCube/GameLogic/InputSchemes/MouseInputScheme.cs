@@ -63,7 +63,7 @@ namespace RagadesCube.GameLogic.InputSchemes
 
                         if (_clickActive)
                         {
-                            Move(new Vector2(-move.Y, -move.X) / 100);
+                            Move(new Vector2(-move.X, -move.Y) / 100);
                             _isMoving = true;
                         }
                         else
