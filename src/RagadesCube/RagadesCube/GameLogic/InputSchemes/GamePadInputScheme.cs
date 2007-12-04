@@ -24,7 +24,7 @@ namespace RagadesCube.GameLogic.InputSchemes
             XBox360GamePad gamePad = new XBox360GamePad(_playerIndex);
 
             if (!gamePad.DetectMyInput())
-               //throw new Exception("Unable to map player input because the input device cannot be detected.");
+               throw new Exception("Unable to map player input because the input device cannot be detected.");
 
             gamePad.WatchEvent(
                  new XBox360GamePadEvent(
