@@ -12,6 +12,7 @@ using RC.Input.Events;
 using RC.Input.Types;
 using Microsoft.Xna.Framework.Input;
 using RagadesCube.States;
+using RC.Engine.SoundManagement;
 
 namespace RagadesCube.States
 {
@@ -110,6 +111,8 @@ namespace RagadesCube.States
         public override void Initialize()
         {
             inputReady = false;
+
+            SoundManager.PlayCue("finish");
 
             KeyboardWatcher keyWatcher = new KeyboardWatcher();
             keyWatcher.WatchEvent(new KeyboardEvent(
