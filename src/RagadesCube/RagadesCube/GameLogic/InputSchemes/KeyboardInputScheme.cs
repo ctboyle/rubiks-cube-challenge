@@ -19,7 +19,11 @@ namespace RagadesCube.GameLogic.InputSchemes
         public Keys FirePressKey = Keys.F;
         public Keys ExitKey = Keys.Escape;
 
-        bool _leftShiftActive = false;
+        private bool _leftShiftActive = false;
+        private bool _leftPressActive = false;
+        private bool _rightPressActive = false;
+        private bool _upPressActive = false;
+        private bool _downPressActive = false;
 
         protected override IWatcher[] MapWatcherEvents()
         {
@@ -64,10 +68,23 @@ namespace RagadesCube.GameLogic.InputSchemes
                     EventTypes.Pressed,
                     delegate()
                     {
-                        if(_leftShiftActive)
+                        _leftPressActive = true;
+
+                        if (_leftShiftActive)
                             Move(new Vector2(0, -0.05f));
                         else
                             MoveCursor(new Vector2(-1, 0));
+                    }
+                )
+            );
+
+            keyWatcher.WatchEvent(
+                new RC.Input.Events.KeyboardEvent(
+                    LeftPressKey,
+                    EventTypes.Released,
+                    delegate()
+                    {
+                        _leftPressActive = false;
                     }
                 )
             );
@@ -78,6 +95,8 @@ namespace RagadesCube.GameLogic.InputSchemes
                     EventTypes.Pressed,
                     delegate()
                     {
+                        _rightPressActive = true; 
+
                         if (_leftShiftActive)
                             Move(new Vector2(0, 0.05f));
                         else
@@ -88,10 +107,23 @@ namespace RagadesCube.GameLogic.InputSchemes
 
             keyWatcher.WatchEvent(
                 new RC.Input.Events.KeyboardEvent(
+                    RightPressKey,
+                    EventTypes.Released,
+                    delegate()
+                    {
+                        _rightPressActive = false; 
+                    }
+                )
+            );
+
+            keyWatcher.WatchEvent(
+                new RC.Input.Events.KeyboardEvent(
                     UpPressKey,
                     EventTypes.Pressed,
                     delegate()
                     {
+                        _upPressActive = true;
+
                         if (_leftShiftActive)
                             Move(new Vector2(-0.05f, 0));
                         else
@@ -102,14 +134,38 @@ namespace RagadesCube.GameLogic.InputSchemes
 
             keyWatcher.WatchEvent(
                 new RC.Input.Events.KeyboardEvent(
+                    UpPressKey,
+                    EventTypes.Released,
+                    delegate()
+                    {
+                        _upPressActive = false;
+                    }
+                )
+            );
+
+            keyWatcher.WatchEvent(
+                new RC.Input.Events.KeyboardEvent(
                     DownPressKey,
                     EventTypes.Pressed,
                     delegate()
                     {
+                        _downPressActive = true;
+
                         if (_leftShiftActive)
                             Move(new Vector2(0.05f, 0));
                         else
                             MoveCursor(new Vector2(0, -1));
+                    }
+                )
+            );
+
+            keyWatcher.WatchEvent(
+                new RC.Input.Events.KeyboardEvent(
+                    DownPressKey,
+                    EventTypes.Released,
+                    delegate()
+                    {
+                        _downPressActive = false;
                     }
                 )
             );
