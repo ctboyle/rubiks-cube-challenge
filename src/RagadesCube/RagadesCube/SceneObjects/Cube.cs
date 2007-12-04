@@ -1,19 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-
 using RC.Engine.GraphicsManagement;
 using RC.Engine.Rendering;
-
 
 namespace RagadesCube.SceneObjects
 {
     public class RCCube : RCSceneNode
     {
+        /// <summary>
+        /// The sides of a cube.
+        /// </summary>
         public enum FaceSide
         {
             Top,
@@ -24,129 +24,124 @@ namespace RagadesCube.SceneObjects
             Bottom
         }
 
+        /// <summary>
+        /// The directions that a cube column can be rotated.
+        /// </summary>
         public enum RotationDirection
         {
             Clockwise,
             CounterClockwise
         }
 
+        /// <summary>
+        /// The faces on the cube.
+        /// </summary>
         protected Face[] _faces;
-        
-        
-        protected int width;
-        protected int length;
-        protected int height;
 
-        public Face[] Faces
-        {
-            get { return _faces; }
-        }
+        /// <summary>
+        /// The width of the cube. 
+        /// </summary>
+        protected int _width;
 
-        public int Length
-        {
-            get { return length; }
-        }
+        /// <summary>
+        /// The length of the cube.
+        /// </summary>
+        protected int _length;
 
-        public int Width
-        {
-            get { return width; }
-        }
+        /// <summary>
+        /// The height of the cube.
+        /// </summary>
+        protected int _height;
 
-        public int Height
-        {
-            get { return height; }
-        }
-
+        /// <summary>
+        /// Creates a new instance of the <see cref="RCCube"/> class.
+        /// </summary>
+        /// <param name="length">Length of the cube.</param>
+        /// <param name="width">Width of the cube.</param>
+        /// <param name="height">Height of the cube.</param>
         public RCCube(int length, int width, int height)
-            :base()
+            : base()
         {
-            int faceCount = Enum.GetValues(typeof(FaceSide)).Length;
+            // intitialize the member variables
+            _faces = new Face[Enum.GetValues(typeof(RCCube.FaceSide)).Length];
+            _length = length;
+            _width = width;
+            _height = height;
 
-            _faces = new Face[faceCount];
-
-            this.length = length;
-            this.width = width;
-            this.height = height;
-
-            // Create / intialize each face and cubelet face collection.
-            for (int iFace = 0; iFace < faceCount; iFace++)
+            // create / intialize each face and cubelet face collection
+            foreach (FaceSide face in Enum.GetValues(typeof(RCCube.FaceSide)))
             {
-                switch ((FaceSide)iFace)
+                Color color = new Color();
+
+                switch (face)
                 {
                     case FaceSide.Top:
-                        CreateFace(
-                            (FaceSide)iFace,
-                            width,
-                            length,
-                            Color.White
-                            );
+                        color = Color.White;
                         break;
-
                     case FaceSide.Bottom:
-                        CreateFace(
-                            (FaceSide)iFace,
-                            width,
-                            length,
-                            Color.Yellow
-                            );
+                        color = Color.Yellow;
                         break;
-
                     case FaceSide.Left:
-                        CreateFace(
-                            (FaceSide)iFace,
-                            length,
-                            height,
-                            Color.Green
-                            );
+                        color = Color.Green;
                         break;
-
                     case FaceSide.Right:
-                        CreateFace(
-                            (FaceSide)iFace,
-                            length,
-                            height,
-                            Color.Blue
-                            );
+                        color = Color.Blue;
                         break;
-
                     case FaceSide.Front:
-                        CreateFace(
-                            (FaceSide)iFace,
-                            width,
-                            height,
-                            Color.Red
-                            );
+                        color = Color.Red;
                         break;
-
                     case FaceSide.Back:
-                        CreateFace(
-                            (FaceSide)iFace,
-                            width,
-                            height,
-                            Color.DarkOrange
-                            );
+                        color = Color.DarkOrange;
                         break;
                 }
+
+                CreateFace(face, color);
             }
 
             ConstructChildren();
         }
 
-        private void CreateFace(
-            FaceSide face,
-            int rows,
-            int cols,
-            Color faceColor
-            )
+        /// <summary>
+        /// The faces of the cube.
+        /// </summary>
+        public Face[] Faces
         {
-            // Create Face
-            _faces[(int)face] = new Face(rows, cols);
-            _faces[(int)face].Color = faceColor;
+            get { return _faces; }
         }
 
+        /// <summary>
+        /// Then length of the cube.
+        /// </summary>
+        public int Length
+        {
+            get { return _length; }
+        }
+
+        /// <summary>
+        /// The width of the cube.
+        /// </summary>
+        public int Width
+        {
+            get { return _width; }
+        }
+
+        /// <summary>
+        /// The height of the cube.
+        /// </summary>
+        public int Height
+        {
+            get { return _height; }
+        }
+
+        /// <summary>
+        /// Gets the local normal of a face on the cube.
+        /// </summary>
+        /// <param name="face">The face side.</param>
+        /// <returns>The normal vector.</returns>
         public Vector3 GetLocalFaceNormal(FaceSide face)
         {
-            Vector3 planeNormal;
+            Vector3 planeNormal = Vector3.Zero;
+
             switch (face)
             {
                 case FaceSide.Top:
@@ -167,13 +162,16 @@ namespace RagadesCube.SceneObjects
                 case FaceSide.Back:
                     planeNormal = Vector3.Forward;
                     break;
-                default:
-                    throw new ArgumentException("Invalid enum specified.");
             }
 
             return planeNormal;
         }
 
+        /// <summary>
+        /// Gets the world normal for a face on the cube.
+        /// </summary>
+        /// <param name="faceSide">The face side.</param>
+        /// <returns>The normal vector.</returns>
         public Vector3 GetWorldFaceNormal(FaceSide faceSide)
         {
             Vector3 planeNormal = GetLocalFaceNormal(faceSide);
@@ -191,28 +189,25 @@ namespace RagadesCube.SceneObjects
             return Vector3.Transform(-planeNormal, worldRot);
         }
 
+        /// <summary>
+        /// Get the current facelets on a face.
+        /// </summary>
+        /// <param name="face">The face side.</param>
+        /// <returns>A list of facelets.</returns>
         public List<RCFacelet> GetFaceletsOnFace(FaceSide face)
         {
             List<RCFacelet> facelets = new List<RCFacelet>();
 
             foreach (RCSpatial sceneObject in listChildren)
             {
+                // for every cublets that is a child of the cube,
+                // check to see if which face shares the same normal vector
+                // as the world normal for the given face side.
+
                 if (sceneObject is RCCublet)
                 {
                     RCCublet cublet = sceneObject as RCCublet;
-                    Vector3 faceNormal = GetLocalFaceNormal(face);
-
-                    Vector3 worldTranslate;
-                    Quaternion worldRot;
-                    Vector3 worldScale;
-
-                    WorldTrans.Decompose(
-                       out worldScale,
-                       out worldRot,
-                       out worldTranslate
-                       );
-
-                    Vector3 worldFaceNormal = Vector3.Transform(-faceNormal, worldRot);
+                    Vector3 worldFaceNormal = GetWorldFaceNormal(face);
 
                     foreach (RCFacelet facelet in cublet.Facelets)
                     {
@@ -220,6 +215,9 @@ namespace RagadesCube.SceneObjects
                         {
                             Vector3 faceletNormal = facelet.WorldNormal;
 
+                            // a dot product threshold of 0.9 was picked as an
+                            // acceptable value for determining if the two 
+                            // normal vectors were close enough.
                             if (Vector3.Dot(faceletNormal, worldFaceNormal) > 0.9)
                                 facelets.Add(facelet);
                         }
@@ -230,79 +228,73 @@ namespace RagadesCube.SceneObjects
             return facelets;
         }
 
+        /// <summary>
+        /// Gets the current cublets on a face.
+        /// </summary>
+        /// <param name="face">The face side.</param>
+        /// <returns>A list of cublets.</returns>
         public List<RCCublet> GetCubletsOnFace(FaceSide face)
         {
-            // Check intersection with plane on specified face
+            int xRange = _width / 2;
+            int yRange = _height / 2;
+            int zRange = _length / 2;
 
-            int xRange = width/2;
-            int yRange = height/2;
-            int zRange = length/2;
+            float distance = 0.0f;
 
-            Vector3 planeNormal = GetLocalFaceNormal(face);
-            float d = 0.0f;
-
+            // calculate the length of the range
             switch (face)
             {
                 case FaceSide.Top:
-                    d = yRange * RCCublet.CubeletSize;
+                    distance = yRange * RCCublet.CubeletSize;
                     break;
                 case FaceSide.Bottom:
-                    d = yRange * RCCublet.CubeletSize;
+                    distance = yRange * RCCublet.CubeletSize;
                     break;
                 case FaceSide.Left:
-                    d = xRange * RCCublet.CubeletSize;
+                    distance = xRange * RCCublet.CubeletSize;
                     break;
                 case FaceSide.Right:
-                    d = xRange * RCCublet.CubeletSize;
+                    distance = xRange * RCCublet.CubeletSize;
                     break;
                 case FaceSide.Front:
-                    d = zRange * RCCublet.CubeletSize;
+                    distance = zRange * RCCublet.CubeletSize;
                     break;
                 case FaceSide.Back:
-                    d = zRange * RCCublet.CubeletSize;
+                    distance = zRange * RCCublet.CubeletSize;
                     break;
-                default:
-                    throw new ArgumentException("Invalid enum specified.");
             }
-            
-            Vector3 worldTranslate;
-            Quaternion worldRot;
-            Vector3 worldScale;
 
-
-            WorldTrans.Decompose(
-                out worldScale, 
-                out worldRot, 
-                out worldTranslate
-                );
-
-            Vector3 worldNormal = Vector3.Transform(-planeNormal, worldRot);
-
-            float dWorld  = (worldTranslate + worldNormal * d).Length() ;
-
-            Plane facePlane = new Plane(worldNormal, dWorld);
+            // create the face plane
+            Vector3 worldNormal = GetWorldFaceNormal(face);
+            float distanceWorld = (WorldTrans.Translation + worldNormal * distance).Length();
+            Plane facePlane = new Plane(worldNormal, distanceWorld);
 
             List<RCCublet> listCubelets = new List<RCCublet>();
+
             foreach (RCSpatial sceneObject in listChildren)
             {
-                if (sceneObject.GetType() == typeof(RCCublet))
+                // for every child of the cube, check to see if the cublet
+                // intersects with the face plane.
+
+                if (sceneObject is RCCublet)
                 {
                     PlaneIntersectionType result = sceneObject.WorldBound.Intersects(facePlane);
                     if (result == PlaneIntersectionType.Intersecting)
-                    {
                         listCubelets.Add((RCCublet)sceneObject);
-                    }
                 }
             }
 
             return listCubelets;
         }
 
+        /// <summary>
+        /// Constructs all of the children of the cube.  Used for initialization.
+        /// </summary>
         private void ConstructChildren()
         {
- 	        int xRange = width/2;
-            int yRange = height/2;
-            int zRange = length/2;
+ 	        int xRange = _width / 2;
+            int yRange = _height / 2;
+            int zRange = _length / 2;
 
             for (int iX = -xRange, xRow = 0; iX <= xRange ; iX++, xRow++)
             {
@@ -321,12 +313,10 @@ namespace RagadesCube.SceneObjects
 
                         RCCublet currentCubelet = new RCCublet(iX,iY,iZ);
 
-                        // Check for faces and attach faces as neccissary.
-                        RCFacelet facelet = null;
-
                         // Rows and columns for Facelets
                         int iRow = 0;
-                        int iCol = 0;                        
+                        int iCol = 0;   
+                     
                         // Top face
                         if(iY == yRange)
                         {
@@ -410,25 +400,32 @@ namespace RagadesCube.SceneObjects
                             );
                         }
 
-                        // Finaly, add the cubelet to the tree.
+                        // Finally, add the cubelet to the tree.
                         AddChild(currentCubelet);
-
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Attaches a facelet to a cublet.
+        /// </summary>
+        /// <param name="cubeletToAdd">The cublet to attach the facelet.</param>
+        /// <param name="faceSide">The face side.</param>
+        /// <param name="row">The row for the facelet.</param>
+        /// <param name="col">The column for the facelet.</param>
         private void AttachFacelet(
             RCCublet cubeletToAdd,
             FaceSide faceSide,
-            int iRow,
-            int iCol
+            int row,
+            int col
             )
         {
-            RCFacelet facelet = GetFacelet(faceSide, iRow, iCol);
+            RCFacelet facelet = GetFacelet(faceSide, row, col);
 
             // Map face side to cubelet position
             RCCublet.FaceletPosition faceletPosition = (RCCublet.FaceletPosition)faceSide;
+
             // TODO: place in switch case block to do the mapping
 
             cubeletToAdd.AttachFacelet(
@@ -437,10 +434,27 @@ namespace RagadesCube.SceneObjects
                 );
         }
 
-        private RCFacelet GetFacelet(FaceSide faceSide, int iRow, int iCol)
+        /// <summary>
+        /// Get the facelets from the original face configuration by row/col.
+        /// </summary>
+        /// <param name="faceSide">The face side.</param>
+        /// <param name="row">The row.</param>
+        /// <param name="col">The column.</param>
+        /// <returns>The facelet.</returns>
+        private RCFacelet GetFacelet(FaceSide faceSide, int row, int col)
         {
-            RCFacelet facelet = _faces[(int)faceSide].GetFacelet(iRow, iCol);
-            return facelet;
+            return _faces[(int)faceSide].GetFacelet(row, col);
+        }
+
+        /// <summary>
+        /// Initializes a face on the cubelet with a paticular color.
+        /// </summary>
+        /// <param name="face">The face side.</param>
+        /// <param name="faceColor">The color.</param>
+        private void CreateFace(FaceSide face, Color faceColor)
+        {
+            _faces[(int)face] = new Face(_width, _length);
+            _faces[(int)face].Color = faceColor;
         }
     }
 }
