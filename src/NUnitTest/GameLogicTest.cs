@@ -19,7 +19,7 @@ namespace NUnitTest
         {
             RCActionCube acube = new RCActionCube(new Game());
 
-            acube.Move(Vector3.Up, Vector2.One);
+            acube.Move(Vector3.Up,Vector3.Right, Vector2.One);
 
             Assert.IsTrue(acube.IsMoving);
 

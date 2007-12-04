@@ -184,6 +184,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>MenuCubeScene</Name>
     </Compile>
+    <Compile Include="States\Credits.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Credits</Name>
+    </Compile>
     <Compile Include="States\CubeMenu.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CubeMenu</Name>
@@ -231,10 +235,6 @@
     <Compile Include="States\NewGame.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>NewGame</Name>
-    </Compile>
-    <Compile Include="States\Options.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Options</Name>
     </Compile>
     <Compile Include="States\TitleScreenState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

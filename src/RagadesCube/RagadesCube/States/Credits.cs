@@ -56,7 +56,7 @@ namespace RagadesCube.States
             _menuPane.AddChild(StevenText, 0, 380, 0.0f);
 
             RCText JasonText = new RCText(smallFont, 1, 1, 600, 75);
-            JasonText.Text = "Jason Spuril";
+            JasonText.Text = "Jason Spruill";
             JasonText.CenterText = true;
             _menuPane.AddChild(JasonText, 0, 420, 0.0f);
         }
