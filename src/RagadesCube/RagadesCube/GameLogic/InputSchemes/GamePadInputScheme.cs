@@ -27,26 +27,44 @@ namespace RagadesCube.GameLogic.InputSchemes
                throw new Exception("Unable to map player input because the input device cannot be detected.");
 
             gamePad.WatchEvent(
-                 new XBox360GamePadEvent(
-                     XBox360GamePadTypes.START,
-                     EventTypes.Pressed,
-                     OnExit
-                 )
-             );
+                new XBox360GamePadEvent(
+                    XBox360GamePadTypes.START,
+                    EventTypes.Pressed,
+                    delegate()
+                    {
+                        ControlItem.StopGame();
+                    }
+                )
+            );
 
             gamePad.WatchEvent(
                  new XBox360GamePadEvent(
                      XBox360GamePadTypes.LEFTTRIGGER,
                      EventTypes.Leaned,
-                     OnTrigger
+                     delegate(Vector2 position, Vector2 move)
+                     {
+                         _isTriggerPressed = (position.Length() > 0);
+                     }
                  )
              );
 
             gamePad.WatchEvent(
                 new XBox360GamePadEvent(
-                    XBox360GamePadTypes.LEFTANALOG, 
-                    EventTypes.Leaned, 
-                    OnLeftStick
+                    XBox360GamePadTypes.LEFTANALOG,
+                    EventTypes.Leaned,
+                    delegate(Vector2 position, Vector2 move)
+                    {
+                        // a threshold of 0.15 is used so that
+                        // every lean event won't get processed.
+                        if (position.Length() < 0.15f) return;
+
+                        if (_isTriggerPressed)
+                        {
+                            Move(new Vector2(-position.Y, position.X) / 20);
+                        }
+                        else
+                            MoveCursor(position);
+                    }
                 )
             );
 
@@ -54,7 +72,10 @@ namespace RagadesCube.GameLogic.InputSchemes
                 new XBox360GamePadEvent(
                     XBox360GamePadTypes.LEFTSHOULDER,
                     EventTypes.Pressed,
-                    OnLeftButton
+                    delegate()
+                    {
+                        Rotate(RCCube.RotationDirection.CounterClockwise);
+                    }
                 )
             );
 
@@ -62,41 +83,14 @@ namespace RagadesCube.GameLogic.InputSchemes
                 new XBox360GamePadEvent(
                     XBox360GamePadTypes.RIGHTSHOULDER,
                     EventTypes.Pressed,
-                    OnRightButton
+                    delegate()
+                    {
+                        Rotate(RCCube.RotationDirection.Clockwise);
+                    }
                 )
             );
 
             return new IWatcher[] { gamePad };
-        }
-
-        private void OnExit()
-        {
-            ControlItem.StopGame();
-        }
-
-        private void OnLeftButton()
-        {
-            Rotate(RCCube.RotationDirection.CounterClockwise);
-        }
-
-        private void OnRightButton()
-        {
-            Rotate(RCCube.RotationDirection.Clockwise);
-        }
-
-        private void OnTrigger(Vector2 position, Vector2 move)
-        {
-            _isTriggerPressed = (position.Length() > 0);
-        }
-
-        private void OnLeftStick(Vector2 position, Vector2 move)
-        {
-            if (position.Length() < 0.15f) return;
-
-            if (_isTriggerPressed)
-                Move(new Vector2(-position.Y, position.X) / 20);
-            else
-                MoveCursor(position);
         }
     }
 }
