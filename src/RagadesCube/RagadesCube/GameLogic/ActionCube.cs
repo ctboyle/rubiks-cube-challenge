@@ -84,7 +84,7 @@ namespace RagadesCube.GameLogic
                 Quaternion xRot = Quaternion.CreateFromAxisAngle(_yAxis, _moveVector.Y);
                 Quaternion totalRot =  Quaternion.Concatenate(xRot, yRot);
 
-                _myCube.LocalTrans = Matrix.CreateFromQuaternion(totalRot);
+                _myCube.LocalTrans *= Matrix.CreateFromQuaternion(totalRot);
                 _isMoving = false;
             }
         }
@@ -106,7 +106,7 @@ namespace RagadesCube.GameLogic
             
             _xAxis = xAxis;
             _yAxis = yAxis;
-            _moveVector += where;
+            _moveVector = where;
             _isMoving = true;
         }
 
