@@ -44,7 +44,16 @@ namespace RagadesCube.GameLogic.InputSchemes
             float dotMax = float.MinValue;
             RCCube.FaceSide selectedFace = RCCube.FaceSide.Top;
 
-            foreach (RCCube.FaceSide face in Enum.GetValues(typeof(RCCube.FaceSide)))
+#if !XBOX
+
+            foreach(RCCube.FaceSide face in Enum.GetValues(typeof(RCCube.FaceSide)))
+
+#else
+
+            foreach (RCCube.FaceSide face in EnumHelper.GetValues(typeof(RCCube.FaceSide)))
+
+#endif
+
             {
                 Vector3 source = Vector3.Zero;
 

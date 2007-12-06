@@ -159,7 +159,16 @@ namespace RagadesCube.GameLogic
         {
             get
             {
+#if !XBOX
+
                 foreach(RCCube.FaceSide face in Enum.GetValues(typeof(RCCube.FaceSide)))
+
+#else
+
+                foreach (RCCube.FaceSide face in EnumHelper.GetValues(typeof(RCCube.FaceSide)))
+
+#endif
+
                 {
                     List<RCFacelet> facelets = _myCube.GetFaceletsOnFace(face);
                     string colorName = "";

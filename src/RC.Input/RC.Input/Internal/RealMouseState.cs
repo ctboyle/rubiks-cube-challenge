@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+#if !XBOX
+
 namespace RC.Input.Internal
 {
     internal class RealMouseState
@@ -204,3 +206,5 @@ namespace RC.Input.Internal
         }
     }
 }
+
+#endif

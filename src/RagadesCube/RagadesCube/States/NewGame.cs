@@ -91,7 +91,15 @@ namespace RagadesCube.States
 
             Vector2 spinnerPos = new Vector2(xSpinnerStart, yVerticalPos);
 
+#if !XBOX
+
             Array playerIndicies = Enum.GetValues(typeof(PlayerIndex));
+
+#else
+
+            Array playerIndicies = EnumHelper.GetValues(typeof(PlayerIndex));
+
+#endif
 
             for (int playerIndex = 0; playerIndex < playerIndicies.Length; playerIndex++ )
             {

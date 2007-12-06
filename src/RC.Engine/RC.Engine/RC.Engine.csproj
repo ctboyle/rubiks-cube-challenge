@@ -186,6 +186,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)*" "$(ProjectDir)..\..\Dependencies"  /i /d /y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)*" "$(ProjectDir)..\..\Dependencies\x86"  /i /d /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

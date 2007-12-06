@@ -31,7 +31,13 @@ namespace RagadesCube.Misc
             {
                 new SpinItemMapEntry("None",        "NoPlayer", null),
                 new SpinItemMapEntry("Keyboard",    "Keyboard", new RCGLKeyboardInputScheme()),
+                
+#if !XBOX
+
                 new SpinItemMapEntry("Mouse",       "Mouse",    new RCGLMouseInputScheme()),
+
+#endif
+
                 new SpinItemMapEntry("GamePad1",    "GamePad1", new RCGLGamePadInputScheme(PlayerIndex.One)),
                 new SpinItemMapEntry("GamePad2",    "GamePad2", new RCGLGamePadInputScheme(PlayerIndex.Two)),
                 new SpinItemMapEntry("GamePad3",    "GamePad3", new RCGLGamePadInputScheme(PlayerIndex.Three)),

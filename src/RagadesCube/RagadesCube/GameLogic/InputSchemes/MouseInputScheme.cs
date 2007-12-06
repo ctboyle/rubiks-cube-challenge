@@ -5,6 +5,8 @@ using RC.Input.Types;
 using Microsoft.Xna.Framework;
 using RagadesCube.SceneObjects;
 
+#if !XBOX
+
 namespace RagadesCube.GameLogic.InputSchemes
 {
     public class RCGLMouseInputScheme : RCGLInputScheme
@@ -84,3 +86,5 @@ namespace RagadesCube.GameLogic.InputSchemes
         }
     }
 }
+
+#endif

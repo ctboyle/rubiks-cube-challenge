@@ -27,10 +27,15 @@ namespace RagadesCube.States.InputSchemes
         protected override IWatcher[] MapWatcherEvents()
         {
             KeyboardWatcher keyWatcher = new KeyboardWatcher();
-            MouseWatcher mouseWatcher = new MouseWatcher();
             XBox360GamePad gamePadWatcher = new XBox360GamePad(PlayerIndex.One);
 
+#if !XBOX
+            MouseWatcher mouseWatcher = new MouseWatcher();
+#endif
+
             List<IWatcher> mappedWatchers = new List<IWatcher>();
+
+#if !XBOX
 
             if (mouseWatcher.DetectMyInput())
             {
@@ -45,6 +50,8 @@ namespace RagadesCube.States.InputSchemes
 
                 mappedWatchers.Add(mouseWatcher);
             }
+
+#endif
 
             if (keyWatcher.DetectMyInput())
             {

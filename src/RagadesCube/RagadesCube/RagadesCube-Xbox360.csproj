@@ -4,15 +4,18 @@
     <ProjectTypeGuids>{9F340DF3-2AED-4330-AC16-78AC2D9B4738};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Xbox360Game1</RootNamespace>
-    <AssemblyName>Xbox360Game1</AssemblyName>
+    <RootNamespace>RagadesCube</RootNamespace>
+    <AssemblyName>RagadesCube-Xbox360</AssemblyName>
     <XnaFrameworkVersion>v1.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
     <XNAGlobalContentPipelineAssemblies>Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</XNAGlobalContentPipelineAssemblies>
     <XNAProjectContentPipelineAssemblies>
     </XNAProjectContentPipelineAssemblies>
+    <StartupObject>
+    </StartupObject>
+    <ApplicationIcon>Game.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,17 +48,17 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="RC.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="RC.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\RC.Engine.dll</HintPath>
+      <HintPath>..\..\Dependencies\Xbox\RC.Engine.dll</HintPath>
     </Reference>
-    <Reference Include="RC.Gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="RC.Gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\RC.Gui.dll</HintPath>
+      <HintPath>..\..\Dependencies\Xbox\RC.Gui.dll</HintPath>
     </Reference>
-    <Reference Include="RC.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="RC.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\RC.Input.dll</HintPath>
+      <HintPath>..\..\Dependencies\Xbox\RC.Input.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -130,6 +133,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>IGameRules</Name>
     </Compile>
+    <Compile Include="Misc\EnumHelper.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>EnumHelper</Name>
+    </Compile>
     <Compile Include="Misc\PlayerInputSpinnerManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>PlayerInputSpinnerManager</Name>
@@ -179,9 +186,17 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>MenuCubeScene</Name>
     </Compile>
+    <Compile Include="States\Credits.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Credits</Name>
+    </Compile>
     <Compile Include="States\CubeMenu.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>CubeMenu</Name>
+    </Compile>
+    <Compile Include="States\Exit.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Exit</Name>
     </Compile>
     <Compile Include="States\FadeState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -222,10 +237,6 @@
     <Compile Include="States\NewGame.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>NewGame</Name>
-    </Compile>
-    <Compile Include="States\Options.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Options</Name>
     </Compile>
     <Compile Include="States\TitleScreenState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

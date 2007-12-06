@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using RC.Input.Events;
 using RC.Input.Internal;
 
+#if !XBOX
+
 namespace RC.Input.Watchers
 {
     public class MouseWatcher : RCWatcher<MouseEvent>
@@ -91,3 +93,5 @@ namespace RC.Input.Watchers
         }
     }
 }
+
+#endif

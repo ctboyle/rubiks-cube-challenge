@@ -23,7 +23,18 @@ namespace RagadesCube.GameLogic
 
         public static int MaxPlayers
         {
-            get { return Enum.GetValues(typeof(RCPlayerIndex)).Length; }
+            get 
+            { 
+#if !XBOX
+
+                return Enum.GetValues(typeof(RCPlayerIndex)).Length; 
+
+#else
+
+                return EnumHelper.GetValues(typeof(RCPlayerIndex)).Length; 
+
+#endif
+            }
         }
 
         public RCGameLogic(Game game) 

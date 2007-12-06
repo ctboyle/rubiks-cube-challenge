@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using RagadesCube.States;
-using RagadesCube.States;
 using Microsoft.Xna.Framework;
 using RC.Engine.StateManagement;
 using Microsoft.Xna.Framework.Graphics;

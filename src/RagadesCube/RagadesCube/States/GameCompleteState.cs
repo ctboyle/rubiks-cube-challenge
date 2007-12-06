@@ -125,6 +125,8 @@ namespace RagadesCube.States
                     }
                 }));
 
+#if !XBOX
+
             MouseWatcher mouseWatcher = new MouseWatcher();
             mouseWatcher.WatchEvent(new MouseEvent(
                 MouseInput.LeftButton,
@@ -137,6 +139,8 @@ namespace RagadesCube.States
                     }
                 }));
 
+
+
             mouseWatcher.WatchEvent(new MouseEvent(
                 MouseInput.RightButton,
                 EventTypes.OnUp,
@@ -147,6 +151,8 @@ namespace RagadesCube.States
                         GoToMainMenu();
                     }
                 }));
+
+#endif
 
             XBox360GamePad gamepadWatcher1 = new XBox360GamePad(PlayerIndex.One);
             gamepadWatcher1.WatchEvent(new XBox360GamePadEvent(
@@ -194,15 +200,17 @@ namespace RagadesCube.States
                     }
                 }));
 
-
-
-
             input.AddWatcher(keyWatcher);
-            input.AddWatcher(mouseWatcher);
             input.AddWatcher(gamepadWatcher1);
             input.AddWatcher(gamepadWatcher2);
             input.AddWatcher(gamepadWatcher3);
             input.AddWatcher(gamepadWatcher4);
+
+#if !XBOX
+
+            input.AddWatcher(mouseWatcher);
+
+#endif
             
             base.Initialize();
         }

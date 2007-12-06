@@ -47,8 +47,17 @@ namespace RagadesCube.GameLogic
 
             _cubes = cubes;
 
+#if !XBOX
+
             int rotationCount = Enum.GetValues(typeof(RCCube.RotationDirection)).Length;
             int faceSideCount = Enum.GetValues(typeof(RCCube.FaceSide)).Length;
+
+#else
+
+            int rotationCount = EnumHelper.GetValues(typeof(RCCube.RotationDirection)).Length;
+            int faceSideCount = EnumHelper.GetValues(typeof(RCCube.FaceSide)).Length;
+
+#endif
 
             int faceSide = _rand.Next(0, faceSideCount);
             int rotate = _rand.Next(0, rotationCount);

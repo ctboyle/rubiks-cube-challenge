@@ -15,7 +15,6 @@ using RC.Gui.Panes;
 using RC.Gui;
 using RC.Gui.Primitives;
 using RC.Gui.Fonts;
-using RagadesCube.Controllers;
 using RagadesCube.GameLogic.Rules;
 using RC.Engine.SoundManagement;
 
@@ -143,6 +142,8 @@ namespace RagadesCube.States
             _titleText.Color = Color.Maroon;
             _screen.ScreenPane.AddChild(_titleText, 0, 0, 1f);
 
+#if !XBOX
+
             if (Array.Find<RCGLInputScheme>(
                 _inputSchemes, 
                 delegate(RCGLInputScheme scheme) 
@@ -177,6 +178,8 @@ namespace RagadesCube.States
                 _guiInputScheme = new GuiInputScheme();
                 _guiInputScheme.Apply(input, _guiManager);
             }
+
+#endif
 
             _playerText = new RCText[_cubeScenes.Length];
             _infoScenes = new RCScreenScene[_cubeScenes.Length];

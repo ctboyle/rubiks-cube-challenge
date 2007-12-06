@@ -63,13 +63,32 @@ namespace RagadesCube.SceneObjects
             : base()
         {
             // intitialize the member variables
+
+#if !XBOX
+
             _faces = new Face[Enum.GetValues(typeof(RCCube.FaceSide)).Length];
+
+#else
+
+            _faces = new Face[EnumHelper.GetValues(typeof(RCCube.FaceSide)).Length];
+
+#endif
+            
             _length = length;
             _width = width;
             _height = height;
 
             // create / intialize each face and cubelet face collection
+#if !XBOX
+
             foreach (FaceSide face in Enum.GetValues(typeof(RCCube.FaceSide)))
+
+#else
+
+            foreach (FaceSide face in EnumHelper.GetValues(typeof(RCCube.FaceSide)))
+
+#endif
+
             {
                 Color color = new Color();
 

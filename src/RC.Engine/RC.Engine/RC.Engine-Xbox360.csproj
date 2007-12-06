@@ -1,41 +1,39 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{004293A3-2614-46BC-8B27-7500933272F2}</ProjectGuid>
+    <ProjectGuid>{68F4F6BF-69C0-486A-92DD-894AB6FE41C0}</ProjectGuid>
     <ProjectTypeGuids>{9F340DF3-2AED-4330-AC16-78AC2D9B4738};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RC.Gui</RootNamespace>
-    <AssemblyName>RC.Gui</AssemblyName>
+    <RootNamespace>RC.Engine</RootNamespace>
+    <AssemblyName>RC.Engine</AssemblyName>
     <XnaFrameworkVersion>v1.0</XnaFrameworkVersion>
-    <XnaPlatform>Windows</XnaPlatform>
+    <XnaPlatform>Xbox 360</XnaPlatform>
     <XNAGlobalContentPipelineAssemblies>Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</XNAGlobalContentPipelineAssemblies>
     <XNAProjectContentPipelineAssemblies>
     </XNAProjectContentPipelineAssemblies>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\x86\Debug</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>bin\Xbox 360\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;XBOX;XBOX360</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Xbox 360' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\x86\Release</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>bin\Xbox 360\Release</OutputPath>
+    <DefineConstants>TRACE;XBOX;XBOX360</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework">
@@ -47,125 +45,125 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="RC.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\x86\RC.Engine.dll</HintPath>
-    </Reference>
-    <Reference Include="RC.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\x86\RC.Input.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Control Subclasses\RCButton.cs">
+    <Compile Include="Animation\Controller.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCButton</Name>
+      <Name>Controller</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\RCCheckBox.cs">
+    <Compile Include="Animation\DurationController.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCCheckBox</Name>
+      <Name>DurationController</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\RCImage.cs">
+    <Compile Include="Animation\KeyFrameController.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCImage</Name>
+      <Name>KeyFrameController</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\RCLabel.cs">
+    <Compile Include="Cameras\Camera.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCLabel</Name>
+      <Name>Camera</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\RCRadioButton.cs">
+    <Compile Include="Cameras\CameraManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCRadioButton</Name>
+      <Name>CameraManager</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\RCSpinner.cs">
+    <Compile Include="Cameras\OrthographicCamera.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCSpinner</Name>
+      <Name>OrthographicCamera</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\RCTextBox.cs">
+    <Compile Include="Cameras\PerspectiveCamera.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCTextBox</Name>
+      <Name>PerspectiveCamera</Name>
     </Compile>
-    <Compile Include="Controls\Control Subclasses\TestControl.cs">
+    <Compile Include="BasicGame.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>TestControl</Name>
+      <Name>BasicGame</Name>
     </Compile>
-    <Compile Include="Controls\RCControl.cs">
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingBox.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCControl</Name>
+      <Name>BoundingBox</Name>
     </Compile>
-    <Compile Include="Controls\RCControlGroup.cs">
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingRect.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCControlGroup</Name>
+      <Name>BoundingRect</Name>
     </Compile>
-    <Compile Include="Controls\RCControlManager.cs">
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingSphere.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCControlManager</Name>
+      <Name>BoundingSphere</Name>
     </Compile>
-    <Compile Include="Controls\RCControl_Enumerations.cs">
+    <Compile Include="GraphicsManagement\BoundingVolumes\BoundingVolume.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCControl_Enumerations</Name>
+      <Name>BoundingVolume</Name>
     </Compile>
-    <Compile Include="Controls\RCRadioChannel.cs">
+    <Compile Include="GraphicsManagement\Node.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCRadioChannel</Name>
+      <Name>Node</Name>
     </Compile>
-    <Compile Include="FlatSpatial.cs">
+    <Compile Include="GraphicsManagement\SceneInterfaces.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>FlatSpatial</Name>
+      <Name>SceneInterfaces</Name>
     </Compile>
-    <Compile Include="Fonts\BitmapFont.cs">
+    <Compile Include="GraphicsManagement\Spatial.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>BitmapFont</Name>
+      <Name>Spatial</Name>
     </Compile>
-    <Compile Include="Fonts\FontManager.cs">
+    <Compile Include="Input\InputManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>FontManager</Name>
+      <Name>InputManager</Name>
     </Compile>
-    <Compile Include="Game.cs">
+    <Compile Include="Input\IWatcher.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Game</Name>
+      <Name>IWatcher</Name>
     </Compile>
-    <Compile Include="GUIEvent.cs">
+    <Compile Include="Picking\PickRecord.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>GUIEvent</Name>
+      <Name>PickRecord</Name>
     </Compile>
-    <Compile Include="GuiInputScheme.cs">
+    <Compile Include="Picking\ScenePicker.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>GuiInputScheme</Name>
-    </Compile>
-    <Compile Include="IGUIElement.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>IGUIElement</Name>
-    </Compile>
-    <Compile Include="Panes\RCPane.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCPane</Name>
-    </Compile>
-    <Compile Include="Primitives\Quad.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Quad</Name>
-    </Compile>
-    <Compile Include="Primitives\Text.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Text</Name>
+      <Name>ScenePicker</Name>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RCUIManager.cs">
+    <Compile Include="Rendering\DirectionalLight.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>RCUIManager</Name>
+      <Name>DirectionalLight</Name>
     </Compile>
-    <Compile Include="ScreenScene.cs">
+    <Compile Include="Rendering\LightSource.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>ScreenScene</Name>
+      <Name>LightSource</Name>
     </Compile>
-    <Compile Include="TemporaryAttributes.cs">
+    <Compile Include="Rendering\RenderManager.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>TemporaryAttributes</Name>
+      <Name>RenderManager</Name>
+    </Compile>
+    <Compile Include="SceneManagement\ISceneCreator.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ISceneCreator</Name>
+    </Compile>
+    <Compile Include="SceneManagement\Scene.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Scene</Name>
+    </Compile>
+    <Compile Include="SceneManagement\SceneManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SceneManager</Name>
+    </Compile>
+    <Compile Include="SoundManagement\SoundManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SoundManager</Name>
+    </Compile>
+    <Compile Include="StateManagement\GameState.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>GameState</Name>
+    </Compile>
+    <Compile Include="StateManagement\StateManager.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>StateManager</Name>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -179,6 +177,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)*" "$(ProjectDir)..\..\Dependencies\x86"  /i /d /y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)$(OutDir)*" "$(ProjectDir)..\..\Dependencies\Xbox"  /i /d /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
