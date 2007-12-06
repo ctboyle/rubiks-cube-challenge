@@ -50,15 +50,15 @@
     </Reference>
     <Reference Include="RC.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\RC.Engine.dll</HintPath>
+      <HintPath>..\..\Dependencies\x86\RC.Engine.dll</HintPath>
     </Reference>
     <Reference Include="RC.Gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\RC.Gui.dll</HintPath>
+      <HintPath>..\..\Dependencies\x86\RC.Gui.dll</HintPath>
     </Reference>
     <Reference Include="RC.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\RC.Input.dll</HintPath>
+      <HintPath>..\..\Dependencies\x86\RC.Input.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
