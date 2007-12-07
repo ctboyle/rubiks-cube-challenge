@@ -146,7 +146,7 @@ namespace RagadesCube.States
             );
             _titleText.Text = "Hello World";
             _titleText.CenterText = true;
-            _titleText.Color = Color.Maroon;
+            _titleText.Color = Color.DodgerBlue;
             _screen.ScreenPane.AddChild(_titleText, 0, 0, 1f);
 
 #if !XBOX
@@ -202,7 +202,7 @@ namespace RagadesCube.States
                    vp.Width,
                    vp.Height / 2
                 );
-                _playerText[i].Color = Color.Red;
+                _playerText[i].Color = Color.DodgerBlue;
                 _playerText[i].CenterText = true;
                 _infoScenes[i].ScreenPane.AddChild(_playerText[i], 0, vp.Height-30, 1f);
                 _infoScenes[i].Camera.ClearScreen = false;

@@ -64,7 +64,7 @@ namespace RagadesCube.States
                graphics.GraphicsDevice.Viewport.Height / 2
             );
             _titleText.Text = "Shuffling...";
-            _titleText.Color = Color.Maroon;
+            _titleText.Color = Color.DodgerBlue;
             _titleText.CenterText = true;
             _screen.ScreenPane.AddChild(_titleText, 0, 0, 1f);
             _sceneManager.AddScene(_screen);

@@ -66,7 +66,7 @@ namespace RagadesCube.Scenes
 
         public override void Load(GraphicsDevice graphicsDevice, Microsoft.Xna.Framework.Content.ContentManager contentManager)
         {
-            _background.Image = contentManager.Load<Texture2D>("Content\\Textures\\yello002");
+            _background.Image = contentManager.Load<Texture2D>("Content\\Textures\\raw-starfield");
             base.Load(graphicsDevice, contentManager);
         }
 
