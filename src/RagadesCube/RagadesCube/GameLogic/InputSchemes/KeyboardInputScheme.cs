@@ -18,7 +18,7 @@ namespace RagadesCube.GameLogic.InputSchemes
         public Keys DownPressKey = Keys.S;
         public Keys FirePressKey = Keys.F;
         public Keys ExitKey = Keys.Escape;
-        public Keys OrientKey = Keys.Enter;
+        public Keys OrientKey = Keys.Tab;
 
         private bool _leftShiftActive = false;
         private bool _leftPressActive = false;

@@ -155,7 +155,7 @@ namespace RagadesCube.GameLogic
         {
             if (_rules == null)
                 throw new NullReferenceException("Rules must be specified for the shuffle to start.");
-            _shuffleCount = 3;
+            _shuffleCount = 26;
         }
 
         public void StartGame()
