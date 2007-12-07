@@ -15,19 +15,25 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0395C93B4EDCA0B58AD6941042569496"
+        "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0395C93B4EDCA0B58AD6941042569496"
+        "OwnerKey" = "8:_43BB489F1457BF1697FF0F4932B4F6A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0395C93B4EDCA0B58AD6941042569496"
+        "OwnerKey" = "8:_520538F7902392BA32FFB2AD96B99E96"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_06ED9FA7A1FB4D438B98FE71C0D318C7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0BE2A504F0FD41D2877B13143030D8DB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0D534F298B1C431DAF550850092A1B06"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -40,54 +46,6 @@
         "Entry"
         {
         "MsmKey" = "8:_0FD2538E6B3E4E4E9A7D8E20E2064E40"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_129A291A50B3148F1E670D1C2C05612D"
-        "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_12BB21FEA5B0457CB731D0168B08FF3F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1575EE7AA9C72B944501335FAD5CB4F7"
-        "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1575EE7AA9C72B944501335FAD5CB4F7"
-        "OwnerKey" = "8:_1634CFE04D861AC2F4B682D1D09E550F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1575EE7AA9C72B944501335FAD5CB4F7"
-        "OwnerKey" = "8:_129A291A50B3148F1E670D1C2C05612D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1634CFE04D861AC2F4B682D1D09E550F"
-        "OwnerKey" = "8:_129A291A50B3148F1E670D1C2C05612D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1634CFE04D861AC2F4B682D1D09E550F"
-        "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_17D5CFE5B2D74034887EFDC62CFC8E27"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -118,19 +76,19 @@
         "Entry"
         {
         "MsmKey" = "8:_244E2546059A16086612EEF6270D1956"
-        "OwnerKey" = "8:_129A291A50B3148F1E670D1C2C05612D"
+        "OwnerKey" = "8:_520538F7902392BA32FFB2AD96B99E96"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_244E2546059A16086612EEF6270D1956"
-        "OwnerKey" = "8:_1634CFE04D861AC2F4B682D1D09E550F"
+        "OwnerKey" = "8:_43BB489F1457BF1697FF0F4932B4F6A9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_244E2546059A16086612EEF6270D1956"
-        "OwnerKey" = "8:_1575EE7AA9C72B944501335FAD5CB4F7"
+        "OwnerKey" = "8:_0395C93B4EDCA0B58AD6941042569496"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -148,12 +106,6 @@
         "Entry"
         {
         "MsmKey" = "8:_24A64A0AF7EA4C04AA4DB5443D7F6F13"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_257FD743659746C6B822EC5E2147DA9B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -213,14 +165,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3F3EB7441A7E48188909F76F70557C72"
+        "MsmKey" = "8:_437AACE73BA040A09D794FDA7C106B85"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_437AACE73BA040A09D794FDA7C106B85"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_43BB489F1457BF1697FF0F4932B4F6A9"
+        "OwnerKey" = "8:_520538F7902392BA32FFB2AD96B99E96"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43BB489F1457BF1697FF0F4932B4F6A9"
+        "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -237,14 +195,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5B2350757F284158BB886E17958A7C93"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5E34BF147FF84F959FF81629E865B473"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_520538F7902392BA32FFB2AD96B99E96"
+        "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -267,12 +219,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_70E9DA6469CF48C1B7A83AF9BF2A9184"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_73FEC02CB6954CAAB603DFCCE3AD8623"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -286,6 +232,12 @@
         "Entry"
         {
         "MsmKey" = "8:_7BA83EA9C29C4B88BE2727E249DEA3BB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7D58E8D0D58E4705991C48401FF4E5CC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -327,12 +279,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_93C30E8036C84E1B826C26AE0097E4D1"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_941FD89542DD4FC38EBD79EBA46C323B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -346,12 +292,6 @@
         "Entry"
         {
         "MsmKey" = "8:_9C30ABC125A74DBB8FFB3138F9237113"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9D358431536C43B2A0A63DCCDF7E3AF5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -411,25 +351,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BADB7D2BDD384EED9ED1F128DD43ABA8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BB06C7804A0C4B8EA6A535AEA67E9D8B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C04B6BFF149B425383ACBC8158A7CC94"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C0D14BA6C4924122AE6EDCCD0D28CB0D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -477,12 +399,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D1B1CC0E2616479ABF374CEDEE70A009"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D39E1747AC61119898519FD06B540504"
         "OwnerKey" = "8:_8E509ED53CD54EC2A4F40852DB1184F8"
         "MsmSig" = "8:_UNDEFINED"
@@ -490,24 +406,24 @@
         "Entry"
         {
         "MsmKey" = "8:_D39E1747AC61119898519FD06B540504"
-        "OwnerKey" = "8:_129A291A50B3148F1E670D1C2C05612D"
+        "OwnerKey" = "8:_520538F7902392BA32FFB2AD96B99E96"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D39E1747AC61119898519FD06B540504"
-        "OwnerKey" = "8:_1575EE7AA9C72B944501335FAD5CB4F7"
+        "OwnerKey" = "8:_0395C93B4EDCA0B58AD6941042569496"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DA7D65563AA44B53BAD503256293CD9A"
+        "MsmKey" = "8:_D437039B1CEA475E92D6618E6D6E7A5E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DCC03CE686E64016AA2DEA47FDC3B8C5"
+        "MsmKey" = "8:_DA7D65563AA44B53BAD503256293CD9A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -520,12 +436,6 @@
         "Entry"
         {
         "MsmKey" = "8:_E4D203BD14E7457386B5A5DA163F378D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E82E67C66C2540DCB03FFDE33711A856"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -586,28 +496,56 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_129A291A50B3148F1E670D1C2C05612D"
+        "OwnerKey" = "8:_520538F7902392BA32FFB2AD96B99E96"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1634CFE04D861AC2F4B682D1D09E550F"
+        "OwnerKey" = "8:_43BB489F1457BF1697FF0F4932B4F6A9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1575EE7AA9C72B944501335FAD5CB4F7"
+        "OwnerKey" = "8:_0395C93B4EDCA0B58AD6941042569496"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
     "Configurations"
     {
+        "Release"
+        {
+        "DisplayName" = "8:Release"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:TRUE"
+        "OutputFilename" = "8:Release\\RC.Setup.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                }
+            }
+        "IsreleaseOnly" = "11:FALSE"
+        }
         "release"
         {
         "DisplayName" = "8:release"
-        "IsreleaseOnly" = "11:TRUE"
+        "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:FALSE"
         "OutputFilename" = "8:release\\RC.Setup.msi"
         "PackageFilesAs" = "3:2"
@@ -635,33 +573,7 @@
                     }
                 }
             }
-        }
-        "Release"
-        {
-        "DisplayName" = "8:Release"
-        "IsreleaseOnly" = "11:FALSE"
-        "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\RC.Setup.msi"
-        "PackageFilesAs" = "3:2"
-        "PackageFileSize" = "3:-2147483648"
-        "CabType" = "3:1"
-        "Compression" = "3:2"
-        "SignOutput" = "11:FALSE"
-        "CertificateFile" = "8:"
-        "PrivateKeyFile" = "8:"
-        "TimeStampServer" = "8:"
-        "InstallerBootstrapper" = "3:2"
-            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
-            {
-            "Enabled" = "11:TRUE"
-            "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
-            "Url" = "8:"
-            "ComponentsUrl" = "8:"
-                "Items"
-                {
-                }
-            }
+        "IsreleaseOnly" = "11:TRUE"
         }
     }
     "Deployable"
@@ -691,52 +603,43 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0395C93B4EDCA0B58AD6941042569496"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RC.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_0395C93B4EDCA0B58AD6941042569496"
+                    {
+                    "Name" = "8:RC.Engine.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RC.Engine.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_ED8D9E992A814B0D8A97AAF8B6E9D65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_06ED9FA7A1FB4D438B98FE71C0D318C7"
             {
             "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Models\\Facelet.xnb"
             "TargetName" = "8:Facelet.xnb"
             "Tag" = "8:"
             "Folder" = "8:_DA7226BF76E84AB9BD86F22A8C3BA4C7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0BE2A504F0FD41D2877B13143030D8DB"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\EmptySpinBox.xnb"
-            "TargetName" = "8:EmptySpinBox.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0D534F298B1C431DAF550850092A1B06"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\TittleName.xnb"
-            "TargetName" = "8:TittleName.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -777,139 +680,6 @@
             "TargetName" = "8:RCFont-6.xnb"
             "Tag" = "8:"
             "Folder" = "8:_6498CBEE68D74DF8B7D88790051853C6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_129A291A50B3148F1E670D1C2C05612D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RC.Gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_129A291A50B3148F1E670D1C2C05612D"
-                    {
-                    "Name" = "8:RC.Gui.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RC.Gui.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_ED8D9E992A814B0D8A97AAF8B6E9D65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_12BB21FEA5B0457CB731D0168B08FF3F"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\BoringHollowArrowImage.xnb"
-            "TargetName" = "8:BoringHollowArrowImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1575EE7AA9C72B944501335FAD5CB4F7"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RC.Engine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_1575EE7AA9C72B944501335FAD5CB4F7"
-                    {
-                    "Name" = "8:RC.Engine.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RC.Engine.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_ED8D9E992A814B0D8A97AAF8B6E9D65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1634CFE04D861AC2F4B682D1D09E550F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RC.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_1634CFE04D861AC2F4B682D1D09E550F"
-                    {
-                    "Name" = "8:RC.Input.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RC.Input.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_ED8D9E992A814B0D8A97AAF8B6E9D65F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17D5CFE5B2D74034887EFDC62CFC8E27"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\RadioButtonMarkedStatusImage.xnb"
-            "TargetName" = "8:RadioButtonMarkedStatusImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1041,26 +811,6 @@
             "TargetName" = "8:font-0.xnb"
             "Tag" = "8:"
             "Folder" = "8:_EB4ADB6E095043589E6B5CF521447F02"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_257FD743659746C6B822EC5E2147DA9B"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\HollowArc1ArrowImage.xnb"
-            "TargetName" = "8:HollowArc1ArrowImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1255,26 +1005,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3F3EB7441A7E48188909F76F70557C72"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\Background3.xnb"
-            "TargetName" = "8:Background3.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_437AACE73BA040A09D794FDA7C106B85"
             {
             "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Fonts\\Ragade's Cube\\48\\RCFont-2.xnb"
@@ -1293,6 +1023,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_43BB489F1457BF1697FF0F4932B4F6A9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RC.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_43BB489F1457BF1697FF0F4932B4F6A9"
+                    {
+                    "Name" = "8:RC.Input.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RC.Input.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_ED8D9E992A814B0D8A97AAF8B6E9D65F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4E12122FAF1646E081BBC0D9C48E8098"
@@ -1335,12 +1096,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B2350757F284158BB886E17958A7C93"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_520538F7902392BA32FFB2AD96B99E96"
             {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\RadioButtonUnmarkingStatusImage.xnb"
-            "TargetName" = "8:RadioButtonUnmarkingStatusImage.xnb"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RC.Gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_520538F7902392BA32FFB2AD96B99E96"
+                    {
+                    "Name" = "8:RC.Gui.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RC.Gui.DLL"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
+            "Folder" = "8:_ED8D9E992A814B0D8A97AAF8B6E9D65F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1352,27 +1124,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E34BF147FF84F959FF81629E865B473"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\Background2.xnb"
-            "TargetName" = "8:Background2.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E7CCCF4FF7F4051B8EDB1323823160C"
@@ -1435,26 +1187,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_70E9DA6469CF48C1B7A83AF9BF2A9184"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\UpgradeChrisBackground.xnb"
-            "TargetName" = "8:UpgradeChrisBackground.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_73FEC02CB6954CAAB603DFCCE3AD8623"
             {
             "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Fonts\\Ragade's Cube\\48\\RCFont.xml"
@@ -1501,6 +1233,26 @@
             "TargetName" = "8:RCFont-2.xnb"
             "Tag" = "8:"
             "Folder" = "8:_6498CBEE68D74DF8B7D88790051853C6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D58E8D0D58E4705991C48401FF4E5CC"
+            {
+            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\Release\\Content\\Textures\\RagadeSketch.xnb"
+            "TargetName" = "8:RagadeSketch.xnb"
+            "Tag" = "8:"
+            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1646,26 +1398,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_93C30E8036C84E1B826C26AE0097E4D1"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\TexturedArc1ArrowImage.xnb"
-            "TargetName" = "8:TexturedArc1ArrowImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_941FD89542DD4FC38EBD79EBA46C323B"
             {
             "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Fonts\\Rockwell Extra Bold -48pt\\font.xml"
@@ -1710,26 +1442,6 @@
             {
             "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\roughButtonImage.xnb"
             "TargetName" = "8:roughButtonImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9D358431536C43B2A0A63DCCDF7E3AF5"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\Disco.xnb"
-            "TargetName" = "8:Disco.xnb"
             "Tag" = "8:"
             "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
@@ -1926,72 +1638,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BADB7D2BDD384EED9ED1F128DD43ABA8"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\yello002.xnb"
-            "TargetName" = "8:yello002.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB06C7804A0C4B8EA6A535AEA67E9D8B"
             {
             "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Fonts\\Rockwell Extra Bold -48pt\\font-2.xnb"
             "TargetName" = "8:font-2.xnb"
             "Tag" = "8:"
             "Folder" = "8:_EB4ADB6E095043589E6B5CF521447F02"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C04B6BFF149B425383ACBC8158A7CC94"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\RadioButtonMarkingStatusImage.xnb"
-            "TargetName" = "8:RadioButtonMarkingStatusImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C0D14BA6C4924122AE6EDCCD0D28CB0D"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\RadioButtonUnmarkedStatusImage.xnb"
-            "TargetName" = "8:RadioButtonUnmarkedStatusImage.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2146,26 +1798,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D1B1CC0E2616479ABF374CEDEE70A009"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Models\\xwing.xnb"
-            "TargetName" = "8:xwing.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_DA7226BF76E84AB9BD86F22A8C3BA4C7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D39E1747AC61119898519FD06B540504"
             {
             "AssemblyRegister" = "3:1"
@@ -2197,12 +1829,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DA7D65563AA44B53BAD503256293CD9A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D437039B1CEA475E92D6618E6D6E7A5E"
             {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Sounds\\Wave Bank.xwb"
-            "TargetName" = "8:Wave Bank.xwb"
+            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\Release\\Content\\Textures\\raw-starfield.xnb"
+            "TargetName" = "8:raw-starfield.xnb"
             "Tag" = "8:"
-            "Folder" = "8:_78F780F397FD473B85E948493383B294"
+            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2217,12 +1849,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DCC03CE686E64016AA2DEA47FDC3B8C5"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DA7D65563AA44B53BAD503256293CD9A"
             {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\GuiTest.xnb"
-            "TargetName" = "8:GuiTest.xnb"
+            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Sounds\\Wave Bank.xwb"
+            "TargetName" = "8:Wave Bank.xwb"
             "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
+            "Folder" = "8:_78F780F397FD473B85E948493383B294"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2263,26 +1895,6 @@
             "TargetName" = "8:font.xml"
             "Tag" = "8:"
             "Folder" = "8:_E34546931D15433787E85E553FFE9654"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E82E67C66C2540DCB03FFDE33711A856"
-            {
-            "SourcePath" = "8:..\\..\\RagadesCube\\RagadesCube\\bin\\x86\\release\\Content\\Textures\\Background4.xnb"
-            "TargetName" = "8:Background4.xnb"
-            "Tag" = "8:"
-            "Folder" = "8:_2AD5FD614D6A4109A84499D12BFD19FE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2631,7 +2243,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Ragade's Cube"
         "ProductCode" = "8:{FF9D923A-4130-4CD0-AC18-3A737DC8819E}"
-        "PackageCode" = "8:{38C4C079-1A06-4E96-BB4E-9F4A96A02562}"
+        "PackageCode" = "8:{E08E9D5A-7AB2-4B30-9732-22F8E80F4EA6}"
         "UpgradeCode" = "8:{E5B80506-56F8-4AA2-A076-11B09930A7A1}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
