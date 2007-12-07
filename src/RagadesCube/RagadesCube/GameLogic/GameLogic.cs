@@ -130,6 +130,16 @@ namespace RagadesCube.GameLogic
             }
         }
 
+        public void OrientPlayerCube(RCPlayerIndex playerIndex)
+        {
+            if (IsPlaying && _rules.PlayerOrientCube(playerIndex))
+            {
+                RCGamePlayer player = _players[(int)playerIndex];
+                if (!player.MyCube.IsRotating)
+                    player.MyCube.Orient();
+            }
+        }
+
         public IRCGamePlayerViewer GetPlayer(RCPlayerIndex playerIndex)
         {
             IRCGamePlayerViewer player = _players[(int)playerIndex];
@@ -145,7 +155,7 @@ namespace RagadesCube.GameLogic
         {
             if (_rules == null)
                 throw new NullReferenceException("Rules must be specified for the shuffle to start.");
-            _shuffleCount = 25;
+            _shuffleCount = 3;
         }
 
         public void StartGame()

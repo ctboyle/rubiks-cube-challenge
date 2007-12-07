@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using RagadesCube.Scenes;
 using System.Collections.Generic;
 using RC.Engine.Cameras;
+using RC.Engine.Animation;
 
 
 namespace RagadesCube.GameLogic
@@ -24,13 +25,18 @@ namespace RagadesCube.GameLogic
         public event ActionCubeEventHandler RotateAnimationComplete;
 
         private bool _isMoving;
+        private bool _isOrienting;
         private int _moveCount;
         private RCCube _myCube;
-        private RCCubeController _controller;
+        private RCCubeController _faceRotateController;
+        private RCKeyFrameController<RCCube> _orientController;
         private RCCubeCursor _cursor;
         private Vector2 _moveVector;
+        private Vector2 _moveVectorDelta;
         private Vector3 _xAxis;
         private Vector3 _yAxis;
+        private RCCube.FaceSide _upFace;
+        private Matrix _currentBase;
  
 
         public RCActionCube(Game game)
@@ -38,14 +44,21 @@ namespace RagadesCube.GameLogic
         {
             _moveCount = 0;
             _moveVector = new Vector2();
+            _moveVectorDelta = new Vector2();
+
             _myCube = new RCCube(3, 3, 3);
-            _controller = new RCCubeController();
+            _faceRotateController = new RCCubeController();
+            _orientController = new RCKeyFrameController<RCCube>(); 
             _cursor = new RCCubeCursor(_myCube);
-            _controller.AttachToObject(_myCube);
+            _faceRotateController.AttachToObject(_myCube);
+            _orientController.AttachToObject(_myCube);
             _myCube.AddChild(_cursor);
 
-            _controller.OnComplete += OnAnimationComplete;
+            _upFace = RCCube.FaceSide.Top;
+            _currentBase = Matrix.Identity;
 
+            _faceRotateController.OnComplete += OnAnimationComplete;
+            _orientController.OnComplete += OnOrientComplete;
             Game.Components.Add(this);
         }
 
@@ -76,15 +89,23 @@ namespace RagadesCube.GameLogic
 
         public override void Update(GameTime gameTime)
         {
-            _cursor.IsVisible = !_controller.IsAnimating;
-            
+            _cursor.IsVisible = !_faceRotateController.IsAnimating;
+       
             if (_isMoving)
             {
-                Quaternion yRot = Quaternion.CreateFromAxisAngle(_xAxis, _moveVector.X);
-                Quaternion xRot = Quaternion.CreateFromAxisAngle(_yAxis, _moveVector.Y);
-                Quaternion totalRot =  Quaternion.Concatenate(xRot, yRot);
+                _moveVector += _moveVectorDelta * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                _myCube.LocalTrans *= Matrix.CreateFromQuaternion(totalRot);
+                Matrix yRot = Matrix.CreateFromAxisAngle(
+                    _xAxis, 
+                    _moveVector.X
+                    );
+                Matrix xRot = Matrix.CreateFromAxisAngle(
+                    Vector3.Up,
+                    _moveVector.Y
+                    );
+                Matrix totalRot = xRot * yRot;
+
+                _myCube.LocalTrans = _currentBase * totalRot;
                 _isMoving = false;
             }
         }
@@ -100,13 +121,65 @@ namespace RagadesCube.GameLogic
             _cursor.SelectedFace = selectedFace;
         }
 
+        public void Orient()
+        {
+            if (!_isOrienting)
+            {
+                Vector3 selectedFaceNormal = _myCube.GetWorldFaceNormal(_cursor.SelectedFace);
+                Vector3 worldRotateAxis = Vector3.Cross(selectedFaceNormal, Vector3.Up);
+
+                _upFace = _cursor.SelectedFace;
+
+
+                // Using the cross product definition I am able to find the angle between the vectors.
+                // Math is simpler as I am using 2 source unit vectors.
+                float angleToRotate = (float)Math.Asin(worldRotateAxis.Length());
+
+                if (float.IsNaN(angleToRotate))
+                {
+                    angleToRotate = MathHelper.PiOver2;
+                }
+
+                float roationDir = (float)Vector3.Dot(selectedFaceNormal, Vector3.Up);
+                if (roationDir > 0)
+                {
+                    angleToRotate = MathHelper.Pi - angleToRotate;
+                }
+                else if (roationDir == 1.0f)
+                {
+                    angleToRotate = MathHelper.Pi;
+                    worldRotateAxis = Vector3.UnitX;
+
+                }
+                else if (roationDir == -1.0f)
+                {
+                    angleToRotate = 0.0f;
+                    return;
+                }
+
+
+                worldRotateAxis.Normalize();
+
+                Matrix cubeDestination = LocalTrans * Matrix.CreateFromAxisAngle(
+                    worldRotateAxis,
+                    -angleToRotate
+                    );
+
+
+                _orientController.RotationMode = RCKeyFrameController<RCCube>.InterpolationMode.SmoothStep;
+                _orientController.BeginAnimation(_myCube.LocalTrans, cubeDestination, 1.0f);
+                _isOrienting = true;
+
+            }
+        }
+
         public void Move(Vector3 xAxis, Vector3 yAxis, Vector2 where)
         {
             if (IsMoving) return;
             
             _xAxis = xAxis;
             _yAxis = yAxis;
-            _moveVector = where;
+            _moveVectorDelta = where;
             _isMoving = true;
         }
 
@@ -131,7 +204,7 @@ namespace RagadesCube.GameLogic
         public void Rotate(RCCube.RotationDirection rotationDir)
         {
             if (IsRotating) return;
-            _controller.RotateFace(_cursor.SelectedFace, rotationDir);
+            _faceRotateController.RotateFace(_cursor.SelectedFace, rotationDir);
             _moveCount++;
         }
 
@@ -152,7 +225,7 @@ namespace RagadesCube.GameLogic
 
         public bool IsRotating
         {
-            get { return _controller.IsAnimating; }
+            get { return _faceRotateController.IsAnimating; }
         }
 
         public bool IsSolved
@@ -194,6 +267,13 @@ namespace RagadesCube.GameLogic
             {
                 RotateAnimationComplete(this);
             }
+        }
+
+        protected void OnOrientComplete()
+        {
+            _currentBase = _myCube.LocalTrans;
+            _moveVector = Vector2.Zero;
+            _isOrienting = false;
         }
 
         protected override void Dispose(bool disposing)

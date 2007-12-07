@@ -99,10 +99,17 @@ namespace RagadesCube.States
                     RCGameCompleteState gcs = new RCGameCompleteState(Game, winners.ToArray());
                     gameManager.PushState(gcs);
                 }
+                else
+                {
+                    gameManager.PopState();
+                }
+
             }
 
             base.Update(gameTime);
         }
+
+ 
 
         public override void Initialize()
         {
@@ -164,7 +171,7 @@ namespace RagadesCube.States
                 _exitButton.buttonText.Color = Color.DarkSlateBlue;
                 _exitButton.AfterPressedAndReleased += delegate()
                 {
-                    gameManager.ChangeState(new RCTitleScreenState(Game));
+                    gameManager.PopState();
                 };
 
                 _screen.ScreenPane.AddChild(

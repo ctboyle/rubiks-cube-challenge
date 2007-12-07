@@ -38,6 +38,17 @@ namespace RagadesCube.GameLogic.InputSchemes
             );
 
             gamePad.WatchEvent(
+                new XBox360GamePadEvent(
+                    XBox360GamePadTypes.A,
+                    EventTypes.OnDown,
+                    delegate()
+                    {
+                        Orient();
+                    }
+                )
+            );
+
+            gamePad.WatchEvent(
                  new XBox360GamePadEvent(
                      XBox360GamePadTypes.LEFTTRIGGER,
                      EventTypes.Leaned,
@@ -60,7 +71,7 @@ namespace RagadesCube.GameLogic.InputSchemes
 
                         if (_isTriggerPressed)
                         {
-                            Move(new Vector2(-position.Y, position.X) / 20);
+                            Move(new Vector2(-position.Y, position.X) * MathHelper.PiOver2);
                         }
                         else
                             MoveCursor(position);

@@ -18,6 +18,7 @@ namespace RagadesCube.GameLogic.InputSchemes
         public Keys DownPressKey = Keys.S;
         public Keys FirePressKey = Keys.F;
         public Keys ExitKey = Keys.Escape;
+        public Keys OrientKey = Keys.Enter;
 
         private bool _leftShiftActive = false;
         private bool _leftPressActive = false;
@@ -71,7 +72,7 @@ namespace RagadesCube.GameLogic.InputSchemes
                         _leftPressActive = true;
 
                         if (_leftShiftActive)
-                            Move(new Vector2(0, -0.05f));
+                            Move(new Vector2(0, -(float)Math.PI/2));
                         else
                             MoveCursor(new Vector2(-1, 0));
                     }
@@ -98,7 +99,7 @@ namespace RagadesCube.GameLogic.InputSchemes
                         _rightPressActive = true; 
 
                         if (_leftShiftActive)
-                            Move(new Vector2(0, 0.05f));
+                            Move(new Vector2(0, (float)Math.PI / 2));
                         else
                             MoveCursor(new Vector2(1, 0));
                     }
@@ -125,7 +126,7 @@ namespace RagadesCube.GameLogic.InputSchemes
                         _upPressActive = true;
 
                         if (_leftShiftActive)
-                            Move(new Vector2(-0.05f, 0));
+                            Move(new Vector2(-(float)Math.PI / 2, 0));
                         else
                             MoveCursor(new Vector2(0, 1));
                     }
@@ -152,7 +153,7 @@ namespace RagadesCube.GameLogic.InputSchemes
                         _downPressActive = true;
 
                         if (_leftShiftActive)
-                            Move(new Vector2(0.05f, 0));
+                            Move(new Vector2((float)Math.PI / 2, 0));
                         else
                             MoveCursor(new Vector2(0, -1));
                     }
@@ -180,6 +181,17 @@ namespace RagadesCube.GameLogic.InputSchemes
                             Rotate(RCCube.RotationDirection.Clockwise);
                         else
                             Rotate(RCCube.RotationDirection.CounterClockwise);
+                    }
+                )
+            );
+
+            keyWatcher.WatchEvent(
+                new RC.Input.Events.KeyboardEvent(
+                    OrientKey,
+                    EventTypes.OnDown,
+                    delegate()
+                    {
+                        Orient();
                     }
                 )
             );

@@ -41,6 +41,11 @@ namespace RagadesCube.GameLogic.Rules
         {
             return true;
         }
+        
+        public bool PlayerOrientCube(RCPlayerIndex index)
+        {
+            return true;
+        }
 
         public bool IsWinnerPresent
         {

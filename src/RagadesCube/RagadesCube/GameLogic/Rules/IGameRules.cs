@@ -13,6 +13,7 @@ namespace RagadesCube.GameLogic.Rules
         bool PlayerMoveCube(RCPlayerIndex index);
         bool PlayerSelectCube(RCPlayerIndex index);
         bool PlayerRotateCube(RCPlayerIndex index);
+        bool PlayerOrientCube(RCPlayerIndex index);
         bool IsWinnerPresent { get; }
         IRCCubeShuffer CubeShuffler { get; }
     }

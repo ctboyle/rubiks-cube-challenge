@@ -139,6 +139,12 @@ namespace RagadesCube.States
         {
             RCGLInputScheme[] inputSchemes = _spinnerManager.GetPlayerSchemes();
 
+            // Ensure that noe of the schems are currently being used.
+            foreach (RCGLInputScheme scheme in inputSchemes)
+            {
+                scheme.Unapply();
+            }
+
             if (inputSchemes.Length != 0)
             {
                 IRCGameRules rules = new RCDefaultGameRules();

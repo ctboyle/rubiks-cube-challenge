@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using RC.Engine.GraphicsManagement;
 using RC.Engine.Rendering;
+using RC.Gui.Primitives;
 
 namespace RagadesCube.SceneObjects
 {
@@ -52,6 +53,9 @@ namespace RagadesCube.SceneObjects
         /// The height of the cube.
         /// </summary>
         protected int _height;
+
+
+        protected RCQuad _ragadeSketch;
 
         /// <summary>
         /// Creates a new instance of the <see cref="RCCube"/> class.
@@ -349,6 +353,15 @@ namespace RagadesCube.SceneObjects
                                 iCol
                             );
 
+
+                            if (iX == 0 && iZ == 0)
+                            {
+                                _ragadeSketch = new RCQuad(RCCublet.CubeletSize*.9f, RCCublet.CubeletSize*.9f, 200, 200);
+                                _ragadeSketch.LocalTrans =
+                                    Matrix.CreateTranslation(new Vector3(-RCCublet.CubeletSize*.9f / 2.0f, RCCublet.CubeletSize*.9f / 2.0f, RCCublet.CubeletSize / 2.0f + 0.05f)) *
+                                    Matrix.CreateRotationX(-(float)Math.PI / 2.0f);
+                                currentCubelet.AddChild(_ragadeSketch);
+                            }
                             
                         }
                         // Bottom face
@@ -475,5 +488,13 @@ namespace RagadesCube.SceneObjects
             _faces[(int)face] = new Face(_width, _length);
             _faces[(int)face].Color = faceColor;
         }
+
+        public override void LoadGraphicsContent(GraphicsDevice graphics, ContentManager content)
+        {
+            _ragadeSketch.Image = content.Load<Texture2D>("Content\\Textures\\RagadeSketch");
+            base.LoadGraphicsContent(graphics, content);
+        }
     }
+
+    
 }

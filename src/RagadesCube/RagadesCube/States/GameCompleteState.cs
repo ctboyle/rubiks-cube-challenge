@@ -158,7 +158,7 @@ namespace RagadesCube.States
             gamepadWatcher1.WatchEvent(new XBox360GamePadEvent(
                 XBox360GamePadTypes.A,
                 EventTypes.OnDown,
-                delegate(Vector2 pos, Vector2 move)
+                delegate()
                 {
                     if (inputReady)
                     {
@@ -170,7 +170,7 @@ namespace RagadesCube.States
             gamepadWatcher2.WatchEvent(new XBox360GamePadEvent(
                 XBox360GamePadTypes.A,
                 EventTypes.OnDown,
-                delegate(Vector2 pos, Vector2 move)
+                delegate()
                 {
                     if (inputReady)
                     {
@@ -181,7 +181,7 @@ namespace RagadesCube.States
             gamepadWatcher3.WatchEvent(new XBox360GamePadEvent(
                 XBox360GamePadTypes.A,
                 EventTypes.OnDown,
-                delegate(Vector2 pos, Vector2 move)
+                delegate()
                 {
                     if (inputReady)
                     {
@@ -192,7 +192,7 @@ namespace RagadesCube.States
             gamepadWatcher4.WatchEvent(new XBox360GamePadEvent(
                 XBox360GamePadTypes.A,
                 EventTypes.OnDown,
-                delegate(Vector2 pos, Vector2 move)
+                delegate()
                 {
                     if (inputReady)
                     {

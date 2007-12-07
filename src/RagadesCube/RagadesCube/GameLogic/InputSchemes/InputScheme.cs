@@ -39,6 +39,11 @@ namespace RagadesCube.GameLogic.InputSchemes
             );
         }
 
+        protected void Orient()
+        {
+            ControlItem.OrientPlayerCube(Player.Index);
+        }
+
         protected void MoveCursor(Vector2 position)
         {
             float dotMax = float.MinValue;
