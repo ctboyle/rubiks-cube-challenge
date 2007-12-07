@@ -447,41 +447,6 @@
       <Name>Background1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Textures\Background2.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>Background2</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\Background3.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>Background3</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\Background4.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>Background4</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\BoringHollowArrowImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>BoringHollowArrowImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\Disco.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>Disco</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Textures\EmergingArrowImage.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -531,13 +496,6 @@
       <Name>EmergingArrowImageRightSelected</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Textures\EmptySpinBox.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>EmptySpinBox</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Textures\GamePad1.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -566,20 +524,6 @@
       <Name>GamePad4</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Textures\GuiTest.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>GuiTest</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\HollowArc1ArrowImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>HollowArc1ArrowImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Textures\Keyboard.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -599,41 +543,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>NoPlayer</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\nothing.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>nothing</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\RadioButtonMarkedStatusImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>RadioButtonMarkedStatusImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\RadioButtonMarkingStatusImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>RadioButtonMarkingStatusImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\RadioButtonUnmarkedStatusImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>RadioButtonUnmarkedStatusImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\RadioButtonUnmarkingStatusImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>RadioButtonUnmarkingStatusImage</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Textures\roughButtonImage.png">
@@ -685,39 +594,11 @@
       <Name>roughSelectedButtonLayeredImage</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Textures\TexturedArc1ArrowImage.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>TexturedArc1ArrowImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\Textures\TitleImage2.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>TitleImage2</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\TittleName.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>TittleName</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\UpgradeChrisBackground.bmp">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>UpgradeChrisBackground</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Textures\yello002.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>yello002</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Game.ico">
@@ -764,18 +645,18 @@
       <Name>Facelet</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Models\xwing.x">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>XImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Name>xwing</Name>
-    </Content>
     <Content Include="Content\Sounds\RCSoundBank.xap">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XactImporter</Importer>
       <Processor>XactProcessor</Processor>
       <Name>RCSoundBank</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Textures\nothing.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>nothing</Name>
     </Content>
     <Content Include="Content\Textures\raw-starfield.jpg">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
@@ -790,24 +671,9 @@
       <Name>RagadeSketch</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Content\Textures\BoringHollowArrowImage.xcf">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>BoringHollowArrowImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Content\Textures\EmergingArrowImage.xcf">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>EmergingArrowImage</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Textures\EmptySpinBox.xcf">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>EmptySpinBox</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Textures\TexturedArc1ArrowImage.xcf">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>TexturedArc1ArrowImage</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

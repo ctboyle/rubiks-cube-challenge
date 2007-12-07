@@ -13,8 +13,7 @@ namespace RagadesCube.GameLogic.InputSchemes
     {
         bool _clickActive = false;
         bool _isMoving = true;
-
-        DateTime _clickTime;
+        bool _orientOccured = false;
 
         protected override IWatcher[] MapWatcherEvents()
         {
@@ -29,6 +28,7 @@ namespace RagadesCube.GameLogic.InputSchemes
                        if (_isMoving || _clickActive)
                        {
                            Orient();
+                           _orientOccured = true;
                        }
                        else
                        {
@@ -44,11 +44,12 @@ namespace RagadesCube.GameLogic.InputSchemes
                     EventTypes.OnUp,
                     delegate(Vector2 position, Vector2 move)
                     {
-                        if (!_isMoving)
+                        if (!_isMoving && !_orientOccured)
                             Rotate(RCCube.RotationDirection.CounterClockwise);
 
                         _clickActive = false;
                         _isMoving = false;
+                        _orientOccured = false;
                     }
                 )
             );
@@ -74,7 +75,7 @@ namespace RagadesCube.GameLogic.InputSchemes
 
                         if (_clickActive)
                         {
-                            Move(new Vector2(-move.Y, -move.X) * 2* MathHelper.Pi / 50);
+                            Move(new Vector2(-move.Y, -move.X) * (3 / (2 * MathHelper.Pi)));
                             _isMoving = true;
                         }
                         else
