@@ -13,6 +13,7 @@ namespace RagadesCube.GameLogic.InputSchemes
     {
         private PlayerIndex _playerIndex;
         private bool _isTriggerPressed;
+        private bool _rightTriggerPressed;
 
         public RCGLGamePadInputScheme(PlayerIndex playerIndex)
         {
@@ -55,6 +56,29 @@ namespace RagadesCube.GameLogic.InputSchemes
                      delegate(Vector2 position, Vector2 move)
                      {
                          _isTriggerPressed = (position.Length() > 0);
+                     }
+                 )
+             );
+
+            gamePad.WatchEvent(
+                 new XBox360GamePadEvent(
+                     XBox360GamePadTypes.RIGHTTRIGGER,
+                     EventTypes.Leaned,
+                     delegate(Vector2 position, Vector2 move)
+                     {
+                         if (position.Length() > 0 )
+                         {
+                             if (_rightTriggerPressed == false)
+                             {
+                                _rightTriggerPressed = true;
+                                Orient();
+                             }
+                         }
+                         else
+                         {
+                             _rightTriggerPressed = false;
+                         }
+
                      }
                  )
              );
