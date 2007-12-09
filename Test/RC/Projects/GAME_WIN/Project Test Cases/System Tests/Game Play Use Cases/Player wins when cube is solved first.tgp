@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<test_suite>
-<id>Player wins when cube is solved first</id>
-<suite_title>Player wins when cube is solved first.</suite_title>
-<suite_description></suite_description>
-</test_suite>
