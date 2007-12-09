@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C# Express 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagadesCube-Win", "RagadesCube\RagadesCube-Win.csproj", "{51E2DC4A-6CA4-4C2D-8831-4F594E802E91}"
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagadesCube-Win", "RagadesCube\RagadesCube-Win.csproj", "{806651C9-2E5F-4C4A-846A-9DA7805F9A4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{51E2DC4A-6CA4-4C2D-8831-4F594E802E91}.Debug|x86.ActiveCfg = Debug|x86
-		{51E2DC4A-6CA4-4C2D-8831-4F594E802E91}.Debug|x86.Build.0 = Debug|x86
-		{51E2DC4A-6CA4-4C2D-8831-4F594E802E91}.Release|x86.ActiveCfg = Release|x86
-		{51E2DC4A-6CA4-4C2D-8831-4F594E802E91}.Release|x86.Build.0 = Release|x86
+		{806651C9-2E5F-4C4A-846A-9DA7805F9A4C}.Debug|x86.ActiveCfg = Debug|x86
+		{806651C9-2E5F-4C4A-846A-9DA7805F9A4C}.Debug|x86.Build.0 = Debug|x86
+		{806651C9-2E5F-4C4A-846A-9DA7805F9A4C}.Release|x86.ActiveCfg = Release|x86
+		{806651C9-2E5F-4C4A-846A-9DA7805F9A4C}.Release|x86.Build.0 = Release|x86
+		{54F6AB80-5BC6-4784-93A6-23BA11246383}.Debug|x86.ActiveCfg = Debug|x86
+		{54F6AB80-5BC6-4784-93A6-23BA11246383}.Debug|x86.Build.0 = Debug|x86
+		{54F6AB80-5BC6-4784-93A6-23BA11246383}.Release|x86.ActiveCfg = Release|x86
+		{54F6AB80-5BC6-4784-93A6-23BA11246383}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
