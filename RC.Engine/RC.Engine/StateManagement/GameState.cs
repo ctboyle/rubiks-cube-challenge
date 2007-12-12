@@ -40,22 +40,16 @@ namespace RC.Engine.StateManagement
             
         }
 
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
-          
-            _sceneManager.Load(
-                    content
-                    );
-
-            base.LoadGraphicsContent(loadAllContent);
+            _sceneManager.Load(content);
+            base.LoadContent();
         }
 
-        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        protected override void UnloadContent()
         {
-
-
             _sceneManager.Unload();
-            base.UnloadGraphicsContent(unloadAllContent);
+            base.UnloadContent();
         }
 
         public override void Draw(GameTime gameTime)

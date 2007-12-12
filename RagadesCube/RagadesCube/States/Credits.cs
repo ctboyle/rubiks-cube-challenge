@@ -21,18 +21,6 @@ namespace RagadesCube.States
             _menuPos = RCMenuCameraController.CameraPositions.Top;
         }
 
-
-        public override void Initialize()
-        {
-            
-            base.Initialize();   
-        }
-
-         protected override void LoadGraphicsContent(bool loadAllContent)
-         {
-             base.LoadGraphicsContent(loadAllContent);
-         }
-
         protected override void ConstructGuiElements()
         {
             _titleText.Text = "Credits";

@@ -18,13 +18,10 @@ namespace RagadesCube.States.InputSchemes
 {
     class CubeMenuInputScheme : RCInputScheme<RCCubeMenu>
     {
-        IGameStateManager _stateManager;
         public CubeMenuInputScheme()
             :base()
         {
-
         }
-
 
         protected override IWatcher[] MapWatcherEvents()
         {

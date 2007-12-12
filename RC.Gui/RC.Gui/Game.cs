@@ -15,8 +15,7 @@ namespace RC.Gui
             fontManager = new FontManager(this);
         }
 
-        // Loading and unloading for games services and singletons.
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
             IGraphicsDeviceService gds = Services.GetService(
                 typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
@@ -24,15 +23,15 @@ namespace RC.Gui
             fontManager.LoadFonts(
                 gds.GraphicsDevice,
                 ContentManager
-                );
-          
-            base.LoadGraphicsContent(loadAllContent);
+            );
+
+            base.LoadContent();
         }
 
-        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        protected override void UnloadContent()
         {
             fontManager.UnloadFonts();
-            base.UnloadGraphicsContent(unloadAllContent);
+            base.UnloadContent();
         }
     }
 }

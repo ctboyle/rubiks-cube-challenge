@@ -84,10 +84,10 @@ namespace RagadesCube.States
 
         }
 
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
             _menuPane.LoadGraphicsContent(graphics.GraphicsDevice, content);
-            base.LoadGraphicsContent(loadAllContent);
+            base.LoadContent();
         }
 
         protected void PositionPane()

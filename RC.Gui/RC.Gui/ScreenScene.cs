@@ -37,17 +37,6 @@ namespace RC.Gui
             get { return _screenPane; }
         }
 
-        public RCCamera Camera
-        {
-            get
-            {
-                return RCCameraManager.GetCamera(
-                   _cameraLabel
-                   );
-            }
-
-        }
-
         public RCScreenScene(Viewport sceneViewport)
             : base(null, "")
         {

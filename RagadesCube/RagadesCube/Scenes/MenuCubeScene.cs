@@ -20,7 +20,6 @@ namespace RagadesCube.Scenes
     class RCMenuCubeScene : RCScene
     {
         private RCCube _menuCube;
-        private RCWobbleController _cubeController;
         private RCMenuCameraController _cameraController;
 
         public RCQuad _background;

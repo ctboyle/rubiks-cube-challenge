@@ -21,7 +21,6 @@ namespace RagadesCube.States
         bool inputReady;
 
         private RCText _outText;
-        private double _time;
         private IRCGamePlayerViewer[] _winners;
 
         public RCGameCompleteState(Game game, IRCGamePlayerViewer[] winners)

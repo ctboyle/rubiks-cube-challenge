@@ -26,7 +26,7 @@ namespace RagadesCube
     /// </summary>
     public class RagadesCube : RCGuiGame
     {
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
             IFontManager fontManager = Services.GetService(typeof(IFontManager)) as IFontManager;
 
@@ -65,7 +65,7 @@ namespace RagadesCube
                                     @"content/sounds/Wave Bank.xwb",
                                     @"content/sounds/Sound Bank.xsb"); 
 
-            base.LoadGraphicsContent(loadAllContent);
+            base.LoadContent();
         }
 
         /// <summary>
@@ -92,10 +92,10 @@ namespace RagadesCube
             base.BeginRun();
         }
 
-        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        protected override void UnloadContent()
         {
             SoundManager.Stop();
-            base.UnloadGraphicsContent(unloadAllContent);
+            base.UnloadContent();
         }
     }
 }

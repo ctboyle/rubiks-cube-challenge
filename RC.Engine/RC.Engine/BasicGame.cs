@@ -26,18 +26,17 @@ namespace RC.Engine
             get { return content; }
         }
 
-        // Loading and unloading for games services and singletons.
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
             RCRenderManager.Load(graphics.GraphicsDevice);
-            base.LoadGraphicsContent(loadAllContent);
+            base.LoadContent();
         }
 
-        protected override void UnloadGraphicsContent(bool unloadAllContent)
+        protected override void UnloadContent()
         {
             RCRenderManager.Unload();
             content.Unload();
-            base.UnloadGraphicsContent(unloadAllContent);
+            base.UnloadContent();
         }
     }
 }

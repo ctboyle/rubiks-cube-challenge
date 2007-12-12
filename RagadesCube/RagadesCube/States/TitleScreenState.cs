@@ -89,11 +89,10 @@ namespace RagadesCube.States
             cubeScale.OnComplete += delegate() { _menuScene.Cube.RemoveController(cubeScale); };
         }
 
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
             _titleImage.Image = content.Load<Texture2D>("Content\\Textures\\TitleImage2");
-
-            base.LoadGraphicsContent(loadAllContent);
+            base.LoadContent();
         }
 
         private void StartEnterAnimation()

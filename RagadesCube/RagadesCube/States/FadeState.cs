@@ -21,38 +21,35 @@ namespace RagadesCube.States
             _targetState = targetState;
         }
 
-        protected override void LoadGraphicsContent(bool loadAllContent)
+        protected override void LoadContent()
         {
-            if (loadAllContent)
-            {
-                // Create a viewport that is the size of the game window.
-                _gameScreen = new Viewport();
+            // Create a viewport that is the size of the game window.
+            _gameScreen = new Viewport();
 
-                _gameScreen.X = 0;
-                _gameScreen.Y = 0;
-                _gameScreen.Width = Game.Window.ClientBounds.Width;
-                _gameScreen.Height = Game.Window.ClientBounds.Height;
+            _gameScreen.X = 0;
+            _gameScreen.Y = 0;
+            _gameScreen.Width = Game.Window.ClientBounds.Width;
+            _gameScreen.Height = Game.Window.ClientBounds.Height;
 
-                _spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
-                _fadeTexture = new Texture2D(
-                    graphics.GraphicsDevice,
-                    _gameScreen.Width,
-                    _gameScreen.Height,
-                    1,
-                    TextureUsage.None,
-                    SurfaceFormat.Color
-                );
+            _spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+            _fadeTexture = new Texture2D(
+                graphics.GraphicsDevice,
+                _gameScreen.Width,
+                _gameScreen.Height,
+                1,
+                TextureUsage.None,
+                SurfaceFormat.Color
+            );
 
-                int pixelCount = _gameScreen.Width * _gameScreen.Height;
-                Color[] pixelData = new Color[pixelCount];
+            int pixelCount = _gameScreen.Width * _gameScreen.Height;
+            Color[] pixelData = new Color[pixelCount];
 
-                for (int i = 0; i < pixelCount; ++i)
-                    pixelData[i] = Color.White;
+            for (int i = 0; i < pixelCount; ++i)
+                pixelData[i] = Color.White;
 
-                _fadeTexture.SetData<Color>(pixelData);
-            }
+            _fadeTexture.SetData<Color>(pixelData);
 
-            base.LoadGraphicsContent(loadAllContent);
+            base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
