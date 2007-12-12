@@ -77,13 +77,6 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\RC.Engine\RC.Engine\RC.Engine-Xbox360.csproj">
-      <Project>{0554B36D-EC1B-47CC-B0ED-67399BDE92ED}</Project>
-      <Name>RC.Engine-Xbox360</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v2.0\Microsoft.Xna.GameStudio.Common.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v2.0\Microsoft.Xna.GameStudio.NestedContent.targets" />
