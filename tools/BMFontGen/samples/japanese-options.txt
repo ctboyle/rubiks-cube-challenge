@@ -1,7 +1,0 @@
-﻿-name "ＭＳ Ｐゴシック"
--size 14
--output japanese
--range 0020-007e
--range 3000-3100
--source japanese.txt
--nowarn-missingglyph

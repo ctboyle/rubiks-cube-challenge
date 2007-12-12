@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<test_suite>
-<id>Use Case Test Cases</id>
-<suite_title>Use Case Test Suite</suite_title>
-<suite_description><![CDATA[Verifies that the project works towards our use cases]]></suite_description>
-</test_suite>

@@ -1,4 +1,0 @@
-﻿-name "Times New Roman"
--size 16
--output times
--bmsize 128
