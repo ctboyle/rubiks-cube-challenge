@@ -77,21 +77,23 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fonts\Lucida Console\font.xml">
+    <Content Include="Fonts\Lucida Console\font.xml">
       <Name>font</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Fonts\Ragade%27s Cube\26\RCFont-0.png">
       <Name>RCFont-0</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fonts\Ragade%27s Cube\26\RCFont.xml">
+    <Content Include="Fonts\Ragade%27s Cube\26\RCFont.xml">
       <Name>RCFont</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Fonts\Ragade%27s Cube\36\RCFont-0.png">
       <Name>RCFont-0</Name>
       <Importer>TextureImporter</Importer>
@@ -102,11 +104,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fonts\Ragade%27s Cube\36\RCFont.xml">
+    <Content Include="Fonts\Ragade%27s Cube\36\RCFont.xml">
       <Name>RCFont</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Fonts\Ragade%27s Cube\48\RCFont-0.png">
       <Name>RCFont-0</Name>
       <Importer>TextureImporter</Importer>
@@ -122,11 +125,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fonts\Ragade%27s Cube\48\RCFont.xml">
+    <Content Include="Fonts\Ragade%27s Cube\48\RCFont.xml">
       <Name>RCFont</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Fonts\Ragade%27s Cube\72\RCFont-0.png">
       <Name>RCFont-0</Name>
       <Importer>TextureImporter</Importer>
@@ -177,11 +181,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fonts\Ragade%27s Cube\72\RCFont.xml">
+    <Content Include="Fonts\Ragade%27s Cube\72\RCFont.xml">
       <Name>RCFont</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Fonts\Rockwell Extra Bold -48pt\font-0.png">
       <Name>font-0</Name>
       <Importer>TextureImporter</Importer>
@@ -217,11 +222,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Fonts\Rockwell Extra Bold -48pt\font.xml">
+    <Content Include="Fonts\Rockwell Extra Bold -48pt\font.xml">
       <Name>font</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Textures\Background1.png">
       <Name>Background1</Name>
       <Importer>TextureImporter</Importer>

@@ -140,9 +140,8 @@ namespace RC.Gui.Fonts
                         device,
                         ginfo.nWidth, ginfo.nHeight,
                         1,
-                        ResourceUsage.None,
-                        SurfaceFormat.Color,
-                        ResourceManagementMode.Automatic
+                        TextureUsage.None,
+                        SurfaceFormat.Color
                         );
 
                     glyphTexture.SetData<Color>(pixels);

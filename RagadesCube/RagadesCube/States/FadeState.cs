@@ -39,9 +39,8 @@ namespace RagadesCube.States
                     _gameScreen.Width,
                     _gameScreen.Height,
                     1,
-                    ResourceUsage.None,
-                    SurfaceFormat.Color,
-                    ResourceManagementMode.Automatic
+                    TextureUsage.None,
+                    SurfaceFormat.Color
                 );
 
                 int pixelCount = _gameScreen.Width * _gameScreen.Height;

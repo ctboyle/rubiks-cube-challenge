@@ -87,8 +87,7 @@ namespace RagadesCube.SceneObjects
                 graphics,
                 typeof(VertexPositionNormalTexture),
                 24,
-                ResourceUsage.WriteOnly,
-                ResourceManagementMode.Automatic
+                BufferUsage.WriteOnly
             );
 
             _vertexBuffer.SetData<VertexPositionNormalTexture>(_vertexArray);
@@ -97,8 +96,7 @@ namespace RagadesCube.SceneObjects
             _indexBuffer = new IndexBuffer(
                 graphics,
                 sizeof(short) * _vertexIndices.Length,
-                ResourceUsage.None,
-                ResourceManagementMode.Automatic,
+                BufferUsage.None,
                 IndexElementSize.SixteenBits
             );
 

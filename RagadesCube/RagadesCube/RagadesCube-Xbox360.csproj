@@ -1,13 +1,13 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{d92fc4c9-e6dd-4d3b-953b-56ffb6b9205d}</ProjectGuid>
+    <ProjectGuid>{D92FC4C9-E6DD-4D3B-953B-56FFB6B9205D}</ProjectGuid>
     <ProjectTypeGuids>{2DF5C3F4-5A5F-47a9-8E94-23B4456F55E2};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RagadesCube</RootNamespace>
-    <AssemblyName>RagadesCube-Win</AssemblyName>
+    <AssemblyName>RagadesCube-Xbox360</AssemblyName>
     <XnaFrameworkVersion>v2.0</XnaFrameworkVersion>
     <XnaPlatform>Xbox 360</XnaPlatform>
     <XnaCrossPlatformGroupID>e40b110c-b539-45d1-8eaa-691aa010599e</XnaCrossPlatformGroupID>
@@ -15,7 +15,7 @@
     <Thumbnail>GameThumbnail.png</Thumbnail>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
-    <OutputPath>bin\Xbox 360\Debug</OutputPath>
+    <OutputPath>..\..\bin\Xbox 360\Debug\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -27,7 +27,7 @@
     <DefineConstants>DEBUG;TRACE;XBOX;XBOX360</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Xbox 360' ">
-    <OutputPath>bin\Xbox 360\Release</OutputPath>
+    <OutputPath>..\..\bin\Xbox 360\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -107,6 +107,23 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RC.Engine\RC.Engine\RC.Engine-Xbox360.csproj">
+      <Project>{0554B36D-EC1B-47CC-B0ED-67399BDE92ED}</Project>
+      <Name>RC.Engine-Xbox360</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RC.Gui\RC.Gui\RC.Gui-Xbox360.csproj">
+      <Project>{E74E6F4B-5DA9-4234-A653-29CE43861D93}</Project>
+      <Name>RC.Gui-Xbox360</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RC.Input\RC.Input\RC.Input-Xbox360.csproj">
+      <Project>{3F22A5ED-2F68-4D6B-B36C-F2E44C9F4314}</Project>
+      <Name>RC.Input-Xbox360</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v2.0\Microsoft.Xna.GameStudio.Common.targets" />
