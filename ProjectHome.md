@@ -1,0 +1,3 @@
+This is a project for the Software Engineering course at the [University of Louisville ](http://www.cs.louisville.edu).  The name of the game is now called "Ragade's Cube".  The game is named after our professor [Dr. Rammohan Ragade](http://speed.louisville.edu/cecs/people/faculty/ragade/index.php).
+
+![http://rubiks-cube-challenge.googlecode.com/files/rcube1.png](http://rubiks-cube-challenge.googlecode.com/files/rcube1.png)
